@@ -1,60 +1,59 @@
-# V0.4 Step 01 — Bilingual Typography & Responsive Layout QA
+# Yihan's Universe V0.4 — Step 01 Typography R2: Full-site audit
 
-**Review status:** branch changes complete; **static/source-level checks PASS**; visual browser QA pending.
+Date: 2026-10-12
+Branch: `design/v0.4-step00-01-typography`
+Production baseline: `8865ae8bde391ff975de377f9114f39f44832b53` (unchanged when reviewed).
 
-- Branch: `design/v0.4-step00-01-typography`
-- Base commit: `8865ae8bde391ff975de377f9114f39f44832b53`
-- No commits to `main`; no production deployment initiated by this task.
+## Problem / root cause
 
-## Code changes
+The initial Step 01 CSS changed some large heading sizes but omitted other typography patterns. Most critically, `app.js` renders full **Problem**, **Approach**, and **Results** paragraphs as `h3` elements while `styles.css` styles `.case-editorial h3` and `.case-bottom-grid h3` like 30–42px display headings. The resulting pages feel oversized and uneven even if the page-level H1 is improved.
 
-1. Added `v04-typography.css`, a 176-line, reversible CSS-only override.
-2. Updated `index.html` by adding one stylesheet link **after** `styles.css` and `v03.css`.
-3. Added `docs/V04_STEP00_BASELINE.md` and this QA record.
+Additional omissions: `life-page h1` reaches 108px before overrides; `evidence-grid strong` reaches 64px; `work-count strong` reaches 76px; Journey company headings use a Chinese serif when mixed English/CJK fonts and width constraints; original media queries re-expand typography at narrow sizes; label styles are inconsistent across sections.
 
-No intentional changes to `app.js`, `data.js`, `v03-content.js`, `v03-markup.js`, images or Vercel configuration.
+## Scope audited and corrected in v04-typography.css (R2)
 
-## Specific adjustments
+| Page or element | Previous issue | R2 decision |
+|---|---|---|
+| Header / nav / CTA / eyebrow | Inconsistent font, tracking and label rhythm | Reusable sans UI style and restrained labels |
+| Hero | Large display text and inconsistent line-height | Preserve cinematic serif, lower the scale and balance line height |
+| Journey introduction | Oversized long Chinese intro heading | 32–45px desktop, 29px small mobile; neutral sans |
+| Journey 4 company nodes | Mixed CJK/English font, fragmentation of BAYESTONE | 30–43px desktop; stage-specific BAYESTONE sizing; 25–33px mobile |
+| Journey narrative and bullets | Scattered paragraph sizing | 15px main text, 12–13px annotations, consistent leading |
+| Work headings, counts and filters | Excessive 76px count and uneven category titles | Moderate count; fit type to signal level, not decorative size |
+| Work 13 clickable project names | `overflow-wrap:anywhere` splits names arbitrarily | Prefer full words and natural wrapping, keep readable links |
+| About / Curiosity | Big title competing with orbit and tiny details | 34–49px title and legible node descriptions |
+| Life page and interest cards | 108px heading and variable card text | 36–57px desktop / 34px mobile, cards 23–29px |
+| Case study opening | 45–77px hooks, sometimes full sentences | 33–52px heading and 15–18px explanatory text |
+| Case study project H2 | Long bilingual project names | 30–44px with balanced wrapping |
+| Case **Problem / Approach** | Full paragraphs in 23–35px serif H3 | **18–22px sans reading text**, 1.65 line-height |
+| Case **Results** | Full results paragraph in 27–42px serif H3 | **18–23px sans reading text**, 1.62 line-height |
+| Case experiments | 64px numeric values and large explanations | 31–46px metrics, smaller at mobile |
+| Case CTA and footer | Oversized call to action | 25–36px CTA, quiet labels and links |
+| Responsive | Rules at 1200/780/420 not comprehensive | Cover 1200, 780, 420, and 359px while respecting existing layout |
 
-- Hero: balanced Chinese/English display sizes, line height and letter spacing.
-- Journey: tighter title scale, mixed Chinese/English label handling, responsive column widths and safer small-screen wrapping (includes BAYESTONE / 贝事音准).
-- Work: reduced heading dominance; readable cluster labels/project names; preserves original category and constellation interactions.
-- Curiosity/About: moderated oversized headings and paragraph rhythm; **no** node or artwork changes.
-- Case Studies: fixed percentage-grid plus gap overflow risk, tightened H1/H2 scale, article text measure and 390px spacing.
-- Life: reduced oversized titles; preserved all interest sections.
+No new external fonts are required; browser/system fallback is used. Short display-only Hero type remains serif. Company and long technical case headings use neutral sans to keep mixed scripts stable. No arbitrary `word-break: break-all`.
 
-## Completed checks (source-level)
+## Completed source checks
 
-- New stylesheet braces matched: PASS.
-- Responsive breakpoints `1200px`, `780px`, `420px`: PRESENT.
-- All seven key selector targets (Hero, Journey, Work, About, Case Hero, Life, Project label): PRESENT.
-- Stylesheet order: `styles.css` → `v03.css` → `v04-typography.css`: PASS.
-- Compared branch `index.html` to `main`: exact equality once the new link is removed.
-- 13 known project route identifiers still appear in unchanged `data.js`.
-- Compare branch against base confirms only docs, `index.html` and `v04-typography.css` changed.
-- Branch / production separation: `main` SHA stayed unchanged when verified.
+- Branch remains isolated from `main`.
+- `v04-typography.css` has balanced braces (0 delta) and parentheses (0 delta).
+- All 17 audited heading/label/evidence selector groups exist in R2.
+- Responsive rules exist for 1200, 780, 420, 359px.
+- Existing 13 project IDs and source interaction logic are unchanged.
+- Git diff still limited to `index.html`, `v04-typography.css` and these documentation files; no photos, Work/Curiosity DOM, app logic or project content edited.
 
-## Not yet verified; release blocking
+## Not yet independently verified in browser
 
-- **No real 1440px / 1024px / 390px screenshots or bounding-box checks**, Chinese or English.
-- No real-browser route/keyboard/interactivity regression test of this CSS change.
-- No live Vercel Preview verification (Vercel detailed project access returned 403 in this session).
-- Cannot certify visual non-overlap or final text-wrap behavior on the user's Windows device without an actual browser run.
+- **Still needs actual rendered visual QA at 1440px, 1024px, 390px** for Chinese and English home, four Journey steps and 13 case study pages per language.
+- Headline bounding rectangles, word fragmentation, overlap with visual elements, and long scrolling heights require real-browser checks.
+- Preview deployment was previously reported as 404 by the user. `READY` build status is insufficient. Do not assert the public preview URL works until an actual HTTP/browser request succeeds.
+- Site-specific fonts may render differently on Windows/macOS/iOS/Android due to local CJK fallbacks. Check both modes in a real browser.
+- Existing V0.3 visual mapping problems (UBC fallback image in Journey) are explicitly out of scope for this typography step.
 
-## Browser acceptance checklist (manual or browser-capable CI)
+## Release decision
 
-- [ ] `/zh` and `/en` at 1440px: Hero, four Journey titles, Work header, About header fit without unwanted word fragmentation.
-- [ ] 1024px: case page columns and Journey text remain readable and unoccluded.
-- [ ] 390px: `BAYESTONE · 贝事音准`, long English project titles and `/zh/life`/ `/en/life` have no clipping or horizontal scrolling.
-- [ ] All 26 bilingual project routes render and retain navigation.
-- [ ] Journey click/scroll controls, Work filters, Curiosity nodes, language switching and browser Back still work.
-- [ ] `prefers-reduced-motion` mode unaffected.
-- [ ] Any Vercel preview remains separate from production.
+**R2 typography update committed for branch review only.** Not merged, not declared visually approved, and no Step 02 work started. Production remains V0.3.
 
-## Review decision
+## Rollback
 
-Ready for **branch preview and user typography review**, but **NOT approved for merge or production**. Step 02 (Journey photos) remains untouched and must only begin after Step 01 is reviewed.
-
-## Revert
-
-Remove the single new `v04-typography.css` link from `index.html` to restore V0.3 styling; no prior CSS files were overwritten.
+Remove the `v04-typography.css` link from `index.html` to restore prior CSS styling without touching core files.
