@@ -1,175 +1,204 @@
-/* Yihan's Universe V0.4 / Step 01 — typography and responsive layout only.
-   Loaded after the V0.3 styles; intentionally leaves images, visuals, and JS unchanged. */
+/* V0.4 · Step 01 R2 — whole-site bilingual typography audit.
+   Scope: font families, type hierarchy, text wrapping and responsive text layout.
+   This isolated layer does not alter artwork, Journey data, Work clusters or interactions. */
 
-/* Shared reading rules: keep labels readable and allow long bilingual copy to reflow. */
+/* 1 / Type tokens: use a consistent neutral face for lengthy bilingual reading.
+   The existing cinematic serif is reserved for short editorial display text. */
 :root {
-  --v04-heading-tracking: -0.025em;
-  --v04-text-measure: 68ch;
+  --type-ui: "Inter", "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif;
+  --type-display: Georgia, "Times New Roman", "Noto Serif SC", "Songti SC", serif;
+  --type-body-size: 16px;
+  --type-body-leading: 1.75;
+  --type-small: 13px;
+  --type-label-tracking: .04em;
 }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-body { overflow-wrap: break-word; }
-.hero, .journey-section, .work-section, .about-section, .case-hero, .case-story, .life-page {
-  min-width: 0;
-}
-.hero-copy, .journey-text, .work-header > div, .about-body,
-.case-headline, .case-story-head, .case-editorial article, .case-bottom-grid > *,
-.life-item { min-width: 0; }
-p, li { line-break: strict; }
-.eyebrow, .journey-index, .case-ident { line-height: 1.55; }
+body { font-family: var(--type-ui); font-size: var(--type-body-size); overflow-wrap: break-word; }
+h1, h2, h3 { margin-block-start: 0; text-wrap: pretty; }
+p, li { line-height: var(--type-body-leading); }
+:is(.hero-copy,.journey-text,.work-header>div,.about-body,.case-headline,
+.case-art,.case-story-head,.case-editorial article,.case-bottom-grid>*,
+.evidence-grid>div,.life-item,.cluster-branch,.cluster-project strong) { min-width: 0; }
 
-/* Hero: preserve the original art direction; rebalance title and supporting text. */
-.hero-heading {
-  font-size: clamp(48px, 5.25vw, 82px);
-  letter-spacing: -0.038em;
-  line-height: 1.14;
-  max-width: 100%;
-}
-.hero-heading span:last-child {
-  line-height: 1.18;
-  letter-spacing: -0.03em;
-}
-.hero-lead { max-width: 34em; line-height: 1.75; text-wrap: pretty; }
+/* 2 / Navigation, captions and actionable copy */
+.brand { font-family: var(--type-display); font-size: clamp(22px, 1.85vw, 27px); font-weight: 400; letter-spacing: -.03em; white-space: nowrap; }
+.site-nav a { font-family: var(--type-ui); font-size: 12px; line-height: 1.4; letter-spacing: .065em; }
+.languages button { font-size: 12px; line-height: 1.4; }
+.eyebrow { font-family: var(--type-ui); font-size: 12px; font-weight: 650; letter-spacing: .07em; line-height: 1.55; }
+.button { font-family: var(--type-ui); font-size: 13px; line-height: 1.45; font-weight: 650; text-align: center; letter-spacing: .01em; }
+.footer { font-size: 12px; line-height: 1.6; }
 
-/* Journey: mixed-language stage titles must not split into short fragments. */
-.chapter-intro { max-width: 940px; }
-.chapter-intro h2 {
-  font-size: clamp(34px, 3.6vw, 56px);
-  letter-spacing: var(--v04-heading-tracking);
-  line-height: 1.3;
-  text-wrap: balance;
-}
+/* 3 / Opening: keep the approved cinematic composition, not dashboard typography */
+.hero-heading { font-family: var(--type-display); font-size: clamp(47px, 5.1vw, 76px); line-height: 1.12; letter-spacing: -.04em; font-weight: 400; max-width: 100%; }
+.hero-heading span { text-wrap: balance; }
+.hero-heading span:last-child { font-size: .84em; line-height: 1.2; letter-spacing: -.035em; }
+.hero-lead { font-size: clamp(15px, 1.23vw, 18px); max-width: 35em; line-height: 1.76; text-wrap: pretty; }
+.hero-signal { font-size: 11px; line-height: 1.5; letter-spacing: .075em; }
+
+/* 4 / Journey: company names must read like names, not gigantic poster headings. */
+.chapter-intro { max-width: 980px; }
+.chapter-intro h2 { font-family: var(--type-ui); font-size: clamp(32px, 3.3vw, 45px); font-weight: 650; line-height: 1.28; letter-spacing: -.035em; text-wrap: balance; }
+.chapter-intro p:not(.eyebrow) { font-size: clamp(15px, 1.25vw, 17px); line-height: 1.75; }
 .journey-stage { grid-template-columns: minmax(0, 53fr) minmax(0, 47fr); }
-.journey-text { max-width: none; padding-right: clamp(22px, 3vw, 46px); }
-.journey-text h3 {
-  font-size: clamp(33px, 3.35vw, 50px);
-  line-height: 1.28;
-  letter-spacing: -0.025em;
-  word-break: keep-all;
-  overflow-wrap: normal;
-  text-wrap: balance;
-}
-.journey-quote { font-size: clamp(18px, 1.55vw, 22px); line-height: 1.55; }
-.journey-story { max-width: 68ch; font-size: 16px; line-height: 1.78; }
-.journey-points li { font-size: 14px; line-height: 1.7; }
+.journey-text { max-width: none; padding-left: clamp(20px, 2.6vw, 38px); padding-right: clamp(22px, 3vw, 48px); }
+.journey-text h3 { font-family: var(--type-ui); font-size: clamp(30px, 3vw, 43px); font-weight: 650; letter-spacing: -.035em; line-height: 1.25; word-break: normal; overflow-wrap: normal; text-wrap: balance; }
+.journey-visual[data-stage="3"] + .journey-text h3 { font-size: clamp(29px, 2.8vw, 40px); letter-spacing: -.04em; white-space: nowrap; }
+.journey-index { font-family: var(--type-ui); font-size: 12px; font-weight: 600; line-height: 1.5; letter-spacing: .015em; }
+.journey-quote { font-size: clamp(17px, 1.4vw, 20px); font-weight: 600; line-height: 1.58; }
+.journey-story { font-size: 15px; max-width: 68ch; line-height: 1.76; }
+.journey-mini { font-size: 12px; line-height: 1.4; }
+.journey-points li { font-size: 13px; line-height: 1.72; }
+.journey-take { font-size: 13px; line-height: 1.6; }
+.journey-next { font-size: 12px; line-height: 1.45; }
 
-/* Work: improve names and editorial rhythm without changing the constellation layout. */
-.work-header h2 {
-  font-size: clamp(35px, 3.8vw, 58px);
-  letter-spacing: var(--v04-heading-tracking);
-  line-height: 1.32;
-  text-wrap: balance;
-}
-.work-header p:not(.eyebrow) { font-size: clamp(16px, 1.35vw, 18px); line-height: 1.75; }
-.cluster-heading { line-height: 1.35; }
-.cluster-heading small { font-size: 12px; line-height: 1.5; letter-spacing: 0.015em; }
-.cluster-project strong {
-  overflow-wrap: normal;
-  word-break: normal;
-  hyphens: auto;
-  line-height: 1.45;
-}
-.constellation-inspector p { line-height: 1.6; }
+/* 5 / Work: keep the orbital structure, remove excessive typography contrasts. */
+.work-header h2 { font-family: var(--type-ui); font-size: clamp(32px, 3.65vw, 48px); font-weight: 650; letter-spacing: -.034em; line-height: 1.3; text-wrap: balance; }
+.work-header p:not(.eyebrow) { font-size: clamp(15px, 1.28vw, 17px); line-height: 1.7; }
+.work-count strong { font-size: clamp(48px, 5vw, 66px); line-height: 1.05; }
+.work-count span { font-size: 12px; line-height: 1.4; }
+.work-categories button { font-size: 13px; line-height: 1.45; letter-spacing: 0; }
+.cluster-heading { font-family: var(--type-ui); font-size: 18px; line-height: 1.35; font-weight: 650; }
+.cluster-heading small { font-size: 12px; line-height: 1.45; letter-spacing: .01em; font-weight: 500; }
+.cluster-count { font-size: 12px; }
+.cluster-project strong { font-family: var(--type-ui); font-size: 13px; font-weight: 600; line-height: 1.48; overflow-wrap: normal; word-break: normal; hyphens: auto; }
+.constellation-core strong { font-size: 26px; line-height: 1.1; }
+.constellation-core span { font-size: 11px; line-height: 1.45; }
+.constellation-inspector strong { font-size: clamp(17px, 1.5vw, 21px); line-height: 1.4; }
+.constellation-inspector p { font-size: 14px; line-height: 1.65; }
 
-/* Curiosity: no oversized title competing with its interactive orbit. */
-.about-body h2 {
-  font-size: clamp(38px, 4vw, 59px);
-  line-height: 1.3;
-  letter-spacing: var(--v04-heading-tracking);
-  text-wrap: balance;
-}
-.about-body > p:not(.eyebrow) { line-height: 1.72; }
+/* 6 / Curiosity & Life: editorial personality without billboard-sized headings. */
+.about-body h2 { font-family: var(--type-ui); font-size: clamp(34px, 3.75vw, 49px); line-height: 1.3; font-weight: 650; letter-spacing: -.03em; text-wrap: balance; }
+.about-body > p:not(.eyebrow) { font-size: clamp(15px, 1.32vw, 17px); line-height: 1.76; }
+.about-body .aside-quote { font-size: 14px; line-height: 1.65; }
+.about-body small { font-size: 12px; line-height: 1.6; }
+.curiosity-center strong { font-size: 25px; line-height: 1.1; }
+.curiosity-center span { font-size: 12px; }
+.curiosity-node { font-size: 13px; line-height: 1.38; }
+.curiosity-summary strong { font-size: 14px; line-height: 1.45; }
+.curiosity-summary p { font-size: 13px; line-height: 1.55; }
+.life-page h1 { font-family: var(--type-ui); font-size: clamp(36px, 4.85vw, 57px); font-weight: 650; letter-spacing: -.035em; line-height: 1.25; max-width: 1050px; text-wrap: balance; }
+.life-page-lead { font-size: clamp(15px, 1.5vw, 18px); line-height: 1.7; max-width: 70ch; }
+.life-item h2 { font-family: var(--type-ui); font-size: clamp(22px, 2.2vw, 29px); font-weight: 650; line-height: 1.4; letter-spacing: -.02em; }
+.life-item p { font-size: 15px; line-height: 1.7; }
+.life-item small, .life-item span, .life-note { font-size: 12px; line-height: 1.6; }
 
-/* Long-form case studies: clear hierarchy and stable two-column grid math. */
-.case-hero-grid { grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr); }
-.case-headline h1 {
-  font-size: clamp(39px, 4.15vw, 66px);
-  line-height: 1.22;
-  letter-spacing: var(--v04-heading-tracking);
+/* 7 / Case study: separate actual headings from long Problem/Method/Result prose.
+   Previously .case-editorial h3 and .case-bottom-grid h3 styled full paragraphs
+   at ~35–42px with a serif. That is the principal readability regression. */
+.case-hero-grid { grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); }
+.case-headline h1 { font-family: var(--type-ui); font-size: clamp(33px, 3.55vw, 52px); font-weight: 650; letter-spacing: -.032em; line-height: 1.3; max-width: 100%; overflow-wrap: break-word; word-break: normal; text-wrap: balance; }
+.case-intro { font-size: clamp(15px, 1.25vw, 18px); line-height: 1.75; max-width: 62ch; }
+.case-ident { gap: 12px 28px; flex-wrap: wrap; font-size: 12px; line-height: 1.55; letter-spacing: .03em; }
+.case-story-head h2 { font-family: var(--type-ui); font-size: clamp(30px, 3.35vw, 44px); font-weight: 650; letter-spacing: -.03em; line-height: 1.32; overflow-wrap: break-word; text-wrap: balance; }
+.case-story-head > p:first-child { font-size: 12px; letter-spacing: .07em; line-height: 1.5; }
+.case-story-head > p:last-child { font-size: clamp(15px, 1.32vw, 17px); line-height: 1.72; max-width: 70ch; }
+.case-editorial { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(25px, 3.5vw, 52px); }
+.case-editorial article span,.case-bottom-grid span { font-size: 12px; line-height: 1.5; letter-spacing: .06em; }
+.case-editorial h3 { font-family: var(--type-ui); font-size: clamp(18px, 1.57vw, 22px); font-weight: 500; letter-spacing: -.012em; line-height: 1.65; margin-top: 15px; overflow-wrap: break-word; word-break: normal; text-wrap: pretty; }
+.case-interaction > h2 { font-family: var(--type-ui); font-size: clamp(25px, 2.5vw, 32px); font-weight: 650; line-height: 1.4; }
+.evidence-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+.evidence-grid h3 { font-family: var(--type-ui); font-size: clamp(20px, 2vw, 25px); line-height: 1.4; font-weight: 600; }
+.evidence-grid p { font-size: 15px; line-height: 1.7; overflow-wrap: anywhere; }
+.evidence-grid strong { font-family: var(--type-ui); font-size: clamp(31px, 3.25vw, 46px); font-weight: 650; line-height: 1.2; overflow-wrap: anywhere; }
+.evidence-grid span,.case-evidence span { font-size: 12px; line-height: 1.5; }
+.evidence-tabs button { font-size: 13px; line-height: 1.45; }
+.case-evidence strong { font-family: var(--type-ui); font-size: clamp(27px, 2.8vw, 39px); font-weight: 650; line-height: 1.35; overflow-wrap: break-word; }
+.case-evidence p { font-size: 14px; line-height: 1.7; }
+.case-bottom-grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 58px); }
+.case-bottom-grid h3 { font-family: var(--type-ui); font-size: clamp(18px, 1.6vw, 23px); font-weight: 550; line-height: 1.62; letter-spacing: -.01em; overflow-wrap: break-word; }
+.case-bottom-grid p { font-size: 15px; line-height: 1.76; }
+.case-cta h2 { font-family: var(--type-ui); font-size: clamp(25px, 2.8vw, 36px); font-weight: 650; line-height: 1.35; }
+
+/* 8 / Long English compounds should wrap at words rather than in their middle. */
+html[lang="en"] :is(.journey-text h3,.case-story-head h2,.case-headline h1,.cluster-project strong) {
   overflow-wrap: break-word;
   word-break: normal;
-  text-wrap: balance;
+  hyphens: manual;
 }
-.case-intro { font-size: clamp(16px, 1.4vw, 19px); line-height: 1.75; }
-.case-ident { flex-wrap: wrap; gap: 12px 30px; }
-.case-story-head h2 {
-  font-size: clamp(35px, 3.65vw, 56px);
-  line-height: 1.36;
-  letter-spacing: var(--v04-heading-tracking);
-  text-wrap: balance;
+html[lang="zh-CN"] :is(.case-editorial h3,.case-bottom-grid h3,.journey-story) {
+  line-break: auto;
+  word-break: normal;
 }
-.case-story-head > p:last-child { line-height: 1.75; }
-.case-editorial h3 { font-size: clamp(23px, 2.25vw, 33px); line-height: 1.45; }
-.case-interaction > h2 { font-size: clamp(29px, 3vw, 38px); line-height: 1.4; }
-.case-bottom-grid h3 { font-size: clamp(27px, 2.6vw, 38px); line-height: 1.4; }
-.case-cta h2 { font-size: clamp(29px, 3.1vw, 40px); line-height: 1.35; }
 
-/* Separate life route: retain personality, reduce oversized cover copy. */
-.life-page h1 {
-  font-size: clamp(39px, 5.15vw, 76px);
-  line-height: 1.22;
-  letter-spacing: var(--v04-heading-tracking);
-  max-width: 1100px;
-  text-wrap: balance;
-}
-.life-page-lead { font-size: clamp(16px, 1.6vw, 19px); line-height: 1.75; }
-.life-item h2 { line-height: 1.4; }
-.life-item p { line-height: 1.75; }
-
-/* Tablet: avoid narrow Journey text and case columns. */
+/* 9 / Tablet and small desktop */
 @media (max-width: 1200px) {
-  .journey-stage { grid-template-columns: minmax(0, 49fr) minmax(0, 51fr); }
-  .journey-text { padding-left: clamp(20px, 2.4vw, 32px); padding-right: 26px; }
-  .journey-text h3 { font-size: clamp(31px, 3.8vw, 43px); }
-  .case-hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: 24px; }
-  .case-headline h1 { font-size: clamp(36px, 4vw, 51px); }
-  .work-header h2 { font-size: clamp(36px, 4vw, 52px); }
+  .journey-stage { grid-template-columns: minmax(0, 48fr) minmax(0, 52fr); }
+  .journey-text { padding-left: 16px; padding-right: 22px; }
+  .journey-text h3 { font-size: clamp(28px, 3.25vw, 39px); }
+  .journey-visual[data-stage="3"] + .journey-text h3 { font-size: clamp(27px, 3.05vw, 35px); }
+  .case-hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, .88fr); gap: 24px; }
+  .case-headline h1 { font-size: clamp(32px, 3.7vw, 45px); }
+  .work-header h2 { font-size: clamp(31px, 3.7vw, 44px); }
 }
 
-/* The app already stacks Journey and case sections on mobile. Preserve that behavior. */
+/* 10 / Stacked layouts: typography must not re-expand when old media rules apply. */
 @media (max-width: 780px) {
-  .hero-heading { font-size: clamp(42px, 8vw, 65px); line-height: 1.16; }
-  .hero-lead { max-width: 38ch; }
-  .chapter-intro h2 { font-size: clamp(31px, 5.8vw, 41px); }
+  .brand { font-size: 21px; }
+  .hero-heading { font-size: clamp(40px, 7.8vw, 62px); line-height: 1.14; }
+  .hero-lead { max-width: 42ch; font-size: 15px; }
+  .chapter-intro h2 { font-size: clamp(29px, 5.2vw, 38px); }
+  .chapter-intro p:not(.eyebrow) { font-size: 15px; }
   .journey-stage { grid-template-columns: minmax(0, 1fr); }
-  .journey-text { padding: 10px clamp(20px, 5vw, 34px) 22px; }
-  .journey-text h3 {
-    font-size: clamp(31px, 5.5vw, 40px);
-    line-height: 1.22;
-  }
+  .journey-text { padding: 10px clamp(18px, 5vw, 32px) 22px; }
+  .journey-text h3 { font-size: clamp(28px, 5.2vw, 35px); line-height: 1.26; }
+  .journey-visual[data-stage="3"] + .journey-text h3 { font-size: clamp(27px, 5vw, 33px); white-space: normal; }
+  .journey-quote { font-size: 17px; }
   .journey-story { font-size: 14px; line-height: 1.65; }
-  .work-header h2 { font-size: clamp(32px, 6vw, 46px); }
-  .about-body h2 { font-size: clamp(34px, 6.1vw, 46px); }
-  .case-hero-grid { grid-template-columns: minmax(0, 1fr); }
-  .case-headline h1 { font-size: clamp(34px, 6.5vw, 49px); }
-  .case-story-head h2 { font-size: clamp(31px, 5.9vw, 43px); }
-  .case-editorial h3 { line-height: 1.45; }
-  .case-ident { gap: 10px 20px; }
-  .life-page h1 { font-size: clamp(36px, 6.4vw, 54px); }
+  .journey-points li { font-size: 12px; line-height: 1.65; }
+  .journey-take,.journey-mini { font-size: 12px; }
+  .work-header h2 { font-size: clamp(29px, 5.5vw, 39px); }
+  .work-count strong { font-size: 51px; }
+  .about-body h2 { font-size: clamp(30px, 5.7vw, 40px); }
+  .about-body > p:not(.eyebrow) { font-size: 15px; }
+  .curiosity-center strong { font-size: 20px; }
+  .curiosity-node { font-size: 12px; }
+  .case-hero-grid { grid-template-columns: minmax(0,1fr); }
+  .case-headline h1 { font-size: clamp(30px, 6vw, 43px); }
+  .case-intro { font-size: 15px; }
+  .case-story-head h2 { font-size: clamp(28px, 5.3vw, 37px); }
+  .case-editorial,.case-bottom-grid { grid-template-columns: minmax(0,1fr); }
+  .case-editorial h3 { font-size: 18px; }
+  .case-bottom-grid h3 { font-size: 18px; }
+  .case-interaction > h2 { font-size: 26px; }
+  .evidence-grid { grid-template-columns: minmax(0,1fr); }
+  .evidence-grid strong { font-size: 39px; }
+  .case-cta h2 { font-size: 29px; }
+  .life-page h1 { font-size: clamp(34px, 5.7vw, 47px); }
+  .life-item h2 { font-size: 24px; }
 }
 
-/* Small phones: retain whole meaningful words, not unbroken overflow. */
+/* 11 / Small phones: avoid arbitrarily breaking CJK or English brand names. */
 @media (max-width: 420px) {
-  .header { gap: 10px; }
   .brand { font-size: 19px; }
-  .hero-heading { font-size: clamp(40px, 10vw, 46px); line-height: 1.16; }
-  .hero-copy { min-width: 0; }
-  .chapter-intro h2 { font-size: 31px; }
-  .journey-text h3 {
-    font-size: clamp(28px, 7.6vw, 33px);
-    letter-spacing: -0.03em;
-    overflow-wrap: break-word; /* emergency safety for unusually long labels */
-  }
-  .journey-index { font-size: 12px; letter-spacing: 0; }
-  .journey-quote { font-size: 17px; }
-  .work-header h2 { font-size: 32px; }
-  .cluster-heading { font-size: 18px; }
-  .cluster-project strong { font-size: 14px; }
-  .about-body h2 { font-size: 34px; }
-  .case-headline h1 { font-size: 34px; line-height: 1.24; }
-  .case-story-head h2 { font-size: 32px; }
-  .case-interaction > h2 { font-size: 29px; }
-  .case-story { padding-left: 22px; padding-right: 22px; }
-  .case-evidence { padding: 24px; }
-  .life-page h1 { font-size: 37px; }
-  .life-item h2 { font-size: 26px; }
+  .eyebrow { font-size: 11px; letter-spacing: .045em; }
+  .hero-heading { font-size: clamp(38px, 9.8vw, 44px); line-height: 1.16; }
+  .hero-heading span:last-child { font-size: .86em; }
+  .chapter-intro h2 { font-size: 29px; }
+  .journey-text h3 { font-size: clamp(27px, 7.2vw, 30px); line-height: 1.27; letter-spacing: -.045em; }
+  .journey-visual[data-stage="3"] + .journey-text h3 { font-size: clamp(25px, 6.6vw, 28px); white-space: normal; }
+  .journey-index { font-size: 11px; }
+  .journey-quote { font-size: 16px; }
+  .work-header h2 { font-size: 29px; }
+  .work-count strong { font-size: 45px; }
+  .cluster-heading { font-size: 17px; }
+  .cluster-project strong { font-size: 13px; }
+  .about-body h2 { font-size: 30px; }
+  .curiosity-summary p { font-size: 12px; }
+  .case-headline h1 { font-size: clamp(29px, 7.2vw, 32px); }
+  .case-story-head h2 { font-size: clamp(28px, 7vw, 32px); }
+  .case-editorial h3,.case-bottom-grid h3 { font-size: 18px; }
+  .case-evidence { padding: 22px; }
+  .case-evidence strong { font-size: 28px; }
+  .evidence-grid strong { font-size: 33px; }
+  .case-cta h2 { font-size: 26px; }
+  .life-page h1 { font-size: 34px; }
+  .life-item h2 { font-size: 23px; }
+}
+
+/* Tiny screens: never enforce nowrap on Bayestone title. */
+@media (max-width: 359px) {
+  .journey-text h3 { font-size: 25px; }
+  .journey-visual[data-stage="3"] + .journey-text h3 { font-size: 24px; overflow-wrap: break-word; }
+  .case-headline h1 { font-size: 27px; }
+  .case-story-head h2 { font-size: 27px; }
 }
