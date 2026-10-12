@@ -1,48 +1,79 @@
-# Yihan's Universe — Interactive Prototype V0.2
+# Yihan's Universe · Interactive Portfolio V0.3
 
-This is an independent, editable **HTML/CSS/JavaScript portfolio prototype**, not yet a Next.js production implementation. It contains no npm dependencies and does not modify any existing GitHub project.
+A bilingual (中文 / English), cinematic but **usable** personal portfolio. The design follows a clean sequence:
 
-## Windows / VS Code — start here
+**Opening → Journey → Work Constellation Tree → Curiosity Cluster → Case Studies**
 
-1. Extract the entire ZIP. Do not run the `.bat` file from inside the ZIP preview.
-2. Open the extracted `yihans_universe_v0_2` folder in VS Code.
-3. Double-click `START_HERE_WINDOWS.bat`, or open a terminal in this folder and run `py serve.py` (or `python serve.py`).
-4. **Keep the terminal window open** and visit `http://127.0.0.1:4184/zh`.
-5. To view English, click `EN` or visit `http://127.0.0.1:4184/en`.
+This remains a lightweight, editable **HTML / CSS / JavaScript** application. It does **not** require a Next.js build, Three.js, an external AI API, or npm packages.
 
-**Port 4184 is deliberate.** The previous V0.1 preview used 4173; V0.2 uses a different port so you don't accidentally see the old site if its preview terminal is still running.
+## Preview locally in VS Code (Windows / macOS / Linux)
 
-If a connection is refused, copy the terminal's exact error. Check that Python is installed, the ZIP is extracted, and the process displays `Preview ready:`. A browser can't reach your localhost unless the server is actively running on *your* computer.
+Open this repository in VS Code and run:
 
-## What's new in V0.2
+```bash
+python serve.py
+```
 
-- Brighter **Midnight Mist / Warm Graphite / Champagne** visual system and true star layers. Cinematic source imagery is retained, without crushing the scene behind opaque overlays.
-- Readable bilingual hero with controlled typography and natural **Chinese vs English** content, not mixed UI labels.
-- **Journey** contains four chronological nodes (UBC, Lengshuan, Accenture, BAYESTONE), a sticky camera-style scene, illuminated orbital path, changing visuals, 3 factual detail points per experience and direct node jumps.
-- **UBC photo**: uses a public-domain Wikimedia Commons campus photo online, falling back to the provided stylized concept artwork when unavailable. Photo: *UBC Main Mall.JPG* by Mlm42, public-domain declaration, https://commons.wikimedia.org/wiki/File:UBC_Main_Mall.JPG. Other company scenes are stylized concept art, **not authentic office photos or logo files**.
-- **Work** now contains **13 navigable projects**, grouped under AI & Agents, Enterprise & Product, Data & Strategy, and Creative. Their visuals, copy and case-study content are distinct rather than empty links.
-- AgentLab, Requirement Alignment Engine and Airbnb retain richer interactive evidence demonstrations; 10 other projects have different illustrated motifs and factual case details.
-- No invented live demos, resume URLs, recruiter-facing email addresses or production performance claims.
+On some Windows machines use `py serve.py` instead.
 
-## Navigation / completeness check
+Open:
+- 中文首页: http://127.0.0.1:4184/zh
+- English home: http://127.0.0.1:4184/en
+- 中文兴趣页: http://127.0.0.1:4184/zh/life
+- English side quests: http://127.0.0.1:4184/en/life
 
-- `/zh` `/en` — complete localised home page, Journey, Work and About
-- `/zh/work/:slug` `/en/work/:slug` for all 13 slugs:
+Keep the preview terminal open. The local `serve.py` server supports direct refreshes on bilingual project routes. Do **not** double-click `index.html` to test navigation.
+
+## What's new in V0.3
+
+- **Journey is independent from Work**: UBC → 冷酸灵 → Accenture → BAYESTONE, each with distinct, more specific Chinese and English content.
+- **Structural scroll fix**: the Journey sticky scene and its four scroll beats now share the same runway container.
+- **Work = Constellation Tree**: 13 projects across four stable branches:
+  - AI & Agent (3): AgentLab, LLM Benchmark, Content Review Copilot
+  - Enterprise & Product (4): Requirement Alignment Engine, Task Summary Workflow, Training Material Generator, SIT / Defect Dashboard
+  - Data & Strategy (4): Airbnb, S&P 500, Player Retention, Deloitte Digital Camp
+  - Creative Experiments (2): Character Genesis, Life RPG
+- **Beyond Work = Curiosity Cluster / 人生支线任务**: five clickable hobby nodes, natural bilingual text, and a separate `/zh/life` / `/en/life` page.
+- Preserves the previous Hero art direction and existing 13 Case Study URLs. Project content keeps attribution, evidence and limitations.
+- A small-screen fallback turns the radial curiosity interface into a practical two-column list.
+
+## Pages
+
+- `/zh` and `/en`: Hero, four-stage Journey, Work Constellation Tree, Curiosity Cluster
+- `/zh/life` and `/en/life`: expandable life-interest stories
+- `/:locale/work/:slug`: 13 distinct project Case Studies; valid slugs:
   `agentlab`, `benchmark`, `requirement`, `task-summary`, `dashboard`, `training`, `content-qa`, `airbnb`, `sp500`, `minecraft`, `deloitte`, `character`, `liferpg`.
-- The visual stories in the experience timeline are *not* mixed into project-category navigation. Accenture and BAYESTONE projects appear under Work with their provenance explicitly labeled.
 
-## Vercel
+## Vercel deployment
 
-This folder is a static web app. Use a GitHub repo with this folder as its project root, framework preset **Other**, no build step, output directory `.`. `vercel.json` contains direct-route rewrites for `/zh`, `/en`, and their project routes.
+Import `ychen393/Yihan-Universe` with **Framework Preset: Other**; project root `.`; no build command; output directory `.`. The `vercel.json` rewrites serve `index.html` on all bilingual routes.
 
-A Vercel Preview build and real-device performance test **have not yet been executed**. Browser animations are CSS and JavaScript; no runtime Three.js/GPU camera has been implemented in this release. Converting the prototype into a structured Next.js application remains an engineering phase.
+Vercel hosts static assets, but **browser motion/performance is not guaranteed by deployment**. The starfield, scroll, and orbital motion are regular CSS and JavaScript, not a verified GPU-driven Three.js implementation.
 
-## Known production blockers
+## QA status
 
-- Resume download, contact email and LinkedIn URL must be supplied/verified.
-- Some group projects need individual contribution confirmation and links to authentic report figures.
-- Corporate content must be reviewed for confidentiality and stripped of private information.
-- Older stylized concept images contain illustrative branding; official company logos/images must replace them before public publishing.
-- UBC photo is fetched over the network (offline fallback supplied). For a production release, prefer licensing-safe self-hosted files when downloaded, with credit.
-- `RECRUITER_REVIEW.md` records an intentionally critical hiring-manager evaluation.
-- `QA_REPORT.md` records what was actually exercised and what remains to be tested in real browsers.
+Static / simulated-browser route smoke tests passed: 30 paths (2 home + 2 life + 26 case-study combinations). Confirm the actual 1440px / 1024px / 390px layouts and scroll, touch, keyboard interaction, and direct-route refresh in a **real browser** and Vercel preview before describing it as production verified.
+
+See [V0.3 QA](docs/V03_QA.md) for the checklist and open points.
+
+## Backups and historical source
+
+Original development repository V0.2 commit was `fe046e7ac204790fb664be60eab2fd9ea7ec0544`, historically preserved at:
+- [Backup branch](https://github.com/ychen393/yihan.universe/tree/backup/production-before-v03-2026-10-12)
+- [Immutable original commit](https://github.com/ychen393/Yihan-Universe/tree/fe046e7ac204790fb664be60eab2fd9ea7ec0544)
+
+For detailed recovery instructions and the similarly named untouched repository, see [Version Archive](docs/VERSION_ARCHIVE.md).
+
+## Authenticity and publication boundaries
+
+- Corporate concept art is illustrative, not necessarily a real office or official company logo. Confirm branding rights before publishing externally.
+- The UBC campus photo references a public Wikimedia Commons image and has a local concept-art fallback; verify credit and availability.
+- Do not invent deployed agent APIs, employment impacts, finished model test rounds, live demos or quantified efficiency.
+- Contact email, résumé download and LinkedIn remain unlinked until verified; do not insert dummy destinations.
+- Sensitive enterprise material must be anonymized. Some group-project contributions still need confirmation.
+
+## Canonical repository since October 12, 2026
+
+Deployments are connected to **[ychen393/yihan.universe](https://github.com/ychen393/yihan.universe)**. The similarly named `ychen393/Yihan-Universe` remains an archived development source and must not be used for future pushes.
+
+Original production backup: [backup/production-before-v03-2026-10-12](https://github.com/ychen393/yihan.universe/tree/backup/production-before-v03-2026-10-12).

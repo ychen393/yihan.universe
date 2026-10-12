@@ -3,9 +3,29 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/zh", "destination": "/index.html" },
-    { "source": "/en", "destination": "/index.html" },
-    { "source": "/zh/work/:slug", "destination": "/index.html" },
-    { "source": "/en/work/:slug", "destination": "/index.html" }
+    {
+      "source": "/zh",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/en",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/zh/work/:slug",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/en/work/:slug",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/zh/life",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/en/life",
+      "destination": "/index.html"
+    }
   ]
 }

@@ -1,0 +1,125 @@
+/* Yihan's Universe V0.3 — constellation tree, readable journey, curiosity cluster. */
+.journey-runway{position:relative;isolation:isolate}
+.journey-stage{z-index:10}
+.journey-beat{position:relative;z-index:1;min-height:60svh;height:75svh}
+.journey-text{position:relative;z-index:12}
+.journey-story{max-width:650px}
+.journey-points li{max-width:660px}
+.journey-section{scroll-margin-top:78px}
+.work-section{scroll-margin-top:80px;background:radial-gradient(circle at 50% 37%,rgba(212,173,134,.14),transparent 38%),linear-gradient(160deg,#2C4054,#243648 65%,#263747)}
+.work-header{max-width:1400px;margin:0 auto}
+.work-categories{position:relative;z-index:9;justify-content:center;margin:38px auto 15px}
+.work-categories button{transition:background .22s,transform .22s,border-color .22s;cursor:pointer}
+.work-categories button:hover,.work-categories button:focus-visible{transform:translateY(-2px);border-color:#F8D5BA}
+.constellation-map{height:910px;max-width:1440px;margin:0 auto;position:relative;isolation:isolate}
+.constellation-map:before{content:"";position:absolute;inset:6% 15%;border-radius:50%;background:radial-gradient(ellipse at 50% 48%,rgba(234,186,151,.19),transparent 62%);pointer-events:none}
+.constellation-links{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.constellation-links path{stroke:#EACDAF;stroke-width:1.2;stroke-opacity:.55;fill:none;stroke-dasharray:7 10}
+.constellation-links circle{fill:#EBC7A1;filter:drop-shadow(0 0 9px #F4D1A7)}
+.constellation-core{position:absolute;top:39%;left:50%;transform:translate(-50%,-50%);border:1px solid rgba(251,219,179,.78);width:195px;height:195px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#708395,#40546A 60%,#26384D 100%);box-shadow:0 0 65px rgba(247,191,137,.17),inset -15px -20px 30px rgba(20,29,46,.42);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;z-index:3}
+.constellation-core strong{font:400 29px/1.07 var(--serif);max-width:160px;color:#FFF0E2}
+.constellation-core span{font-size:10px;letter-spacing:.13em;color:#F3D9C1}
+.cluster-branch{position:absolute;width:min(33%,390px);min-height:260px;z-index:5;background:linear-gradient(145deg,rgba(31,46,63,.9),rgba(31,44,60,.7));border:1px solid rgba(225,212,201,.3);border-radius:23px;padding:23px 25px;box-shadow:0 18px 65px rgba(8,19,32,.25);backdrop-filter:blur(9px);transition:opacity .3s,border-color .3s,transform .3s,box-shadow .3s}
+.cluster-ai{top:2%;left:0;--cluster-color:#ACD0E8}
+.cluster-enterprise{top:2%;right:0;--cluster-color:#E1BBA6}
+.cluster-data{bottom:8%;left:0;--cluster-color:#A6D5C1}
+.cluster-creative{bottom:8%;right:0;--cluster-color:#CDB2E9}
+.cluster-branch[data-selected="true"]{border-color:var(--cluster-color);box-shadow:0 14px 75px color-mix(in srgb,var(--cluster-color),transparent 84%),0 18px 50px rgba(8,19,32,.2)}
+.cluster-branch[data-selected="false"]{opacity:.67}
+.cluster-branch:hover,.cluster-branch:focus-within{opacity:1;transform:translateY(-3px)}
+.cluster-heading{display:flex;align-items:center;gap:12px;width:100%;border:0;background:transparent;color:#FCF1E7;text-align:left;padding:0 0 13px;font-size:19px;font-weight:650;cursor:pointer}
+.cluster-heading:before{content:"✦";color:var(--cluster-color);font-size:22px}
+.cluster-heading small{display:block;font-size:11px;color:var(--cluster-color);font-weight:500;letter-spacing:.05em;margin-top:5px}
+.cluster-heading>span{flex:1}
+.cluster-count{border:1px solid rgba(240,218,202,.32);padding:5px 8px;border-radius:40px;font-size:12px;color:#EBCFB8}
+.cluster-projects{display:flex;flex-direction:column;gap:7px}
+.cluster-project{display:grid;grid-template-columns:18px 1fr 17px;gap:8px;align-items:center;padding:9px 10px;border-radius:9px;text-decoration:none;color:#F5EDE4;background:rgba(196,220,240,.045);border:1px solid transparent;transition:background .2s,border-color .2s,transform .2s}
+.cluster-project:before{content:"✧";color:var(--cluster-color)}
+.cluster-project:hover,.cluster-project:focus-visible{background:rgba(226,218,205,.14);border-color:var(--cluster-color);transform:translateX(3px)}
+.cluster-project strong{font-size:14px;line-height:1.35;overflow-wrap:anywhere;font-weight:560}
+.cluster-project em{font-style:normal;color:var(--cluster-color)}
+.constellation-inspector{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:min(600px,70%);min-height:100px;text-align:center;padding:18px 24px;border-radius:17px;border:1px solid rgba(233,212,189,.34);background:rgba(27,42,56,.86);z-index:6}
+.constellation-inspector .inspector-overline{display:block;font-size:11px;letter-spacing:.13em;color:#DCC7B2;margin-bottom:8px}
+.constellation-inspector strong{font-size:22px;font-weight:650;color:#FBF0E6}
+.constellation-inspector p{font-size:14px;line-height:1.6;color:#DADAE0;margin:9px auto 0;max-width:480px}
+.constellation-inspector a{display:inline-block;margin-top:10px;color:#F5D5B4;text-decoration:underline;text-underline-offset:4px}
+.about-section{min-height:780px;scroll-margin-top:80px;display:grid;grid-template-columns:minmax(0,1fr) minmax(400px,1fr);gap:45px;padding:110px clamp(25px,6vw,110px);align-items:center}
+.about-body{max-width:630px}
+.about-body h2{font-size:clamp(48px,5vw,76px);margin:16px 0 24px}
+.about-body>p:not(.eyebrow){max-width:570px;line-height:1.9}
+.about-body .aside-quote{font-size:15px;color:#F3D4B4;font-style:italic;margin-top:23px}
+.about-body .about-links{display:flex;flex-wrap:wrap;gap:15px;margin:25px 0}
+.about-body .about-links a{font-size:14px}
+.curiosity-orbit{height:550px;min-width:0;width:100%;position:relative;z-index:2;max-width:660px;margin:auto}
+.curiosity-orbit:before{content:"";position:absolute;inset:11%;border:1px solid rgba(242,210,176,.48);border-radius:50%;transform:rotate(-24deg) scaleY(.72);box-shadow:0 0 50px rgba(230,182,135,.11)}
+.curiosity-orbit:after{content:"";position:absolute;inset:20% 2%;border:1px solid rgba(172,211,235,.27);border-radius:50%;transform:rotate(33deg) scaleY(.55)}
+.curiosity-center{position:absolute;top:45%;left:50%;transform:translate(-50%,-50%);width:172px;height:172px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at 30% 20%,#8298AC,#43576D 62%,#273949);border:1px solid #F4DCC0;box-shadow:0 0 50px rgba(237,182,136,.2);z-index:3;text-align:center}
+.curiosity-center strong{font:400 27px var(--serif);color:#FBEEE2}
+.curiosity-center span{font-size:13px;color:#E6CFB9}
+.curiosity-node{position:absolute;z-index:4;width:142px;min-height:55px;border:1px solid rgba(244,220,194,.7);border-radius:40px;padding:9px 12px;background:#2C4055;color:#F6E8DC;font-weight:600;font-size:13px;box-shadow:0 10px 26px rgba(15,28,42,.35);cursor:pointer;transition:background .22s,transform .22s,box-shadow .22s}
+.curiosity-node:hover,.curiosity-node:focus-visible,.curiosity-node[aria-pressed=true]{background:#E9CEB1;color:#253649;transform:translateY(-4px);box-shadow:0 5px 28px rgba(234,188,137,.38)}
+.curiosity-node[data-id="movement"]{top:8%;left:7%}
+.curiosity-node[data-id="languages"]{top:8%;right:3%}
+.curiosity-node[data-id="travel"]{bottom:23%;left:0}
+.curiosity-node[data-id="aesthetics"]{bottom:18%;right:0}
+.curiosity-node[data-id="sidequests"]{bottom:2%;left:calc(50% - 71px)}
+.curiosity-summary{position:absolute;z-index:6;bottom:2%;right:0;left:auto;width:min(65%,400px);max-width:400px;padding:12px 16px;border-radius:12px;background:rgba(21,34,47,.96);border:1px solid rgba(245,216,184,.43);color:#F8E9DB;text-align:left}
+.curiosity-summary strong{display:block;font-size:14px}
+.curiosity-summary p{font-size:12px;line-height:1.65;color:#E6DAD2;margin:5px 0 0}
+.curiosity-summary{bottom:1%;right:0;left:auto}
+.curiosity-node[data-id="sidequests"]{bottom:17%;left:calc(50% - 71px)}
+.life-page{min-height:100vh;background:#27394B;color:#F5ECE3;padding:120px clamp(24px,7vw,110px) 80px}
+.life-back{font-size:14px;color:#F8D7B4}
+.life-page .eyebrow{margin-top:55px}
+.life-page h1{font:400 clamp(58px,7vw,108px)/1.1 var(--cserif);max-width:850px;margin:25px 0}
+.life-page-lead{font-size:20px;color:#E2D5C8;max-width:850px;line-height:1.9}
+.life-list{max-width:1130px;margin:60px auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.life-item{padding:35px;min-height:240px;border-radius:24px;border:1px solid rgba(238,211,180,.37);background:linear-gradient(160deg,rgba(70,92,110,.45),rgba(32,49,64,.7))}
+.life-item h2{font:400 31px var(--cserif);margin:12px 0}
+.life-item small{color:#D3C0AD;font-size:12px;letter-spacing:.1em}
+.life-item p{font-size:17px;line-height:1.9;color:#E4DDDA}
+.life-item span{font-size:12px;color:#DFBFA6}
+.life-note{max-width:1100px;margin:30px auto;color:#CEC2BE}
+@media(max-width:1100px){
+  .constellation-map{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:160px 0 0}
+  .constellation-links{display:none}
+  .constellation-core{top:12px;width:130px;height:130px}
+  .constellation-core strong{font-size:20px}
+  .cluster-branch{position:relative;top:auto;right:auto;bottom:auto;left:auto;width:100%;min-height:235px}
+  .constellation-inspector{position:relative;left:auto;bottom:auto;transform:none;width:100%;grid-column:1 / -1}
+  .about-section{grid-template-columns:1fr}
+  .about-body{max-width:760px}
+  .curiosity-orbit{height:570px;width:min(100%,650px)}
+}
+@media(max-width:700px){
+  .journey-stage{min-height:680px}
+  .journey-beat{height:70svh;min-height:480px}
+  .work-categories{gap:7px}
+  .work-categories button{padding:9px 12px;font-size:12px}
+  .constellation-map{grid-template-columns:1fr;padding-top:146px}
+  .cluster-branch[data-selected="false"]{opacity:.87}
+  .constellation-inspector{grid-column:auto}
+  .cluster-project strong{font-size:14px}
+  .about-section{padding:85px 20px 100px;gap:18px}
+  .about-body h2{font-size:48px}
+  .curiosity-orbit{height:470px}
+  .curiosity-center{width:124px;height:124px}
+  .curiosity-center strong{font-size:19px}
+  .curiosity-node{width:119px;min-height:45px;padding:7px;font-size:11px}
+  .curiosity-node[data-id="sidequests"]{left:calc(50% - 59px);bottom:26%}
+  .curiosity-summary{width:100%;max-width:none;bottom:0;left:0;right:0;padding:12px}
+  .life-list{grid-template-columns:1fr}
+  .life-item{min-height:0}
+}
+@media(prefers-reduced-motion:reduce){.cluster-branch,.cluster-project,.curiosity-node,.work-categories button{transition:none!important}}
+
+/* V0.3 QA corrections: keep bottom branches clear of inspector. */
+@media(min-width:1101px){.cluster-data,.cluster-creative{bottom:19%}}
+@media(max-width:700px){
+  .curiosity-orbit{height:auto;min-height:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:center;padding:14px 0 0}
+  .curiosity-orbit:before,.curiosity-orbit:after{display:none}
+  .curiosity-center{position:relative;top:auto;left:auto;transform:none;grid-column:1/-1;justify-self:center;margin:0 0 22px}
+  .curiosity-node,.curiosity-node[data-id]{position:relative;top:auto;left:auto;right:auto;bottom:auto;transform:none;width:100%;min-height:56px}
+  .curiosity-node:hover,.curiosity-node:focus-visible,.curiosity-node[aria-pressed=true]{transform:none}
+  .curiosity-summary{position:relative;top:auto;left:auto;right:auto;bottom:auto;width:100%;max-width:none;grid-column:1/-1;margin:10px 0 0;min-height:92px}
+}
