@@ -57,3 +57,31 @@ No new external fonts are required; browser/system fallback is used. Short displ
 ## Rollback
 
 Remove the `v04-typography.css` link from `index.html` to restore prior CSS styling without touching core files.
+
+## Step 01 R3 — All Case Study pages: semantic and typography fix
+
+**User screenshot:** AgentLab case story at wide desktop showed paragraph-length Problem/Approach as oversized headings, with poor reading hierarchy despite earlier CSS size overrides.
+
+### Root cause and structural fix
+- Previous case template: `<span>01 / Problem</span><h3>{full problem paragraph}</h3>`.
+- R3: `<h3 class="case-editorial-label">01 / Problem</h3><p class="case-editorial-copy">{full problem paragraph}</p>`.
+- Same transformation for Approach, Results, My Contribution, Limitations.
+- Only the `detail(t,p)` HTML template in `app.js` was changed. All navigation, route logic, dynamic evidence demos and case content are unchanged.
+- Because all 13 cases (for both `zh` and `en`) share `detail(t,p)`, the fix applies to all 26 bilingual case views, not only AgentLab.
+- CSS `v04-typography.css` adds explicit label (12px), paragraph (16–17px), visual section heading (25–30px), experiment metric (up to 43px) and small-screen rules. Site-wide long prose is no longer accidentally presented as a 30px+ display heading.
+- Spacing refined only inside case studies; Journey images, constellation geometry, Curiosity nodes and data were not modified.
+
+### Verified on repo/source
+- `case-editorial-copy` contains both `p.problem` and `p.method`.
+- `case-bottom-copy` contains `p.result`, `p.role` and `p.limit`.
+- All corresponding CSS selector groups exist; braces/parentheses matched during static checks.
+- `app.js` source following `function render()` is identical to `main`; behavior-related functions not edited.
+- Existing 13 project IDs remain in `data.js`, with English details generated from the same 13-project mapping.
+- `main` remains unchanged; GitHub branch-only changes.
+
+### Not yet passed
+- Actual Chrome/Edge rendering at 1440, 1024, 390px for both languages and all 13 case studies.
+- Preview HTTP access and deployment protection, previously reported as a 404 by the user. READY means build complete, **not** that a visitor can access the page.
+- Fonts on Windows/Chrome may use browser system fallback; screenshot-based final judgment requires the real browser.
+
+**Release:** R3 is code-complete in the review branch, awaiting user's real-browser visual acceptance. Still no Step 02 or production merge.
