@@ -26,6 +26,14 @@
     {
       "source": "/en/life",
       "destination": "/index.html"
+    },
+    {
+      "source": "/zh/journey/:slug",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/en/journey/:slug",
+      "destination": "/index.html"
     }
   ]
 }
