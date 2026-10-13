@@ -480,3 +480,20 @@ html[lang="zh-CN"] :is(.case-editorial h3,.case-bottom-grid h3,.journey-story) {
   .cluster-project strong { font-size: 14px; }
   .case-hero-grid, .case-editorial, .case-bottom-grid { min-width: 0; }
 }
+
+/* Step 01 R4.1 / Five side-quest cards need a balanced grid.
+   Desktop 3 + 2, tablet 2 + 2 + 1 expanded, mobile one column. */
+@media (min-width: 1101px) {
+  .life-list { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .life-item { grid-column: span 2; }
+  .life-item:nth-child(4), .life-item:nth-child(5) { grid-column: span 3; }
+}
+@media (min-width: 701px) and (max-width: 1100px) {
+  .life-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .life-item { grid-column: auto; }
+  .life-item:nth-child(5) { grid-column: 1 / -1; }
+}
+@media (max-width: 700px) {
+  .life-list { grid-template-columns: minmax(0, 1fr); }
+  .life-item, .life-item:nth-child(5) { grid-column: auto; }
+}
