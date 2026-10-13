@@ -9,6 +9,10 @@ function render(args){
 const {p,t,locale,header,footer,caseGraphic,caseExtras,url}=args;
 const d=DETAILS[p.id]?.[locale]; if(!d)return '';
 const c=COPY[locale],steps=d[3],facts=d[4];
+const allProjects=window.PORTFOLIO?.[locale]?.projects||[];
+const groupProjects=allProjects.filter(x=>x.group===p.group);
+const groupIndex=groupProjects.findIndex(x=>x.id===p.id);
+const nextProject=groupProjects.length>1?groupProjects[(groupIndex+1)%groupProjects.length]:null;
 const nav=[['context',c.section[0]],['execution',c.section[1]],['evidence',c.section[3]],['reflection',c.section[4]]];
 const strong=p.proof||'—';
 const source=p.repo?'<a class="r5-link" href="'+e(p.repo)+'" target="_blank" rel="noopener noreferrer">'+c.source+'</a>':'<span class="r5-source-unavailable">'+(locale==='zh'?'内部项目 / 暂无公开仓库':'Internal work / no public repository')+'</span>';
@@ -20,7 +24,7 @@ section('context',c.n[0],e(c.why),'<p class="r5-lede">'+e(p.problem)+'</p><div c
 section('execution',c.n[1],e(c.how),'<p class="r5-body-copy">'+e(p.method)+'</p><ol class="r5-process">'+steps.map((s,i)=>'<li><span>'+String(i+1).padStart(2,'0')+'</span><p>'+e(s)+'</p></li>').join('')+'</ol>')+
 section('evidence',c.n[2],e(c.facts),'<div class="r5-results-lead"><strong>'+e(strong)+'</strong><p>'+e(p.result)+'</p></div><div class="r5-fact-grid">'+facts.map((f,i)=>'<article><span>'+String(i+1).padStart(2,'0')+'</span><p>'+e(f)+'</p></article>').join('')+'</div><div class="r5-evidence-interactive"><div class="r5-interactive-title"><h3>'+e(locale==='zh'?'查看具体测试 / 方案':'Explore the test or design evidence')+'</h3><p>'+e(c.demo)+'</p></div>'+caseExtras(t,p)+'</div>')+
 section('reflection',c.n[3],e(locale==='zh'?'总结与反思':'Conclusions & Limitations'),'<div class="r5-reflection"><div><h3>'+e(c.takeaway)+'</h3><p>'+e(d[5])+'</p></div><div><h3>'+e(c.limits)+'</h3><p>'+e(d[6])+'</p></div></div>')+
-'<div class="r5-case-footer"><div><span>YIHAN’S UNIVERSE / SELECTED WORK</span><p>'+e(c.read)+'</p></div><a data-nav href="'+url()+'#work">'+e(c.visit)+' ↗</a></div></main>'+footer(t);
+'<div class="r5-case-footer"><div><span>YIHAN’S UNIVERSE / SELECTED WORK</span><p>'+e(c.read)+'</p></div><div class="r9-footer-actions"><a class="r9-back-link" data-nav href="'+url()+'#work">'+e(c.visit)+' ↗</a>'+(nextProject?'<a class="r9-next-link" data-nav href="'+url('/work/'+nextProject.id)+'"><small>'+(locale==='zh'?'同类项目 · 下一个':'NEXT IN THIS AREA')+'</small><strong>'+e(nextProject.name)+'</strong><span>↗</span></a>':'')+'</div></div></main>'+footer(t);
 }
 window.YihanR5={render,entries:DETAILS};
 })();
