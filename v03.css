@@ -123,3 +123,100 @@
   .curiosity-node:hover,.curiosity-node:focus-visible,.curiosity-node[aria-pressed=true]{transform:none}
   .curiosity-summary{position:relative;top:auto;left:auto;right:auto;bottom:auto;width:100%;max-width:none;grid-column:1/-1;margin:10px 0 0;min-height:92px}
 }
+
+
+/* R13 motion-only refinement.
+   Invariant: no typography, spacing, grid, dimensions, content, or DOM structure changes. */
+.hero{--motion-scroll:0}
+.hero-art{
+  translate:0 calc(var(--motion-scroll)*-16px);
+  scale:calc(1 + var(--motion-scroll)*.018);
+  will-change:translate,scale;
+}
+.hero .hero-stars{
+  translate:0 calc(var(--motion-scroll)*10px);
+  will-change:translate;
+}
+.hero-copy{
+  translate:0 calc(var(--motion-scroll)*-7px);
+  will-change:translate;
+}
+
+/* Journey keeps the original R13 layout and content. Motion only marks state changes. */
+.journey-stage{--journey-end:0;opacity:calc(1 - var(--journey-end)*.08)}
+.journey-visual.motion-stage-in{will-change:translate,scale,opacity,filter}
+.journey-visual.motion-stage-in[data-stage="0"]{animation:r13MotionAcademic .5s cubic-bezier(.2,.75,.2,1)}
+.journey-visual.motion-stage-in[data-stage="1"]{animation:r13MotionContent .52s cubic-bezier(.2,.75,.2,1)}
+.journey-visual.motion-stage-in[data-stage="2"]{animation:r13MotionEnterprise .52s cubic-bezier(.2,.75,.2,1)}
+.journey-visual.motion-stage-in[data-stage="3"]{animation:r13MotionBayes .58s cubic-bezier(.2,.75,.2,1)}
+.journey-stage.motion-switch .journey-text{animation:r13MotionCopy .4s ease both}
+.journey-stage.motion-switch .journey-compass{animation:r13MotionSignal .46s ease both}
+
+@keyframes r13MotionAcademic{
+  0%{opacity:.82;translate:0 14px;scale:.992;filter:blur(1.2px)}
+  100%{opacity:1;translate:0 0;scale:1;filter:none}
+}
+@keyframes r13MotionContent{
+  0%{opacity:.82;translate:18px 0;scale:.992;filter:blur(1px)}
+  100%{opacity:1;translate:0 0;scale:1;filter:none}
+}
+@keyframes r13MotionEnterprise{
+  0%{opacity:.8;translate:-10px 8px;scale:.984;filter:contrast(.92) blur(1px)}
+  100%{opacity:1;translate:0 0;scale:1;filter:none}
+}
+@keyframes r13MotionBayes{
+  0%{opacity:.76;translate:0 -8px;scale:1.014;filter:blur(1.4px) saturate(.88)}
+  100%{opacity:1;translate:0 0;scale:1;filter:none}
+}
+@keyframes r13MotionCopy{
+  0%{opacity:.72;translate:0 8px;filter:blur(.8px)}
+  100%{opacity:1;translate:0 0;filter:none}
+}
+@keyframes r13MotionSignal{
+  0%{opacity:.55;scale:.9}
+  100%{opacity:1;scale:1}
+}
+
+/* Journey → Work: same original sections; only the existing Work scene resolves into focus. */
+.work-section .work-header,
+.work-section .work-categories,
+.work-section .constellation-map,
+.work-section .work-backdrop{
+  transition:opacity .72s ease,translate .82s cubic-bezier(.2,.75,.2,1),scale .82s cubic-bezier(.2,.75,.2,1),filter .72s ease;
+}
+.work-section:not(.motion-entered) .work-header{opacity:.88;translate:0 14px}
+.work-section:not(.motion-entered) .work-categories{opacity:.86;translate:0 10px}
+.work-section:not(.motion-entered) .constellation-map{opacity:.82;translate:0 20px;scale:.988;filter:blur(1px)}
+.work-section:not(.motion-entered) .work-backdrop{opacity:.68;scale:.975}
+.work-section.motion-entered .work-header,
+.work-section.motion-entered .work-categories,
+.work-section.motion-entered .constellation-map,
+.work-section.motion-entered .work-backdrop{opacity:1;translate:0 0;scale:1;filter:none}
+
+/* Existing active Journey node gets a short pulse; geometry stays untouched. */
+.node.active .node-light{
+  display:block;
+  position:absolute;
+  inset:-7px;
+  border-radius:50%;
+  border:1px solid rgba(249,211,177,.34);
+  pointer-events:none;
+  animation:r13MotionNode 1.35s ease-out infinite;
+}
+@keyframes r13MotionNode{
+  0%{opacity:.7;scale:.82}
+  70%,100%{opacity:0;scale:1.28}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-art,.hero .hero-stars,.hero-copy,.journey-stage,.journey-visual,.journey-text,.journey-compass,
+  .work-section .work-header,.work-section .work-categories,.work-section .constellation-map,.work-section .work-backdrop,
+  .node.active .node-light{
+    animation:none!important;
+    transition:none!important;
+    translate:none!important;
+    scale:none!important;
+    filter:none!important;
+    opacity:1!important;
+  }
+}
