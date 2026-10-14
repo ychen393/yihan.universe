@@ -131,7 +131,7 @@ if(r5){
   ]
  };
  for(const [id,[steps,facts]] of Object.entries(zhDetails)){
-   if(r5[id]?.zh){r5[id].zh[3]=steps;r5[id].zh[4]=facts;r5[id].zh[5]=ZP[id].result;r5[id].zh[6]=ZP[id].limit;}
+   if(r5[id]?.zh){r5[id].zh[3]=steps;r5[id].zh[4]=facts;r5[id].zh[5]=TAKE.zh[id]||ZP[id].result;r5[id].zh[6]=ZP[id].limit;}
  }
 }
 
