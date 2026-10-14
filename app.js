@@ -39,8 +39,104 @@ document.documentElement.lang=locale==='zh'?'zh-CN':'en';document.title=p?`${p.n
 app.innerHTML=isLife?window.YihanV03.life(t,d,locale,url,escapeHTML,header,footer):(p?detail(t,p):home(t,d));bindCommon();if(p){bindCase(p);window.scrollTo(0,0)}else if(isLife){window.scrollTo(0,0)}else{bindHome(d,t);if(location.hash)setTimeout(()=>document.getElementById(location.hash.slice(1))?.scrollIntoView(),100);else window.scrollTo(0,0)}}
 function navigate(href){const n=new URL(href,location.origin);history.pushState(null,'',n.pathname+n.hash);render()}
 function bindCommon(){document.querySelectorAll('a[data-nav]').forEach(a=>a.addEventListener('click',e=>{if(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;e.preventDefault();navigate(a.href)}));document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.lang===locale)return;navigate(url(slug?'/work/'+slug:(isLife?'/life':(location.hash||'')),b.dataset.lang))}));const toggle=document.querySelector('.menu-toggle');toggle?.addEventListener('click',()=>{const n=document.getElementById('navigation');n.classList.toggle('open');toggle.setAttribute('aria-expanded',n.classList.contains('open'))});}
-function bindHome(d,t){const beats=[...document.querySelectorAll('.journey-beat')];let index=-1,raf=0;function activate(i){if(i===index||i<0||i>3)return;index=i;const j=d.journey[i];document.querySelector('#journey-date').textContent=`${j.date} · ${j.period}`;document.querySelector('#journey-title').textContent=j.title;document.querySelector('#journey-quote').textContent=j.lead;document.querySelector('#journey-story').textContent=j.story;document.querySelector('#journey-points').innerHTML=j.points.map(x=>`<li>${escapeHTML(x)}</li>`).join('');document.querySelector('#journey-take').textContent=`✦ ${j.take}`;document.querySelector('#journey-progress').textContent=`0${i+1} / 04`;document.querySelector('#journey-counter').textContent=`0${i+1} / 04`;document.querySelectorAll('[data-node]').forEach((x,k)=>{x.classList.toggle('active',k===i);x.setAttribute('aria-current',k===i?'step':'false')});const photo=document.querySelector('#journey-img');if(photo){photo.style.opacity='0';setTimeout(()=>{if(index!==i)return;photo.onerror=()=>{photo.onerror=null;photo.src='/assets/ubc-concept.webp'};photo.src=i===0?'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/UBC_Main_Mall.JPG/960px-UBC_Main_Mall.JPG':`/assets/${['ubc','lengshuan','accenture','bayestone'][i]}-concept.webp`;photo.alt=locale==='zh'?`${j.title} 的概念视觉`:`Concept visualization for ${j.title}`;photo.style.opacity='1'},145)};document.querySelector('#journey-visual').dataset.stage=String(i);document.querySelector('#journey-photo-credit').hidden=i!==0;const copy=document.querySelector('.journey-text');copy.classList.remove('story-appear');void copy.offsetWidth;copy.classList.add('story-appear')}function update(){const vy=window.innerHeight*.55;let nearest=0,dist=Infinity;beats.forEach((b,i)=>{const box=b.getBoundingClientRect(),dif=Math.abs(box.top+box.height/2-vy);if(dif<dist){dist=dif;nearest=i}});activate(nearest);const runway=document.querySelector('.journey-runway').getBoundingClientRect();const progress=Math.max(0,Math.min(1,-runway.top/Math.max(1,runway.height-innerHeight)));document.querySelector('#journey-track')?.style.setProperty('--travel',String(progress));document.querySelector('#journey-visual')?.style.setProperty('--travel',String(progress));}
-let tick=()=>{if(raf)return;raf=requestAnimationFrame(()=>{update();raf=0})};addEventListener('scroll',tick,{passive:true});addEventListener('resize',tick);document.querySelectorAll('[data-node]').forEach(b=>b.addEventListener('click',()=>{const target=Number(b.dataset.node);activate(target);beats[target]?.scrollIntoView({behavior:reduced()?'instant':'smooth',block:'center'})}));window.YihanV03.bindHome(d,locale,url);update();kill=()=>{removeEventListener('scroll',tick);removeEventListener('resize',tick);cancelAnimationFrame(raf)}}
+function bindHome(d,t){
+const beats=[...document.querySelectorAll('.journey-beat')];
+let index=-1,raf=0,motionTimer=0;
+const stage=document.querySelector('#journey-stage');
+const visual=document.querySelector('#journey-visual');
+const hero=document.querySelector('.hero');
+const work=document.querySelector('.work-section');
+function activate(i){
+ if(i===index||i<0||i>3)return;
+ const hadIndex=index>=0;
+ index=i;
+ const j=d.journey[i];
+ if(hadIndex&&stage&&!reduced()){
+   stage.classList.remove('motion-switch');
+   void stage.offsetWidth;
+   stage.classList.add('motion-switch');
+ }
+ if(visual&&!reduced()){
+   visual.classList.remove('motion-stage-in');
+   void visual.offsetWidth;
+   visual.classList.add('motion-stage-in');
+ }
+ document.querySelector('#journey-date').textContent=`${j.date} · ${j.period}`;
+ document.querySelector('#journey-title').textContent=j.title;
+ document.querySelector('#journey-quote').textContent=j.lead;
+ document.querySelector('#journey-story').textContent=j.story;
+ document.querySelector('#journey-points').innerHTML=j.points.map(x=>`<li>${escapeHTML(x)}</li>`).join('');
+ document.querySelector('#journey-take').textContent=`✦ ${j.take}`;
+ document.querySelector('#journey-progress').textContent=`0${i+1} / 04`;
+ document.querySelector('#journey-counter').textContent=`0${i+1} / 04`;
+ document.querySelectorAll('[data-node]').forEach((x,k)=>{
+   x.classList.toggle('active',k===i);
+   x.setAttribute('aria-current',k===i?'step':'false')
+ });
+ const photo=document.querySelector('#journey-img');
+ if(photo){
+   photo.style.opacity='0';
+   setTimeout(()=>{
+     if(index!==i)return;
+     photo.onerror=()=>{photo.onerror=null;photo.src='/assets/ubc-concept.webp'};
+     photo.src=i===0?'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/UBC_Main_Mall.JPG/960px-UBC_Main_Mall.JPG':`/assets/${['ubc','lengshuan','accenture','bayestone'][i]}-concept.webp`;
+     photo.alt=locale==='zh'?`${j.title} 的概念视觉`:`Concept visualization for ${j.title}`;
+     photo.style.opacity='1'
+   },145)
+ }
+ if(visual)visual.dataset.stage=String(i);
+ document.querySelector('#journey-photo-credit').hidden=i!==0;
+ const copy=document.querySelector('.journey-text');
+ copy.classList.remove('story-appear');
+ void copy.offsetWidth;
+ copy.classList.add('story-appear');
+ clearTimeout(motionTimer);
+ motionTimer=setTimeout(()=>{
+   stage?.classList.remove('motion-switch');
+   visual?.classList.remove('motion-stage-in')
+ },560)
+}
+function update(){
+ const vy=window.innerHeight*.55;
+ let nearest=0,dist=Infinity;
+ beats.forEach((b,i)=>{
+   const box=b.getBoundingClientRect(),dif=Math.abs(box.top+box.height/2-vy);
+   if(dif<dist){dist=dif;nearest=i}
+ });
+ activate(nearest);
+ const runway=document.querySelector('.journey-runway').getBoundingClientRect();
+ const progress=Math.max(0,Math.min(1,-runway.top/Math.max(1,runway.height-innerHeight)));
+ document.querySelector('#journey-track')?.style.setProperty('--travel',String(progress));
+ visual?.style.setProperty('--travel',String(progress));
+ if(stage)stage.style.setProperty('--journey-end',String(Math.max(0,Math.min(1,(progress-.82)/.18))));
+ if(hero){
+   const box=hero.getBoundingClientRect();
+   const p=Math.max(0,Math.min(1,-box.top/Math.max(1,box.height*.82)));
+   hero.style.setProperty('--motion-scroll',String(p))
+ }
+}
+let tick=()=>{if(raf)return;raf=requestAnimationFrame(()=>{update();raf=0})};
+addEventListener('scroll',tick,{passive:true});
+addEventListener('resize',tick);
+document.querySelectorAll('[data-node]').forEach(b=>b.addEventListener('click',()=>{
+ const target=Number(b.dataset.node);
+ activate(target);
+ beats[target]?.scrollIntoView({behavior:reduced()?'instant':'smooth',block:'center'})
+}));
+window.YihanV03.bindHome(d,locale,url);
+const workObserver=work?new IntersectionObserver(entries=>entries.forEach(e=>{
+ if(e.isIntersecting)work.classList.add('motion-entered')
+}),{threshold:.16}):null;
+if(work&&workObserver)workObserver.observe(work);
+update();
+kill=()=>{
+ removeEventListener('scroll',tick);
+ removeEventListener('resize',tick);
+ cancelAnimationFrame(raf);
+ clearTimeout(motionTimer);
+ workObserver?.disconnect()
+}
+}
 function bindCase(p){if(p.id==='agentlab'){document.querySelectorAll('[data-agent]').forEach(b=>b.addEventListener('click',()=>{const v=Number(b.dataset.agent);document.querySelectorAll('[data-agent]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));document.querySelector('#diagnosis').textContent=v===0?(locale==='zh'?'CT6 / CT7 因步骤限制而失败':'CT6 / CT7 fail due to a step limit'):(locale==='zh'?'本应查询商品，却进入了政策工具':'Product request routed to a policy tool');document.querySelector('#patch-detail').textContent=v===0?'workflow.max_steps: 2 → 3':'search_policy → search_products';document.querySelector('#patch-result').textContent=v===0?'5/7 → 7/7':'15/16 → 16/16';document.querySelector('#patch-caption').textContent=v===0?(locale==='zh'?'固定回归测试':'Fixed regression tests'):(locale==='zh'?'受控模拟完整验证':'Full controlled validation')}))}
 if(p.id==='requirement'){const b=document.querySelector('#req-confirm');let flag=false;b?.addEventListener('click',()=>{flag=!flag;document.querySelector('#req-status').textContent=flag?'USER_CONFIRMED':'AI_SUGGESTED';document.querySelector('#req-copy').textContent=flag?(locale==='zh'?'已由用户确认，可以生成执行计划':'Human-confirmed: the plan may proceed'):(locale==='zh'?'等待人工确认':'Awaiting human confirmation');b.textContent=flag?(locale==='zh'?'撤销模拟确认':'Undo confirmation'):(locale==='zh'?'模拟确认':'Simulate confirmation')})}
 if(p.id==='airbnb'){function show(i){document.querySelectorAll('[data-data]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.data)===i)));document.querySelector('#bars').innerHTML=(i===0?[[100,locale==='zh'?'整套房':'Whole home'],[70,locale==='zh'?'私人房间':'Private room'],[75,locale==='zh'?'合住房间':'Shared room']]:[[100,locale==='zh'?'工作日':'Weekday'],[106,locale==='zh'?'周末':'Weekend']]).map(([n,l])=>`<div><span>${l}</span><i style="--w:${n/1.06}%"></i></div>`).join('');document.querySelector('#data-number').textContent=i===0?'≈ 30%':'≈ 6%';document.querySelector('#data-detail').textContent=i===0?(locale==='zh'?'私人房间相对整套房的回归估计差异':'Regression-estimated private room difference'):(locale==='zh'?'周末相对工作日的回归估计差异':'Regression-estimated weekend difference')};document.querySelectorAll('[data-data]').forEach(b=>b.addEventListener('click',()=>show(Number(b.dataset.data))));show(0)}}
