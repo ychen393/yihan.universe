@@ -12,135 +12,172 @@ function work(t,d,locale,url,esc,stars){
   const task=byId('task-summary');
   const dashboard=byId('dashboard');
   const training=byId('training');
-  const hiddenIds=new Set(['agentlab','benchmark','requirement','task-summary','dashboard','training']);
-  const more=d.projects.filter(p=>!hiddenIds.has(p.id));
-  const tag=p=>p?esc(p.tag||''):'';
-  const name=p=>p?esc(p.name||''):'';
-  const intro=p=>p?esc(p.intro||''):'';
-  return `<section id="work" class="work-section r15-work-section" aria-labelledby="work-heading">
-    ${stars(150,'work-stars')}
-    <div class="r15-work-transition" aria-labelledby="r15-transition-title">
-      <div class="r15-transition-copy">
+  const featuredIds=new Set(['agentlab','benchmark','requirement','task-summary','dashboard','training']);
+  const more=d.projects.filter(p=>!featuredIds.has(p.id));
+  const safe=p=>p||{};
+  const name=p=>esc(safe(p).name||'');
+  const intro=p=>esc(safe(p).intro||'');
+  const problem=p=>esc(safe(p).problem||'');
+  const role=p=>esc(safe(p).role||'');
+  const result=p=>esc(safe(p).result||'');
+  const tag=p=>esc(safe(p).tag||'');
+
+  return `<section id="work" class="work-section r151-work-section" aria-labelledby="work-heading">
+    ${stars(130,'work-stars')}
+
+    <div class="r151-transition" aria-labelledby="r151-transition-title">
+      <div class="r151-transition-inner">
         <p class="eyebrow">JOURNEY → WORK</p>
-        <h2 id="r15-transition-title">${zh?'有些路是被分配的。另一些，是我自己开出来的。':'Some paths were assigned. Others, I started myself.'}</h2>
-        <p>${zh?'Journey 是已经发生过的时间线；Work 不是另一条时间线，而是一张我主动拆问题、做实验、搭系统的探索地图。':'Journey is chronological. Work is not another timeline — it is a map of problems I chose to unpack, test and build around.'}</p>
-        <div class="r15-path-split" aria-hidden="true">
-          <span class="r15-split-origin"></span>
-          <svg viewBox="0 0 960 230" preserveAspectRatio="none">
-            <path d="M480 0 C480 74 250 72 92 214"/>
-            <path d="M480 0 C480 72 364 116 318 216"/>
-            <path d="M480 0 C480 72 596 116 642 216"/>
-            <path d="M480 0 C480 74 710 72 868 214"/>
-            <circle cx="92" cy="214" r="5"/><circle cx="318" cy="216" r="5"/><circle cx="642" cy="216" r="5"/><circle cx="868" cy="214" r="5"/>
-          </svg>
+        <h2 id="r151-transition-title">
+          <span>${zh?'有些路是被分配的。':'Some paths were assigned.'}</span>
+          <span>${zh?'另一些，是我自己开出来的。':'Others, I started myself.'}</span>
+        </h2>
+        <p>${zh?'经历告诉我问题长什么样；项目则是我主动靠近问题、拆开它，再做出一个答案。':'Experience showed me what problems look like. Projects are where I chose to move closer, take them apart, and build an answer.'}</p>
+        <div class="r151-transition-line" aria-hidden="true">
+          <span></span><i></i><i></i><i></i><i></i>
         </div>
       </div>
     </div>
 
-    <div class="r15-work-shell">
-      <header class="r15-work-header">
-        <div>
-          <p class="eyebrow">${esc(t.workEyebrow)}</p>
-          <h2 id="work-heading">${zh?'靠近一个问题，而不是翻下一张卡。':'Move closer to a problem, not to the next card.'}</h2>
-        </div>
-        <p>${zh?'先从四个最能代表我当前方向的系统开始：Agent 评测、LLM Benchmark、企业流程自动化、需求对齐产品。其余项目仍然保留在下方。':'Start with four systems that best represent where my work is heading now: agent evaluation, LLM benchmarking, enterprise workflow automation and requirement alignment. Everything else remains explorable below.'}</p>
-      </header>
+    <div class="r151-work-intro">
+      <p class="eyebrow">${esc(t.workEyebrow)}</p>
+      <h2 id="work-heading">${zh?'四个问题，四种不同的解法。':'Four problems. Four different ways to build an answer.'}</h2>
+      <p>${zh?'这里不再按“卡片”浏览。向下滚动，每一屏只进入一个项目；想看完整过程，再进入对应 Case Study。':'Scroll through one project at a time. Each screen is a different working system; open the case study when you want the full story.'}</p>
+    </div>
 
-      <div id="galaxy" class="r15-universe" data-r15-focus="agentlab" aria-label="${zh?'重点项目探索区':'Featured project universe'}">
-        <div class="r15-orbit-field" aria-label="${zh?'选择重点项目':'Choose a featured project'}">
-          <svg class="r15-orbits" viewBox="0 0 760 720" preserveAspectRatio="none" aria-hidden="true">
-            <ellipse cx="380" cy="360" rx="300" ry="182" transform="rotate(-14 380 360)"/>
-            <ellipse cx="380" cy="360" rx="324" ry="250" transform="rotate(25 380 360)"/>
-            <ellipse cx="380" cy="360" rx="230" ry="316" transform="rotate(63 380 360)"/>
-            <path class="relation" d="M380 360 C250 250 170 150 100 110"/>
-            <path class="relation" d="M380 360 C530 250 610 170 680 128"/>
-            <path class="relation" d="M380 360 C240 480 170 560 108 625"/>
-            <path class="relation" d="M380 360 C525 475 605 560 670 625"/>
-          </svg>
-          <div class="r15-core"><div><strong>Yihan’s<br>Universe</strong><small>${zh?'选择一个信号':'CHOOSE A SIGNAL'}</small></div></div>
+    <div class="r151-story" data-r151-active="agentlab">
+      <div class="r151-stage" aria-live="polite">
+        <nav class="r151-index" aria-label="${zh?'重点项目':'Featured projects'}">
+          <button type="button" data-r151-jump="agentlab" aria-pressed="true"><span>01</span><b>AgentLab</b></button>
+          <button type="button" data-r151-jump="benchmark" aria-pressed="false"><span>02</span><b>LLM Benchmark</b></button>
+          <button type="button" data-r151-jump="accenture" aria-pressed="false"><span>03</span><b>Accenture Automation</b></button>
+          <button type="button" data-r151-jump="requirement" aria-pressed="false"><span>04</span><b>Requirement Engine</b></button>
+        </nav>
 
-          <button type="button" class="r15-project-node" data-r15-project="agentlab" aria-pressed="true">
-            <small>AI AGENT · EVALUATION</small><strong>${name(agent)}</strong><em>${agent?esc(agent.proof||agent.result):''}</em>
-          </button>
-          <button type="button" class="r15-project-node" data-r15-project="benchmark" aria-pressed="false">
-            <small>LLM · BUSINESS EVALUATION</small><strong>${name(benchmark)}</strong><em>74 × 148</em>
-          </button>
-          <button type="button" class="r15-project-node" data-r15-project="accenture" aria-pressed="false">
-            <small>ENTERPRISE · AUTOMATION</small><strong>Accenture Automation</strong><em>${zh?'3 个内部流程工具':'3 internal workflow tools'}</em>
-          </button>
-          <button type="button" class="r15-project-node" data-r15-project="requirement" aria-pressed="false">
-            <small>AI PRODUCT · REQUIREMENTS</small><strong>${name(requirement)}</strong><em>${requirement?esc(requirement.proof||requirement.result):''}</em>
-          </button>
-        </div>
+        <article class="r151-scene r151-agent" data-r151-scene="agentlab" aria-hidden="false">
+          <div class="r151-copy">
+            <p class="r151-kicker">01 · AI AGENT / EVALUATION</p>
+            <h3>${name(agent)}</h3>
+            <p class="r151-hook">${intro(agent)}</p>
+            <div class="r151-brief">
+              <div><span>${zh?'问题':'Problem'}</span><p>${problem(agent)}</p></div>
+              <div><span>${zh?'我的贡献':'My contribution'}</span><p>${role(agent)}</p></div>
+            </div>
+            <div class="r151-proof"><strong>15/16 → 16/16</strong><span>${zh?'受控完整验证':'controlled full validation'}</span></div>
+            <a data-nav class="r151-open" href="${url('/work/agentlab')}">${zh?'进入 AgentLab Case Study':'Open AgentLab case study'} ↗</a>
+          </div>
+          <div class="r151-mechanism r151-agent-mechanism" aria-hidden="true">
+            <div class="r151-agent-line"></div>
+            <div class="r151-agent-step s1"><small>01</small><b>Failure</b></div>
+            <div class="r151-agent-step s2"><small>02</small><b>Root Cause</b></div>
+            <div class="r151-agent-step s3"><small>03</small><b>Bounded Patch</b></div>
+            <div class="r151-agent-step s4"><small>04</small><b>Regression</b></div>
+            <div class="r151-agent-evidence"><span>FIXED REGRESSION</span><strong>5/7 → 7/7</strong></div>
+            <div class="r151-agent-evidence final"><span>CONTROLLED VALIDATION</span><strong>15/16 → 16/16</strong></div>
+          </div>
+        </article>
 
-        <aside class="r15-inspector" aria-live="polite">
-          <div class="r15-project-visuals" aria-hidden="true">
-            <div class="r15-project-visual" data-r15-visual="agentlab">
-              <span class="r15-visual-label">FAILURE → ROOT CAUSE → PATCH → REGRESSION</span>
-              <div class="r15-agent-pipeline"><span>Failure</span><span>Root cause</span><span>Bounded patch</span><span>Regression</span></div>
-              <div class="r15-agent-score">15/16 → 16/16<small>CONTROLLED VALIDATION</small></div>
+        <article class="r151-scene r151-benchmark" data-r151-scene="benchmark" aria-hidden="true">
+          <div class="r151-copy">
+            <p class="r151-kicker">02 · LLM / BUSINESS EVALUATION</p>
+            <h3>${name(benchmark)}</h3>
+            <p class="r151-hook">${intro(benchmark)}</p>
+            <div class="r151-brief">
+              <div><span>${zh?'问题':'Problem'}</span><p>${problem(benchmark)}</p></div>
+              <div><span>${zh?'我的贡献':'My contribution'}</span><p>${role(benchmark)}</p></div>
             </div>
-            <div class="r15-project-visual" data-r15-visual="benchmark">
-              <span class="r15-visual-label">MODEL × CAPABILITY × BUSINESS TASK</span>
-              <div class="r15-benchmark-matrix">
-                <span>GPT</span><span>Claude</span><span>Qwen</span><span>DeepSeek</span>
-                <span>Brief</span><span>Rules</span><span>Long text</span><span>Knowledge</span>
-                <span>Quality</span><span>Latency</span><span>Cost</span><span>Errors</span>
-                <span>Case</span><span>Case</span><span>Case</span><span>Case</span>
-              </div>
-              <div class="r15-benchmark-count">74 × 148<small>${zh?'二级能力 × 已落地测试集':'CAPABILITIES × IMPLEMENTED TEST SUITES'}</small></div>
+            <div class="r151-proof"><strong>74 × 148</strong><span>${zh?'二级能力 × 已落地测试集':'capabilities × implemented test suites'}</span></div>
+            <a data-nav class="r151-open" href="${url('/work/benchmark')}">${zh?'进入 LLM Benchmark Case Study':'Open LLM Benchmark case study'} ↗</a>
+          </div>
+          <div class="r151-mechanism r151-benchmark-mechanism" aria-hidden="true">
+            <div class="r151-model-axis"><span>GPT</span><span>Claude</span><span>Qwen</span><span>DeepSeek</span></div>
+            <div class="r151-capability-axis">
+              <span>Instruction</span><span>Long Context</span><span>Classification</span><span>Reasoning</span><span>Knowledge</span><span>Generation</span>
             </div>
-            <div class="r15-project-visual" data-r15-visual="accenture">
-              <span class="r15-visual-label">FRAGMENTED INPUTS → ACTIONABLE STRUCTURE</span>
-              <div class="r15-source-flow">
-                <div class="r15-source-stack"><span>Outlook</span><span>Teams</span><span>Jira</span><span>Excel</span></div>
-                <div class="r15-flow-arrow">→</div>
-                <div class="r15-output-stack"><span>Owner / Deadline</span><span>Status / Blocker</span><span>Training / Summary</span></div>
-              </div>
-              <div class="r15-acc-tools"><span>Task Summary</span><span>SIT / Defect Dashboard</span><span>Training Material Generator</span></div>
+            <div class="r151-matrix">
+              ${Array.from({length:24},(_,i)=>`<i class="${[1,6,10,15,19,22].includes(i)?'hot':''}"></i>`).join('')}
             </div>
-            <div class="r15-project-visual" data-r15-visual="requirement">
-              <span class="r15-visual-label">AMBIGUOUS REQUEST → CONFIRMED VERSION</span>
-              <div class="r15-requirement-flow">
-                <div class="r15-requirement-card"><small>INPUT</small><strong>${zh?'模糊需求':'Ambiguous request'}</strong></div>
-                <div class="r15-requirement-arrow">→</div>
-                <div class="r15-requirement-card"><small>ALIGN</small><strong>${zh?'澄清 · 影响分析':'Clarify · impact'}</strong></div>
-                <div class="r15-requirement-arrow">→</div>
-                <div class="r15-requirement-card r15-confirm-gate"><small>HUMAN GATE</small><strong>${zh?'确认后执行':'Confirm before execution'}</strong></div>
-              </div>
-              <div class="r15-version-strip"><span>v1</span><span>→</span><span>v2</span><span>→</span><b>confirmed</b></div>
+            <div class="r151-benchmark-metrics"><span>QUALITY</span><span>LATENCY</span><span>COST</span></div>
+            <div class="r151-big-number"><strong>74</strong><span>CAPABILITIES</span><b>×</b><strong>148</strong><span>TEST SUITES</span></div>
+          </div>
+        </article>
+
+        <article class="r151-scene r151-accenture" data-r151-scene="accenture" aria-hidden="true">
+          <div class="r151-copy">
+            <p class="r151-kicker">03 · ENTERPRISE / WORKFLOW AUTOMATION</p>
+            <h3>Accenture Enterprise Automation</h3>
+            <p class="r151-hook">${zh?'把重复协调、状态汇总和培训资料整理，变成三个可复用的内部流程工具。':'Turn repeated coordination, status reporting and training preparation into three reusable internal workflow tools.'}</p>
+            <div class="r151-brief">
+              <div><span>${zh?'问题':'Problem'}</span><p>${zh?'任务、测试状态、缺陷和培训材料分散在多个协作工具与项目文档里。':'Tasks, test status, defects and training material were scattered across collaboration tools and project documents.'}</p></div>
+              <div><span>${zh?'证据边界':'Evidence boundary'}</span><p>${zh?'Task Summary 被同事实际使用；生成的培训材料被团队使用；Dashboard 已交接，后续采用程度未确认。':'Task Summary was used by colleagues; generated training materials were used by the team; Dashboard was handed off, with later adoption unverified.'}</p></div>
+            </div>
+            <div class="r151-subprojects">
+              <a data-nav href="${url('/work/task-summary')}"><span>01</span><b>${name(task)}</b><em>${safe(task).proof?esc(safe(task).proof):''}</em></a>
+              <a data-nav href="${url('/work/dashboard')}"><span>02</span><b>${name(dashboard)}</b><em>${safe(dashboard).proof?esc(safe(dashboard).proof):''}</em></a>
+              <a data-nav href="${url('/work/training')}"><span>03</span><b>${name(training)}</b><em>${safe(training).proof?esc(safe(training).proof):''}</em></a>
             </div>
           </div>
-
-          <div class="r15-inspector-copy">
-            <small id="r15-focus-eyebrow">AI AGENT · ${zh?'评测与优化':'EVALUATION'}</small>
-            <h3 id="r15-focus-title">${name(agent)}</h3>
-            <p class="r15-inspector-hook" id="r15-focus-hook">${intro(agent)}</p>
-            <div class="r15-facts">
-              <div class="r15-fact"><span>${zh?'问题':'Problem'}</span><p id="r15-focus-problem">${agent?esc(agent.problem):''}</p></div>
-              <div class="r15-fact"><span>${zh?'我的贡献':'My contribution'}</span><p id="r15-focus-role">${agent?esc(agent.role):''}</p></div>
-              <div class="r15-fact"><span>${zh?'证据 / 边界':'Evidence / boundary'}</span><p id="r15-focus-evidence">${agent?esc(agent.result):''}</p></div>
+          <div class="r151-mechanism r151-accenture-mechanism" aria-hidden="true">
+            <div class="r151-input-cloud">
+              <span>Outlook</span><span>Teams</span><span>Jira</span><span>Excel</span><span>SIT/UAT</span><span>Docs</span>
             </div>
-            <div class="r15-inspector-actions">
-              <a data-nav class="r15-case-link" id="r15-case-link" href="${url('/work/agentlab')}">${zh?'打开 Case Study ↗':'Open case study ↗'}</a>
-              <div class="r15-accenture-links" id="r15-accenture-links" hidden>
-                <a data-nav href="${url('/work/task-summary')}">Task Summary</a>
-                <a data-nav href="${url('/work/dashboard')}">SIT Dashboard</a>
-                <a data-nav href="${url('/work/training')}">Training Generator</a>
-              </div>
+            <div class="r151-flow-spine"><i></i><strong>${zh?'STRUCTURE':'STRUCTURE'}</strong><i></i></div>
+            <div class="r151-output-world">
+              <div><small>01</small><b>Task Summary</b><span>Owner · Deadline · Blocker</span></div>
+              <div><small>02</small><b>SIT / Defect Dashboard</b><span>Status · Risk · Visibility</span></div>
+              <div><small>03</small><b>Training Generator</b><span>Guide · Slides · Notes</span></div>
             </div>
           </div>
-        </aside>
+        </article>
+
+        <article class="r151-scene r151-requirement" data-r151-scene="requirement" aria-hidden="true">
+          <div class="r151-copy">
+            <p class="r151-kicker">04 · AI PRODUCT / REQUIREMENT SYSTEM</p>
+            <h3>${name(requirement)}</h3>
+            <p class="r151-hook">${intro(requirement)}</p>
+            <div class="r151-brief">
+              <div><span>${zh?'问题':'Problem'}</span><p>${problem(requirement)}</p></div>
+              <div><span>${zh?'我的贡献':'My contribution'}</span><p>${role(requirement)}</p></div>
+            </div>
+            <div class="r151-proof"><strong>v1 → v2 → confirmed</strong><span>${zh?'人工确认边界保留':'human confirmation stays explicit'}</span></div>
+            <a data-nav class="r151-open" href="${url('/work/requirement')}">${zh?'进入 Requirement Engine Case Study':'Open Requirement Engine case study'} ↗</a>
+          </div>
+          <div class="r151-mechanism r151-requirement-mechanism" aria-hidden="true">
+            <div class="r151-noise">
+              <span>${zh?'“尽快做出来”':'“Build it quickly”'}</span>
+              <span>${zh?'“要支持所有场景”':'“Support every scenario”'}</span>
+              <span>${zh?'“最好不要改现有流程”':'“Do not disrupt the current flow”'}</span>
+              <span>${zh?'“后面可能还会变”':'“This may change later”'}</span>
+            </div>
+            <div class="r151-align-flow">
+              <div><small>01</small><b>${zh?'澄清':'Clarify'}</b></div>
+              <i>→</i>
+              <div><small>02</small><b>${zh?'影响分析':'Impact'}</b></div>
+              <i>→</i>
+              <div class="gate"><small>03</small><b>${zh?'人工确认':'Human confirm'}</b></div>
+              <i>→</i>
+              <div class="confirmed"><small>04</small><b>${zh?'可执行版本':'Executable version'}</b></div>
+            </div>
+            <div class="r151-version-line"><span>v1</span><i></i><span>v2</span><i></i><b>confirmed</b></div>
+          </div>
+        </article>
       </div>
 
-      <div class="r15-more">
-        <div class="r15-more-head">
-          <h3>${zh?'继续探索其他项目':'Keep exploring'}</h3>
-          <p>${zh?'重点项目只负责建立第一印象；数据分析、内容 QA 和创意实验仍然保留完整入口。':'The featured systems establish the first impression; data studies, content QA and creative experiments remain fully accessible.'}</p>
-        </div>
-        <div class="r15-more-grid">
-          ${more.map(p=>`<a data-nav class="r15-more-card" href="${url('/work/'+p.id)}"><small>${tag(p)}</small><strong>${name(p)}</strong><span>${intro(p)}</span></a>`).join('')}
-        </div>
+      <div class="r151-beats" aria-hidden="true">
+        <div data-r151-beat="agentlab"></div>
+        <div data-r151-beat="benchmark"></div>
+        <div data-r151-beat="accenture"></div>
+        <div data-r151-beat="requirement"></div>
+      </div>
+    </div>
+
+    <div class="r151-directory">
+      <div class="r151-directory-head">
+        <div><p class="eyebrow">${zh?'更多项目':'MORE WORK'}</p><h3>${zh?'其他实验、分析与产品。':'More experiments, analysis and products.'}</h3></div>
+        <p>${zh?'这里回到更安静的目录模式。每一个入口都保留原有二级 Case Study 信息。':'A quieter directory for everything else. Every entry keeps its existing second-page case study.'}</p>
+      </div>
+      <div class="r151-directory-grid">
+        ${more.map(p=>`<a data-nav class="r151-directory-item" href="${url('/work/'+p.id)}"><small>${tag(p)}</small><strong>${name(p)}</strong><span>${intro(p)}</span><em>↗</em></a>`).join('')}
       </div>
     </div>
   </section>`;
