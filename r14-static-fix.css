@@ -574,3 +574,272 @@
   .r14-bayes-count{left:11%;top:25%}
   .r14-bayes-dual{left:9%;right:6%;bottom:4%}
 }
+
+
+/* R14.1 pass 5 — richer UBC/Lengsuanling detail + enterprise automation emphasis. */
+
+/* UBC: keep the campus image, but make the academic transition legible. */
+.journey-visual[data-stage="0"] .r14-stage-art>[data-r14-stage="0"]{
+  opacity:1;
+  visibility:visible;
+}
+.r14-ubc-notebook{
+  position:absolute;
+  right:8%;
+  top:18%;
+  width:38%;
+  min-height:150px;
+  padding:18px 20px;
+  border:1px solid rgba(235,224,211,.34);
+  border-radius:16px;
+  background:
+    repeating-linear-gradient(180deg,transparent 0 25px,rgba(70,88,100,.1) 25px 26px),
+    rgba(239,233,224,.92);
+  color:#293946;
+  box-shadow:0 18px 48px rgba(4,10,17,.25);
+  transform:rotate(3deg);
+}
+.r14-ubc-notebook small{
+  display:block;
+  color:#7d6858;
+  font-size:7px;
+  font-weight:750;
+  letter-spacing:.15em;
+}
+.r14-ubc-notebook b{
+  display:block;
+  margin-top:15px;
+  color:#344957;
+  font:500 16px/1.45 var(--cserif);
+}
+.r14-ubc-notebook>div{
+  display:flex;
+  gap:8px;
+  margin-top:20px;
+}
+.r14-ubc-notebook>div span{
+  flex:1;
+  padding:7px 8px;
+  border:1px solid rgba(79,99,111,.18);
+  border-radius:8px;
+  background:rgba(255,255,255,.42);
+  text-align:center;
+  font:500 13px/1 var(--serif);
+}
+.r14-ubc-methods{
+  position:absolute;
+  left:11%;
+  top:39%;
+  display:flex;
+  gap:7px;
+}
+.r14-ubc-methods span{
+  padding:7px 10px;
+  border:1px solid rgba(231,211,191,.2);
+  border-radius:999px;
+  background:rgba(29,42,54,.76);
+  color:#c9d3d8;
+  font-size:7px;
+  letter-spacing:.08em;
+}
+.journey-visual[data-stage="0"][data-focus="0"] .r14-ubc-notebook{opacity:.62}
+.journey-visual[data-stage="0"][data-focus="1"] .r14-ubc-notebook{
+  opacity:1;
+  transform:rotate(1deg) translateY(-4px);
+  box-shadow:0 20px 52px rgba(4,10,17,.3),0 0 22px rgba(229,196,162,.12);
+}
+.journey-visual[data-stage="0"][data-focus="2"] .r14-ubc-notebook{opacity:.78}
+.r14-ubc-notebook{transition:opacity .3s ease,transform .3s ease,box-shadow .3s ease}
+
+/* Lengsuanling: make each vertical card feel like an actual content-ops artifact. */
+.r14-reel-card>small{
+  position:absolute;
+  left:13px;
+  right:11px;
+  bottom:43px;
+  color:#9eacb5;
+  font-size:5.5px;
+  letter-spacing:.09em;
+  line-height:1.35;
+}
+.r14-card-ui{
+  position:absolute;
+  left:13px;
+  right:13px;
+  top:34px;
+  height:38%;
+  border:1px solid rgba(244,226,210,.12);
+  border-radius:10px;
+  background:
+    radial-gradient(circle at 60% 36%,rgba(237,198,167,.22),transparent 24%),
+    linear-gradient(160deg,rgba(227,217,206,.12),rgba(72,91,104,.08));
+  overflow:hidden;
+}
+.r14-card-ui i{
+  position:absolute!important;
+  left:9px!important;
+  right:auto!important;
+  bottom:auto!important;
+  height:3px!important;
+  border-radius:999px!important;
+  background:rgba(225,232,235,.38)!important;
+}
+.r14-card-ui i:nth-child(1){top:10px;width:45%}
+.r14-card-ui i:nth-child(2){top:18px;width:68%}
+.r14-card-ui i:nth-child(3){top:26px;width:35%;background:rgba(227,190,158,.58)!important}
+.r14-edit-timeline{padding-bottom:8px}
+.r14-edit-stages{
+  position:absolute;
+  left:12px;
+  right:12px;
+  bottom:4px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:5px;
+  color:#8fa0aa;
+  font-size:5px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.r14-edit-stages span{text-align:center}
+.r14-leng-metrics span:after{
+  content:'';
+  display:block;
+  width:100%;
+  height:3px;
+  margin-top:7px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#d8b797 0 56%,rgba(255,255,255,.09) 56%);
+}
+.r14-leng-metrics span:nth-child(2):after{
+  background:linear-gradient(90deg,#9eb5c1 0 72%,rgba(255,255,255,.09) 72%);
+}
+.r14-leng-metrics span:nth-child(3):after{
+  background:linear-gradient(90deg,#c9d0ba 0 43%,rgba(255,255,255,.09) 43%);
+}
+.journey-visual[data-stage="1"][data-focus="0"] .r14-reel-card.primary,
+.journey-visual[data-stage="1"][data-focus="1"] .r14-reel-card.tertiary,
+.journey-visual[data-stage="1"][data-focus="2"] .r14-reel-card.secondary{
+  border-color:rgba(239,204,171,.55);
+  box-shadow:0 18px 48px rgba(4,10,17,.3),0 0 22px rgba(229,193,159,.11);
+}
+
+/* Accenture: three beats — testing, visibility, then workflow automation. */
+.r14-acc-automation{
+  position:absolute;
+  left:15%;
+  right:10%;
+  bottom:7%;
+  min-height:128px;
+  display:grid;
+  grid-template-columns:1.2fr .85fr 22px .9fr 22px 1fr;
+  gap:8px;
+  align-items:center;
+  padding:15px 16px 24px;
+  border:1px solid rgba(220,208,231,.24);
+  border-radius:17px;
+  background:linear-gradient(145deg,rgba(39,51,61,.94),rgba(29,41,52,.96));
+  box-shadow:0 18px 48px rgba(4,10,17,.28);
+  opacity:.24;
+  transform:translateY(8px);
+  transition:opacity .3s ease,transform .3s ease,border-color .3s ease;
+  z-index:8;
+}
+.r14-auto-title small{
+  display:block;
+  color:#c7b2da;
+  font-size:6px;
+  font-weight:750;
+  letter-spacing:.15em;
+}
+.r14-auto-title b{
+  display:block;
+  margin-top:7px;
+  color:#eee4de;
+  font:500 11px/1.35 var(--cserif);
+}
+.r14-auto-inputs,.r14-auto-outputs{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5px;
+}
+.r14-auto-inputs span,.r14-auto-outputs span{
+  padding:6px 5px;
+  border:1px solid rgba(221,211,231,.13);
+  border-radius:7px;
+  background:rgba(72,84,94,.22);
+  color:#bfcad0;
+  font-size:5.5px;
+  text-align:center;
+}
+.r14-auto-arrow{
+  color:#d7b99c;
+  text-align:center;
+  font:500 15px/1 var(--serif);
+}
+.r14-auto-core{
+  padding:9px 8px;
+  border:1px solid rgba(231,201,178,.2);
+  border-radius:9px;
+  background:rgba(85,68,78,.34);
+  text-align:center;
+}
+.r14-auto-core strong{
+  display:block;
+  color:#f0d8c2;
+  font-size:8px;
+  letter-spacing:.06em;
+}
+.r14-auto-core small{
+  display:block;
+  margin-top:5px;
+  color:#aebbc3;
+  font-size:5.5px;
+}
+.r14-auto-ai{
+  position:absolute;
+  right:14px;
+  bottom:7px;
+  color:#ae9abb;
+  font-size:5.5px;
+  font-weight:700;
+  letter-spacing:.11em;
+}
+.journey-visual[data-stage="2"][data-focus="0"] .r14-acc-automation{opacity:.12}
+.journey-visual[data-stage="2"][data-focus="1"] .r14-acc-automation{opacity:.42}
+.journey-visual[data-stage="2"][data-focus="2"] .r14-acc-automation{
+  opacity:1;
+  transform:none;
+  border-color:rgba(230,202,180,.42);
+}
+.journey-visual[data-stage="2"][data-focus="2"] .r14-acc-surface{opacity:.35}
+.journey-visual[data-stage="2"][data-focus="2"] .r14-acc-flow{opacity:.3}
+.journey-visual[data-stage="2"][data-focus="2"] .r14-acc-status{opacity:.45}
+.r14-acc-surface,.r14-acc-flow,.r14-acc-status{transition:opacity .3s ease,transform .3s ease}
+.r14-acc-status{bottom:4%}
+
+/* At the visibility beat, privilege status communication over the raw test flow. */
+.journey-visual[data-stage="2"][data-focus="1"] .r14-acc-status{
+  opacity:1;
+  transform:translateY(-4px);
+}
+.journey-visual[data-stage="2"][data-focus="1"] .r14-acc-surface{
+  box-shadow:0 30px 85px rgba(5,12,20,.4),0 0 24px rgba(184,164,207,.11);
+}
+
+/* Small screens keep the same information order without turning into a dashboard wall. */
+@media(max-width:780px){
+  .r14-ubc-notebook{right:4%;top:16%;width:43%;min-height:100px;padding:11px}
+  .r14-ubc-notebook b{font-size:10px;margin-top:8px}.r14-ubc-notebook>div{margin-top:10px;gap:4px}.r14-ubc-notebook>div span{padding:4px;font-size:8px}
+  .r14-ubc-methods{left:6%;top:39%;gap:4px}.r14-ubc-methods span{padding:4px 6px;font-size:5.5px}
+  .r14-reel-card>small{font-size:4px;bottom:31px}.r14-card-ui{height:34%;top:27px}.r14-edit-stages{font-size:4px}
+  .r14-acc-automation{left:8%;right:5%;bottom:3%;min-height:78px;padding:8px 8px 15px;gap:3px;border-radius:11px}
+  .r14-auto-title b{font-size:7px}.r14-auto-title small,.r14-auto-inputs span,.r14-auto-outputs span,.r14-auto-core small,.r14-auto-ai{font-size:4px}
+  .r14-auto-core strong{font-size:5.5px}.r14-auto-arrow{font-size:10px}.r14-acc-status{display:none}
+}
+@media(max-width:420px){
+  .r14-ubc-notebook{width:46%;right:2%}.r14-ubc-methods span:nth-child(3){display:none}
+  .r14-reel-card>small{display:none}.r14-edit-stages{display:none}
+  .r14-acc-automation{grid-template-columns:1fr 1fr 16px 1fr 16px 1fr}
+  .r14-auto-title{display:none}.r14-auto-ai{right:8px}
+}
