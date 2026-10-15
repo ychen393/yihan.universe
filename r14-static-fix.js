@@ -46,7 +46,7 @@
     var focus={
       ubc:zh?['从商业问题出发','用统计方法验证','把两种视角带到后面的项目']:['Start with business questions','Test them with statistics','Carry both perspectives forward'],
       leng:zh?['先把内容做出来','再看 GMV / CTR / 流量反馈','把观察变成内容与发布时间建议']:['Make the content','Read GMV / CTR / traffic signals','Turn observations into content and timing recommendations'],
-      acc:zh?['执行 SIT / UAT','让缺陷、阻塞和依赖可见','复测闭环，并把重复流程做成工具']:['Execute SIT / UAT','Make defects, blockers and dependencies visible','Close the loop with retesting and workflow tools'],
+      acc:zh?['执行 SIT / UAT，理解测试与缺陷闭环','用 Dashboard / Tracker 让状态、阻塞和依赖可见','把重复协作抽象成 Workflow Automation，并用 Copilot 辅助实现']:['Execute SIT / UAT and understand the defect loop','Use dashboards / trackers to surface status, blockers and dependencies','Turn repetitive coordination into workflow automation, built with Copilot assistance'],
       bayes:zh?['把业务任务拆成 74 项能力','用 148 套测试集比较质量 / 延迟 / 成本','把模型能力放进 Agent workflow 看真实表现']:['Break business work into 74 capabilities','Use 148 test suites to compare quality / latency / cost','Put model capability inside Agent workflows']
     };
     function focusSteps(items){
@@ -79,7 +79,7 @@
         '<div class="r14-acc" data-r14-stage="2">'+
           '<div class="r14-brand-lockup"><strong>Accenture</strong><small>ENTERPRISE SYSTEMS</small></div>'+
           '<div class="r14-acc-surface">'+
-            '<div class="r14-system-head"><span>SAP · SIT/UAT</span><b>'+ (zh?'测试与缺陷协作':'Testing & defect coordination') +'</b></div>'+
+            '<div class="r14-system-head"><span>SAP · SIT/UAT</span><b>'+ (zh?'测试 · 状态可视化 · 流程协作':'Testing · visibility · workflow coordination') +'</b></div>'+
             '<div class="r14-system-columns">'+
               '<div><small>TEST CASES</small><i></i><i></i><i></i><i></i></div>'+
               '<div><small>DEFECT QUEUE</small><i></i><i></i><i></i></div>'+
