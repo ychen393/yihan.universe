@@ -62,6 +62,12 @@
         '</div>'+
         '<div class="r14-leng" data-r14-stage="1">'+
           '<div class="r14-brand-lockup"><strong>冷酸灵</strong><small>CONTENT OPS</small></div>'+
+          '<div class="r14-leng-scene">'+
+            '<div class="r14-reel-card primary"><span>01</span><b>'+ (zh?'短视频内容':'Short-form content') +'</b><i></i></div>'+
+            '<div class="r14-reel-card secondary"><span>02</span><b>'+ (zh?'剪辑与发布':'Edit & publish') +'</b><i></i></div>'+
+            '<div class="r14-reel-card tertiary"><span>03</span><b>'+ (zh?'数据复盘':'Performance review') +'</b><i></i></div>'+
+            '<div class="r14-edit-timeline"><em></em><em></em><em></em><strong>CONTENT → PUBLISH → REVIEW</strong></div>'+
+          '</div>'+
           '<div class="r14-leng-phone-ui"></div>'+
           '<div class="r14-leng-metrics">'+
             '<span><b>GMV</b><small>PERFORMANCE</small></span>'+
@@ -72,6 +78,14 @@
         '</div>'+
         '<div class="r14-acc" data-r14-stage="2">'+
           '<div class="r14-brand-lockup"><strong>Accenture</strong><small>ENTERPRISE SYSTEMS</small></div>'+
+          '<div class="r14-acc-surface">'+
+            '<div class="r14-system-head"><span>SAP · SIT/UAT</span><b>'+ (zh?'测试与缺陷协作':'Testing & defect coordination') +'</b></div>'+
+            '<div class="r14-system-columns">'+
+              '<div><small>TEST CASES</small><i></i><i></i><i></i><i></i></div>'+
+              '<div><small>DEFECT QUEUE</small><i></i><i></i><i></i></div>'+
+              '<div><small>STATUS</small><span>PASS</span><span>BLOCK</span><span>RETEST</span></div>'+
+            '</div>'+
+          '</div>'+
           '<div class="r14-acc-flow">'+
             '<i class="r14-acc-line l1"></i><i class="r14-acc-line l2"></i><i class="r14-acc-line l3"></i>'+
             '<div class="r14-acc-node n1" data-flow-step="0"><small>01</small><b>Test Case</b></div>'+
@@ -84,6 +98,14 @@
         '</div>'+
         '<div class="r14-bayes" data-r14-stage="3">'+
           '<div class="r14-brand-lockup"><strong>BAYESTONE · 贝事音准</strong><small>AI SYSTEMS</small></div>'+
+          '<div class="r14-bayes-surface">'+
+            '<div class="r14-model-band"><span>GPT</span><span>Claude</span><span>Qwen</span><span>DeepSeek</span></div>'+
+            '<div class="r14-eval-map">'+
+              '<i style="--x:12%;--y:23%"></i><i style="--x:28%;--y:61%"></i><i style="--x:44%;--y:36%"></i><i style="--x:62%;--y:72%"></i><i style="--x:78%;--y:31%"></i>'+
+              '<svg viewBox="0 0 100 60" preserveAspectRatio="none"><path d="M10 18 C28 5 35 45 52 23 S74 16 90 42"/><path d="M12 46 C27 36 36 51 48 42 S70 25 88 16"/></svg>'+
+            '</div>'+
+            '<div class="r14-agent-route"><span>Input</span><i></i><span>Node</span><i></i><span>Check</span><i></i><span>Action</span></div>'+
+          '</div>'+
           '<div class="r14-bayes-count"><small>EVALUATION TAXONOMY</small><strong>74 × 148</strong></div>'+
           '<div class="r14-bayes-grid"><span>GPT</span><span>Claude</span><span>Qwen</span><span>DeepSeek</span></div>'+
           '<div class="r14-bayes-dual">'+
