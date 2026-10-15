@@ -58,15 +58,17 @@
         '<div class="r14-ubc" data-r14-stage="0">'+
           '<div class="r14-brand-lockup"><strong>UBC · Statistics</strong><small>ACADEMIC ORIGIN</small></div>'+
           '<div class="r14-ubc-path"><span>Business</span><i>→</i><span>Statistics</span></div>'+
+          '<div class="r14-ubc-notebook"><small>STATISTICS NOTEBOOK</small><b>'+(zh?'问题 → 证据 → 不确定性':'question → evidence → uncertainty')+'</b><div><span>H₀ / H₁</span><span>β̂</span><span>CI</span></div></div>'+
+          '<div class="r14-ubc-methods"><span>Inference</span><span>Regression</span><span>Data</span></div>'+
           focusSteps(focus.ubc)+
         '</div>'+
         '<div class="r14-leng" data-r14-stage="1">'+
           '<div class="r14-brand-lockup"><strong>冷酸灵</strong><small>CONTENT OPS</small></div>'+
           '<div class="r14-leng-scene">'+
-            '<div class="r14-reel-card primary"><span>01</span><b>'+ (zh?'短视频内容':'Short-form content') +'</b><i></i></div>'+
-            '<div class="r14-reel-card secondary"><span>02</span><b>'+ (zh?'剪辑与发布':'Edit & publish') +'</b><i></i></div>'+
-            '<div class="r14-reel-card tertiary"><span>03</span><b>'+ (zh?'数据复盘':'Performance review') +'</b><i></i></div>'+
-            '<div class="r14-edit-timeline"><em></em><em></em><em></em><strong>CONTENT → PUBLISH → REVIEW</strong></div>'+
+            '<div class="r14-reel-card primary"><span>01</span><div class="r14-card-ui"><i></i><i></i><i></i></div><b>'+ (zh?'短视频内容':'Short-form content') +'</b><small>DOUYIN · HOOK / STORY</small><i></i></div>'+
+            '<div class="r14-reel-card secondary"><span>02</span><div class="r14-card-ui"><i></i><i></i><i></i></div><b>'+ (zh?'剪辑与发布':'Edit & publish') +'</b><small>Jianying · CUT / PACE</small><i></i></div>'+
+            '<div class="r14-reel-card tertiary"><span>03</span><div class="r14-card-ui"><i></i><i></i><i></i></div><b>'+ (zh?'数据复盘':'Performance review') +'</b><small>QIANCHUAN · EXCEL</small><i></i></div>'+
+            '<div class="r14-edit-timeline"><em></em><em></em><em></em><strong>DRAFT → EDIT → PUBLISH → REVIEW</strong><div class="r14-edit-stages"><span>'+(zh?'选题':'Draft')+'</span><span>'+(zh?'剪辑':'Edit')+'</span><span>'+(zh?'发布':'Publish')+'</span><span>'+(zh?'复盘':'Review')+'</span></div></div>'+
           '</div>'+
           '<div class="r14-leng-phone-ui"></div>'+
           '<div class="r14-leng-metrics">'+
@@ -85,6 +87,15 @@
               '<div><small>DEFECT QUEUE</small><i></i><i></i><i></i></div>'+
               '<div><small>STATUS</small><span>PASS</span><span>BLOCK</span><span>RETEST</span></div>'+
             '</div>'+
+          '</div>'+
+          '<div class="r14-acc-automation">'+
+            '<div class="r14-auto-title"><small>WORKFLOW AUTOMATION</small><b>'+ (zh?'把分散更新变成可行动的信息':'Turn scattered updates into actionable structure') +'</b></div>'+
+            '<div class="r14-auto-inputs"><span>Outlook</span><span>Teams</span><span>Jira</span><span>Excel</span></div>'+
+            '<div class="r14-auto-arrow">→</div>'+
+            '<div class="r14-auto-core"><strong>'+ (zh?'结构化规则':'STRUCTURE') +'</strong><small>task · owner · deadline · status</small></div>'+
+            '<div class="r14-auto-arrow">→</div>'+
+            '<div class="r14-auto-outputs"><span>OWNER</span><span>DEADLINE</span><span>BLOCKER</span></div>'+
+            '<div class="r14-auto-ai">AI-ASSISTED BUILD · GITHUB COPILOT</div>'+
           '</div>'+
           '<div class="r14-acc-flow">'+
             '<i class="r14-acc-line l1"></i><i class="r14-acc-line l2"></i><i class="r14-acc-line l3"></i>'+
