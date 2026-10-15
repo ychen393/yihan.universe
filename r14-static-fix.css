@@ -208,3 +208,154 @@
   .r14-leng-metrics span:nth-child(3){display:none}
   .r14-bayes-grid span:nth-child(n+4){display:none}
 }
+
+
+/* R14.1 pass 3 — synchronized stage stack + narrative focus */
+.r14-static-fix .journey-photo{position:relative}
+.r14-static-fix .journey-photo .journey-stage-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  z-index:1;
+  transition:opacity .26s ease,transform .8s ease,filter .35s ease;
+}
+.r14-static-fix .journey-photo .journey-stage-image.active{
+  opacity:1;
+  z-index:2;
+}
+.r14-static-fix .journey-photo .journey-img-next{display:none!important}
+.r14-static-fix .journey-photo .visual-shine{z-index:3}
+.journey-visual[data-stage="0"] .r14-stage-art{display:block}
+
+/* A stage should explain one progression, not present a pile of cards. */
+.r14-focus-steps{
+  position:absolute;
+  z-index:11;
+  min-height:58px;
+  pointer-events:none;
+}
+.r14-focus-steps span{
+  position:absolute;
+  inset:0 auto auto 0;
+  min-width:250px;
+  max-width:390px;
+  opacity:0;
+  transform:translateY(10px);
+  transition:opacity .28s ease,transform .28s ease;
+}
+.r14-focus-steps em{
+  display:block;
+  margin-bottom:6px;
+  color:#e5c39f;
+  font-style:normal;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.18em;
+}
+.r14-focus-steps b{
+  display:block;
+  padding-left:14px;
+  border-left:1px solid rgba(241,211,182,.55);
+  color:#f4e8dc;
+  font:500 18px/1.45 var(--cserif);
+  letter-spacing:-.015em;
+  text-shadow:0 7px 20px rgba(4,10,17,.3);
+}
+.journey-visual[data-focus="0"] [data-focus-step="0"],
+.journey-visual[data-focus="1"] [data-focus-step="1"],
+.journey-visual[data-focus="2"] [data-focus-step="2"]{
+  opacity:1;
+  transform:none;
+}
+
+/* UBC: the story is a direction change, not a generic campus card. */
+.r14-ubc .r14-brand-lockup{left:9%;top:9%}
+.r14-ubc-path{
+  position:absolute;
+  left:11%;
+  top:31%;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  color:#d7dfe3;
+  font:500 15px/1 var(--serif);
+  letter-spacing:.02em;
+}
+.r14-ubc-path i{
+  color:#efc9a6;
+  font-style:normal;
+  transition:transform .3s ease;
+}
+.journey-visual[data-stage="0"][data-focus="1"] .r14-ubc-path i,
+.journey-visual[data-stage="0"][data-focus="2"] .r14-ubc-path i{transform:translateX(7px)}
+.journey-visual[data-stage="0"] .r14-focus-steps{left:9%;bottom:22%}
+.journey-visual[data-stage="0"] .journey-photo img.active{filter:saturate(.72) brightness(.8) contrast(1.02)}
+
+/* Lengsuanling: Make → read signals → recommend. */
+.journey-visual[data-stage="1"] .r14-focus-steps{right:5%;bottom:22%;width:40%}
+.journey-visual[data-stage="1"][data-focus="0"] .r14-leng-phone-ui{opacity:1;transform:translateY(0)}
+.journey-visual[data-stage="1"][data-focus="0"] .r14-leng-metrics{opacity:.35}
+.journey-visual[data-stage="1"][data-focus="1"] .r14-leng-phone-ui{opacity:.48;transform:translateY(-4px)}
+.journey-visual[data-stage="1"][data-focus="1"] .r14-leng-metrics{opacity:1;transform:translateY(-3px)}
+.journey-visual[data-stage="1"][data-focus="2"] .r14-leng-phone-ui{opacity:.72}
+.journey-visual[data-stage="1"][data-focus="2"] .r14-leng-metrics{opacity:.72}
+.r14-leng-phone-ui,.r14-leng-metrics{transition:opacity .3s ease,transform .3s ease}
+
+/* Accenture: the flow itself becomes the visual emphasis as you scroll. */
+.journey-visual[data-stage="2"] .r14-focus-steps{left:8%;top:15%;width:46%}
+.r14-acc-node{opacity:.28;transform:scale(.96);transition:opacity .28s ease,transform .28s ease,border-color .28s ease,box-shadow .28s ease}
+.journey-visual[data-stage="2"][data-focus="0"] .r14-acc-node[data-flow-step="0"],
+.journey-visual[data-stage="2"][data-focus="1"] .r14-acc-node[data-flow-step="1"],
+.journey-visual[data-stage="2"][data-focus="2"] .r14-acc-node[data-flow-step="2"]{
+  opacity:1;
+  transform:scale(1);
+  border-color:rgba(239,205,177,.62);
+  box-shadow:0 14px 36px rgba(4,10,16,.28),0 0 20px rgba(232,198,173,.12);
+}
+.journey-visual[data-stage="2"][data-focus="0"] .r14-acc-line.l1,
+.journey-visual[data-stage="2"][data-focus="1"] .r14-acc-line.l2,
+.journey-visual[data-stage="2"][data-focus="2"] .r14-acc-line.l3{background:#efc9a7;box-shadow:0 0 8px rgba(239,201,167,.45)}
+.r14-acc-line{transition:background .28s ease,box-shadow .28s ease}
+
+/* Bayestone: capability → comparison → application. */
+.journey-visual[data-stage="3"] .r14-focus-steps{left:7%;bottom:36%;width:50%}
+.r14-bayes-count,.r14-bayes-grid,.r14-bayes-rail{transition:opacity .28s ease,transform .28s ease,border-color .28s ease}
+.journey-visual[data-stage="3"][data-focus="0"] .r14-bayes-count{opacity:1;transform:scale(1.04)}
+.journey-visual[data-stage="3"][data-focus="0"] .r14-bayes-grid{opacity:.3}
+.journey-visual[data-stage="3"][data-focus="0"] .r14-bayes-rail.benchmark{opacity:.86}
+.journey-visual[data-stage="3"][data-focus="0"] .r14-bayes-rail.agent{opacity:.28}
+.journey-visual[data-stage="3"][data-focus="1"] .r14-bayes-count{opacity:.62}
+.journey-visual[data-stage="3"][data-focus="1"] .r14-bayes-grid{opacity:1;transform:translateY(-3px)}
+.journey-visual[data-stage="3"][data-focus="1"] .r14-bayes-rail.benchmark{opacity:1;border-color:rgba(239,205,177,.45)}
+.journey-visual[data-stage="3"][data-focus="1"] .r14-bayes-rail.agent{opacity:.34}
+.journey-visual[data-stage="3"][data-focus="2"] .r14-bayes-count{opacity:.35}
+.journey-visual[data-stage="3"][data-focus="2"] .r14-bayes-grid{opacity:.45}
+.journey-visual[data-stage="3"][data-focus="2"] .r14-bayes-rail.benchmark{opacity:.35}
+.journey-visual[data-stage="3"][data-focus="2"] .r14-bayes-rail.agent{
+  opacity:1;
+  transform:translateY(-4px);
+  border-color:rgba(228,199,221,.48);
+}
+
+/* Keep stage change and node change on the same visual beat. */
+.r14-static-fix .node{transition:transform .26s ease,box-shadow .26s ease,background .26s ease,color .26s ease}
+.r14-stage-art>[data-r14-stage]{transition:opacity .26s ease}
+
+@media(max-width:780px){
+  .r14-focus-steps span{min-width:180px;max-width:260px}
+  .r14-focus-steps b{font-size:12px;line-height:1.4}
+  .journey-visual[data-stage="0"] .r14-focus-steps{left:5%;bottom:20%}
+  .journey-visual[data-stage="1"] .r14-focus-steps{right:2%;bottom:18%;width:45%}
+  .journey-visual[data-stage="2"] .r14-focus-steps{left:4%;top:12%;width:48%}
+  .journey-visual[data-stage="3"] .r14-focus-steps{left:3%;bottom:32%;width:56%}
+  .r14-ubc .r14-brand-lockup{left:4%;top:5%;padding:6px 9px}
+  .r14-ubc .r14-brand-lockup strong{font-size:11px}
+  .r14-ubc-path{left:6%;top:29%;font-size:10px;gap:7px}
+}
+@media(max-width:420px){
+  .r14-focus-steps b{font-size:10px}
+  .r14-focus-steps em{font-size:6px}
+}
