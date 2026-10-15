@@ -843,3 +843,268 @@
   .r14-acc-automation{grid-template-columns:1fr 1fr 16px 1fr 16px 1fr}
   .r14-auto-title{display:none}.r14-auto-ai{right:8px}
 }
+
+
+/* R14.1 pass 6 — spacing cleanup, glass notebook, protected progress lane. */
+
+/* Treat the bottom progress rail as its own lane. */
+.r14-static-fix .journey-track{
+  bottom:3.5%;
+  left:14%;
+  right:11%;
+}
+.r14-static-fix .journey-compass{
+  top:6%;
+  right:7%;
+}
+
+/* UBC: replace the bright paper card with warm mist glass.
+   Keep the academic notation crisp without competing with the campus image. */
+.r14-ubc-notebook{
+  right:6%;
+  top:15%;
+  width:35%;
+  min-height:138px;
+  padding:17px 18px;
+  border-color:rgba(239,218,197,.24);
+  background:
+    repeating-linear-gradient(180deg,transparent 0 27px,rgba(226,236,240,.055) 27px 28px),
+    linear-gradient(145deg,rgba(230,224,216,.15),rgba(41,55,67,.68));
+  color:#f1e8df;
+  box-shadow:0 20px 52px rgba(4,10,17,.24);
+  backdrop-filter:blur(18px) saturate(.85);
+  transform:rotate(1.4deg);
+}
+.r14-ubc-notebook small{
+  color:#d6b99c;
+  font-size:7.5px;
+}
+.r14-ubc-notebook b{
+  color:#f4e9df;
+  font-size:15px;
+  line-height:1.5;
+  text-shadow:0 4px 14px rgba(4,10,17,.26);
+}
+.r14-ubc-notebook>div{gap:6px;margin-top:17px}
+.r14-ubc-notebook>div span{
+  padding:7px 6px;
+  border-color:rgba(231,215,199,.16);
+  background:rgba(238,232,225,.08);
+  color:#e5d9ce;
+  font-size:12px;
+}
+.r14-ubc-path{
+  left:9%;
+  top:29%;
+  font-size:14px;
+}
+.r14-ubc-methods{
+  left:9%;
+  top:42%;
+}
+.journey-visual[data-stage="0"] .r14-focus-steps{
+  left:9%;
+  bottom:20%;
+  width:42%;
+}
+.journey-visual[data-stage="0"] .r14-focus-steps span{
+  min-width:0;
+  max-width:330px;
+}
+.journey-visual[data-stage="0"][data-focus="0"] .r14-ubc-notebook{opacity:.48}
+.journey-visual[data-stage="0"][data-focus="1"] .r14-ubc-notebook{
+  opacity:.93;
+  transform:rotate(.5deg) translateY(-3px);
+}
+.journey-visual[data-stage="0"][data-focus="2"] .r14-ubc-notebook{opacity:.62}
+
+/* Lengsuanling: keep the content artifacts central and move explanatory copy out of their way. */
+.journey-visual[data-stage="1"] .r14-focus-steps{
+  right:5%;
+  top:12%;
+  bottom:auto;
+  width:38%;
+}
+.journey-visual[data-stage="1"] .r14-focus-steps span{
+  min-width:0;
+  max-width:300px;
+}
+.r14-leng-scene{
+  left:14%;
+  top:20%;
+  width:66%;
+  height:52%;
+}
+.r14-leng-metrics{
+  left:15%;
+  bottom:16%;
+}
+.r14-leng .r14-brand-lockup{left:8%;top:7%}
+
+/* Accenture: reserve a clean caption strip above the system canvas,
+   then keep automation above the progress lane. */
+.journey-visual[data-stage="2"] .r14-focus-steps{
+  left:7%;
+  top:8%;
+  bottom:auto;
+  width:47%;
+}
+.journey-visual[data-stage="2"] .r14-focus-steps span{
+  min-width:0;
+  max-width:350px;
+}
+.r14-acc .r14-brand-lockup{
+  right:7%;
+  top:7%;
+}
+.r14-acc-surface{
+  left:12%;
+  top:25%;
+  width:73%;
+  height:43%;
+}
+.r14-acc-flow{
+  left:8%;
+  right:8%;
+  top:33%;
+  bottom:31%;
+}
+.r14-acc-status{
+  left:12%;
+  bottom:18%;
+}
+.r14-acc-automation{
+  left:14%;
+  right:9%;
+  bottom:15%;
+  min-height:112px;
+  padding-top:13px;
+  padding-bottom:21px;
+}
+.journey-visual[data-stage="2"][data-focus="2"] .r14-acc-automation{
+  transform:translateY(-3px);
+}
+
+/* Bayestone: separate title/focus copy, evaluation field and dual-track cards.
+   The dual cards now sit clearly above the progress rail. */
+.r14-bayes .r14-brand-lockup{
+  left:auto;
+  right:7%;
+  top:7%;
+}
+.journey-visual[data-stage="3"] .r14-focus-steps{
+  left:7%;
+  top:10%;
+  bottom:auto;
+  width:45%;
+}
+.journey-visual[data-stage="3"] .r14-focus-steps span{
+  min-width:0;
+  max-width:340px;
+}
+.r14-bayes-surface{
+  left:12%;
+  top:24%;
+  width:74%;
+  height:40%;
+}
+.r14-bayes-count{
+  left:14%;
+  top:31%;
+}
+.r14-bayes-dual{
+  left:13%;
+  right:9%;
+  bottom:16%;
+  gap:12px;
+}
+.r14-bayes-rail{
+  min-height:86px;
+  padding:12px 15px;
+}
+.r14-bayes-rail b{
+  margin:5px 0 6px;
+  font-size:15px;
+}
+.r14-bayes-rail p{
+  font-size:8.5px;
+  line-height:1.45;
+}
+.r14-model-band{
+  top:14px;
+}
+.r14-agent-route{
+  top:27%;
+}
+
+/* Medium desktop: reduce density before elements start colliding. */
+@media(max-width:1200px) and (min-width:781px){
+  .r14-ubc-notebook{width:34%;right:4%}
+  .journey-visual[data-stage="1"] .r14-focus-steps{right:3%;width:36%}
+  .r14-leng-scene{left:12%;width:68%}
+  .journey-visual[data-stage="2"] .r14-focus-steps{width:43%}
+  .r14-acc-automation{left:11%;right:6%}
+  .journey-visual[data-stage="3"] .r14-focus-steps{width:42%}
+  .r14-bayes-dual{left:11%;right:6%}
+}
+
+/* Mobile: keep a strict top/middle/bottom reading order. */
+@media(max-width:780px){
+  .r14-static-fix .journey-track{
+    bottom:2%;
+    left:14%;
+    right:14%;
+  }
+  .r14-static-fix .journey-compass{top:3%;right:8%}
+
+  .r14-ubc-notebook{
+    right:4%;
+    top:17%;
+    width:40%;
+    min-height:92px;
+    padding:10px 11px;
+    transform:rotate(.6deg);
+  }
+  .r14-ubc-notebook small{font-size:6px}
+  .r14-ubc-notebook b{font-size:9px;margin-top:7px;line-height:1.4}
+  .r14-ubc-notebook>div{margin-top:8px}
+  .r14-ubc-notebook>div span{padding:4px 3px;font-size:7px}
+  .r14-ubc-path{left:5%;top:28%;font-size:9px}
+  .r14-ubc-methods{left:5%;top:41%}
+  .journey-visual[data-stage="0"] .r14-focus-steps{left:4%;bottom:15%;width:47%}
+
+  .journey-visual[data-stage="1"] .r14-focus-steps{
+    right:3%;top:8%;width:42%;
+  }
+  .r14-leng-scene{left:9%;top:18%;width:74%;height:55%}
+  .r14-leng-metrics{left:9%;bottom:12%}
+
+  .journey-visual[data-stage="2"] .r14-focus-steps{
+    left:4%;top:7%;width:48%;
+  }
+  .r14-acc .r14-brand-lockup{right:3%;top:4%}
+  .r14-acc-surface{left:7%;top:23%;width:82%;height:44%}
+  .r14-acc-flow{left:3%;right:3%;top:31%;bottom:33%}
+  .r14-acc-automation{
+    left:6%;right:4%;bottom:11%;
+    min-height:72px;
+  }
+
+  .r14-bayes .r14-brand-lockup{right:3%;top:4%}
+  .journey-visual[data-stage="3"] .r14-focus-steps{
+    left:4%;top:7%;width:48%;
+  }
+  .r14-bayes-surface{left:7%;top:23%;width:82%;height:43%}
+  .r14-bayes-count{left:9%;top:30%}
+  .r14-bayes-dual{left:7%;right:4%;bottom:11%;gap:6px}
+  .r14-bayes-rail{min-height:58px;padding:7px 8px}
+  .r14-bayes-rail b{font-size:9px;margin:3px 0}
+  .r14-bayes-rail p{font-size:5.5px;line-height:1.3}
+}
+
+@media(max-width:420px){
+  .r14-ubc-notebook{width:42%;right:2%}
+  .r14-ubc-methods{top:43%}
+  .r14-acc-automation{bottom:10%}
+  .r14-bayes-dual{bottom:10%}
+}
