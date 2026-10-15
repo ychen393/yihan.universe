@@ -1,0 +1,93 @@
+/* R14.1 — static Journey visual differentiation only.
+   Keeps the approved R5/R13 layout, typography and section hierarchy intact. */
+
+.r14-stage-art{position:absolute;inset:0;z-index:7;pointer-events:none}
+.r14-stage-art>[data-r14-stage]{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .28s ease}
+.journey-visual[data-stage="1"] .r14-stage-art>[data-r14-stage="1"],
+.journey-visual[data-stage="2"] .r14-stage-art>[data-r14-stage="2"],
+.journey-visual[data-stage="3"] .r14-stage-art>[data-r14-stage="3"]{opacity:1;visibility:visible}
+.r14-brand-lockup{position:absolute;display:flex;align-items:center;gap:10px;min-height:42px;padding:9px 14px;border:1px solid rgba(245,224,205,.34);border-radius:999px;background:rgba(27,39,52,.82);box-shadow:0 14px 32px rgba(5,12,20,.2);backdrop-filter:blur(16px);color:#f7e8d8}
+.r14-brand-lockup small{font-size:9px;letter-spacing:.14em;color:#b9c5cc}
+.r14-brand-lockup strong{font:600 15px/1 var(--sans);letter-spacing:.02em}
+
+/* Lengsuanling — short-form content / ecommerce rhythm */
+.journey-visual[data-stage="1"] .journey-orbit{width:71%;height:68%;transform:rotate(8deg) rotateX(69deg);border-color:rgba(252,219,191,.48)}
+.journey-visual[data-stage="1"] .journey-photo{width:48%;height:61%;min-height:325px;max-height:440px;border-radius:34px;transform:rotate(3deg) translate(18px,-6px);box-shadow:0 30px 80px rgba(7,17,29,.46),0 0 0 8px rgba(22,33,45,.32),0 0 34px rgba(239,198,163,.24)}
+.journey-visual[data-stage="1"] .journey-photo:before{content:'';position:absolute;inset:9px;border:1px solid rgba(255,240,225,.2);border-radius:26px;z-index:2}
+.r14-leng .r14-brand-lockup{left:10%;top:11%}
+.r14-leng .r14-brand-lockup strong{font-size:19px;letter-spacing:.06em}
+.r14-leng-edit{position:absolute;left:7%;top:35%;width:34%;padding:15px 16px 14px;border:1px solid rgba(235,215,198,.26);border-radius:16px;background:rgba(29,42,55,.82);backdrop-filter:blur(14px);box-shadow:0 15px 38px rgba(4,9,15,.24)}
+.r14-leng-edit>small{display:block;margin-bottom:10px;color:#e9c7a8;font-size:9px;letter-spacing:.14em}
+.r14-leng-track{display:grid;gap:8px}
+.r14-leng-track i{height:7px;border-radius:999px;background:linear-gradient(90deg,rgba(239,207,178,.86),rgba(128,160,181,.42))}
+.r14-leng-track i:nth-child(2){width:72%}.r14-leng-track i:nth-child(3){width:88%}.r14-leng-track i:nth-child(4){width:58%}
+.r14-leng-metrics{position:absolute;left:6%;bottom:13%;display:grid;grid-template-columns:repeat(3,1fr);overflow:hidden;border:1px solid rgba(235,215,198,.28);border-radius:17px;background:rgba(25,38,50,.88);box-shadow:0 16px 38px rgba(4,10,16,.24)}
+.r14-leng-metrics span{min-width:84px;padding:12px 14px;border-right:1px solid rgba(235,215,198,.14)}.r14-leng-metrics span:last-child{border-right:0}
+.r14-leng-metrics b{display:block;color:#f0cba8;font:500 16px/1.1 var(--serif)}
+.r14-leng-metrics small{display:block;margin-top:5px;color:#aeb9c0;font-size:8px;letter-spacing:.11em}
+.r14-leng-phone-ui{position:absolute;right:18%;top:21%;width:21%;height:41%;border:1px solid rgba(255,237,220,.44);border-radius:24px;background:linear-gradient(180deg,rgba(253,239,226,.2),rgba(26,39,51,.72));box-shadow:0 18px 48px rgba(7,14,22,.3)}
+.r14-leng-phone-ui:before{content:'';position:absolute;top:9px;left:38%;width:24%;height:4px;border-radius:999px;background:rgba(244,225,208,.5)}
+.r14-leng-phone-ui:after{content:'CONTENT\\A REVIEW';white-space:pre;position:absolute;left:14%;bottom:13%;color:#f3ddca;font:600 9px/1.5 var(--sans);letter-spacing:.13em}
+
+/* Accenture — enterprise workflow / defect coordination */
+.journey-visual[data-stage="2"] .journey-orbit{width:76%;height:48%;transform:rotate(-5deg) rotateX(73deg);border-color:rgba(210,197,232,.34);box-shadow:0 0 30px rgba(170,153,209,.15)}
+.journey-visual[data-stage="2"] .journey-photo{width:70%;height:46%;min-height:275px;border-radius:20px;transform:rotate(-2deg) translate(18px,9px);border-color:rgba(225,214,235,.38);box-shadow:0 30px 85px rgba(6,15,25,.5),0 0 30px rgba(171,149,209,.18)}
+.r14-acc .r14-brand-lockup{right:9%;top:10%;border-radius:15px}
+.r14-acc .r14-brand-lockup strong{font-weight:650;letter-spacing:-.01em}
+.r14-acc .r14-brand-lockup strong:before{content:'>';display:inline-block;margin-right:7px;color:#d8c2ef;font-size:20px;transform:translateY(1px)}
+.r14-acc-flow{position:absolute;left:5%;right:6%;top:25%;bottom:20%}
+.r14-acc-node{position:absolute;min-width:112px;padding:12px 14px;border:1px solid rgba(222,213,232,.28);border-radius:11px;background:rgba(29,42,55,.9);box-shadow:0 13px 32px rgba(4,10,16,.22)}
+.r14-acc-node small{display:block;color:#aab6bf;font-size:8px;letter-spacing:.12em}.r14-acc-node b{display:block;margin-top:5px;color:#f0e5dc;font:500 14px/1.25 var(--sans)}
+.r14-acc-node.n1{left:0;top:36%}.r14-acc-node.n2{left:25%;top:4%}.r14-acc-node.n3{right:23%;top:21%}.r14-acc-node.n4{right:0;bottom:6%}
+.r14-acc-line{position:absolute;height:1px;background:linear-gradient(90deg,rgba(216,194,235,.72),rgba(218,205,232,.14));transform-origin:left center}
+.r14-acc-line.l1{left:18%;top:49%;width:24%;transform:rotate(-25deg)}.r14-acc-line.l2{left:41%;top:26%;width:26%;transform:rotate(11deg)}.r14-acc-line.l3{left:66%;top:41%;width:25%;transform:rotate(30deg)}
+.r14-acc-status{position:absolute;left:9%;bottom:8%;display:flex;gap:8px}
+.r14-acc-status span{padding:8px 10px;border:1px solid rgba(225,214,235,.23);border-radius:999px;background:rgba(27,40,52,.82);color:#c8d0d6;font-size:8px;letter-spacing:.11em}
+.r14-acc-status span:nth-child(2){color:#efc7b3}.r14-acc-status span:nth-child(3){color:#c9d9c9}
+
+/* Bayestone — benchmark + agent application */
+.journey-visual[data-stage="3"] .journey-orbit{width:82%;height:61%;transform:rotate(24deg) rotateX(67deg);border-color:rgba(173,214,224,.33);box-shadow:0 0 34px rgba(154,206,216,.16)}
+.journey-visual[data-stage="3"] .journey-photo{width:61%;height:43%;min-height:260px;border-radius:24px;transform:rotate(2deg) translate(6px,-35px);border-color:rgba(186,220,225,.38);box-shadow:0 30px 85px rgba(6,15,25,.5),0 0 32px rgba(140,202,213,.18)}
+.r14-bayes .r14-brand-lockup{left:9%;top:9%}.r14-bayes .r14-brand-lockup strong{font-family:var(--serif);font-size:17px}
+.r14-bayes-grid{position:absolute;right:7%;top:17%;width:38%;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.r14-bayes-grid span{aspect-ratio:1;display:grid;place-items:center;border:1px solid rgba(194,221,225,.18);border-radius:9px;background:rgba(26,42,53,.83);color:#cbd5d9;font-size:8px;box-shadow:0 8px 24px rgba(3,9,14,.17)}
+.r14-bayes-grid span:nth-child(1),.r14-bayes-grid span:nth-child(6),.r14-bayes-grid span:nth-child(11){background:rgba(72,97,107,.72);color:#f0dcc8}
+.r14-bayes-dual{position:absolute;left:5%;right:5%;bottom:7%;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.r14-bayes-rail{min-height:108px;padding:14px 16px;border:1px solid rgba(194,221,225,.2);border-radius:15px;background:rgba(27,43,54,.88);box-shadow:0 15px 36px rgba(4,10,16,.22)}
+.r14-bayes-rail.agent{background:linear-gradient(145deg,rgba(63,54,70,.82),rgba(27,43,54,.9));border-color:rgba(225,198,222,.22)}
+.r14-bayes-rail small{display:block;color:#a8bac2;font-size:8px;letter-spacing:.14em}
+.r14-bayes-rail b{display:block;margin:6px 0 8px;color:#f1e1d2;font:500 16px/1.2 var(--serif)}
+.r14-bayes-rail p{margin:0;color:#b9c4ca;font-size:9px;line-height:1.55}
+.r14-bayes-count{position:absolute;left:6%;top:28%;padding:11px 13px;border:1px solid rgba(194,221,225,.22);border-radius:12px;background:rgba(27,42,54,.85);box-shadow:0 13px 30px rgba(4,10,16,.2)}
+.r14-bayes-count small{display:block;color:#9fb1ba;font-size:7px;letter-spacing:.13em}.r14-bayes-count strong{display:block;margin-top:4px;color:#f0cfaf;font:500 20px/1 var(--serif)}
+
+/* UBC remains the approved academic-origin visual. */
+.journey-visual[data-stage="0"] .r14-stage-art{display:none}
+
+@media(max-width:1200px){
+  .r14-leng-edit{left:3%;width:38%}.r14-leng-metrics{left:3%}
+  .r14-acc-node{min-width:98px;padding:10px}
+  .r14-bayes-grid{right:3%;width:40%}
+}
+@media(max-width:780px){
+  .r14-stage-art{inset:0 5%}
+  .journey-visual[data-stage="1"] .journey-photo,.journey-visual[data-stage="2"] .journey-photo,.journey-visual[data-stage="3"] .journey-photo{min-height:0}
+  .journey-visual[data-stage="1"] .journey-photo{width:40%;height:70%;border-radius:22px;transform:rotate(2deg) translate(18px,0)}
+  .r14-leng .r14-brand-lockup{left:4%;top:7%;padding:6px 9px}.r14-leng .r14-brand-lockup strong{font-size:13px}
+  .r14-leng-edit{left:3%;top:39%;width:35%;padding:9px}.r14-leng-edit>small{font-size:7px;margin-bottom:6px}.r14-leng-track{gap:5px}.r14-leng-track i{height:4px}
+  .r14-leng-metrics{left:2%;bottom:7%}.r14-leng-metrics span{min-width:57px;padding:7px}.r14-leng-metrics b{font-size:11px}.r14-leng-metrics small{font-size:6px}
+  .r14-leng-phone-ui{right:20%;top:19%;width:18%;height:47%;border-radius:15px}
+  .journey-visual[data-stage="2"] .journey-photo{width:58%;height:53%;transform:rotate(-1deg) translate(20px,2px)}
+  .r14-acc .r14-brand-lockup{right:4%;top:6%;padding:6px 9px}.r14-acc .r14-brand-lockup strong{font-size:12px}
+  .r14-acc-flow{left:1%;right:1%;top:21%;bottom:20%}.r14-acc-node{min-width:76px;padding:7px 8px;border-radius:8px}.r14-acc-node small{font-size:6px}.r14-acc-node b{font-size:9px}
+  .r14-acc-status{left:3%;bottom:4%;gap:4px}.r14-acc-status span{font-size:6px;padding:5px 7px}
+  .journey-visual[data-stage="3"] .journey-photo{width:50%;height:47%;transform:rotate(1deg) translate(4px,-17px)}
+  .r14-bayes .r14-brand-lockup{left:4%;top:5%;padding:6px 9px}.r14-bayes .r14-brand-lockup strong{font-size:12px}
+  .r14-bayes-grid{right:2%;top:13%;width:35%;gap:4px}.r14-bayes-grid span{font-size:6px;border-radius:6px}
+  .r14-bayes-count{left:3%;top:28%;padding:7px}.r14-bayes-count strong{font-size:14px}
+  .r14-bayes-dual{left:1%;right:1%;bottom:3%;gap:5px}.r14-bayes-rail{min-height:65px;padding:8px 9px;border-radius:9px}.r14-bayes-rail small{font-size:6px}.r14-bayes-rail b{font-size:10px;margin:3px 0}.r14-bayes-rail p{font-size:6px;line-height:1.35}
+}
+@media(max-width:420px){
+  .r14-stage-art{inset:0}.r14-leng-edit{display:none}.r14-leng-phone-ui{right:18%;width:21%}.r14-acc-line{opacity:.55}.r14-bayes-grid{width:38%}.r14-bayes-rail p{display:none}
+}
+@media(prefers-reduced-motion:reduce){.r14-stage-art>[data-r14-stage]{transition:none}}
