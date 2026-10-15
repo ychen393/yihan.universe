@@ -91,3 +91,120 @@
   .r14-stage-art{inset:0}.r14-leng-edit{display:none}.r14-leng-phone-ui{right:18%;width:21%}.r14-acc-line{opacity:.55}.r14-bayes-grid{width:38%}.r14-bayes-rail p{display:none}
 }
 @media(prefers-reduced-motion:reduce){.r14-stage-art>[data-r14-stage]{transition:none}}
+
+
+/* R14.1 pass 2 — visual reduction + smooth image handoff */
+.r14-static-fix .journey-photo{
+  background:linear-gradient(145deg,#34495d,#263646 62%,#22313f);
+}
+.r14-static-fix .journey-photo img{
+  position:relative;
+  z-index:1;
+}
+.r14-static-fix .journey-photo .journey-img-next{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:2;
+  opacity:0;
+  transition:opacity .34s ease;
+}
+.r14-static-fix .journey-photo .journey-img-next.is-visible{opacity:1}
+.r14-static-fix .journey-photo .visual-shine{z-index:3}
+
+/* Cold-and-sour spirit: one dominant short-video metaphor, fewer floating panels. */
+.r14-leng-edit{display:none}
+.r14-leng-phone-ui{
+  right:16%;
+  top:18%;
+  width:23%;
+  height:47%;
+  border-radius:28px;
+  background:
+    linear-gradient(180deg,rgba(253,239,226,.08),rgba(26,39,51,.3)),
+    rgba(27,40,52,.2);
+}
+.r14-leng-phone-ui:after{
+  content:'SHORT VIDEO\\A CONTENT';
+  bottom:11%;
+}
+.r14-leng-metrics{
+  left:9%;
+  bottom:12%;
+  grid-template-columns:repeat(3,auto);
+  border-radius:999px;
+  overflow:hidden;
+  background:rgba(26,39,51,.76);
+}
+.r14-leng-metrics span{min-width:76px;padding:9px 13px}
+.r14-leng-metrics b{font:500 14px/1 var(--serif)}
+.r14-leng-metrics small{font-size:7px}
+.journey-visual[data-stage="1"] .journey-photo img{filter:saturate(.78) brightness(.82) contrast(1.02)}
+
+/* Accenture: let the workflow carry the meaning; make the concept image secondary. */
+.journey-visual[data-stage="2"] .journey-photo img{
+  filter:saturate(.56) brightness(.56) contrast(1.04);
+}
+.r14-acc-flow{
+  left:7%;
+  right:7%;
+  top:30%;
+  bottom:26%;
+}
+.r14-acc-node{background:rgba(26,39,52,.94)}
+.r14-acc-status{left:10%;bottom:12%}
+
+/* Bayestone: replace dashboard density with a cleaner dual-track story. */
+.r14-bayes-grid{
+  right:8%;
+  top:18%;
+  width:auto;
+  display:flex;
+  gap:6px;
+}
+.r14-bayes-grid span{
+  aspect-ratio:auto;
+  min-width:auto;
+  padding:7px 9px;
+  border-radius:999px;
+  font-size:7px;
+}
+.r14-bayes-grid span:nth-child(n+5){display:none}
+.r14-bayes-count{
+  left:8%;
+  top:25%;
+}
+.r14-bayes-dual{
+  left:7%;
+  right:7%;
+  bottom:16%;
+  gap:12px;
+}
+.r14-bayes-rail{
+  min-height:96px;
+  padding:14px 16px;
+}
+.journey-visual[data-stage="3"] .journey-photo img{
+  filter:saturate(.62) brightness(.62) contrast(1.02);
+}
+
+/* Keep the fixed Journey progress rail visually separate from R14 overlays. */
+.r14-static-fix .journey-track{z-index:12}
+.r14-static-fix .journey-compass{z-index:12}
+
+@media(max-width:780px){
+  .r14-leng-phone-ui{right:18%;top:17%;width:20%;height:50%}
+  .r14-leng-metrics{left:5%;bottom:8%}
+  .r14-acc-flow{left:3%;right:3%;top:26%;bottom:24%}
+  .r14-acc-status{left:4%;bottom:5%}
+  .r14-bayes-grid{right:4%;top:14%;gap:3px}
+  .r14-bayes-grid span{padding:4px 6px;font-size:5.5px}
+  .r14-bayes-dual{left:2%;right:2%;bottom:10%;gap:5px}
+}
+@media(max-width:420px){
+  .r14-leng-phone-ui{right:17%;width:23%}
+  .r14-leng-metrics span:nth-child(3){display:none}
+  .r14-bayes-grid span:nth-child(n+4){display:none}
+}
