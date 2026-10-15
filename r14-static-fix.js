@@ -43,44 +43,54 @@
   function stageMarkup(){
     var zh=document.documentElement.lang!=='en';
     var posting=zh?'时段':'TIME';
-    var benchmarkCopy=zh?'能力拆解 · 测试集 · 质量 × 延迟 × 成本':'Capabilities · test suites · quality × latency × cost';
-    var agentCopy=zh?'喵聪聪 · 小马快跑 · workflow · 节点验收 · 异常案例':'Miaocongcong · Xiaoma Kuaipao · workflow · node checks · exceptions';
+    var focus={
+      ubc:zh?['从商业问题出发','用统计方法验证','把两种视角带到后面的项目']:['Start with business questions','Test them with statistics','Carry both perspectives forward'],
+      leng:zh?['先把内容做出来','再看 GMV / CTR / 流量反馈','把观察变成内容与发布时间建议']:['Make the content','Read GMV / CTR / traffic signals','Turn observations into content and timing recommendations'],
+      acc:zh?['执行 SIT / UAT','让缺陷、阻塞和依赖可见','复测闭环，并把重复流程做成工具']:['Execute SIT / UAT','Make defects, blockers and dependencies visible','Close the loop with retesting and workflow tools'],
+      bayes:zh?['把业务任务拆成 74 项能力','用 148 套测试集比较质量 / 延迟 / 成本','把模型能力放进 Agent workflow 看真实表现']:['Break business work into 74 capabilities','Use 148 test suites to compare quality / latency / cost','Put model capability inside Agent workflows']
+    };
+    function focusSteps(items){
+      return '<div class="r14-focus-steps">'+items.map(function(item,i){return '<span data-focus-step="'+i+'"><em>0'+(i+1)+'</em><b>'+item+'</b></span>';}).join('')+'</div>';
+    }
 
     return ''+
       '<div class="r14-stage-art" aria-hidden="true">'+
+        '<div class="r14-ubc" data-r14-stage="0">'+
+          '<div class="r14-brand-lockup"><strong>UBC · Statistics</strong><small>ACADEMIC ORIGIN</small></div>'+
+          '<div class="r14-ubc-path"><span>Business</span><i>→</i><span>Statistics</span></div>'+
+          focusSteps(focus.ubc)+
+        '</div>'+
         '<div class="r14-leng" data-r14-stage="1">'+
           '<div class="r14-brand-lockup"><strong>冷酸灵</strong><small>CONTENT OPS</small></div>'+
-          '<div class="r14-leng-edit"><small>EDIT · PUBLISH · REVIEW</small><div class="r14-leng-track"><i></i><i></i><i></i><i></i></div></div>'+
           '<div class="r14-leng-phone-ui"></div>'+
           '<div class="r14-leng-metrics">'+
             '<span><b>GMV</b><small>PERFORMANCE</small></span>'+
             '<span><b>CTR</b><small>RESPONSE</small></span>'+
             '<span><b>'+posting+'</b><small>POSTING</small></span>'+
           '</div>'+
+          focusSteps(focus.leng)+
         '</div>'+
         '<div class="r14-acc" data-r14-stage="2">'+
           '<div class="r14-brand-lockup"><strong>Accenture</strong><small>ENTERPRISE SYSTEMS</small></div>'+
           '<div class="r14-acc-flow">'+
             '<i class="r14-acc-line l1"></i><i class="r14-acc-line l2"></i><i class="r14-acc-line l3"></i>'+
-            '<div class="r14-acc-node n1"><small>01</small><b>Test Case</b></div>'+
-            '<div class="r14-acc-node n2"><small>02</small><b>Fail</b></div>'+
-            '<div class="r14-acc-node n3"><small>03</small><b>Defect</b></div>'+
-            '<div class="r14-acc-node n4"><small>04</small><b>Retest → Pass</b></div>'+
+            '<div class="r14-acc-node n1" data-flow-step="0"><small>01</small><b>Test Case</b></div>'+
+            '<div class="r14-acc-node n2" data-flow-step="0"><small>02</small><b>Fail</b></div>'+
+            '<div class="r14-acc-node n3" data-flow-step="1"><small>03</small><b>Defect</b></div>'+
+            '<div class="r14-acc-node n4" data-flow-step="2"><small>04</small><b>Retest → Pass</b></div>'+
           '</div>'+
           '<div class="r14-acc-status"><span>JIRA / TRACKER</span><span>BLOCKER</span><span>DEPENDENCY</span></div>'+
+          focusSteps(focus.acc)+
         '</div>'+
         '<div class="r14-bayes" data-r14-stage="3">'+
           '<div class="r14-brand-lockup"><strong>BAYESTONE · 贝事音准</strong><small>AI SYSTEMS</small></div>'+
           '<div class="r14-bayes-count"><small>EVALUATION TAXONOMY</small><strong>74 × 148</strong></div>'+
-          '<div class="r14-bayes-grid">'+
-            '<span>GPT</span><span>Claude</span><span>Qwen</span><span>DeepSeek</span>'+
-            '<span>Brief</span><span>Long</span><span>Rules</span><span>KB</span>'+
-            '<span>Q</span><span>L</span><span>C</span><span>↗</span>'+
-          '</div>'+
+          '<div class="r14-bayes-grid"><span>GPT</span><span>Claude</span><span>Qwen</span><span>DeepSeek</span></div>'+
           '<div class="r14-bayes-dual">'+
-            '<div class="r14-bayes-rail"><small>EVALUATE AI</small><b>LLM Benchmark</b><p>'+benchmarkCopy+'</p></div>'+
-            '<div class="r14-bayes-rail agent"><small>BUILD WITH AI</small><b>Agent Application</b><p>'+agentCopy+'</p></div>'+
+            '<div class="r14-bayes-rail benchmark"><small>EVALUATE AI</small><b>LLM Benchmark</b><p>'+(zh?'能力拆解 · 测试集 · 质量 × 延迟 × 成本':'Capabilities · test suites · quality × latency × cost')+'</p></div>'+
+            '<div class="r14-bayes-rail agent"><small>BUILD WITH AI</small><b>Agent Application</b><p>'+(zh?'喵聪聪 · 小马快跑 · workflow · 节点验收 · 异常案例':'Miaocongcong · Xiaoma Kuaipao · workflow · node checks · exceptions')+'</p></div>'+
           '</div>'+
+          focusSteps(focus.bayes)+
         '</div>'+
       '</div>';
   }
