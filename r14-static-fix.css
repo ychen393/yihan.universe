@@ -1108,3 +1108,56 @@
   .r14-acc-automation{bottom:10%}
   .r14-bayes-dual{bottom:10%}
 }
+
+
+/* R14.1 pass 7 — keep Journey compass/star out of title and focus safe zones. */
+.r14-static-fix .journey-compass{
+  top:2.5%;
+  right:3.5%;
+  z-index:14;
+  flex-direction:row;
+  align-items:center;
+  gap:6px;
+  padding:5px 8px;
+  border:1px solid rgba(239,218,197,.14);
+  border-radius:999px;
+  background:rgba(29,42,54,.42);
+  backdrop-filter:blur(10px);
+  font-size:9px;
+  line-height:1;
+  letter-spacing:.08em;
+  white-space:nowrap;
+}
+.r14-static-fix .journey-compass span:first-child{
+  font-size:17px;
+  line-height:1;
+}
+.r14-brand-lockup{
+  max-width:calc(100% - 110px);
+  white-space:nowrap;
+}
+.r14-brand-lockup strong,
+.r14-brand-lockup small{
+  white-space:nowrap;
+}
+.journey-visual[data-stage="1"] .r14-focus-steps span,
+.journey-visual[data-stage="2"] .r14-focus-steps span,
+.journey-visual[data-stage="3"] .r14-focus-steps span{
+  max-width:calc(100% - 18px);
+}
+.r14-focus-steps b{
+  padding-right:14px;
+}
+
+@media(max-width:780px){
+  .r14-static-fix .journey-compass{
+    top:1.8%;
+    right:2.5%;
+    gap:4px;
+    padding:4px 6px;
+    font-size:7px;
+  }
+  .r14-static-fix .journey-compass span:first-child{font-size:13px}
+  .r14-brand-lockup{max-width:calc(100% - 78px)}
+  .r14-focus-steps b{padding-right:8px}
+}
