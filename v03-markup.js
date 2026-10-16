@@ -22,7 +22,7 @@ function work(t,d,locale,url,esc,stars){
   const result=p=>esc(safe(p).result||'');
   const tag=p=>esc(safe(p).tag||'');
 
-  return `<section id="work" class="work-section r151-work-section" aria-labelledby="work-heading">
+  return `<section id="work" class="work-section r151-work-section" aria-label="${zh?'作品':'Work'}">
     ${stars(130,'work-stars')}
 
     <div class="r151-transition" aria-labelledby="r151-transition-title">
@@ -39,12 +39,6 @@ function work(t,d,locale,url,esc,stars){
       </div>
     </div>
 
-    <div class="r151-work-intro">
-      <p class="eyebrow">${esc(t.workEyebrow)}</p>
-      <h2 id="work-heading">${zh?'四个问题，四种不同的解法。':'Four problems. Four different ways to build an answer.'}</h2>
-      <p>${zh?'这里不再按“卡片”浏览。向下滚动，每一屏只进入一个项目；想看完整过程，再进入对应 Case Study。':'Scroll through one project at a time. Each screen is a different working system; open the case study when you want the full story.'}</p>
-    </div>
-
     <div class="r151-story" data-r151-active="agentlab">
       <div class="r151-stage" aria-live="polite">
         <nav class="r151-index" aria-label="${zh?'重点项目':'Featured projects'}">
@@ -57,13 +51,15 @@ function work(t,d,locale,url,esc,stars){
         <article class="r151-scene r151-agent" data-r151-scene="agentlab" aria-hidden="false">
           <div class="r151-copy">
             <p class="r151-kicker">01 · AI AGENT / EVALUATION</p>
+            <div class="r152-context">${zh?'独立项目 · AI Agent 评测与优化':'Independent Project · AI Agent Evaluation'}</div>
             <h3>${name(agent)}</h3>
             <p class="r151-hook">${intro(agent)}</p>
-            <div class="r151-brief">
+            <div class="r151-brief r152-recruiter-brief">
               <div><span>${zh?'问题':'Problem'}</span><p>${problem(agent)}</p></div>
               <div><span>${zh?'我的贡献':'My contribution'}</span><p>${role(agent)}</p></div>
+              <div><span>${zh?'证据边界':'Scope'}</span><p>${agent?esc(agent.limit):''}</p></div>
             </div>
-            <div class="r151-proof"><strong>15/16 → 16/16</strong><span>${zh?'受控完整验证':'controlled full validation'}</span></div>
+            <div class="r151-proof"><strong>15/16 → 16/16</strong><span>${zh?'受控完整验证 · fixed regression 5/7 → 7/7':'controlled validation · fixed regression 5/7 → 7/7'}</span></div>
             <a data-nav class="r151-open" href="${url('/work/agentlab')}">${zh?'进入 AgentLab Case Study':'Open AgentLab case study'} ↗</a>
           </div>
           <div class="r151-mechanism r151-agent-mechanism" aria-hidden="true">
@@ -80,11 +76,13 @@ function work(t,d,locale,url,esc,stars){
         <article class="r151-scene r151-benchmark" data-r151-scene="benchmark" aria-hidden="true">
           <div class="r151-copy">
             <p class="r151-kicker">02 · LLM / BUSINESS EVALUATION</p>
+            <div class="r152-context">BAYESTONE · ${zh?'2026.09—至今 · 实习':'Sep 2026–Present · Internship'}</div>
             <h3>${name(benchmark)}</h3>
             <p class="r151-hook">${intro(benchmark)}</p>
-            <div class="r151-brief">
+            <div class="r151-brief r152-recruiter-brief">
               <div><span>${zh?'问题':'Problem'}</span><p>${problem(benchmark)}</p></div>
               <div><span>${zh?'我的贡献':'My contribution'}</span><p>${role(benchmark)}</p></div>
+              <div><span>${zh?'当前状态':'Current status'}</span><p>${benchmark?esc(benchmark.limit):''}</p></div>
             </div>
             <div class="r151-proof"><strong>74 × 148</strong><span>${zh?'二级能力 × 已落地测试集':'capabilities × implemented test suites'}</span></div>
             <a data-nav class="r151-open" href="${url('/work/benchmark')}">${zh?'进入 LLM Benchmark Case Study':'Open LLM Benchmark case study'} ↗</a>
@@ -105,10 +103,12 @@ function work(t,d,locale,url,esc,stars){
         <article class="r151-scene r151-accenture" data-r151-scene="accenture" aria-hidden="true">
           <div class="r151-copy">
             <p class="r151-kicker">03 · ENTERPRISE / WORKFLOW AUTOMATION</p>
-            <h3>Accenture Enterprise Automation</h3>
+            <div class="r152-context">Accenture · ${zh?'2026.05—09 · 企业系统实习':'May–Sep 2026 · Enterprise Systems Internship'}</div>
+            <h3>Workflow Automation</h3>
             <p class="r151-hook">${zh?'把重复协调、状态汇总和培训资料整理，变成三个可复用的内部流程工具。':'Turn repeated coordination, status reporting and training preparation into three reusable internal workflow tools.'}</p>
-            <div class="r151-brief">
+            <div class="r151-brief r152-recruiter-brief">
               <div><span>${zh?'问题':'Problem'}</span><p>${zh?'任务、测试状态、缺陷和培训材料分散在多个协作工具与项目文档里。':'Tasks, test status, defects and training material were scattered across collaboration tools and project documents.'}</p></div>
+              <div><span>${zh?'我的贡献':'My contribution'}</span><p>${zh?'实习期间提出需求、设计流程、检查输出并迭代；部分实现使用 GitHub Copilot 辅助。':'During the internship, I defined needs, designed workflows, checked outputs and iterated; parts of implementation used GitHub Copilot assistance.'}</p></div>
               <div><span>${zh?'证据边界':'Evidence boundary'}</span><p>${zh?'Task Summary 被同事实际使用；生成的培训材料被团队使用；Dashboard 已交接，后续采用程度未确认。':'Task Summary was used by colleagues; generated training materials were used by the team; Dashboard was handed off, with later adoption unverified.'}</p></div>
             </div>
             <div class="r151-subprojects">
@@ -133,11 +133,13 @@ function work(t,d,locale,url,esc,stars){
         <article class="r151-scene r151-requirement" data-r151-scene="requirement" aria-hidden="true">
           <div class="r151-copy">
             <p class="r151-kicker">04 · AI PRODUCT / REQUIREMENT SYSTEM</p>
+            <div class="r152-context">${zh?'独立产品 · 可运行 MVP':'Independent Product · Working MVP'}</div>
             <h3>${name(requirement)}</h3>
             <p class="r151-hook">${intro(requirement)}</p>
-            <div class="r151-brief">
+            <div class="r151-brief r152-recruiter-brief">
               <div><span>${zh?'问题':'Problem'}</span><p>${problem(requirement)}</p></div>
               <div><span>${zh?'我的贡献':'My contribution'}</span><p>${role(requirement)}</p></div>
+              <div><span>${zh?'当前状态':'Current status'}</span><p>${requirement?esc(requirement.result+' '+requirement.limit):''}</p></div>
             </div>
             <div class="r151-proof"><strong>v1 → v2 → confirmed</strong><span>${zh?'人工确认边界保留':'human confirmation stays explicit'}</span></div>
             <a data-nav class="r151-open" href="${url('/work/requirement')}">${zh?'进入 Requirement Engine Case Study':'Open Requirement Engine case study'} ↗</a>
@@ -177,7 +179,19 @@ function work(t,d,locale,url,esc,stars){
         <p>${zh?'这里回到更安静的目录模式。每一个入口都保留原有二级 Case Study 信息。':'A quieter directory for everything else. Every entry keeps its existing second-page case study.'}</p>
       </div>
       <div class="r151-directory-grid">
-        ${more.map(p=>`<a data-nav class="r151-directory-item" href="${url('/work/'+p.id)}"><small>${tag(p)}</small><strong>${name(p)}</strong><span>${intro(p)}</span><em>↗</em></a>`).join('')}
+        ${more.map(p=>{
+          const contextMap={
+            'content-qa':zh?'独立原型 · 营销内容质检':'Independent Prototype · Content QA',
+            'airbnb':zh?'UBC 统计课程 · 小组项目':'UBC Statistics · Group Project',
+            'sp500':zh?'UBC 统计研究 · 小组项目':'UBC Statistics · Group Research',
+            'minecraft':zh?'UBC 课程 · 小组项目':'UBC Course · Group Project',
+            'deloitte':zh?'商业策略竞赛':'Business Strategy Competition',
+            'character':zh?'独立创意产品实验':'Independent Creative Product',
+            'liferpg':zh?'独立产品 · Local-first 原型':'Independent Product · Local-first Prototype'
+          };
+          const context=contextMap[p.id]||tag(p);
+          return `<a data-nav class="r151-directory-item" href="${url('/work/'+p.id)}"><small>${esc(context)}</small><strong>${name(p)}</strong><span>${intro(p)}</span><em>↗</em></a>`;
+        }).join('')}
       </div>
     </div>
   </section>`;
