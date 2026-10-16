@@ -57,6 +57,8 @@ function work(t,d,locale,url,esc,stars){
             <div class="r151-brief r152-recruiter-brief">
               <div><span>${zh?'问题':'Problem'}</span><p>${problem(agent)}</p></div>
               <div><span>${zh?'我的贡献':'My contribution'}</span><p>${role(agent)}</p></div>
+              <div><span>${zh?'方法':'Method'}</span><p>${agent?esc(agent.method):''}</p></div>
+              <div><span>${zh?'结果':'Evidence'}</span><p>${agent?esc(agent.result):''}</p></div>
               <div><span>${zh?'证据边界':'Scope'}</span><p>${agent?esc(agent.limit):''}</p></div>
             </div>
             <div class="r151-proof"><strong>15/16 → 16/16</strong><span>${zh?'受控完整验证 · fixed regression 5/7 → 7/7':'controlled validation · fixed regression 5/7 → 7/7'}</span></div>
@@ -82,6 +84,8 @@ function work(t,d,locale,url,esc,stars){
             <div class="r151-brief r152-recruiter-brief">
               <div><span>${zh?'问题':'Problem'}</span><p>${problem(benchmark)}</p></div>
               <div><span>${zh?'我的贡献':'My contribution'}</span><p>${role(benchmark)}</p></div>
+              <div><span>${zh?'方法':'Method'}</span><p>${benchmark?esc(benchmark.method):''}</p></div>
+              <div><span>${zh?'结果':'Evidence'}</span><p>${benchmark?esc(benchmark.result):''}</p></div>
               <div><span>${zh?'当前状态':'Current status'}</span><p>${benchmark?esc(benchmark.limit):''}</p></div>
             </div>
             <div class="r151-proof"><strong>74 × 148</strong><span>${zh?'二级能力 × 已落地测试集':'capabilities × implemented test suites'}</span></div>
@@ -109,6 +113,16 @@ function work(t,d,locale,url,esc,stars){
             <div class="r151-brief r152-recruiter-brief">
               <div><span>${zh?'问题':'Problem'}</span><p>${zh?'任务、测试状态、缺陷和培训材料分散在多个协作工具与项目文档里。':'Tasks, test status, defects and training material were scattered across collaboration tools and project documents.'}</p></div>
               <div><span>${zh?'我的贡献':'My contribution'}</span><p>${zh?'实习期间提出需求、设计流程、检查输出并迭代；部分实现使用 GitHub Copilot 辅助。':'During the internship, I defined needs, designed workflows, checked outputs and iterated; parts of implementation used GitHub Copilot assistance.'}</p></div>
+              <div class="r153-detail-row"><span>${zh?'方法':'Method'}</span><div class="r153-detail-stack">
+                <p><b>Task Summary</b>${task?esc(task.method):''}</p>
+                <p><b>SIT / Defect Dashboard</b>${dashboard?esc(dashboard.method):''}</p>
+                <p><b>Training Generator</b>${training?esc(training.method):''}</p>
+              </div></div>
+              <div class="r153-detail-row"><span>${zh?'结果':'Evidence'}</span><div class="r153-detail-stack">
+                <p><b>Task Summary</b>${task?esc(task.result):''}</p>
+                <p><b>SIT / Defect Dashboard</b>${dashboard?esc(dashboard.result):''}</p>
+                <p><b>Training Generator</b>${training?esc(training.result):''}</p>
+              </div></div>
               <div><span>${zh?'证据边界':'Evidence boundary'}</span><p>${zh?'Task Summary 被同事实际使用；生成的培训材料被团队使用；Dashboard 已交接，后续采用程度未确认。':'Task Summary was used by colleagues; generated training materials were used by the team; Dashboard was handed off, with later adoption unverified.'}</p></div>
             </div>
             <div class="r151-subprojects">
@@ -139,7 +153,9 @@ function work(t,d,locale,url,esc,stars){
             <div class="r151-brief r152-recruiter-brief">
               <div><span>${zh?'问题':'Problem'}</span><p>${problem(requirement)}</p></div>
               <div><span>${zh?'我的贡献':'My contribution'}</span><p>${role(requirement)}</p></div>
-              <div><span>${zh?'当前状态':'Current status'}</span><p>${requirement?esc(requirement.result+' '+requirement.limit):''}</p></div>
+              <div><span>${zh?'方法':'Method'}</span><p>${requirement?esc(requirement.method):''}</p></div>
+              <div><span>${zh?'结果':'Evidence'}</span><p>${requirement?esc(requirement.result):''}</p></div>
+              <div><span>${zh?'当前状态':'Current status'}</span><p>${requirement?esc(requirement.limit):''}</p></div>
             </div>
             <div class="r151-proof"><strong>v1 → v2 → confirmed</strong><span>${zh?'人工确认边界保留':'human confirmation stays explicit'}</span></div>
             <a data-nav class="r151-open" href="${url('/work/requirement')}">${zh?'进入 Requirement Engine Case Study':'Open Requirement Engine case study'} ↗</a>
