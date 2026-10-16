@@ -659,3 +659,140 @@
 @media(prefers-reduced-motion:reduce){
   .r151-scene,.r151-stage,.r151-index button b,.r151-index button:before,.r151-directory-item em{transition:none!important}
 }
+
+
+/* R15.2 — recruiter scan hierarchy */
+
+/* Shorter chapter transition: keep the emotional handoff without delaying the first project. */
+.r151-transition{
+  min-height:58svh;
+  padding:86px 28px 42px;
+}
+.r151-transition h2{
+  max-width:900px;
+  font-size:clamp(38px,4.3vw,62px);
+  line-height:1.1;
+}
+.r151-transition p:not(.eyebrow){
+  max-width:650px;
+  font-size:14px;
+}
+.r151-transition-line{
+  height:72px;
+  margin-top:25px;
+}
+.r151-transition-line>span{height:34px}
+.r151-transition-line>i:before{height:42px}
+
+/* Recruiter context sits above the project name and answers "what kind of work is this?" immediately. */
+.r152-context{
+  display:inline-flex;
+  align-items:center;
+  min-height:27px;
+  margin:0 0 13px;
+  padding:5px 9px;
+  border:1px solid rgba(229,202,176,.18);
+  border-radius:999px;
+  background:rgba(30,45,56,.38);
+  color:#c8b6a4;
+  font-size:8px;
+  font-weight:700;
+  line-height:1.25;
+  letter-spacing:.09em;
+}
+
+/* The project title is no longer the only dominant signal. */
+.r151-copy{
+  max-width:610px;
+}
+.r151-copy h3{
+  max-width:610px;
+  font-size:clamp(40px,4vw,62px);
+  line-height:1.02;
+}
+.r151-hook{
+  max-width:560px;
+  margin:15px 0 21px;
+  font-size:16px;
+  line-height:1.6;
+}
+
+/* Problem / contribution / status now read as primary recruiting evidence, not footnotes. */
+.r152-recruiter-brief{
+  max-width:570px;
+  gap:0;
+  border-top:1px solid rgba(235,213,192,.15);
+}
+.r152-recruiter-brief>div{
+  display:grid;
+  grid-template-columns:112px 1fr;
+  gap:14px;
+  align-items:start;
+  padding:11px 0 12px;
+  border-top:0;
+  border-bottom:1px solid rgba(235,213,192,.10);
+}
+.r152-recruiter-brief span{
+  margin:2px 0 0;
+  color:#a9b5bb;
+  font-size:8px;
+  line-height:1.4;
+}
+.r152-recruiter-brief p{
+  color:#d4d6d7;
+  font-size:11.5px;
+  line-height:1.55;
+}
+
+.r151-proof{
+  margin:20px 0 17px;
+}
+.r151-proof strong{
+  font-size:clamp(25px,2.2vw,35px);
+}
+.r151-proof span{
+  max-width:210px;
+  color:#a6b1b7;
+  line-height:1.45;
+}
+
+/* Keep the visual mechanism important, but do not let it overwhelm the recruiting copy. */
+.r151-scene{
+  grid-template-columns:minmax(440px,.9fr) minmax(0,1.1fr);
+  gap:2.5vw;
+}
+.r151-mechanism{
+  height:min(64vh,570px);
+  min-height:455px;
+}
+
+/* Directory context should make project provenance obvious without opening the case study. */
+.r151-directory-item small{
+  color:#a8b4ba;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.10em;
+}
+
+@media(max-width:1160px){
+  .r151-copy h3{font-size:52px}
+  .r151-scene{grid-template-columns:minmax(370px,.9fr) minmax(0,1.1fr)}
+  .r152-recruiter-brief>div{grid-template-columns:100px 1fr}
+}
+@media(max-width:900px){
+  .r151-transition{min-height:520px}
+  .r151-copy h3{font-size:52px}
+  .r151-mechanism{height:410px;min-height:410px}
+}
+@media(max-width:620px){
+  .r151-transition{min-height:500px;padding:72px 18px 32px}
+  .r151-transition h2{font-size:39px}
+  .r152-context{font-size:7px;margin-bottom:10px}
+  .r151-copy h3{font-size:42px}
+  .r152-recruiter-brief>div{
+    grid-template-columns:1fr;
+    gap:4px;
+    padding:10px 0;
+  }
+  .r152-recruiter-brief p{font-size:10.5px}
+}
