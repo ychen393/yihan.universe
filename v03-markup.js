@@ -29,10 +29,10 @@ function work(t,d,locale,url,esc,stars){
       <div class="r151-transition-inner">
         <p class="eyebrow">JOURNEY → WORK</p>
         <h2 id="r151-transition-title">
-          <span>${zh?'有些路是被分配的。':'Some paths were assigned.'}</span>
-          <span>${zh?'另一些，是我自己开出来的。':'Others, I started myself.'}</span>
+          <span>${zh?'有些路是被分配的':'Some paths were assigned'}</span>
+          <span>${zh?'另一些是我自己开出来的':'Others I started myself'}</span>
         </h2>
-        <p>${zh?'经历告诉我问题长什么样；项目则是我主动靠近问题、拆开它，再做出一个答案。':'Experience showed me what problems look like. Projects are where I chose to move closer, take them apart, and build an answer.'}</p>
+        <p>${zh?'经历中遇到的问题 后来变成了这些项目':'Problems I encountered along the way became projects I chose to keep working on'}</p>
         <div class="r151-transition-line" aria-hidden="true">
           <span></span><i></i><i></i><i></i><i></i>
         </div>
@@ -42,10 +42,10 @@ function work(t,d,locale,url,esc,stars){
     <div class="r151-story" data-r151-active="agentlab">
       <div class="r151-stage" aria-live="polite">
         <nav class="r151-index" aria-label="${zh?'重点项目':'Featured projects'}">
-          <button type="button" data-r151-jump="agentlab" aria-pressed="true"><span>01</span><b>AgentLab</b></button>
-          <button type="button" data-r151-jump="benchmark" aria-pressed="false"><span>02</span><b>LLM Benchmark</b></button>
-          <button type="button" data-r151-jump="accenture" aria-pressed="false"><span>03</span><b>Accenture Automation</b></button>
-          <button type="button" data-r151-jump="requirement" aria-pressed="false"><span>04</span><b>Requirement Engine</b></button>
+          <button type="button" data-r151-jump="agentlab" aria-pressed="true" aria-label="AgentLab"><b>AgentLab</b></button>
+          <button type="button" data-r151-jump="benchmark" aria-pressed="false" aria-label="LLM Benchmark"><b>LLM Benchmark</b></button>
+          <button type="button" data-r151-jump="accenture" aria-pressed="false" aria-label="Accenture Automation"><b>Accenture Automation</b></button>
+          <button type="button" data-r151-jump="requirement" aria-pressed="false" aria-label="Requirement Engine"><b>Requirement Engine</b></button>
         </nav>
 
         <article class="r151-scene r151-agent" data-r151-scene="agentlab" aria-hidden="false">
@@ -61,7 +61,6 @@ function work(t,d,locale,url,esc,stars){
               <div><span>${zh?'结果':'Evidence'}</span><p>${agent?esc(agent.result):''}</p></div>
               <div><span>${zh?'证据边界':'Scope'}</span><p>${agent?esc(agent.limit):''}</p></div>
             </div>
-            <div class="r151-proof"><strong>15/16 → 16/16</strong><span>${zh?'受控完整验证 · fixed regression 5/7 → 7/7':'controlled validation · fixed regression 5/7 → 7/7'}</span></div>
             <a data-nav class="r151-open" href="${url('/work/agentlab')}">${zh?'进入 AgentLab Case Study':'Open AgentLab case study'} ↗</a>
           </div>
           <div class="r151-mechanism r151-agent-mechanism" aria-hidden="true">
@@ -70,8 +69,8 @@ function work(t,d,locale,url,esc,stars){
             <div class="r151-agent-step s2"><small>02</small><b>Root Cause</b></div>
             <div class="r151-agent-step s3"><small>03</small><b>Bounded Patch</b></div>
             <div class="r151-agent-step s4"><small>04</small><b>Regression</b></div>
-            <div class="r151-agent-evidence"><span>FIXED REGRESSION</span><strong>5/7 → 7/7</strong></div>
-            <div class="r151-agent-evidence final"><span>CONTROLLED VALIDATION</span><strong>15/16 → 16/16</strong></div>
+            <div class="r151-agent-evidence"><span>${zh?'固定回归通过数':'FIXED REGRESSION PASSED'}</span><strong>5/7 → 7/7</strong><small>${zh?'7 个固定回归 Case':'7 fixed regression cases'}</small></div>
+            <div class="r151-agent-evidence final"><span>${zh?'完整受控验证通过数':'CONTROLLED VALIDATION PASSED'}</span><strong>15/16 → 16/16</strong><small>${zh?'16 个受控验证 Case':'16 controlled validation cases'}</small></div>
           </div>
         </article>
 
@@ -88,7 +87,6 @@ function work(t,d,locale,url,esc,stars){
               <div><span>${zh?'结果':'Evidence'}</span><p>${benchmark?esc(benchmark.result):''}</p></div>
               <div><span>${zh?'当前状态':'Current status'}</span><p>${benchmark?esc(benchmark.limit):''}</p></div>
             </div>
-            <div class="r151-proof"><strong>74 × 148</strong><span>${zh?'二级能力 × 已落地测试集':'capabilities × implemented test suites'}</span></div>
             <a data-nav class="r151-open" href="${url('/work/benchmark')}">${zh?'进入 LLM Benchmark Case Study':'Open LLM Benchmark case study'} ↗</a>
           </div>
           <div class="r151-mechanism r151-benchmark-mechanism" aria-hidden="true">
@@ -100,7 +98,7 @@ function work(t,d,locale,url,esc,stars){
               ${Array.from({length:24},(_,i)=>`<i class="${[1,6,10,15,19,22].includes(i)?'hot':''}"></i>`).join('')}
             </div>
             <div class="r151-benchmark-metrics"><span>QUALITY</span><span>LATENCY</span><span>COST</span></div>
-            <div class="r151-big-number"><strong>74</strong><span>CAPABILITIES</span><b>×</b><strong>148</strong><span>TEST SUITES</span></div>
+            <div class="r151-big-number"><div><strong>74</strong><span>${zh?'二级能力':'CAPABILITIES'}</span></div><b>×</b><div><strong>148</strong><span>${zh?'已落地测试集':'IMPLEMENTED TEST SUITES'}</span></div></div>
           </div>
         </article>
 
@@ -125,10 +123,11 @@ function work(t,d,locale,url,esc,stars){
               </div></div>
               <div><span>${zh?'证据边界':'Evidence boundary'}</span><p>${zh?'Task Summary 被同事实际使用；生成的培训材料被团队使用；Dashboard 已交接，后续采用程度未确认。':'Task Summary was used by colleagues; generated training materials were used by the team; Dashboard was handed off, with later adoption unverified.'}</p></div>
             </div>
-            <div class="r151-subprojects">
-              <a data-nav href="${url('/work/task-summary')}"><span>01</span><b>${name(task)}</b><em>${safe(task).proof?esc(safe(task).proof):''}</em></a>
-              <a data-nav href="${url('/work/dashboard')}"><span>02</span><b>${name(dashboard)}</b><em>${safe(dashboard).proof?esc(safe(dashboard).proof):''}</em></a>
-              <a data-nav href="${url('/work/training')}"><span>03</span><b>${name(training)}</b><em>${safe(training).proof?esc(safe(training).proof):''}</em></a>
+            <div class="r153-case-links" aria-label="${zh?'Accenture 子项目':'Accenture case studies'}">
+              <a data-nav href="${url('/work/task-summary')}">Task Summary ↗</a>
+              <a data-nav href="${url('/work/dashboard')}">SIT / Defect Dashboard ↗</a>
+              <a data-nav href="${url('/work/training')}">Training Generator ↗</a>
+            </div>
             </div>
           </div>
           <div class="r151-mechanism r151-accenture-mechanism" aria-hidden="true">
@@ -157,7 +156,6 @@ function work(t,d,locale,url,esc,stars){
               <div><span>${zh?'结果':'Evidence'}</span><p>${requirement?esc(requirement.result):''}</p></div>
               <div><span>${zh?'当前状态':'Current status'}</span><p>${requirement?esc(requirement.limit):''}</p></div>
             </div>
-            <div class="r151-proof"><strong>v1 → v2 → confirmed</strong><span>${zh?'人工确认边界保留':'human confirmation stays explicit'}</span></div>
             <a data-nav class="r151-open" href="${url('/work/requirement')}">${zh?'进入 Requirement Engine Case Study':'Open Requirement Engine case study'} ↗</a>
           </div>
           <div class="r151-mechanism r151-requirement-mechanism" aria-hidden="true">
@@ -176,7 +174,7 @@ function work(t,d,locale,url,esc,stars){
               <i>→</i>
               <div class="confirmed"><small>04</small><b>${zh?'可执行版本':'Executable version'}</b></div>
             </div>
-            <div class="r151-version-line"><span>v1</span><i></i><span>v2</span><i></i><b>confirmed</b></div>
+            <div class="r151-version-line"><small>${zh?'需求版本':'REQUIREMENT VERSION'}</small><span>v1</span><i></i><span>v2</span><i></i><b>${zh?'已确认':'confirmed'}</b></div>
           </div>
         </article>
       </div>
@@ -191,8 +189,8 @@ function work(t,d,locale,url,esc,stars){
 
     <div class="r151-directory">
       <div class="r151-directory-head">
-        <div><p class="eyebrow">${zh?'更多项目':'MORE WORK'}</p><h3>${zh?'其他实验、分析与产品。':'More experiments, analysis and products.'}</h3></div>
-        <p>${zh?'这里回到更安静的目录模式。每一个入口都保留原有二级 Case Study 信息。':'A quieter directory for everything else. Every entry keeps its existing second-page case study.'}</p>
+        <div><p class="eyebrow">${zh?'更多项目':'MORE WORK'}</p><h3>${zh?'更多项目与实验':'More projects and experiments'}</h3></div>
+        <p>${zh?'其余项目都列在这里 点击可查看对应 Case Study':'Browse the remaining projects and open any case study for details'}</p>
       </div>
       <div class="r151-directory-grid">
         ${more.map(p=>{
