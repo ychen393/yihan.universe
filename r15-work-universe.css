@@ -2056,7 +2056,7 @@
     radial-gradient(circle at 36% 72%,rgba(239,202,166,.45) 0 1px,transparent 1.5px),
     radial-gradient(circle at 88% 68%,rgba(207,219,224,.46) 0 1px,transparent 1.4px);
   background-size:217px 191px,263px 229px,311px 277px,349px 307px;
-  transform:translate(calc(var(--r154-mx) * -.12),calc(var(--r154-my) * -.12 + var(--r154-depth) * -.10));
+  transform:translate(var(--r154-far-x,0px),var(--r154-far-y,0px));
 }
 .r154-space-mid{
   opacity:.28;
@@ -2066,7 +2066,7 @@
     radial-gradient(circle at 81% 31%,rgba(225,216,199,.30) 0 1.6px,transparent 2.8px);
   background-size:401px 347px,463px 419px,521px 467px;
   filter:blur(.2px);
-  transform:translate(calc(var(--r154-mx) * -.28),calc(var(--r154-my) * -.28 + var(--r154-depth) * -.22));
+  transform:translate(var(--r154-mid-x,0px),var(--r154-mid-y,0px));
 }
 .r154-space-near{
   opacity:.18;
@@ -2076,7 +2076,7 @@
     radial-gradient(circle at 91% 77%,rgba(239,221,201,.38) 0 2.6px,transparent 5px);
   background-size:667px 583px,743px 617px,829px 713px;
   filter:blur(.6px);
-  transform:translate(calc(var(--r154-mx) * -.58),calc(var(--r154-my) * -.58 + var(--r154-depth) * -.42));
+  transform:translate(var(--r154-near-x,0px),var(--r154-near-y,0px));
 }
 .r154-space-glow{
   opacity:.72;
@@ -2084,15 +2084,15 @@
   background:
     radial-gradient(circle at 72% 49%,var(--scene-accent-soft),transparent 25%),
     radial-gradient(circle at 29% 48%,rgba(116,151,169,.08),transparent 26%);
-  transform:translate(calc(var(--r154-mx) * -.18),calc(var(--r154-my) * -.18));
+  transform:translate(var(--r154-glow-x,0px),var(--r154-glow-y,0px));
   transition:background .5s ease,opacity .5s ease;
 }
 .r151-copy{
-  transform:translate(calc(var(--r154-mx) * .10),calc(var(--r154-my) * .10));
+  transform:translate(var(--r154-copy-x,0px),var(--r154-copy-y,0px));
   transition:transform .16s ease-out;
 }
 .r151-mechanism{
-  transform:translate(calc(var(--r154-mx) * .34),calc(var(--r154-my) * .28 + var(--r154-depth)));
+  transform:translate(var(--r154-mech-x,0px),var(--r154-mech-y,0px));
   transition:transform .16s ease-out;
 }
 
