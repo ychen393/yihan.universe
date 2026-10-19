@@ -41,6 +41,10 @@ function work(t,d,locale,url,esc,stars){
 
     <div class="r151-story" data-r151-active="agentlab">
       <div class="r151-stage" aria-live="polite">
+        <div class="r154-space r154-space-far" aria-hidden="true"></div>
+        <div class="r154-space r154-space-mid" aria-hidden="true"></div>
+        <div class="r154-space r154-space-near" aria-hidden="true"></div>
+        <div class="r154-space-glow" aria-hidden="true"></div>
         <nav class="r151-index" aria-label="${zh?'重点项目':'Featured projects'}">
           <button type="button" data-r151-jump="agentlab" aria-pressed="true" aria-label="AgentLab"><b>AgentLab</b></button>
           <button type="button" data-r151-jump="benchmark" aria-pressed="false" aria-label="LLM Benchmark"><b>LLM Benchmark</b></button>
