@@ -1798,3 +1798,230 @@
     font-size:12px;
   }
 }
+
+
+/* R15.3 step 4b — AgentLab and Requirement mechanism repair */
+
+/* AgentLab: four equal nodes. Evidence belongs to the Regression output, not to Bounded Patch. */
+.r151-agent-mechanism{
+  overflow:visible;
+}
+.r151-agent-line{
+  top:50%;
+  left:3%;
+  right:10%;
+}
+.r151-agent-step{
+  top:calc(50% - 43px);
+  width:138px;
+  height:86px;
+  min-height:86px;
+  max-height:86px;
+  padding:14px 15px;
+  display:block;
+}
+.r151-agent-step.s1{left:2%}
+.r151-agent-step.s2{left:25%}
+.r151-agent-step.s3{left:48%}
+.r151-agent-step.s4{left:auto;right:9%}
+.r151-agent-step.s3{
+  height:86px;
+  min-height:86px;
+  max-height:86px;
+}
+.r151-agent-evidence{
+  left:auto;
+  right:9%;
+  top:11%;
+  width:190px;
+  text-align:left;
+}
+.r151-agent-evidence.final{
+  left:auto;
+  right:9%;
+  top:auto;
+  bottom:9%;
+  width:190px;
+}
+.r151-agent-evidence:before{
+  content:'';
+  position:absolute;
+  left:-34px;
+  top:14px;
+  width:24px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--scene-line));
+}
+.r151-agent-evidence span{
+  display:block;
+  color:#aab7bd;
+}
+.r151-agent-evidence strong{
+  display:block;
+  white-space:nowrap;
+}
+.r151-agent-evidence small{
+  white-space:nowrap;
+}
+
+/* Requirement: ambiguity should converge into the workflow instead of floating as decoration. */
+.r151-requirement-mechanism{
+  overflow:visible;
+}
+.r151-requirement-mechanism:after{
+  opacity:.16;
+}
+.r151-noise{
+  left:4%;
+  right:7%;
+  top:8%;
+  width:auto;
+  height:34%;
+}
+.r151-noise:after{
+  content:'';
+  position:absolute;
+  left:19%;
+  bottom:-58px;
+  width:1px;
+  height:52px;
+  background:linear-gradient(180deg,var(--scene-line),transparent);
+  transform:rotate(-18deg);
+  transform-origin:top;
+}
+.r151-noise span{
+  max-width:190px;
+  padding:8px 11px;
+}
+.r151-noise span:nth-child(1){
+  left:0;
+  top:0;
+  transform:rotate(-2deg);
+}
+.r151-noise span:nth-child(2){
+  left:29%;
+  right:auto;
+  top:12%;
+  transform:rotate(1deg);
+}
+.r151-noise span:nth-child(3){
+  left:12%;
+  bottom:2%;
+  transform:rotate(1deg);
+}
+.r151-noise span:nth-child(4){
+  left:47%;
+  right:auto;
+  bottom:4%;
+  transform:rotate(-1deg);
+}
+.r151-align-flow{
+  left:5%;
+  right:5%;
+  bottom:25%;
+  grid-template-columns:1fr 24px 1fr 24px 1.08fr 24px 1.15fr;
+  gap:4px;
+}
+.r151-align-flow>div{
+  min-height:82px;
+  padding:13px 14px;
+  border-top:1px solid rgba(205,196,168,.18);
+  border-bottom:1px solid rgba(205,196,168,.06);
+  background:linear-gradient(180deg,rgba(205,196,168,.025),transparent 74%);
+}
+.r151-align-flow>i{
+  color:rgba(229,197,163,.68);
+  font-size:16px;
+}
+.r151-align-flow .gate{
+  border-top-color:rgba(229,197,163,.48);
+  background:linear-gradient(180deg,rgba(229,197,163,.055),transparent 76%);
+}
+.r151-align-flow .confirmed{
+  border-top-color:rgba(229,197,163,.72);
+  border-bottom-color:rgba(229,197,163,.14);
+  background:linear-gradient(180deg,rgba(229,197,163,.10),rgba(205,196,168,.02) 78%);
+  box-shadow:0 -12px 34px rgba(229,197,163,.045);
+}
+.r151-align-flow .confirmed b{
+  color:#f0dfcf;
+}
+.r151-version-line{
+  top:auto;
+  right:5%;
+  bottom:10%;
+  padding-top:8px;
+  border-top:1px solid rgba(205,196,168,.13);
+}
+.r151-version-line small{
+  color:#a3b0b5;
+}
+.r151-version-line b{
+  color:#efd0ae;
+}
+
+/* Short-height laptops: keep the corrected structure compact without reintroducing overlap. */
+@media(min-width:901px) and (max-height:820px){
+  .r151-agent-step{
+    top:calc(50% - 38px);
+    width:126px;
+    height:76px;
+    min-height:76px;
+    max-height:76px;
+    padding:12px 13px;
+  }
+  .r151-agent-step.s3{
+    height:76px;
+    min-height:76px;
+    max-height:76px;
+  }
+  .r151-agent-evidence{
+    right:9%;
+    top:7%;
+    width:170px;
+  }
+  .r151-agent-evidence.final{
+    right:9%;
+    bottom:6%;
+    width:170px;
+  }
+  .r151-agent-evidence small{font-size:7.5px}
+  .r151-noise{
+    top:5%;
+    height:31%;
+  }
+  .r151-noise span{
+    padding:7px 9px;
+  }
+  .r151-align-flow{
+    bottom:24%;
+  }
+  .r151-align-flow>div{
+    min-height:72px;
+    padding:10px 11px;
+  }
+  .r151-version-line{
+    bottom:7%;
+  }
+}
+
+/* Narrow layouts fall back to the existing stacked/mobile treatment. */
+@media(max-width:900px){
+  .r151-agent-step{
+    height:auto;
+    min-height:70px;
+    max-height:none;
+  }
+  .r151-agent-step.s3{
+    height:auto;
+    min-height:70px;
+    max-height:none;
+  }
+  .r151-agent-evidence,
+  .r151-agent-evidence.final{
+    width:auto;
+  }
+  .r151-noise:after{
+    display:none;
+  }
+}
