@@ -1423,3 +1423,70 @@
     font-size:12px;
   }
 }
+
+
+/* R15.3 step 3c — single-line desktop project titles */
+
+/* Prefer one-line project titles on desktop. Keep the visual hierarchy by reallocating width,
+   not by shrinking every title equally. */
+@media(min-width:1181px){
+  .r151-copy h3{
+    white-space:nowrap;
+    max-width:none;
+  }
+
+  .r151-agent .r151-copy h3{
+    font-size:clamp(40px,3vw,50px);
+  }
+
+  .r151-benchmark .r151-copy h3{
+    font-size:clamp(38px,2.85vw,48px);
+  }
+
+  .r151-accenture .r151-copy h3{
+    font-size:clamp(36px,2.75vw,46px);
+  }
+
+  .r151-requirement{
+    grid-template-columns:minmax(650px,1.08fr) minmax(0,.92fr);
+  }
+  .r151-requirement .r151-copy{
+    max-width:720px;
+  }
+  .r151-requirement .r151-copy h3{
+    font-size:clamp(32px,2.45vw,42px);
+    white-space:nowrap;
+    max-width:none;
+    letter-spacing:-.03em;
+  }
+}
+
+/* Medium desktop: still try to keep titles on one line where practical,
+   but do not force overflow. */
+@media(min-width:901px) and (max-width:1180px){
+  .r151-agent .r151-copy h3,
+  .r151-benchmark .r151-copy h3,
+  .r151-accenture .r151-copy h3{
+    white-space:nowrap;
+  }
+
+  .r151-requirement{
+    grid-template-columns:minmax(560px,1.05fr) minmax(0,.95fr);
+  }
+  .r151-requirement .r151-copy{
+    max-width:620px;
+  }
+  .r151-requirement .r151-copy h3{
+    font-size:clamp(30px,3vw,38px);
+    white-space:nowrap;
+    max-width:none;
+  }
+}
+
+/* Mobile/tablet may wrap naturally for readability. */
+@media(max-width:900px){
+  .r151-copy h3,
+  .r151-requirement .r151-copy h3{
+    white-space:normal;
+  }
+}
