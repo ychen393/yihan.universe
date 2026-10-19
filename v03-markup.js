@@ -128,7 +128,6 @@ function work(t,d,locale,url,esc,stars){
               <a data-nav href="${url('/work/dashboard')}">SIT / Defect Dashboard ↗</a>
               <a data-nav href="${url('/work/training')}">Training Generator ↗</a>
             </div>
-            </div>
           </div>
           <div class="r151-mechanism r151-accenture-mechanism" aria-hidden="true">
             <div class="r151-input-cloud">
