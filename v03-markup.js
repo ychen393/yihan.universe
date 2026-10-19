@@ -112,14 +112,14 @@ function work(t,d,locale,url,esc,stars){
               <div><span>${zh?'问题':'Problem'}</span><p>${zh?'任务、测试状态、缺陷和培训材料分散在多个协作工具与项目文档里。':'Tasks, test status, defects and training material were scattered across collaboration tools and project documents.'}</p></div>
               <div><span>${zh?'我的贡献':'My contribution'}</span><p>${zh?'实习期间提出需求、设计流程、检查输出并迭代；部分实现使用 GitHub Copilot 辅助。':'During the internship, I defined needs, designed workflows, checked outputs and iterated; parts of implementation used GitHub Copilot assistance.'}</p></div>
               <div class="r153-detail-row"><span>${zh?'方法':'Method'}</span><div class="r153-detail-stack">
-                <p><b>Task Summary</b>${task?esc(task.method):''}</p>
-                <p><b>SIT / Defect Dashboard</b>${dashboard?esc(dashboard.method):''}</p>
-                <p><b>Training Generator</b>${training?esc(training.method):''}</p>
+                <p><b>Task Summary</b><span class="r153-detail-copy">${task?esc(task.method):''}</span></p>
+                <p><b>SIT / Defect Dashboard</b><span class="r153-detail-copy">${dashboard?esc(dashboard.method):''}</span></p>
+                <p><b>Training Generator</b><span class="r153-detail-copy">${training?esc(training.method):''}</span></p>
               </div></div>
               <div class="r153-detail-row"><span>${zh?'结果':'Evidence'}</span><div class="r153-detail-stack">
-                <p><b>Task Summary</b>${task?esc(task.result):''}</p>
-                <p><b>SIT / Defect Dashboard</b>${dashboard?esc(dashboard.result):''}</p>
-                <p><b>Training Generator</b>${training?esc(training.result):''}</p>
+                <p><b>Task Summary</b><span class="r153-detail-copy">${task?esc(task.result):''}</span></p>
+                <p><b>SIT / Defect Dashboard</b><span class="r153-detail-copy">${dashboard?esc(dashboard.result):''}</span></p>
+                <p><b>Training Generator</b><span class="r153-detail-copy">${training?esc(training.result):''}</span></p>
               </div></div>
               <div><span>${zh?'证据边界':'Evidence boundary'}</span><p>${zh?'Task Summary 被同事实际使用；生成的培训材料被团队使用；Dashboard 已交接，后续采用程度未确认。':'Task Summary was used by colleagues; generated training materials were used by the team; Dashboard was handed off, with later adoption unverified.'}</p></div>
             </div>
