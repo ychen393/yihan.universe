@@ -1,6 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7d3ad"/><stop offset=".48" stop-color="#a97957"/><stop offset="1" stop-color="#5d5048"/></linearGradient></defs>
-<polygon points="80,34 240,34 288,92 270,250 160,300 50,250 32,92" fill="url(#g)" stroke="#ebbb8b" stroke-opacity=".62" stroke-width="2"/>
-<g stroke="#fff0df" stroke-opacity=".3" stroke-width="5"><path d="M88 104H232M82 137H238M76 170H228M72 203H202"/></g>
-<path d="M240 34 L288 92 L232 98Z" fill="#fff1de" opacity=".22"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0dc"/><stop offset=".38" stop-color="#d6a87d"/><stop offset=".78" stop-color="#85624e"/><stop offset="1" stop-color="#3e4a51"/></linearGradient><filter id="h"><feGaussianBlur stdDeviation="12"/></filter></defs>
+<ellipse cx="170" cy="170" rx="103" ry="112" fill="#d19a68" opacity=".11" filter="url(#h)"/>
+<path d="M96 70 H221 L260 109 V266 L173 294 L80 255 V92Z" fill="url(#g)" stroke="#f1cda6" stroke-opacity=".48" stroke-width="2"/>
+<path d="M221 70 V113 H260" fill="#fff3e2" opacity=".19"/>
+<g stroke="#fff0de" stroke-opacity=".30" stroke-width="4" stroke-linecap="round"><path d="M112 135H217"/><path d="M108 166H226"/><path d="M105 197H209"/><path d="M102 228H181"/></g>
+<ellipse cx="170" cy="180" rx="128" ry="38" fill="none" stroke="#e8c09a" stroke-opacity=".16" stroke-width="2" transform="rotate(11 170 180)"/>
 </svg>
