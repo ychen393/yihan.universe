@@ -1,5 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7f4e5" stop-opacity=".9"/><stop offset=".5" stop-color="#75ad95" stop-opacity=".72"/><stop offset="1" stop-color="#315c50" stop-opacity=".9"/></linearGradient></defs>
-<polygon points="160,26 276,92 266,236 160,298 54,236 44,92" fill="url(#g)" stroke="#b7e6cf" stroke-opacity=".58" stroke-width="2"/>
-<polygon points="160,26 160,162 276,92" fill="#effff6" opacity=".16"/><polygon points="160,162 266,236 160,298" fill="#32584d" opacity=".18"/><polygon points="54,236 160,162 44,92" fill="#a9dec5" opacity=".12"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#effff7"/><stop offset=".28" stop-color="#9fcfb8"/><stop offset=".66" stop-color="#5d8d77"/><stop offset="1" stop-color="#345449"/></linearGradient><filter id="h"><feGaussianBlur stdDeviation="12"/></filter></defs>
+<polygon points="170,55 255,104 269,201 211,275 120,268 67,194 80,103" fill="#77b496" opacity=".12" filter="url(#h)"/>
+<polygon points="170,58 252,106 266,198 209,271 122,265 71,192 83,106" fill="url(#g)" stroke="#ccebdc" stroke-opacity=".42" stroke-width="2"/>
+<polygon points="170,58 170,166 252,106" fill="#f6fff9" opacity=".12"/><polygon points="170,166 266,198 209,271" fill="#385d4f" opacity=".14"/><polygon points="71,192 170,166 83,106" fill="#c5ead7" opacity=".10"/>
+<ellipse cx="170" cy="170" rx="116" ry="35" fill="none" stroke="#b6dec9" stroke-opacity=".14" stroke-width="2" transform="rotate(19 170 170)"/>
 </svg>
