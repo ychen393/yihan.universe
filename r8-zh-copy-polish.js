@@ -18,7 +18,7 @@ Object.assign(p.zh.site,{
   journeyTitle:'方向不是一开始就确定的。',
   journeyLead:'从商科转到统计，从内容运营进入企业项目，再到 AI 评测。每一段经历都让我更清楚自己想解决什么问题。',
   workEyebrow:'02 · 项目',
-  workTitle:'我做过的项目，都从一个具体问题开始。',
+  workTitle:'做过的项目，都从一个具体问题开始。',
   workLead:'AI 与 Agent、企业与产品、数据与策略、创意实验。可以按方向浏览，也可以直接进入项目详情。',
   aboutEyebrow:'03 · 工作之外',
   aboutTitle:'工作之外，我还在学很多东西。',
