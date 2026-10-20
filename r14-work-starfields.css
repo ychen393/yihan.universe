@@ -772,3 +772,304 @@
   .r14-static-fix .cluster-heading,
   .r14-static-fix .cluster-heading>span:first-child{white-space:normal}
 }
+
+
+/* R14.1d — editorial constellation refinement
+   VISUAL ONLY: no project data, links, filtering or case-study logic changes. */
+
+/* Header: make project count true metadata instead of a second headline. */
+.r14-static-fix .work-title-row{
+  gap:14px;
+  align-items:center;
+}
+.r14-static-fix .work-count{
+  margin:10px 0 0;
+  padding:5px 10px 5px 11px;
+  border:1px solid rgba(236,209,184,.2);
+  border-radius:999px;
+  background:rgba(255,255,255,.025);
+  gap:4px;
+  align-self:flex-start;
+}
+.r14-static-fix .work-count strong{
+  font:700 12px/1 var(--type-ui,Inter,sans-serif);
+  color:#f0d1b4;
+}
+.r14-static-fix .work-count span{
+  font-size:11px;
+  line-height:1;
+  color:#c8d0d5;
+  letter-spacing:0;
+}
+
+/* Calm the universe down: fewer lines, more atmosphere. */
+.r14-static-fix .constellation-map{height:720px}
+.r14-static-fix .cluster-branch{
+  height:300px;
+  width:45%;
+}
+.r14-static-fix .cluster-ai{left:1.5%}
+.r14-static-fix .cluster-enterprise{right:1.5%}
+.r14-static-fix .cluster-data{left:1.5%}
+.r14-static-fix .cluster-creative{right:1.5%}
+
+.r14-static-fix .cluster-branch:before{
+  inset:12% 8% 9%;
+  opacity:.52;
+  filter:blur(10px);
+  background:
+    radial-gradient(ellipse 46% 36% at 48% 48%,color-mix(in srgb,var(--cluster-color),transparent 90%),transparent 73%);
+}
+.r14-static-fix .cluster-branch:after{
+  left:17%;
+  top:31%;
+  width:52%;
+  height:37%;
+  opacity:.18;
+  border-color:color-mix(in srgb,var(--cluster-color),transparent 88%);
+}
+.r14-static-fix .cluster-enterprise:after{left:29%}
+.r14-static-fix .cluster-data:after{left:14%}
+.r14-static-fix .cluster-creative:after{left:30%}
+
+/* Region labels feel like map coordinates, not UI cards. */
+.r14-static-fix .cluster-heading{
+  top:2%;
+  opacity:.86;
+}
+.r14-static-fix .cluster-heading>span:first-child{
+  font-size:11px;
+  letter-spacing:.07em;
+}
+.r14-static-fix .cluster-heading small{
+  font-size:7.5px;
+  opacity:.72;
+}
+.r14-static-fix .cluster-count{
+  font-size:7px;
+  opacity:.55;
+}
+
+/* Base project anchor becomes a lightweight satellite marker. */
+.r14-static-fix .cluster-project{
+  --planet-size:20px;
+  --anchor-width:190px;
+  height:44px;
+}
+.r14-static-fix .cluster-project:before{
+  width:var(--planet-size);
+  height:var(--planet-size);
+  background:
+    radial-gradient(circle at 34% 30%,rgba(255,255,255,.72),rgba(255,255,255,.12) 18%,transparent 20%),
+    radial-gradient(circle at 46% 48%,color-mix(in srgb,var(--cluster-color),white 4%),color-mix(in srgb,var(--cluster-color),#26394a 48%) 48%,#243645 100%);
+  border-color:color-mix(in srgb,var(--cluster-color),transparent 30%);
+  box-shadow:
+    0 0 14px color-mix(in srgb,var(--cluster-color),transparent 66%),
+    0 6px 16px rgba(3,9,15,.18);
+}
+.r14-static-fix .cluster-project:after{
+  width:calc(var(--planet-size) * 2.2);
+  height:calc(var(--planet-size) * .5);
+  left:calc(var(--planet-size) * -.6);
+  opacity:.16;
+  border-color:color-mix(in srgb,var(--cluster-color),transparent 72%);
+}
+.r14-static-fix .cluster-project strong{
+  left:calc(var(--planet-size) + 10px);
+  width:calc(var(--anchor-width) - var(--planet-size) - 10px);
+  font-size:10px;
+  font-weight:650;
+  color:rgba(247,240,233,.9);
+}
+.r14-static-fix .cluster-enterprise .cluster-project strong,
+.r14-static-fix .cluster-creative .cluster-project strong{
+  width:calc(var(--anchor-width) - var(--planet-size) - 10px);
+}
+
+/* One primary planet per region. */
+.r14-static-fix .cluster-project[data-project="agentlab"],
+.r14-static-fix .cluster-project[data-project="requirement"],
+.r14-static-fix .cluster-project[data-project="airbnb"],
+.r14-static-fix .cluster-project[data-project="character"]{
+  --planet-size:86px;
+  --anchor-width:235px;
+  height:92px;
+}
+.r14-static-fix .cluster-project[data-project="agentlab"]:before,
+.r14-static-fix .cluster-project[data-project="requirement"]:before,
+.r14-static-fix .cluster-project[data-project="airbnb"]:before,
+.r14-static-fix .cluster-project[data-project="character"]:before{
+  box-shadow:
+    inset -13px -15px 22px rgba(8,18,28,.2),
+    0 14px 30px rgba(4,11,18,.24),
+    0 0 34px color-mix(in srgb,var(--cluster-color),transparent 72%);
+}
+.r14-static-fix .cluster-project[data-project="agentlab"] strong,
+.r14-static-fix .cluster-project[data-project="requirement"] strong,
+.r14-static-fix .cluster-project[data-project="airbnb"] strong,
+.r14-static-fix .cluster-project[data-project="character"] strong{
+  font-size:11px;
+  font-weight:720;
+}
+
+/* Medium satellites — still visible, but clearly not equal to the primary world. */
+.r14-static-fix .cluster-project[data-project="benchmark"],
+.r14-static-fix .cluster-project[data-project="task-summary"],
+.r14-static-fix .cluster-project[data-project="sp500"],
+.r14-static-fix .cluster-project[data-project="liferpg"]{
+  --planet-size:38px;
+  --anchor-width:205px;
+  height:54px;
+}
+
+/* Preserve project-specific identity, but soften the visual treatment. */
+.r14-static-fix .cluster-project[data-project="benchmark"]:before{
+  background:
+    linear-gradient(rgba(190,223,233,.1) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(190,223,233,.09) 1px,transparent 1px),
+    radial-gradient(circle at 40% 38%,#7ea7bb,#4b687a 50%,#283e4f);
+  background-size:7px 7px,7px 7px,100% 100%;
+}
+.r14-static-fix .cluster-project[data-project="task-summary"]:before{
+  background:
+    radial-gradient(circle at 30% 31%,rgba(255,255,255,.48),transparent 14%),
+    radial-gradient(circle at 68% 32%,rgba(241,204,172,.28) 0 3%,transparent 4%),
+    radial-gradient(circle at 63% 68%,rgba(241,204,172,.18) 0 3%,transparent 4%),
+    radial-gradient(circle at 42% 42%,#8e7b73,#555960 55%,#344550);
+}
+.r14-static-fix .cluster-project[data-project="sp500"]:before{
+  background:
+    repeating-linear-gradient(18deg,transparent 0 8px,rgba(184,226,207,.11) 8px 9px),
+    radial-gradient(circle at 40% 40%,#6f9689,#496d64 56%,#304944);
+}
+.r14-static-fix .cluster-project[data-project="liferpg"]:before{
+  background:
+    repeating-radial-gradient(circle at 48% 50%,rgba(207,180,233,.11) 0 1px,transparent 1px 8px),
+    radial-gradient(circle at 40% 40%,#75628b,#4f4564 58%,#312d48);
+}
+
+/* Secondary satellites: remove decorative rings entirely. */
+.r14-static-fix .cluster-project[data-project="content-qa"]:after,
+.r14-static-fix .cluster-project[data-project="dashboard"]:after,
+.r14-static-fix .cluster-project[data-project="training"]:after,
+.r14-static-fix .cluster-project[data-project="minecraft"]:after,
+.r14-static-fix .cluster-project[data-project="deloitte"]:after{display:none}
+
+/* Primary planet identities: elegant, low-noise, distinct. */
+.r14-static-fix .cluster-project[data-project="agentlab"]:before{
+  background:
+    radial-gradient(circle at 31% 26%,rgba(255,255,255,.48),transparent 13%),
+    repeating-radial-gradient(circle at 50% 50%,rgba(184,218,236,.07) 0 1px,transparent 1px 13px),
+    radial-gradient(circle at 41% 39%,#87b4ce 0%,#4c6c83 44%,#293f52 75%,#1c2d3b 100%);
+}
+.r14-static-fix .cluster-project[data-project="agentlab"]:after{
+  display:block;
+  width:135%;
+  height:26%;
+  left:-17%;
+  opacity:.33;
+  transform:translateY(-50%) rotate(-9deg);
+  box-shadow:none;
+}
+
+.r14-static-fix .cluster-project[data-project="requirement"]:before{
+  background:
+    linear-gradient(90deg,rgba(236,197,163,.08) 0 49%,rgba(250,225,202,.62) 49.4% 50.6%,rgba(148,174,193,.07) 51% 100%),
+    radial-gradient(circle at 31% 25%,rgba(255,255,255,.33),transparent 16%),
+    radial-gradient(circle at 40% 38%,#8d7a74,#57595e 50%,#35444f 77%,#243541);
+}
+.r14-static-fix .cluster-project[data-project="requirement"]:after{
+  display:block;
+  width:126%;
+  height:22%;
+  right:-13%;
+  left:auto;
+  opacity:.27;
+  transform:translateY(-50%) rotate(13deg);
+}
+
+.r14-static-fix .cluster-project[data-project="airbnb"]:before{
+  background:
+    radial-gradient(circle at 28% 32%,rgba(220,250,235,.42) 0 2%,transparent 3%),
+    radial-gradient(circle at 69% 29%,rgba(220,250,235,.25) 0 2%,transparent 3%),
+    radial-gradient(circle at 60% 70%,rgba(220,250,235,.22) 0 2%,transparent 3%),
+    radial-gradient(circle at 38% 62%,rgba(220,250,235,.19) 0 1.7%,transparent 2.7%),
+    radial-gradient(circle at 40% 40%,#72998a,#496f66 54%,#2f4a47 78%,#243a3d);
+}
+.r14-static-fix .cluster-project[data-project="airbnb"]:after{
+  display:block;
+  width:122%;
+  height:24%;
+  left:-11%;
+  opacity:.22;
+  transform:translateY(-50%) rotate(-20deg);
+}
+
+.r14-static-fix .cluster-project[data-project="character"]:before{
+  background:
+    conic-gradient(from 18deg,rgba(233,215,249,.28),rgba(159,129,190,.11) 16%,rgba(218,197,239,.22) 32%,rgba(116,102,151,.1) 48%,rgba(229,208,247,.2) 65%,rgba(137,115,174,.11) 80%,rgba(233,215,249,.28)),
+    radial-gradient(circle at 42% 42%,#816d9c,#554c72 58%,#332f4f);
+}
+.r14-static-fix .cluster-project[data-project="character"]:after{
+  display:block;
+  width:118%;
+  height:34%;
+  right:-9%;
+  left:auto;
+  opacity:.22;
+  transform:translateY(-50%) rotate(31deg);
+  border-style:dotted;
+}
+
+/* Composition: one primary world + satellites around it, with more breathing room. */
+.r14-static-fix .cluster-ai .cluster-project:nth-child(1){left:8%;top:31%}
+.r14-static-fix .cluster-ai .cluster-project:nth-child(2){left:48%;top:21%}
+.r14-static-fix .cluster-ai .cluster-project:nth-child(3){left:55%;top:62%}
+
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(1){right:4%;top:31%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(2){right:48%;top:20%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(3){right:51%;top:61%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(4){right:12%;top:69%}
+
+.r14-static-fix .cluster-data .cluster-project:nth-child(1){left:8%;top:26%}
+.r14-static-fix .cluster-data .cluster-project:nth-child(2){left:47%;top:17%}
+.r14-static-fix .cluster-data .cluster-project:nth-child(3){left:55%;top:57%}
+.r14-static-fix .cluster-data .cluster-project:nth-child(4){left:20%;top:70%}
+
+.r14-static-fix .cluster-creative .cluster-project:nth-child(1){right:6%;top:27%}
+.r14-static-fix .cluster-creative .cluster-project:nth-child(2){right:50%;top:58%}
+
+/* Hover = focus, not spectacle. */
+.r14-static-fix .cluster-project:hover:before,
+.r14-static-fix .cluster-project:focus-visible:before{
+  transform:translateY(-50%) scale(1.05);
+}
+.r14-static-fix .cluster-project:hover strong,
+.r14-static-fix .cluster-project:focus-visible strong{
+  transform:translateY(-50%);
+  color:#fff8f1;
+}
+.r14-static-fix .cluster-enterprise .cluster-project:hover strong,
+.r14-static-fix .cluster-enterprise .cluster-project:focus-visible strong,
+.r14-static-fix .cluster-creative .cluster-project:hover strong,
+.r14-static-fix .cluster-creative .cluster-project:focus-visible strong{
+  transform:translateY(-50%);
+}
+
+@media(max-width:1100px){
+  .r14-static-fix .constellation-map{min-height:1090px}
+  .r14-static-fix .cluster-branch{height:230px}
+  .r14-static-fix .work-count{display:inline-flex}
+}
+@media(max-width:680px){
+  .r14-static-fix .work-title-row{gap:10px}
+  .r14-static-fix .work-count{margin-top:4px}
+  .r14-static-fix .cluster-project{--anchor-width:150px}
+  .r14-static-fix .cluster-project[data-project="agentlab"],
+  .r14-static-fix .cluster-project[data-project="requirement"],
+  .r14-static-fix .cluster-project[data-project="airbnb"],
+  .r14-static-fix .cluster-project[data-project="character"]{
+    --planet-size:62px;
+    --anchor-width:178px;
+  }
+}
