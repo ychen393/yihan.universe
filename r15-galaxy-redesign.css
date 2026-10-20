@@ -1,0 +1,214 @@
+/* R15 — Work Universe: continuous galaxy, project-specific identity, no boxed art. */
+.r14-static-fix .work-section{
+  background:
+    radial-gradient(ellipse 72% 36% at 47% 45%,rgba(57,103,145,.14),transparent 74%),
+    radial-gradient(ellipse 58% 40% at 24% 38%,rgba(45,103,174,.10),transparent 76%),
+    radial-gradient(ellipse 54% 38% at 78% 43%,rgba(191,137,79,.08),transparent 78%),
+    radial-gradient(ellipse 58% 38% at 25% 82%,rgba(51,132,113,.08),transparent 78%),
+    radial-gradient(ellipse 56% 40% at 79% 81%,rgba(125,81,163,.08),transparent 78%),
+    linear-gradient(156deg,#0b1928 0%,#10263a 48%,#0b1b2b 100%);
+}
+.r14-static-fix .work-section>.starfield{opacity:.4}
+.r14-static-fix .constellation-map{
+  isolation:isolate;
+  background:radial-gradient(ellipse 80% 60% at 50% 45%,rgba(41,73,103,.08),transparent 78%);
+}
+.r14-static-fix .constellation-map:before{
+  inset:0;
+  left:0;right:0;top:0;
+  width:100%;height:100%;
+  background:url('/assets/work-galaxy-field.svg') center/100% 100% no-repeat;
+  opacity:.9;
+  filter:none;
+}
+.r14-static-fix .constellation-map:after{
+  opacity:.24;
+  background-size:510px 510px;
+}
+.r14-static-fix .cluster-branch:before,
+.r14-static-fix .cluster-branch:after{display:none!important}
+.r14-static-fix .constellation-core,
+.r14-static-fix .constellation-inspector{display:none!important}
+.r14-static-fix .constellation-links{
+  display:block!important;
+  position:absolute;
+  inset:0;
+  z-index:2;
+  width:100%;
+  height:100%;
+  overflow:visible;
+  pointer-events:none;
+  opacity:.68;
+}
+.r14-static-fix .constellation-links path{
+  fill:none;
+  stroke:#a5c8de;
+  stroke-opacity:.28;
+  stroke-width:1.25;
+  stroke-dasharray:2 8;
+  stroke-linecap:round;
+  vector-effect:non-scaling-stroke;
+}
+.r14-static-fix .constellation-links circle{display:none}
+.r14-static-fix .cluster-branch{
+  z-index:3;
+  background:transparent;
+  border:0;
+  box-shadow:none;
+  backdrop-filter:none;
+}
+.r14-static-fix .cluster-project{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  border-radius:0!important;
+}
+.r14-static-fix .cluster-project:before,
+.r14-static-fix .cluster-project:after{display:none!important}
+.r14-static-fix .project-art{
+  background-color:transparent!important;
+  background-repeat:no-repeat!important;
+  background-position:center!important;
+  background-size:contain!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  mix-blend-mode:normal;
+  filter:drop-shadow(0 9px 15px rgba(2,8,14,.22));
+  transition:transform .38s cubic-bezier(.2,.72,.2,1),filter .38s ease;
+}
+.r14-static-fix .cluster-project:hover .project-art,
+.r14-static-fix .cluster-project:focus-visible .project-art{
+  transform:translateY(-50%) scale(1.035);
+  filter:drop-shadow(0 12px 20px rgba(2,8,14,.28)) brightness(1.06);
+}
+.r14-static-fix .project-label{
+  display:block;
+  left:calc(var(--art-size) + 12px);
+  width:calc(var(--node-width) - var(--art-size) - 12px);
+}
+.r14-static-fix .cluster-enterprise .project-label,
+.r14-static-fix .cluster-creative .project-label{
+  left:0;
+  width:calc(var(--node-width) - var(--art-size) - 12px);
+}
+.r14-static-fix .project-label:before{
+  display:block;
+  margin:0 0 5px;
+  color:var(--cluster-color);
+  opacity:.88;
+  font-size:8px;
+  line-height:1.2;
+  letter-spacing:.16em;
+  font-weight:650;
+  white-space:nowrap;
+}
+.r14-static-fix .project-label strong{
+  font-size:15px;
+  line-height:1.22;
+  font-weight:640;
+  letter-spacing:-.012em;
+  color:#f5f0ea;
+  text-shadow:0 2px 13px rgba(2,7,12,.48);
+  transition:color .25s ease;
+}
+.r14-static-fix .cluster-project[data-project="agentlab"] .project-label:before{content:"智能体可靠性"}
+.r14-static-fix .cluster-project[data-project="requirement"] .project-label:before{content:"需求对齐系统"}
+.r14-static-fix .cluster-project[data-project="airbnb"] .project-label:before{content:"房价统计建模"}
+.r14-static-fix .cluster-project[data-project="character"] .project-label:before{content:"互动成长实验"}
+.r14-static-fix .cluster-project[data-project="benchmark"] .project-label:before{content:"模型能力评测"}
+.r14-static-fix .cluster-project[data-project="task-summary"] .project-label:before{content:"工作流自动化"}
+.r14-static-fix .cluster-project[data-project="content-qa"] .project-label:before{content:"营销内容质检"}
+.r14-static-fix .cluster-project[data-project="dashboard"] .project-label:before{content:"测试与缺陷可视化"}
+.r14-static-fix .cluster-project[data-project="training"] .project-label:before{content:"培训内容生成"}
+.r14-static-fix .cluster-project[data-project="sp500"] .project-label:before{content:"金融时间序列"}
+.r14-static-fix .cluster-project[data-project="minecraft"] .project-label:before{content:"玩家留存分析"}
+.r14-static-fix .cluster-project[data-project="deloitte"] .project-label:before{content:"动态定价策略"}
+.r14-static-fix .cluster-project[data-project="liferpg"] .project-label:before{content:"个人成长系统"}
+html[lang="en"] .r14-static-fix .cluster-project[data-project="agentlab"] .project-label:before{content:"AGENT RELIABILITY"}
+html[lang="en"] .r14-static-fix .cluster-project[data-project="requirement"] .project-label:before{content:"REQUIREMENT ALIGNMENT"}
+html[lang="en"] .r14-static-fix .cluster-project[data-project="airbnb"] .project-label:before{content:"STATISTICAL PRICING"}
+html[lang="en"] .r14-static-fix .cluster-project[data-project="character"] .project-label:before{content:"INTERACTIVE STORY"}
+html[lang="en"] .r14-static-fix .cluster-project[data-project="benchmark"] .project-label:before{content:"MODEL EVALUATION"}
+html[lang="en"] .r14-static-fix .cluster-project[data-project="task-summary"] .project-label:before{content:"WORKFLOW ROUTING"}
+html[lang="en"] .r14-static-fix .cluster-project[data-project="content-qa"] .project-label:before{content:"CONTENT QUALITY"}
+html[lang="en"] .r14-static-fix .cluster-project[data-project="dashboard"] .project-label:before{content:"QA OBSERVABILITY"}
+html[lang="en"] .r14-static-fix .cluster-project[data-project="training"] .project-label:before{content:"KNOWLEDGE TRANSFER"}
+html[lang="en"] .r14-static-fix .cluster-project[data-project="sp500"] .project-label:before{content:"FINANCIAL TIME SERIES"}
+html[lang="en"] .r14-static-fix .cluster-project[data-project="minecraft"] .project-label:before{content:"PLAYER RETENTION"}
+html[lang="en"] .r14-static-fix .cluster-project[data-project="deloitte"] .project-label:before{content:"PRICING STRATEGY"}
+html[lang="en"] .r14-static-fix .cluster-project[data-project="liferpg"] .project-label:before{content:"PERSONAL GROWTH SYSTEM"}
+.r14-static-fix .cluster-project[data-project="agentlab"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="requirement"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="airbnb"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="character"] .project-label strong{font-size:19px;line-height:1.16;font-weight:720}
+.r14-static-fix .cluster-project[data-project="benchmark"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="task-summary"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="sp500"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="liferpg"] .project-label strong{font-size:15px}
+.r14-static-fix .cluster-project[data-project="content-qa"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="dashboard"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="training"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="minecraft"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="deloitte"] .project-label strong{font-size:13px}
+.r14-static-fix .cluster-enterprise .project-label strong,
+.r14-static-fix .cluster-creative .project-label strong{text-align:right}
+.r14-static-fix .cluster-heading>span:first-child{
+  font-size:13px;
+  letter-spacing:.02em;
+  font-weight:700;
+}
+.r14-static-fix .cluster-heading small{
+  font-size:8px;
+  letter-spacing:.05em;
+  opacity:.84;
+}
+.r14-static-fix .cluster-count{font-size:8px;opacity:.66}
+.r14-static-fix .work-categories button{
+  background:rgba(11,25,39,.34);
+  border-color:rgba(210,226,236,.18);
+  color:#dce6eb;
+}
+.r14-static-fix .work-categories button[aria-pressed="true"]{
+  background:#e8c39f;
+  border-color:#e8c39f;
+  color:#152a3b;
+}
+@media(max-width:1180px){
+  .r14-static-fix .constellation-links{display:none!important}
+  .r14-static-fix .constellation-map:before{opacity:.52}
+  .r14-static-fix .cluster-branch:before,
+  .r14-static-fix .cluster-branch:after{display:none!important}
+  .r14-static-fix .cluster-enterprise .project-label,
+  .r14-static-fix .cluster-creative .project-label{
+    left:calc(var(--art-size) + 12px);
+    width:calc(var(--node-width) - var(--art-size) - 12px);
+  }
+  .r14-static-fix .cluster-enterprise .project-label strong,
+  .r14-static-fix .cluster-creative .project-label strong{text-align:left}
+}
+@media(max-width:720px){
+  .r14-static-fix .work-section{
+    background:
+      radial-gradient(ellipse 95% 28% at 50% 34%,rgba(52,105,151,.11),transparent 78%),
+      linear-gradient(156deg,#0b1928 0%,#10263a 48%,#0b1b2b 100%);
+  }
+  .r14-static-fix .project-label:before{font-size:6.5px;letter-spacing:.09em;margin-bottom:3px}
+  .r14-static-fix .cluster-project[data-project="agentlab"] .project-label strong,
+  .r14-static-fix .cluster-project[data-project="requirement"] .project-label strong,
+  .r14-static-fix .cluster-project[data-project="airbnb"] .project-label strong,
+  .r14-static-fix .cluster-project[data-project="character"] .project-label strong{font-size:13px}
+  .r14-static-fix .cluster-project[data-project="benchmark"] .project-label strong,
+  .r14-static-fix .cluster-project[data-project="task-summary"] .project-label strong,
+  .r14-static-fix .cluster-project[data-project="sp500"] .project-label strong,
+  .r14-static-fix .cluster-project[data-project="liferpg"] .project-label strong{font-size:11px}
+  .r14-static-fix .cluster-project[data-project="content-qa"] .project-label strong,
+  .r14-static-fix .cluster-project[data-project="dashboard"] .project-label strong,
+  .r14-static-fix .cluster-project[data-project="training"] .project-label strong,
+  .r14-static-fix .cluster-project[data-project="minecraft"] .project-label strong,
+  .r14-static-fix .cluster-project[data-project="deloitte"] .project-label strong{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .r14-static-fix .project-art,
+  .r14-static-fix .project-label strong{transition:none!important}
+}
