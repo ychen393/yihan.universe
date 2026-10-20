@@ -236,60 +236,92 @@ function makePlanet(kind){
   return group;
 }
 
-function createGalaxy(scene,w,h,camera){
-  const group=new THREE.Group();
-  const rand=seeded(90210);
-  const count=1900;
+function createDustLayer({seed,count,spanX,spanY,zMin,zMax,size,opacity,warmMix=0.5}){
+  const rand=seeded(seed);
   const positions=new Float32Array(count*3);
   const colors=new Float32Array(count*3);
-  const worldHeight=2*camera.position.z*Math.tan(THREE.MathUtils.degToRad(camera.fov/2));
-  const upp=worldHeight/h;
-  const spanX=w*.55*upp;
-  const spanY=76*upp;
   const warm=new THREE.Color(0xeac9a8);
   const cool=new THREE.Color(0x8fb5d1);
-
   for(let i=0;i<count;i++){
     const t=rand()*2-1;
-    const arm=Math.sin(t*Math.PI*2.1)*.48;
-    positions[i*3]=t*spanX+(rand()-.5)*spanX*.12;
-    positions[i*3+1]=arm*spanY+(rand()-.5)*spanY*.95;
-    positions[i*3+2]=-150+rand()*220;
-    const mix=.5+.5*Math.cos(t*Math.PI);
-    const col=cool.clone().lerp(warm,mix*.78);
+    const arm=Math.sin(t*Math.PI*2.15)*.48;
+    positions[i*3]=t*spanX+(rand()-.5)*spanX*.16;
+    positions[i*3+1]=arm*spanY+(rand()-.5)*spanY*1.18;
+    positions[i*3+2]=zMin+rand()*(zMax-zMin);
+    const mix=Math.min(1,Math.max(0,warmMix*(.45+.55*Math.cos(t*Math.PI))));
+    const col=cool.clone().lerp(warm,mix);
     colors[i*3]=col.r;
     colors[i*3+1]=col.g;
     colors[i*3+2]=col.b;
   }
-
   const geo=new THREE.BufferGeometry();
   geo.setAttribute('position',new THREE.BufferAttribute(positions,3));
   geo.setAttribute('color',new THREE.BufferAttribute(colors,3));
   const mat=new THREE.PointsMaterial({
-    size:2.3*upp,
+    size,
     sizeAttenuation:true,
     transparent:true,
-    opacity:.78,
+    opacity,
     vertexColors:true,
     blending:THREE.AdditiveBlending,
-    depthWrite:false
+    depthWrite:false,
+    fog:true
   });
-  const pts=new THREE.Points(geo,mat);
-  pts.rotation.z=THREE.MathUtils.degToRad(-9);
-  group.add(pts);
+  return new THREE.Points(geo,mat);
+}
 
-  const glow=new THREE.Sprite(new THREE.SpriteMaterial({
-    map:makeGlowTexture(),
+function createGalaxy(scene,w,h,camera){
+  const group=new THREE.Group();
+  const worldHeight=2*camera.position.z*Math.tan(THREE.MathUtils.degToRad(camera.fov/2));
+  const upp=worldHeight/h;
+  const spanX=w*.58*upp;
+  const spanY=82*upp;
+
+  const far=createDustLayer({
+    seed:20261,count:1450,spanX:spanX*1.08,spanY:spanY*1.15,
+    zMin:-620,zMax:-260,size:1.65*upp,opacity:.34,warmMix:.42
+  });
+  const mid=createDustLayer({
+    seed:90210,count:1900,spanX,spanY,
+    zMin:-230,zMax:70,size:2.6*upp,opacity:.78,warmMix:.78
+  });
+  const near=createDustLayer({
+    seed:77113,count:360,spanX:spanX*.92,spanY:spanY*.92,
+    zMin:180,zMax:430,size:4.5*upp,opacity:.30,warmMix:.58
+  });
+
+  far.rotation.z=THREE.MathUtils.degToRad(-7.5);
+  mid.rotation.z=THREE.MathUtils.degToRad(-9);
+  near.rotation.z=THREE.MathUtils.degToRad(-11);
+
+  group.add(far,mid,near);
+
+  const glowTexture=makeGlowTexture();
+  const coreGlow=new THREE.Sprite(new THREE.SpriteMaterial({
+    map:glowTexture,
     color:0xe8c6a6,
     transparent:true,
-    opacity:.16,
+    opacity:.18,
     blending:THREE.AdditiveBlending,
     depthWrite:false
   }));
-  glow.scale.set(260*upp,150*upp,1);
-  glow.position.set(0,0,-80);
-  group.add(glow);
+  coreGlow.scale.set(300*upp,170*upp,1);
+  coreGlow.position.set(0,0,-65);
+  group.add(coreGlow);
 
+  const coolGlow=new THREE.Sprite(new THREE.SpriteMaterial({
+    map:glowTexture,
+    color:0x789fc2,
+    transparent:true,
+    opacity:.10,
+    blending:THREE.AdditiveBlending,
+    depthWrite:false
+  }));
+  coolGlow.scale.set(460*upp,115*upp,1);
+  coolGlow.position.set(-90*upp,18*upp,-320);
+  group.add(coolGlow);
+
+  group.userData={far,mid,near,coreGlow,coolGlow};
   scene.add(group);
   return group;
 }
@@ -337,7 +369,8 @@ function initMap(map){
   map.prepend(layer);
 
   const scene=new THREE.Scene();
-  const camera=new THREE.PerspectiveCamera(38,1,.1,2400);
+  scene.fog=new THREE.Fog(0x11283b,620,1540);
+  const camera=new THREE.PerspectiveCamera(40,1,.1,2600);
   camera.position.set(0,0,900);
   camera.lookAt(0,0,0);
 
@@ -420,8 +453,8 @@ function initMap(map){
     galaxy=createGalaxy(scene,width,height,camera);
     galaxy.position.z=-80;
 
-    const ap=place(agent,agentArt,20);
-    const rp=place(requirement,reqArt,0);
+    const ap=place(agent,agentArt,120);
+    const rp=place(requirement,reqArt,-35);
     agentLight.position.set(ap.x-40,ap.y+30,180);
     reqLight.position.set(rp.x+40,rp.y+35,180);
   }
@@ -472,10 +505,18 @@ function initMap(map){
       agent.userData.sphere.rotation.y+=.0018;
       agent.userData.sphere.rotation.x=.08+Math.sin(performance.now()*.00025)*.018;
       requirement.userData.sphere.rotation.y-=.00125;
-      galaxy.rotation.z=THREE.MathUtils.degToRad(-9)+Math.sin(performance.now()*.00007)*.014;
+      const tm=performance.now();
+      galaxy.userData.far.position.x=THREE.MathUtils.lerp(galaxy.userData.far.position.x,-pointerX*3,.025);
+      galaxy.userData.far.position.y=THREE.MathUtils.lerp(galaxy.userData.far.position.y,pointerY*2,.025);
+      galaxy.userData.mid.position.x=THREE.MathUtils.lerp(galaxy.userData.mid.position.x,-pointerX*9,.035);
+      galaxy.userData.mid.position.y=THREE.MathUtils.lerp(galaxy.userData.mid.position.y,pointerY*6,.035);
+      galaxy.userData.near.position.x=THREE.MathUtils.lerp(galaxy.userData.near.position.x,-pointerX*24,.05);
+      galaxy.userData.near.position.y=THREE.MathUtils.lerp(galaxy.userData.near.position.y,pointerY*16,.05);
+      galaxy.userData.mid.rotation.z=THREE.MathUtils.degToRad(-9)+Math.sin(tm*.00007)*.014;
+      galaxy.userData.near.rotation.z=THREE.MathUtils.degToRad(-11)+Math.sin(tm*.00011)*.02;
 
-      camX=THREE.MathUtils.lerp(camX,pointerX*10,.035);
-      camY=THREE.MathUtils.lerp(camY,-pointerY*7,.035);
+      camX=THREE.MathUtils.lerp(camX,pointerX*18,.04);
+      camY=THREE.MathUtils.lerp(camY,-pointerY*12,.04);
       camera.position.x=camX;
       camera.position.y=camY;
       camera.lookAt(camX*.12,camY*.12,0);
