@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+<defs><radialGradient id="p" cx=".32" cy=".25" r=".8"><stop stop-color="#c9ffe9"/><stop offset=".18" stop-color="#63b893"/><stop offset=".56" stop-color="#326f5d"/><stop offset="1" stop-color="#173a37"/></radialGradient><filter id="g"><feGaussianBlur stdDeviation="12"/></filter></defs>
+<circle cx="250" cy="250" r="164" fill="#4ab485" opacity=".16" filter="url(#g)"/>
+<circle cx="250" cy="250" r="150" fill="url(#p)" stroke="#9ce4c2" stroke-opacity=".72" stroke-width="2"/>
+<g fill="none" stroke="#c6f6df" stroke-opacity=".15"><path d="M122 180 C180 154 275 167 365 138"/><path d="M112 225 C191 202 280 218 382 184"/><path d="M118 278 C208 246 306 265 380 240"/><path d="M140 330 C205 308 286 313 349 286"/></g>
+<g fill="#bff5dc" opacity=".45"><rect x="178" y="208" width="9" height="48"/><rect x="195" y="190" width="11" height="66"/><rect x="217" y="225" width="8" height="31"/><rect x="235" y="171" width="12" height="85"/><rect x="260" y="201" width="10" height="55"/><rect x="281" y="184" width="11" height="72"/><rect x="303" y="218" width="9" height="38"/></g>
+<ellipse cx="250" cy="250" rx="197" ry="54" fill="none" stroke="#a9e9ca" stroke-opacity=".42" stroke-width="4" transform="rotate(-17 250 250)"/>
+<circle cx="116" cy="275" r="8" fill="#ccffe7"/><circle cx="385" cy="188" r="7" fill="#85d6ad"/>
+</svg>
