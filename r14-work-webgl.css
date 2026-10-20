@@ -1,0 +1,41 @@
+/* R14.1 Three.js proof-of-concept — visual layer only */
+.r14-static-fix .constellation-map{position:relative}
+.r14-static-fix .r14-webgl-layer{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  overflow:hidden;
+}
+.r14-static-fix .r14-webgl-layer canvas{
+  display:block;
+  width:100%!important;
+  height:100%!important;
+  pointer-events:none;
+}
+.r14-static-fix .constellation-map.r14-webgl-ready:before{
+  opacity:0;
+}
+.r14-static-fix .constellation-map.r14-webgl-ready .cluster-project[data-project="agentlab"] .project-art,
+.r14-static-fix .constellation-map.r14-webgl-ready .cluster-project[data-project="requirement"] .project-art{
+  opacity:0;
+}
+.r14-static-fix .constellation-map.r14-webgl-ready .cluster-project[data-project="agentlab"] .project-label,
+.r14-static-fix .constellation-map.r14-webgl-ready .cluster-project[data-project="requirement"] .project-label{
+  z-index:8;
+}
+.r14-static-fix .constellation-map.r14-webgl-ready .cluster-project[data-project="agentlab"],
+.r14-static-fix .constellation-map.r14-webgl-ready .cluster-project[data-project="requirement"]{
+  z-index:8;
+}
+@media(max-width:1180px){
+  .r14-static-fix .r14-webgl-layer{display:none}
+  .r14-static-fix .constellation-map.r14-webgl-ready:before{opacity:.78}
+  .r14-static-fix .constellation-map.r14-webgl-ready .cluster-project[data-project="agentlab"] .project-art,
+  .r14-static-fix .constellation-map.r14-webgl-ready .cluster-project[data-project="requirement"] .project-art{opacity:1}
+}
+@media(prefers-reduced-motion:reduce){
+  .r14-static-fix .r14-webgl-layer canvas{transform:none!important}
+}
