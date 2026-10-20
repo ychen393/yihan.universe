@@ -1,7 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360">
-<defs><radialGradient id="p"><stop stop-color="#dcb0ef" stop-opacity=".5"/><stop offset=".45" stop-color="#7a5a9a"/><stop offset="1" stop-color="#352f55"/></radialGradient></defs>
-<circle cx="180" cy="180" r="112" fill="url(#p)" stroke="#c798e3" stroke-opacity=".6" stroke-width="2"/>
-<g fill="none" stroke="#e6c2fa" stroke-opacity=".4" stroke-width="2"><circle cx="180" cy="180" r="82"/><circle cx="180" cy="180" r="58"/><circle cx="180" cy="180" r="34"/></g>
-<circle cx="180" cy="180" r="16" fill="#e6b8fb" opacity=".55"/>
-<ellipse cx="180" cy="180" rx="145" ry="46" fill="none" stroke="#b896dd" stroke-opacity=".34" stroke-width="3" transform="rotate(-34 180 180)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 380">
+<defs>
+ <radialGradient id="p" cx="50%" cy="50%" r="50%"><stop stop-color="#ead3f7" stop-opacity=".75"/><stop offset=".22" stop-color="#9c77bb" stop-opacity=".45"/><stop offset=".54" stop-color="#654d86"/><stop offset="1" stop-color="#2f2d4c"/></radialGradient>
+ <filter id="h"><feGaussianBlur stdDeviation="15"/></filter>
+</defs>
+<circle cx="190" cy="190" r="128" fill="#aa70cf" opacity=".14" filter="url(#h)"/>
+<circle cx="190" cy="190" r="102" fill="url(#p)" stroke="#c9a5df" stroke-opacity=".48" stroke-width="2"/>
+<g fill="none" stroke="#ead7f7" stroke-opacity=".28">
+ <circle cx="190" cy="190" r="78"/><circle cx="190" cy="190" r="56"/><circle cx="190" cy="190" r="34"/>
+ <path d="M190 85V295M85 190H295" stroke-opacity=".10"/>
+</g>
+<circle cx="190" cy="190" r="17" fill="#e1c3f3" opacity=".46"/>
+<ellipse cx="190" cy="190" rx="143" ry="45" fill="none" stroke="#c39ddb" stroke-opacity=".25" stroke-width="2.5" transform="rotate(-31 190 190)"/>
+<g fill="#ead8f7"><circle cx="64" cy="251" r="4"/><circle cx="309" cy="130" r="3.2"/></g>
 </svg>
