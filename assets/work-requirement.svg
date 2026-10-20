@@ -1,44 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 540">
 <defs>
-  <radialGradient id="base" cx="30%" cy="23%" r="80%">
-    <stop offset="0" stop-color="#fff0dc"/>
-    <stop offset=".14" stop-color="#e7bc8e"/>
-    <stop offset=".42" stop-color="#b47c55"/>
-    <stop offset=".72" stop-color="#684d42"/>
-    <stop offset="1" stop-color="#29343c"/>
-  </radialGradient>
-  <linearGradient id="ring" x1="0" y1=".5" x2="1" y2=".5">
-    <stop stop-color="#e4ae78" stop-opacity="0"/>
-    <stop offset=".38" stop-color="#f1c89f" stop-opacity=".25"/>
-    <stop offset=".52" stop-color="#ffe3c0" stop-opacity=".92"/>
-    <stop offset=".72" stop-color="#d79666" stop-opacity=".16"/>
-    <stop offset="1" stop-color="#c48053" stop-opacity="0"/>
-  </linearGradient>
-  <filter id="halo" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="24"/></filter>
-  <filter id="grain" x="-20%" y="-20%" width="140%" height="140%">
-    <feTurbulence type="fractalNoise" baseFrequency=".018" numOctaves="2" seed="8" result="n"/>
-    <feColorMatrix in="n" values=".7 0 0 0 .22  0 .55 0 0 .10  0 0 .45 0 .02  0 0 0 .22 0" result="c"/>
-    <feBlend in="SourceGraphic" in2="c" mode="soft-light"/>
-  </filter>
-  <clipPath id="clip"><circle cx="270" cy="270" r="147"/></clipPath>
+ <radialGradient id="planet" cx="30%" cy="22%" r="82%"><stop stop-color="#fff0d9"/><stop offset=".13" stop-color="#e7bb8a"/><stop offset=".4" stop-color="#b27a53"/><stop offset=".73" stop-color="#654a40"/><stop offset="1" stop-color="#252f38"/></radialGradient>
+ <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e8b77e" stop-opacity=".06"/><stop offset=".5" stop-color="#ffe4bc" stop-opacity=".9"/><stop offset="1" stop-color="#b9784f" stop-opacity=".08"/></linearGradient>
+ <filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="18"/></filter>
+ <clipPath id="sphere"><circle cx="270" cy="270" r="146"/></clipPath>
 </defs>
-<circle cx="270" cy="270" r="188" fill="#dfa56d" opacity=".14" filter="url(#halo)"/>
-<ellipse cx="270" cy="270" rx="231" ry="69" fill="none" stroke="url(#ring)" stroke-width="4.5" transform="rotate(10 270 270)"/>
-<ellipse cx="270" cy="270" rx="191" ry="116" fill="none" stroke="#f2cfaa" stroke-opacity=".12" stroke-width="1.3" transform="rotate(-27 270 270)"/>
-<circle cx="270" cy="270" r="149" fill="url(#base)" filter="url(#grain)"/>
-<g clip-path="url(#clip)" fill="none">
-  <path d="M268 119 C274 163 262 203 270 245 C278 288 266 335 275 420" stroke="#ffe2c1" stroke-opacity=".37" stroke-width="2.2"/>
-  <path d="M146 218 C209 194 311 202 392 175" stroke="#f6d5b1" stroke-opacity=".13" stroke-width="9"/>
-  <path d="M138 304 C198 285 300 293 407 252" stroke="#8e6855" stroke-opacity=".20" stroke-width="15"/>
-  <path d="M157 355 C220 329 309 341 385 319" stroke="#e2af82" stroke-opacity=".11" stroke-width="7"/>
-  <g stroke="#fff0dc" stroke-opacity=".15">
-    <path d="M208 153 L336 382"/><path d="M175 206 L356 329"/><path d="M182 329 L351 193"/>
-  </g>
+<circle cx="270" cy="270" r="170" fill="#d9a16a" opacity=".13" filter="url(#glow)"/>
+<ellipse cx="270" cy="270" rx="232" ry="70" fill="none" stroke="url(#rim)" stroke-width="4.5" transform="rotate(11 270 270)"/>
+<ellipse cx="270" cy="270" rx="188" ry="114" fill="none" stroke="#f0c99e" stroke-opacity=".2" stroke-width="1.4" transform="rotate(-26 270 270)"/>
+<circle cx="270" cy="270" r="148" fill="url(#planet)" stroke="#f3cda3" stroke-opacity=".74" stroke-width="2"/>
+<g clip-path="url(#sphere)" fill="none" stroke-linecap="round">
+ <path d="M119 209 C176 188 221 207 269 187 S347 184 421 152" stroke="#ffe7c8" stroke-opacity=".13" stroke-width="10"/>
+ <path d="M117 305 C174 280 219 296 270 276 S349 266 422 231" stroke="#c88f62" stroke-opacity=".20" stroke-width="15"/>
+ <path d="M154 350 C212 327 261 344 317 320 S373 306 403 293" stroke="#f5d0a7" stroke-opacity=".15" stroke-width="7"/>
+ <path d="M146 234 L212 245 L270 270 L329 231 L391 239" stroke="#ffe5c3" stroke-opacity=".68" stroke-width="2.4"/>
+ <path d="M212 245 L218 197 M270 270 L273 320 M329 231 L336 190" stroke="#f5d0aa" stroke-opacity=".65" stroke-width="1.8"/>
+ <ellipse cx="270" cy="270" rx="99" ry="34" stroke="#f8d8b5" stroke-opacity=".25"/>
 </g>
-<circle cx="270" cy="270" r="149" fill="none" stroke="#f3cba2" stroke-opacity=".62" stroke-width="2"/>
-<path d="M190 155 C218 135 249 127 281 128" fill="none" stroke="#fff8ed" stroke-opacity=".35" stroke-width="4" stroke-linecap="round"/>
-<g fill="#f4c89d">
-  <circle cx="119" cy="231" r="4.5"/><circle cx="411" cy="189" r="3.6"/><circle cx="430" cy="336" r="5"/>
-</g>
-<g fill="#fff0dc" opacity=".75"><rect x="113" y="219" width="7" height="18" rx="3"/><rect x="424" y="326" width="8" height="19" rx="3"/></g>
+<g fill="#ffe5c4" stroke="#8e6044" stroke-width="2"><circle cx="146" cy="234" r="7"/><circle cx="212" cy="245" r="8"/><circle cx="270" cy="270" r="11"/><circle cx="329" cy="231" r="8"/><circle cx="391" cy="239" r="6"/></g>
+<circle cx="270" cy="270" r="38" fill="#f8d5a8" fill-opacity=".16" stroke="#fff0d6" stroke-opacity=".82" stroke-width="2"/>
+<circle cx="270" cy="270" r="23" fill="none" stroke="#ffe8c9" stroke-opacity=".8" stroke-width="1.5"/>
+<path d="M250 270 H290 M270 250 V290" stroke="#fff1d8" stroke-opacity=".74" stroke-width="1.4"/>
+<circle cx="270" cy="270" r="148" fill="none" stroke="url(#rim)" stroke-width="2"/>
+<path d="M190 154 C215 136 244 129 277 130" fill="none" stroke="#fff8ed" stroke-opacity=".46" stroke-width="4" stroke-linecap="round"/>
+<g fill="#ffe7c8"><circle cx="114" cy="221" r="4"/><circle cx="421" cy="193" r="3.5"/><circle cx="434" cy="336" r="4.5"/></g>
 </svg>
