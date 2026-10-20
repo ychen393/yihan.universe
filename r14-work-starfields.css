@@ -1,0 +1,393 @@
+/* R14.1 Work Universe — starfields, not dashboard cards.
+   Presentation-only override. Existing project anchors, routing and case-study logic stay unchanged. */
+
+.r14-static-fix .work-section{
+  background:
+    radial-gradient(ellipse 32% 22% at 18% 18%,rgba(130,161,184,.13),transparent 74%),
+    radial-gradient(ellipse 36% 24% at 78% 20%,rgba(224,190,157,.11),transparent 76%),
+    radial-gradient(ellipse 28% 20% at 20% 76%,rgba(154,205,185,.08),transparent 74%),
+    radial-gradient(ellipse 30% 22% at 81% 77%,rgba(196,171,221,.09),transparent 76%),
+    linear-gradient(160deg,#26394c 0%,#213344 56%,#253747 100%);
+}
+.r14-static-fix .work-header{position:relative;z-index:8}
+.r14-static-fix .work-categories{margin-bottom:6px}
+.r14-static-fix .constellation-map{
+  height:900px;
+  max-width:1500px;
+  margin:0 auto;
+  position:relative;
+  overflow:hidden;
+}
+.r14-static-fix .constellation-map:before{
+  inset:8% 11%;
+  background:
+    radial-gradient(circle at 50% 46%,rgba(229,194,160,.1),transparent 21%),
+    radial-gradient(ellipse at 50% 48%,rgba(197,219,231,.05),transparent 56%);
+}
+.r14-static-fix .constellation-map:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 12% 28%,rgba(255,255,255,.78) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 23% 61%,rgba(230,205,180,.75) 0 1.2px,transparent 1.8px),
+    radial-gradient(circle at 37% 15%,rgba(209,229,238,.72) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 55% 73%,rgba(255,255,255,.72) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 68% 36%,rgba(239,211,184,.78) 0 1.1px,transparent 1.7px),
+    radial-gradient(circle at 83% 17%,rgba(217,232,239,.75) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 92% 69%,rgba(255,255,255,.74) 0 1px,transparent 1.5px);
+  background-size:360px 360px;
+  opacity:.48;
+}
+.r14-static-fix .constellation-links{
+  z-index:1;
+  opacity:.5;
+}
+.r14-static-fix .constellation-links path{
+  stroke-width:.9;
+  stroke-opacity:.24;
+  stroke-dasharray:2 12;
+}
+.r14-static-fix .constellation-links circle{opacity:.4}
+
+/* Smaller navigation core: the projects, not the center, should carry the visual weight. */
+.r14-static-fix .constellation-core{
+  top:47%;
+  left:50%;
+  width:108px;
+  height:108px;
+  z-index:4;
+  border-color:rgba(241,214,185,.48);
+  background:radial-gradient(circle at 34% 28%,#72879a,#40556a 58%,#26394d);
+  box-shadow:0 0 44px rgba(237,190,145,.11),inset -12px -16px 25px rgba(17,29,42,.38);
+}
+.r14-static-fix .constellation-core strong{
+  font-size:17px;
+  line-height:1.06;
+  max-width:86px;
+}
+.r14-static-fix .constellation-core span{
+  font-size:7px;
+  letter-spacing:.1em;
+}
+
+/* Star regions: remove the dashboard container entirely. */
+.r14-static-fix .cluster-branch{
+  width:42%;
+  height:350px;
+  min-height:0;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  backdrop-filter:none;
+  overflow:visible;
+  z-index:5;
+  transition:opacity .3s ease,filter .3s ease;
+}
+.r14-static-fix .cluster-ai{top:1%;left:1%;--cluster-color:#acd0e8}
+.r14-static-fix .cluster-enterprise{top:1%;right:1%;--cluster-color:#e1bba6}
+.r14-static-fix .cluster-data{bottom:4%;left:1%;--cluster-color:#a6d5c1}
+.r14-static-fix .cluster-creative{bottom:4%;right:1%;--cluster-color:#cdb2e9}
+
+.r14-static-fix .cluster-branch[data-selected="true"],
+.r14-static-fix .cluster-branch[data-selected="false"],
+.r14-static-fix .cluster-branch:hover,
+.r14-static-fix .cluster-branch:focus-within{
+  border:0;
+  box-shadow:none;
+  transform:none;
+}
+.r14-static-fix .cluster-branch[data-selected="false"]{
+  opacity:.24;
+  filter:saturate(.65);
+}
+.r14-static-fix .cluster-branch[data-selected="true"]{opacity:1;filter:none}
+
+/* Region label floats in space; no card header. */
+.r14-static-fix .cluster-heading{
+  position:absolute;
+  left:6%;
+  top:5%;
+  width:auto;
+  max-width:250px;
+  padding:0;
+  display:flex;
+  gap:9px;
+  align-items:flex-start;
+  color:#fbefe4;
+  cursor:pointer;
+  z-index:10;
+}
+.r14-static-fix .cluster-enterprise .cluster-heading,
+.r14-static-fix .cluster-creative .cluster-heading{
+  left:auto;
+  right:6%;
+  text-align:right;
+  flex-direction:row-reverse;
+}
+.r14-static-fix .cluster-heading:before{
+  font-size:15px;
+  margin-top:2px;
+  filter:drop-shadow(0 0 8px color-mix(in srgb,var(--cluster-color),transparent 38%));
+}
+.r14-static-fix .cluster-heading small{
+  font-size:9px;
+  line-height:1.45;
+  letter-spacing:.08em;
+  color:color-mix(in srgb,var(--cluster-color),white 12%);
+  margin-top:3px;
+}
+.r14-static-fix .cluster-heading>span:first-child{
+  font-size:13px;
+  letter-spacing:.04em;
+  font-weight:680;
+}
+.r14-static-fix .cluster-count{
+  padding:0;
+  border:0;
+  border-radius:0;
+  font-size:9px;
+  color:color-mix(in srgb,var(--cluster-color),white 8%);
+  opacity:.75;
+}
+
+/* Each existing anchor becomes a planet. href/data-project remain unchanged. */
+.r14-static-fix .cluster-projects{
+  position:absolute;
+  inset:0;
+  display:block;
+}
+.r14-static-fix .cluster-project{
+  --planet-size:82px;
+  position:absolute;
+  width:var(--planet-size);
+  height:var(--planet-size);
+  min-width:0;
+  padding:0 8px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:
+    radial-gradient(circle at 31% 26%,rgba(255,255,255,.22),transparent 17%),
+    radial-gradient(circle at 37% 32%,color-mix(in srgb,var(--cluster-color),#72879a 40%),#405469 53%,#25394b 100%);
+  border:1px solid color-mix(in srgb,var(--cluster-color),transparent 22%);
+  color:#f8eee5;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.025) inset,
+    -11px -12px 22px rgba(255,255,255,.02) inset,
+    12px 18px 30px rgba(4,11,18,.25),
+    0 0 28px color-mix(in srgb,var(--cluster-color),transparent 86%);
+  transform:none;
+  transform-origin:center;
+  transition:transform .32s cubic-bezier(.2,.72,.2,1),box-shadow .32s ease,border-color .3s ease,opacity .28s ease,filter .28s ease;
+  overflow:visible;
+  z-index:3;
+}
+.r14-static-fix .cluster-project:before{
+  content:"";
+  position:absolute;
+  width:128%;
+  height:34%;
+  border:1px solid color-mix(in srgb,var(--cluster-color),transparent 52%);
+  border-radius:50%;
+  transform:rotate(-18deg);
+  opacity:.38;
+  pointer-events:none;
+}
+.r14-static-fix .cluster-project:after{
+  content:"";
+  position:absolute;
+  inset:50%;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--cluster-color);
+  box-shadow:0 0 10px var(--cluster-color);
+  opacity:.45;
+  transform:translate(-50%,-50%) scale(0);
+  transition:transform .3s ease,opacity .3s ease;
+}
+.r14-static-fix .cluster-project strong{
+  position:relative;
+  z-index:2;
+  font-size:10px;
+  line-height:1.22;
+  font-weight:650;
+  max-width:88%;
+  text-wrap:balance;
+  text-shadow:0 2px 10px rgba(3,8,14,.45);
+}
+.r14-static-fix .cluster-project em{display:none}
+
+/* Project hierarchy: larger planets are the priority cases. */
+.r14-static-fix .cluster-project[data-project="agentlab"]{--planet-size:118px}
+.r14-static-fix .cluster-project[data-project="benchmark"]{--planet-size:102px}
+.r14-static-fix .cluster-project[data-project="requirement"]{--planet-size:114px}
+.r14-static-fix .cluster-project[data-project="task-summary"]{--planet-size:98px}
+.r14-static-fix .cluster-project[data-project="airbnb"]{--planet-size:96px}
+.r14-static-fix .cluster-project[data-project="character"]{--planet-size:94px}
+
+/* AI system starfield */
+.r14-static-fix .cluster-ai .cluster-project:nth-child(1){left:13%;top:31%}
+.r14-static-fix .cluster-ai .cluster-project:nth-child(2){left:46%;top:16%}
+.r14-static-fix .cluster-ai .cluster-project:nth-child(3){left:61%;top:57%}
+
+/* Enterprise / product starfield */
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(1){right:12%;top:28%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(2){right:44%;top:13%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(3){right:54%;top:58%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(4){right:21%;top:65%}
+
+/* Data / strategy starfield */
+.r14-static-fix .cluster-data .cluster-project:nth-child(1){left:12%;top:28%}
+.r14-static-fix .cluster-data .cluster-project:nth-child(2){left:42%;top:16%}
+.r14-static-fix .cluster-data .cluster-project:nth-child(3){left:59%;top:56%}
+.r14-static-fix .cluster-data .cluster-project:nth-child(4){left:25%;top:66%}
+
+/* Creative lab starfield */
+.r14-static-fix .cluster-creative .cluster-project:nth-child(1){right:18%;top:28%}
+.r14-static-fix .cluster-creative .cluster-project:nth-child(2){right:49%;top:55%}
+
+/* Focus interaction: explore one planet without changing navigation logic. */
+@media(hover:hover){
+  .r14-static-fix .cluster-branch:has(.cluster-project:hover) .cluster-project:not(:hover),
+  .r14-static-fix .cluster-branch:has(.cluster-project:focus-visible) .cluster-project:not(:focus-visible){
+    opacity:.38;
+    filter:saturate(.6);
+  }
+}
+.r14-static-fix .cluster-project:hover,
+.r14-static-fix .cluster-project:focus-visible{
+  transform:scale(1.11);
+  z-index:20;
+  border-color:color-mix(in srgb,var(--cluster-color),white 32%);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.04) inset,
+    12px 20px 34px rgba(4,11,18,.25),
+    0 0 42px color-mix(in srgb,var(--cluster-color),transparent 60%);
+}
+.r14-static-fix .cluster-project:hover:after,
+.r14-static-fix .cluster-project:focus-visible:after{
+  opacity:.9;
+  transform:translate(-50%,-50%) scale(1);
+}
+
+/* Hover inspector becomes a subtle telescope readout instead of another large card. */
+.r14-static-fix .constellation-inspector{
+  bottom:4.5%;
+  width:min(500px,52%);
+  min-height:0;
+  padding:10px 15px 11px;
+  border-radius:999px;
+  border:1px solid rgba(232,210,188,.18);
+  background:rgba(24,39,52,.62);
+  backdrop-filter:blur(12px);
+  box-shadow:none;
+}
+.r14-static-fix .constellation-inspector .inspector-overline{
+  display:none;
+}
+.r14-static-fix .constellation-inspector strong{
+  font-size:12px;
+  font-weight:650;
+}
+.r14-static-fix .constellation-inspector p{
+  display:inline;
+  font-size:9px;
+  color:#b9c5cc;
+  margin:0 0 0 9px;
+}
+.r14-static-fix .constellation-inspector a{
+  display:none;
+}
+
+/* Keep filter controls functional but visually subordinate. */
+.r14-static-fix .work-categories button{
+  font-size:10px;
+  padding:7px 12px;
+  border-color:rgba(235,213,192,.18);
+  background:rgba(255,255,255,.018);
+}
+.r14-static-fix .work-categories button[aria-pressed="true"]{
+  background:rgba(232,202,174,.11);
+  border-color:rgba(236,205,177,.38);
+}
+
+/* Tablet: still a space map, but simplify the geometry. */
+@media(max-width:1100px){
+  .r14-static-fix .constellation-map{
+    height:auto;
+    min-height:1180px;
+    display:block;
+    padding:0;
+  }
+  .r14-static-fix .constellation-links{display:none}
+  .r14-static-fix .constellation-core{
+    top:45px;
+    width:96px;
+    height:96px;
+  }
+  .r14-static-fix .cluster-branch{
+    position:relative;
+    top:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    left:auto!important;
+    width:100%;
+    height:250px;
+    margin:90px 0 0;
+  }
+  .r14-static-fix .cluster-heading{left:4%;top:0}
+  .r14-static-fix .cluster-enterprise .cluster-heading,
+  .r14-static-fix .cluster-creative .cluster-heading{
+    left:4%;right:auto;text-align:left;flex-direction:row;
+  }
+  .r14-static-fix .constellation-inspector{
+    position:relative;
+    left:auto;
+    bottom:auto;
+    transform:none;
+    margin:32px auto 0;
+    width:min(92%,500px);
+  }
+}
+
+/* Mobile: preserve the star/planet metaphor without hiding project access. */
+@media(max-width:680px){
+  .r14-static-fix .work-header{padding-inline:18px}
+  .r14-static-fix .work-categories{justify-content:flex-start;overflow-x:auto;padding:0 18px 8px}
+  .r14-static-fix .constellation-map{min-height:1110px;padding-inline:8px}
+  .r14-static-fix .constellation-core{display:none}
+  .r14-static-fix .cluster-branch{height:225px;margin-top:42px}
+  .r14-static-fix .cluster-heading{left:3%;max-width:210px}
+  .r14-static-fix .cluster-project{--planet-size:72px}
+  .r14-static-fix .cluster-project[data-project="agentlab"],
+  .r14-static-fix .cluster-project[data-project="requirement"]{--planet-size:90px}
+  .r14-static-fix .cluster-project[data-project="benchmark"],
+  .r14-static-fix .cluster-project[data-project="task-summary"]{--planet-size:82px}
+  .r14-static-fix .cluster-project strong{font-size:8.5px}
+  .r14-static-fix .cluster-ai .cluster-project:nth-child(1),
+  .r14-static-fix .cluster-data .cluster-project:nth-child(1){left:5%;top:35%}
+  .r14-static-fix .cluster-ai .cluster-project:nth-child(2),
+  .r14-static-fix .cluster-data .cluster-project:nth-child(2){left:39%;top:20%}
+  .r14-static-fix .cluster-ai .cluster-project:nth-child(3),
+  .r14-static-fix .cluster-data .cluster-project:nth-child(3){left:68%;top:48%}
+  .r14-static-fix .cluster-data .cluster-project:nth-child(4){left:29%;top:65%}
+  .r14-static-fix .cluster-enterprise .cluster-project:nth-child(1),
+  .r14-static-fix .cluster-creative .cluster-project:nth-child(1){right:5%;top:35%}
+  .r14-static-fix .cluster-enterprise .cluster-project:nth-child(2),
+  .r14-static-fix .cluster-creative .cluster-project:nth-child(2){right:40%;top:19%}
+  .r14-static-fix .cluster-enterprise .cluster-project:nth-child(3){right:67%;top:49%}
+  .r14-static-fix .cluster-enterprise .cluster-project:nth-child(4){right:28%;top:65%}
+  .r14-static-fix .constellation-inspector{display:none}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .r14-static-fix .cluster-project{transition:none!important}
+}
