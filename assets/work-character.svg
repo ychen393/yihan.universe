@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f6d9ff"/><stop offset=".22" stop-color="#a67ad1"/><stop offset=".5" stop-color="#7257a5"/><stop offset=".78" stop-color="#a26bc3"/><stop offset="1" stop-color="#443868"/></linearGradient><filter id="b"><feGaussianBlur stdDeviation="12"/></filter></defs>
+<polygon points="250,38 341,89 433,206 393,344 288,452 150,420 58,310 70,153 165,68" fill="#9b66d0" opacity=".17" filter="url(#b)"/>
+<polygon points="250,42 340,92 430,208 390,340 286,448 154,416 62,306 74,158 166,72" fill="url(#g)" stroke="#d9b2f8" stroke-opacity=".66" stroke-width="2"/>
+<polygon points="250,42 252,246 430,208" fill="#f7e6ff" opacity=".13"/><polygon points="252,246 390,340 286,448" fill="#5b3e89" opacity=".18"/><polygon points="62,306 252,246 74,158" fill="#c999e8" opacity=".12"/><polygon points="74,158 252,246 166,72" fill="#e3bbf5" opacity=".12"/>
+<ellipse cx="250" cy="250" rx="198" ry="58" fill="none" stroke="#d8adf5" stroke-opacity=".40" stroke-width="4" transform="rotate(30 250 250)"/>
+<ellipse cx="250" cy="250" rx="166" ry="102" fill="none" stroke="#9884e6" stroke-opacity=".20" stroke-width="2" transform="rotate(-17 250 250)"/>
+<circle cx="107" cy="306" r="8" fill="#efc7ff"/><circle cx="389" cy="165" r="7" fill="#a8a2ff"/>
+</svg>
