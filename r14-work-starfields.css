@@ -1,158 +1,194 @@
-/* R14.1 Work Universe — reference-driven cinematic constellation UI.
-   UI ONLY. Existing project data, ordering, grouping, hrefs, filters, routing,
-   case-study content and all non-Work approved sections remain untouched. */
+/* R14.1 Work Universe — approved reference reconstruction.
+   WORK UI ONLY.
+   Do not change project data, grouping, ordering, IDs, hrefs, filters, hover data,
+   case-study content, Journey, About, or any previously approved section. */
+
+/* =========================================================
+   01 — WORK HEADER
+   One continuous editorial group:
+   title | 13 projects
+   subtitle directly below
+   filter row below that
+   ========================================================= */
 
 .r14-static-fix .work-section{
   scroll-margin-top:80px;
   position:relative;
   overflow:hidden;
-  padding-top:86px;
+  padding:72px clamp(28px,5vw,96px) 108px;
   background:
-    radial-gradient(ellipse 34% 28% at 15% 42%,rgba(54,112,174,.12),transparent 72%),
-    radial-gradient(ellipse 34% 28% at 84% 41%,rgba(185,124,69,.10),transparent 72%),
-    radial-gradient(ellipse 35% 28% at 17% 82%,rgba(62,136,116,.09),transparent 73%),
-    radial-gradient(ellipse 34% 29% at 83% 82%,rgba(127,80,169,.10),transparent 73%),
-    linear-gradient(160deg,#102235 0%,#152a3d 48%,#122538 100%);
+    radial-gradient(ellipse 30% 24% at 15% 38%,rgba(53,111,180,.10),transparent 72%),
+    radial-gradient(ellipse 31% 25% at 85% 38%,rgba(188,128,70,.09),transparent 72%),
+    radial-gradient(ellipse 31% 24% at 16% 80%,rgba(50,139,118,.08),transparent 72%),
+    radial-gradient(ellipse 31% 24% at 84% 80%,rgba(129,76,178,.09),transparent 72%),
+    linear-gradient(160deg,#0f2235 0%,#142a3e 48%,#112538 100%);
 }
-.r14-static-fix .work-section>.starfield{opacity:.82}
+.r14-static-fix .work-section>.starfield{opacity:.7}
 .r14-static-fix .work-backdrop{position:absolute;inset:0;pointer-events:none;overflow:hidden}
-.r14-static-fix .work-glow{
-  position:absolute;
-  width:860px;height:860px;
-  left:50%;top:310px;
-  transform:translateX(-50%);
-  background:radial-gradient(circle,rgba(230,190,152,.045),transparent 68%);
-}
+.r14-static-fix .work-glow,
 .r14-static-fix .work-ring{display:none}
 
-/* ---------- editorial header ---------- */
 .r14-static-fix .work-header{
-  display:block;
-  max-width:1480px;
+  max-width:1500px;
   margin:0 auto;
+  display:block;
   position:relative;
-  z-index:10;
+  z-index:20;
 }
-.r14-static-fix .work-header>div{max-width:1280px}
+.r14-static-fix .work-header>div{max-width:none}
 .r14-static-fix .work-title-row{
   display:flex;
   align-items:center;
-  gap:22px;
-  flex-wrap:wrap;
+  gap:18px;
+  flex-wrap:nowrap;
+  width:100%;
 }
 .r14-static-fix .work-title-row h2{
-  margin:14px 0 0;
-  max-width:1000px;
-  font-size:clamp(48px,4.6vw,76px);
-  line-height:1.1;
-  letter-spacing:-.045em;
+  flex:0 1 auto;
+  min-width:0;
+  margin:12px 0 0;
+  max-width:none;
+  font-size:clamp(45px,3.7vw,62px);
+  line-height:1.06;
+  letter-spacing:-.048em;
 }
 .r14-static-fix .work-count{
   flex:none;
   display:inline-flex;
   flex-direction:row;
   align-items:baseline;
-  gap:7px;
-  margin:16px 0 0;
-  padding:2px 0 2px 20px;
-  border-left:1px solid rgba(239,210,183,.38);
-  background:transparent;
+  gap:6px;
+  margin:13px 0 0;
+  padding:2px 0 2px 19px;
+  border-left:1px solid rgba(238,208,181,.34);
+  background:none;
   border-radius:0;
 }
 .r14-static-fix .work-count strong{
-  font:400 38px/1 var(--serif);
-  color:#f0cba9;
+  font:400 35px/1 var(--serif);
+  color:#efc8a6;
 }
 .r14-static-fix .work-count span{
-  font-size:12px;
-  color:#d3d8dc;
+  color:#d2d8dc;
+  font-size:11px;
   white-space:nowrap;
 }
 .r14-static-fix .work-header p:not(.eyebrow){
-  max-width:920px;
-  margin:18px 0 0;
-  font-size:17px;
+  max-width:940px;
+  margin:15px 0 0;
+  color:#d4dbe0;
+  font-size:16px;
   line-height:1.7;
-  color:#d7dde1;
 }
 .r14-static-fix .work-categories{
+  position:relative;
+  z-index:21;
   display:flex;
   justify-content:center;
-  gap:10px;
+  gap:9px;
   flex-wrap:wrap;
-  max-width:1480px;
-  margin:26px auto 16px;
-  position:relative;
-  z-index:12;
+  max-width:1500px;
+  margin:22px auto 14px;
 }
 .r14-static-fix .work-categories button{
-  padding:9px 16px;
+  padding:8px 15px;
   border-radius:999px;
-  border:1px solid rgba(226,214,204,.22);
-  background:rgba(12,29,44,.32);
-  color:#e4e5e5;
-  font-size:11px;
+  border:1px solid rgba(232,216,201,.22);
+  background:rgba(10,27,42,.34);
+  color:#e2e6e8;
+  font-size:10px;
   cursor:pointer;
-  transition:background .22s,border-color .22s,transform .22s,color .22s;
+  transition:transform .22s ease,border-color .22s ease,background .22s ease,color .22s ease;
 }
 .r14-static-fix .work-categories button:hover,
 .r14-static-fix .work-categories button:focus-visible{
   transform:translateY(-1px);
-  border-color:rgba(246,211,179,.58);
+  border-color:rgba(244,207,174,.56);
 }
 .r14-static-fix .work-categories button[aria-pressed="true"]{
-  background:#e9c7a6;
-  border-color:#e9c7a6;
+  background:#e7c29f;
+  border-color:#e7c29f;
   color:#172a3a;
 }
 
-/* ---------- one coherent constellation map ---------- */
+/* =========================================================
+   02 — ONE GALAXY MAP
+   4 regions in one 2×2 map
+   central Milky Way behind all project nodes
+   ========================================================= */
+
 .r14-static-fix .constellation-map{
   position:relative;
   isolation:isolate;
   width:100%;
   max-width:1500px;
-  height:720px;
+  height:748px;
   margin:0 auto;
   overflow:hidden;
 }
+
+/* central Milky Way band: decorative only */
 .r14-static-fix .constellation-map:before{
   content:"";
   position:absolute;
-  inset:0;
-  z-index:0;
+  z-index:1;
   pointer-events:none;
+  width:64%;
+  height:165px;
+  left:18%;
+  top:39%;
+  transform:rotate(-10deg);
+  opacity:.55;
+  filter:blur(10px);
+  mix-blend-mode:screen;
   background:
-    radial-gradient(circle at 51% 50%,rgba(255,255,255,.022),transparent 15%),
-    radial-gradient(ellipse 58% 42% at 50% 49%,rgba(148,177,198,.028),transparent 72%);
+    radial-gradient(ellipse 13% 44% at 51% 50%,rgba(255,246,229,.22),transparent 70%),
+    radial-gradient(ellipse 31% 39% at 50% 50%,rgba(187,203,221,.14),transparent 75%),
+    linear-gradient(90deg,
+      transparent 0%,
+      rgba(111,153,192,.04) 12%,
+      rgba(144,172,207,.13) 31%,
+      rgba(237,215,192,.18) 49%,
+      rgba(154,173,210,.12) 69%,
+      rgba(111,153,192,.04) 88%,
+      transparent 100%);
+  box-shadow:
+    0 0 42px rgba(176,199,217,.08),
+    0 0 90px rgba(224,194,166,.05);
 }
+
+/* star dust layer */
 .r14-static-fix .constellation-map:after{
   content:"";
   position:absolute;
   inset:0;
   z-index:0;
   pointer-events:none;
-  opacity:.74;
+  opacity:.76;
   background-image:
-    radial-gradient(circle at 7% 13%,rgba(255,255,255,.86) 0 1px,transparent 1.6px),
-    radial-gradient(circle at 17% 42%,rgba(242,213,185,.85) 0 1.1px,transparent 1.8px),
-    radial-gradient(circle at 28% 74%,rgba(189,219,234,.78) 0 1px,transparent 1.6px),
-    radial-gradient(circle at 38% 23%,rgba(255,255,255,.78) 0 1px,transparent 1.6px),
-    radial-gradient(circle at 53% 63%,rgba(242,210,178,.84) 0 1.1px,transparent 1.8px),
-    radial-gradient(circle at 65% 16%,rgba(207,228,238,.76) 0 1px,transparent 1.6px),
-    radial-gradient(circle at 78% 53%,rgba(255,255,255,.78) 0 1px,transparent 1.6px),
-    radial-gradient(circle at 91% 28%,rgba(241,207,178,.82) 0 1px,transparent 1.7px);
+    radial-gradient(circle at 6% 16%,rgba(255,255,255,.85) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 16% 43%,rgba(243,215,187,.82) 0 1.2px,transparent 1.8px),
+    radial-gradient(circle at 28% 73%,rgba(188,218,233,.77) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 39% 23%,rgba(255,255,255,.79) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 52% 62%,rgba(242,211,181,.84) 0 1.2px,transparent 1.8px),
+    radial-gradient(circle at 64% 16%,rgba(204,227,238,.77) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 77% 52%,rgba(255,255,255,.77) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 91% 28%,rgba(240,206,177,.82) 0 1px,transparent 1.7px);
   background-size:390px 390px;
 }
 .r14-static-fix .constellation-core,
 .r14-static-fix .constellation-links,
 .r14-static-fix .constellation-inspector{display:none}
 
-/* ---------- four nebula fields ---------- */
+/* =========================================================
+   03 — FOUR NEBULA REGIONS
+   ========================================================= */
+
 .r14-static-fix .cluster-branch{
   position:absolute;
+  z-index:3;
   width:47%;
-  height:315px;
+  height:318px;
   min-height:0;
   padding:0;
   border:0;
@@ -161,105 +197,111 @@
   box-shadow:none;
   backdrop-filter:none;
   overflow:visible;
-  z-index:3;
   transition:opacity .26s ease,filter .26s ease;
 }
 .r14-static-fix .cluster-ai{
-  top:0;left:1%;
+  left:1%;
+  top:0;
   --cluster-color:#9bd9ff;
-  --nebula-a:rgba(44,108,190,.24);
-  --nebula-b:rgba(114,77,195,.14);
+  --nebula-a:rgba(45,112,195,.24);
+  --nebula-b:rgba(106,78,195,.14);
 }
 .r14-static-fix .cluster-enterprise{
-  top:0;right:1%;
-  --cluster-color:#f1c28f;
-  --nebula-a:rgba(201,130,73,.22);
-  --nebula-b:rgba(226,180,104,.12);
+  right:1%;
+  top:0;
+  --cluster-color:#f0c28f;
+  --nebula-a:rgba(200,131,71,.23);
+  --nebula-b:rgba(226,180,101,.12);
 }
 .r14-static-fix .cluster-data{
-  bottom:0;left:1%;
-  --cluster-color:#90e2c0;
-  --nebula-a:rgba(46,137,117,.20);
-  --nebula-b:rgba(127,166,70,.10);
+  left:1%;
+  bottom:0;
+  --cluster-color:#8ee2bf;
+  --nebula-a:rgba(46,139,116,.21);
+  --nebula-b:rgba(119,165,75,.10);
 }
 .r14-static-fix .cluster-creative{
-  bottom:0;right:1%;
+  right:1%;
+  bottom:0;
   --cluster-color:#d5a4ff;
-  --nebula-a:rgba(121,69,177,.23);
-  --nebula-b:rgba(73,96,202,.11);
+  --nebula-a:rgba(122,70,181,.24);
+  --nebula-b:rgba(74,94,201,.11);
 }
 .r14-static-fix .cluster-branch:before{
   content:"";
   position:absolute;
-  inset:3% 0 0;
+  inset:4% 1% 2%;
   z-index:0;
   pointer-events:none;
-  opacity:.96;
-  filter:blur(9px);
+  opacity:.9;
+  filter:blur(11px);
   background:
-    radial-gradient(ellipse 54% 42% at 35% 47%,var(--nebula-a),transparent 72%),
-    radial-gradient(ellipse 44% 34% at 68% 50%,var(--nebula-b),transparent 76%),
-    radial-gradient(ellipse 24% 20% at 53% 30%,rgba(255,255,255,.035),transparent 75%);
+    radial-gradient(ellipse 54% 42% at 36% 48%,var(--nebula-a),transparent 72%),
+    radial-gradient(ellipse 46% 35% at 69% 51%,var(--nebula-b),transparent 76%),
+    radial-gradient(ellipse 20% 17% at 51% 35%,rgba(255,255,255,.03),transparent 74%);
 }
 .r14-static-fix .cluster-branch:after{
   content:"";
   position:absolute;
-  left:7%;top:24%;
-  width:77%;height:48%;
   z-index:1;
   pointer-events:none;
-  border:1px solid color-mix(in srgb,var(--cluster-color),transparent 83%);
+  left:11%;
+  top:30%;
+  width:64%;
+  height:38%;
+  border:1px solid color-mix(in srgb,var(--cluster-color),transparent 84%);
   border-radius:50%;
   transform:rotate(-10deg);
-  opacity:.32;
+  opacity:.28;
 }
-.r14-static-fix .cluster-enterprise:after{left:15%;transform:rotate(9deg)}
-.r14-static-fix .cluster-data:after{left:5%;top:21%;transform:rotate(8deg)}
-.r14-static-fix .cluster-creative:after{left:16%;top:22%;transform:rotate(-8deg)}
+.r14-static-fix .cluster-enterprise:after{left:21%;transform:rotate(10deg)}
+.r14-static-fix .cluster-data:after{left:9%;top:27%;transform:rotate(8deg)}
+.r14-static-fix .cluster-creative:after{left:23%;top:27%;transform:rotate(-9deg)}
 
 .r14-static-fix .cluster-branch[data-selected="false"]{
-  opacity:.17;
+  opacity:.15;
   filter:saturate(.45);
 }
 .r14-static-fix .cluster-branch[data-selected="true"]{opacity:1;filter:none}
 .r14-static-fix .cluster-branch:hover,
 .r14-static-fix .cluster-branch:focus-within{transform:none;box-shadow:none}
 
-/* ---------- region labels ---------- */
+/* region labels */
 .r14-static-fix .cluster-heading{
   position:absolute;
+  z-index:20;
   left:2%;
   top:1%;
   width:auto;
   max-width:none;
   padding:0;
   display:flex;
-  gap:9px;
   align-items:flex-start;
+  gap:9px;
   border:0;
   background:transparent;
   color:#f8efe7;
   text-align:left;
   cursor:pointer;
-  z-index:20;
 }
 .r14-static-fix .cluster-enterprise .cluster-heading,
 .r14-static-fix .cluster-creative .cluster-heading{
-  left:auto;right:2%;
+  left:auto;
+  right:2%;
   text-align:right;
   flex-direction:row-reverse;
 }
 .r14-static-fix .cluster-heading:before{
   content:"✦";
   color:var(--cluster-color);
-  font-size:18px;
+  font-size:17px;
   line-height:1;
   margin-top:2px;
-  filter:drop-shadow(0 0 8px color-mix(in srgb,var(--cluster-color),transparent 32%));
+  filter:drop-shadow(0 0 8px color-mix(in srgb,var(--cluster-color),transparent 33%));
 }
 .r14-static-fix .cluster-heading>span:first-child{
   font-size:14px;
-  line-height:1.25;
+  line-height:1.2;
   letter-spacing:.035em;
   font-weight:760;
   white-space:nowrap;
@@ -270,8 +312,9 @@
   max-width:210px;
   color:color-mix(in srgb,var(--cluster-color),white 8%);
   font-size:9px;
-  line-height:1.45;
-  letter-spacing:.035em;
+  line-height:1.42;
+  font-weight:520;
+  letter-spacing:.03em;
   white-space:normal;
 }
 .r14-static-fix .cluster-enterprise .cluster-heading small,
@@ -283,405 +326,467 @@
   color:var(--cluster-color);
   font-size:9px;
   line-height:1.4;
-  opacity:.78;
+  opacity:.72;
 }
 
-/* ---------- clickable celestial nodes ----------
-   Anchors/hrefs remain exactly the existing project links. */
+/* =========================================================
+   04 — PROJECT ANCHORS
+   Same anchors / same hrefs.
+   Only the UI inside each anchor changes.
+   ========================================================= */
+
 .r14-static-fix .cluster-projects{
   position:absolute;
   inset:0;
   z-index:4;
 }
 .r14-static-fix .cluster-project{
-  --planet-size:44px;
-  --anchor-width:235px;
+  --art-size:58px;
+  --node-width:270px;
   position:absolute;
+  z-index:5;
   display:block;
-  width:var(--anchor-width);
-  height:max(var(--planet-size),64px);
+  width:var(--node-width);
+  height:max(var(--art-size),72px);
   min-width:0;
   padding:0;
   border:0;
-  border-radius:0;
   background:transparent;
-  box-shadow:none;
-  overflow:visible;
   color:#f7efe8;
-  text-align:left;
-  z-index:5;
+  text-decoration:none;
+  overflow:visible;
   transition:opacity .25s ease,filter .25s ease;
 }
-.r14-static-fix .cluster-project:before{
-  content:"";
+.r14-static-fix .cluster-project:before,
+.r14-static-fix .cluster-project:after{display:none}
+
+.r14-static-fix .project-art{
   position:absolute;
   left:0;
   top:50%;
-  width:var(--planet-size);
-  height:var(--planet-size);
-  border-radius:50%;
+  width:var(--art-size);
+  height:var(--art-size);
   transform:translateY(-50%);
-  border:1px solid color-mix(in srgb,var(--cluster-color),transparent 26%);
+  display:block;
+  border-radius:50%;
+  border:1px solid color-mix(in srgb,var(--cluster-color),transparent 28%);
   background:
-    radial-gradient(circle at 30% 25%,rgba(255,255,255,.42),transparent 16%),
-    radial-gradient(circle at 42% 42%,color-mix(in srgb,var(--cluster-color),#8293a1 35%),#405568 55%,#1e3141 100%);
+    radial-gradient(circle at 31% 25%,rgba(255,255,255,.44),transparent 16%),
+    radial-gradient(circle at 43% 42%,color-mix(in srgb,var(--cluster-color),#8294a4 34%),#405668 56%,#1d3041 100%);
   box-shadow:
-    inset -10px -13px 20px rgba(7,17,26,.2),
-    0 10px 24px rgba(3,9,15,.26),
-    0 0 24px color-mix(in srgb,var(--cluster-color),transparent 78%);
-  transition:transform .32s cubic-bezier(.2,.72,.2,1),box-shadow .32s ease,border-color .32s ease,filter .32s ease;
+    inset -11px -14px 22px rgba(5,15,24,.22),
+    0 12px 28px rgba(3,9,15,.27),
+    0 0 28px color-mix(in srgb,var(--cluster-color),transparent 76%);
+  transition:transform .34s cubic-bezier(.2,.72,.2,1),filter .3s ease,box-shadow .3s ease;
 }
-.r14-static-fix .cluster-project:after{
+.r14-static-fix .project-art:before,
+.r14-static-fix .project-art:after{
   content:"";
   position:absolute;
-  left:calc(var(--planet-size) * -.14);
-  top:50%;
-  width:calc(var(--planet-size) * 1.28);
-  height:calc(var(--planet-size) * .31);
-  border:1px solid color-mix(in srgb,var(--cluster-color),transparent 55%);
-  border-radius:50%;
-  transform:translateY(-50%) rotate(-17deg);
-  opacity:.34;
   pointer-events:none;
-  transition:transform .32s ease,opacity .32s ease,border-color .32s ease;
 }
-.r14-static-fix .cluster-project strong{
+.r14-static-fix .project-art:before{
+  inset:11%;
+  border-radius:inherit;
+  background:radial-gradient(circle at 30% 28%,rgba(255,255,255,.13),transparent 35%);
+  opacity:.75;
+}
+.r14-static-fix .project-art:after{
+  inset:-10%;
+  border-radius:50%;
+  border:1px solid color-mix(in srgb,var(--cluster-color),transparent 74%);
+  opacity:.32;
+}
+.r14-static-fix .art-orbit{
   position:absolute;
-  left:calc(var(--planet-size) + 14px);
+  left:50%;
+  top:50%;
+  display:block;
+  width:132%;
+  height:34%;
+  transform:translate(-50%,-50%) rotate(-18deg);
+  border:1px solid color-mix(in srgb,var(--cluster-color),transparent 54%);
+  border-radius:50%;
+  opacity:.54;
+  pointer-events:none;
+}
+.r14-static-fix .art-orbit-b{
+  width:118%;
+  height:52%;
+  transform:translate(-50%,-50%) rotate(27deg);
+  opacity:.16;
+}
+.r14-static-fix .art-satellite{
+  position:absolute;
+  display:block;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--cluster-color);
+  box-shadow:0 0 10px color-mix(in srgb,var(--cluster-color),transparent 20%);
+  pointer-events:none;
+}
+.r14-static-fix .art-satellite-a{left:-6%;top:54%}
+.r14-static-fix .art-satellite-b{right:-7%;top:28%;width:5px;height:5px;opacity:.76}
+
+.r14-static-fix .project-label{
+  position:absolute;
+  left:calc(var(--art-size) + 17px);
   top:50%;
   transform:translateY(-50%);
-  width:calc(var(--anchor-width) - var(--planet-size) - 14px);
-  color:#f8f1ea;
-  font-size:13px;
-  line-height:1.24;
-  font-weight:710;
-  letter-spacing:-.005em;
-  text-align:left;
-  text-shadow:0 2px 12px rgba(2,7,12,.5);
+  width:calc(var(--node-width) - var(--art-size) - 17px);
+}
+.r14-static-fix .project-label strong{
+  display:block;
+  color:#f9f2eb;
+  font-size:15px;
+  line-height:1.22;
+  font-weight:700;
+  letter-spacing:-.012em;
+  text-shadow:0 2px 13px rgba(2,7,12,.58);
   text-wrap:pretty;
-  transition:color .25s ease;
 }
 .r14-static-fix .cluster-project em{display:none}
 
-/* mirror label geometry on right-side constellations */
-.r14-static-fix .cluster-enterprise .cluster-project:before,
-.r14-static-fix .cluster-creative .cluster-project:before{left:auto;right:0}
-.r14-static-fix .cluster-enterprise .cluster-project:after,
-.r14-static-fix .cluster-creative .cluster-project:after{
+/* right-hand regions mirror art + label */
+.r14-static-fix .cluster-enterprise .project-art,
+.r14-static-fix .cluster-creative .project-art{
   left:auto;
-  right:calc(var(--planet-size) * -.14);
+  right:0;
 }
-.r14-static-fix .cluster-enterprise .cluster-project strong,
-.r14-static-fix .cluster-creative .cluster-project strong{
+.r14-static-fix .cluster-enterprise .project-label,
+.r14-static-fix .cluster-creative .project-label{
   left:0;
-  width:calc(var(--anchor-width) - var(--planet-size) - 14px);
+  width:calc(var(--node-width) - var(--art-size) - 17px);
   text-align:right;
 }
 
-/* ---------- hierarchy ---------- */
+/* =========================================================
+   05 — PROJECT HIERARCHY
+   Main projects visibly larger.
+   ========================================================= */
+
 .r14-static-fix .cluster-project[data-project="agentlab"]{
-  --planet-size:132px;
-  --anchor-width:330px;
-  height:142px;
+  --art-size:154px;
+  --node-width:365px;
+  height:164px;
 }
 .r14-static-fix .cluster-project[data-project="requirement"]{
-  --planet-size:138px;
-  --anchor-width:370px;
-  height:148px;
+  --art-size:162px;
+  --node-width:410px;
+  height:172px;
 }
 .r14-static-fix .cluster-project[data-project="airbnb"]{
-  --planet-size:116px;
-  --anchor-width:330px;
-  height:126px;
+  --art-size:142px;
+  --node-width:360px;
+  height:152px;
 }
 .r14-static-fix .cluster-project[data-project="character"]{
-  --planet-size:116px;
-  --anchor-width:330px;
-  height:126px;
+  --art-size:142px;
+  --node-width:360px;
+  height:152px;
 }
 .r14-static-fix .cluster-project[data-project="benchmark"],
 .r14-static-fix .cluster-project[data-project="task-summary"],
 .r14-static-fix .cluster-project[data-project="sp500"],
 .r14-static-fix .cluster-project[data-project="liferpg"]{
-  --planet-size:70px;
-  --anchor-width:265px;
-  height:82px;
+  --art-size:82px;
+  --node-width:285px;
+  height:92px;
 }
 .r14-static-fix .cluster-project[data-project="content-qa"],
 .r14-static-fix .cluster-project[data-project="dashboard"],
 .r14-static-fix .cluster-project[data-project="training"],
 .r14-static-fix .cluster-project[data-project="minecraft"],
 .r14-static-fix .cluster-project[data-project="deloitte"]{
-  --planet-size:50px;
-  --anchor-width:245px;
-  height:66px;
+  --art-size:61px;
+  --node-width:265px;
+  height:72px;
 }
-.r14-static-fix .cluster-project[data-project="agentlab"] strong,
-.r14-static-fix .cluster-project[data-project="requirement"] strong,
-.r14-static-fix .cluster-project[data-project="airbnb"] strong,
-.r14-static-fix .cluster-project[data-project="character"] strong{
-  font-size:17px;
-  line-height:1.2;
+.r14-static-fix .cluster-project[data-project="agentlab"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="requirement"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="airbnb"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="character"] .project-label strong{
+  font-size:21px;
+  line-height:1.14;
   font-weight:760;
 }
-.r14-static-fix .cluster-project[data-project="benchmark"] strong,
-.r14-static-fix .cluster-project[data-project="task-summary"] strong,
-.r14-static-fix .cluster-project[data-project="sp500"] strong,
-.r14-static-fix .cluster-project[data-project="liferpg"] strong{
-  font-size:14px;
+.r14-static-fix .cluster-project[data-project="benchmark"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="task-summary"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="sp500"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="liferpg"] .project-label strong{
+  font-size:17px;
+}
+.r14-static-fix .cluster-project[data-project="content-qa"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="dashboard"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="training"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="minecraft"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="deloitte"] .project-label strong{
+  font-size:15px;
 }
 
-/* ---------- project-specific celestial identities ---------- */
+/* =========================================================
+   06 — UNIQUE CELESTIAL IDENTITIES
+   No more same circle with different color.
+   ========================================================= */
 
-/* AgentLab: luminous forensic world + scan rings */
-.r14-static-fix .cluster-project[data-project="agentlab"]:before{
+/* AgentLab — blue forensic world */
+.r14-static-fix .cluster-project[data-project="agentlab"] .project-art{
   background:
-    radial-gradient(circle at 31% 25%,rgba(255,255,255,.60),transparent 12%),
-    radial-gradient(circle at 67% 57%,rgba(105,183,238,.28) 0 6%,transparent 7%),
-    repeating-radial-gradient(circle at 48% 51%,rgba(147,210,255,.08) 0 1px,transparent 1px 15px),
-    conic-gradient(from 18deg,rgba(78,167,225,.15),transparent 18%,rgba(128,91,220,.16) 38%,transparent 57%,rgba(55,151,221,.15) 76%,transparent),
-    radial-gradient(circle at 42% 40%,#6bb9e9 0%,#366985 44%,#183f59 73%,#10293c 100%);
-  border-color:rgba(139,213,255,.76);
+    radial-gradient(circle at 31% 25%,rgba(255,255,255,.62),transparent 12%),
+    radial-gradient(circle at 67% 58%,rgba(89,181,243,.30) 0 6%,transparent 7%),
+    repeating-radial-gradient(circle at 49% 50%,rgba(145,210,255,.08) 0 1px,transparent 1px 16px),
+    conic-gradient(from 20deg,rgba(76,165,226,.18),transparent 18%,rgba(120,88,222,.17) 39%,transparent 58%,rgba(54,152,224,.17) 77%,transparent),
+    radial-gradient(circle at 42% 40%,#69bae9 0%,#346984 45%,#173f59 74%,#0e2a3d 100%);
+  border-color:rgba(137,213,255,.8);
   box-shadow:
-    inset -18px -20px 30px rgba(3,15,27,.27),
-    0 18px 40px rgba(1,10,19,.34),
-    0 0 50px rgba(74,174,236,.24),
-    0 0 90px rgba(112,78,214,.10);
+    inset -20px -22px 34px rgba(2,14,26,.28),
+    0 19px 44px rgba(1,9,18,.34),
+    0 0 54px rgba(70,173,237,.25),
+    0 0 104px rgba(111,78,213,.10);
 }
-.r14-static-fix .cluster-project[data-project="agentlab"]:after{
-  width:145%;
-  height:29%;
-  left:-22%;
-  opacity:.55;
-  transform:translateY(-50%) rotate(-11deg);
-  border-color:rgba(158,217,249,.64);
-  box-shadow:0 0 12px rgba(111,192,242,.18);
+.r14-static-fix .cluster-project[data-project="agentlab"] .art-orbit-a{
+  width:150%;height:28%;transform:translate(-50%,-50%) rotate(-10deg);
+  border-color:rgba(157,217,249,.66);
+}
+.r14-static-fix .cluster-project[data-project="agentlab"] .art-orbit-b{
+  width:114%;height:58%;transform:translate(-50%,-50%) rotate(34deg);opacity:.18;
 }
 
-/* Benchmark: translucent data crystal */
-.r14-static-fix .cluster-project[data-project="benchmark"]:before{
-  border-radius:22%;
+/* LLM Benchmark — transparent data crystal */
+.r14-static-fix .cluster-project[data-project="benchmark"] .project-art{
+  border-radius:23%;
   clip-path:polygon(50% 0,88% 20%,100% 60%,72% 100%,27% 94%,0 58%,14% 18%);
   background:
-    linear-gradient(rgba(184,229,246,.16) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(184,229,246,.14) 1px,transparent 1px),
-    conic-gradient(from 15deg,rgba(157,225,255,.48),rgba(56,116,155,.42),rgba(129,209,239,.30),rgba(46,87,126,.56),rgba(157,225,255,.48));
-  background-size:9px 9px,9px 9px,100% 100%;
-  box-shadow:0 0 34px rgba(111,197,236,.2);
+    linear-gradient(rgba(184,229,246,.18) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(184,229,246,.15) 1px,transparent 1px),
+    conic-gradient(from 15deg,rgba(157,225,255,.54),rgba(56,116,155,.45),rgba(129,209,239,.34),rgba(46,87,126,.60),rgba(157,225,255,.54));
+  background-size:10px 10px,10px 10px,100% 100%;
+  box-shadow:0 0 34px rgba(111,197,236,.22);
 }
-.r14-static-fix .cluster-project[data-project="benchmark"]:after{
-  border-style:dashed;
-  transform:translateY(-50%) rotate(12deg);
-  opacity:.42;
+.r14-static-fix .cluster-project[data-project="benchmark"] .art-orbit-a{
+  border-style:dashed;transform:translate(-50%,-50%) rotate(11deg);opacity:.42
 }
+.r14-static-fix .cluster-project[data-project="benchmark"] .art-orbit-b{display:none}
 
-/* Content Review: review crystal / lens */
-.r14-static-fix .cluster-project[data-project="content-qa"]:before{
-  border-radius:28%;
+/* Content Review — compact review crystal */
+.r14-static-fix .cluster-project[data-project="content-qa"] .project-art{
+  border-radius:29%;
   clip-path:polygon(50% 0,85% 18%,100% 53%,77% 91%,40% 100%,7% 74%,0 34%,26% 8%);
-  background:
-    conic-gradient(from 25deg,rgba(139,222,250,.52),rgba(107,96,221,.40),rgba(187,115,229,.38),rgba(78,174,224,.48),rgba(139,222,250,.52));
-  box-shadow:0 0 24px rgba(113,191,239,.19),0 0 36px rgba(156,93,226,.10);
+  background:conic-gradient(from 25deg,rgba(139,222,250,.62),rgba(107,96,221,.47),rgba(187,115,229,.44),rgba(78,174,224,.55),rgba(139,222,250,.62));
+  box-shadow:0 0 25px rgba(113,191,239,.21),0 0 39px rgba(156,93,226,.11);
 }
-.r14-static-fix .cluster-project[data-project="content-qa"]:after{display:none}
+.r14-static-fix .cluster-project[data-project="content-qa"] .art-orbit,
+.r14-static-fix .cluster-project[data-project="content-qa"] .art-satellite{display:none}
 
-/* Requirement: monumental warm alignment planet with confirmation seam */
-.r14-static-fix .cluster-project[data-project="requirement"]:before{
+/* Requirement Alignment — monumental warm world */
+.r14-static-fix .cluster-project[data-project="requirement"] .project-art{
   background:
-    linear-gradient(90deg,transparent 0 49%,rgba(255,225,191,.85) 49.5% 50.5%,transparent 51% 100%),
-    radial-gradient(circle at 30% 24%,rgba(255,255,255,.45),transparent 14%),
+    linear-gradient(90deg,transparent 0 49%,rgba(255,226,192,.88) 49.5% 50.5%,transparent 51% 100%),
+    radial-gradient(circle at 30% 24%,rgba(255,255,255,.46),transparent 14%),
     repeating-radial-gradient(circle at 47% 49%,rgba(238,189,140,.05) 0 1px,transparent 1px 18px),
-    radial-gradient(circle at 42% 40%,#d39b68 0%,#846149 43%,#4d4c4d 71%,#263845 100%);
-  border-color:rgba(247,199,151,.84);
+    radial-gradient(circle at 42% 40%,#d39a68 0%,#846149 44%,#4d4c4d 72%,#253744 100%);
+  border-color:rgba(247,199,151,.86);
   box-shadow:
-    inset -20px -23px 34px rgba(21,16,15,.25),
-    0 20px 44px rgba(7,8,10,.32),
-    0 0 55px rgba(226,151,83,.25),
-    0 0 100px rgba(226,151,83,.08);
+    inset -21px -24px 36px rgba(20,15,14,.25),
+    0 20px 46px rgba(7,8,10,.32),
+    0 0 58px rgba(226,151,83,.27),
+    0 0 110px rgba(226,151,83,.08);
 }
-.r14-static-fix .cluster-project[data-project="requirement"]:after{
-  width:151%;
-  height:31%;
-  right:-25%;
-  left:auto;
-  opacity:.58;
-  transform:translateY(-50%) rotate(13deg);
-  border-color:rgba(246,198,151,.66);
-  box-shadow:0 0 13px rgba(235,177,119,.13);
+.r14-static-fix .cluster-project[data-project="requirement"] .art-orbit-a{
+  width:154%;height:30%;transform:translate(-50%,-50%) rotate(13deg);
+  border-color:rgba(246,198,151,.69);opacity:.62
+}
+.r14-static-fix .cluster-project[data-project="requirement"] .art-orbit-b{
+  width:120%;height:62%;transform:translate(-50%,-50%) rotate(-24deg);opacity:.13
 }
 
-/* Task Summary: diamond signal node */
-.r14-static-fix .cluster-project[data-project="task-summary"]:before{
+/* Task Summary — signal diamond */
+.r14-static-fix .cluster-project[data-project="task-summary"] .project-art{
   border-radius:14%;
   clip-path:polygon(50% 0,92% 50%,50% 100%,8% 50%);
-  background:
-    conic-gradient(from 45deg,rgba(251,222,190,.74),rgba(154,113,83,.48),rgba(236,191,149,.66),rgba(111,90,79,.48),rgba(251,222,190,.74));
-  box-shadow:0 0 28px rgba(236,177,120,.18);
+  background:conic-gradient(from 45deg,rgba(251,222,190,.82),rgba(154,113,83,.52),rgba(236,191,149,.73),rgba(111,90,79,.52),rgba(251,222,190,.82));
+  box-shadow:0 0 30px rgba(236,177,120,.19);
 }
-.r14-static-fix .cluster-project[data-project="task-summary"]:after{
-  width:126%;height:42%;
-  transform:translateY(-50%) rotate(28deg);
+.r14-static-fix .cluster-project[data-project="task-summary"] .art-orbit-a{
+  width:129%;height:42%;transform:translate(-50%,-50%) rotate(28deg)
 }
 
-/* SIT / Defect: radar disc */
-.r14-static-fix .cluster-project[data-project="dashboard"]:before{
+/* Dashboard — radar disc */
+.r14-static-fix .cluster-project[data-project="dashboard"] .project-art{
   background:
-    conic-gradient(from -20deg,rgba(244,202,161,.30) 0 8deg,transparent 8deg 90deg,rgba(244,202,161,.20) 90deg 98deg,transparent 98deg 180deg,rgba(244,202,161,.13) 180deg 187deg,transparent 187deg),
-    repeating-radial-gradient(circle,rgba(243,205,168,.13) 0 1px,transparent 1px 8px),
+    conic-gradient(from -20deg,rgba(244,202,161,.34) 0 8deg,transparent 8deg 90deg,rgba(244,202,161,.22) 90deg 98deg,transparent 98deg 180deg,rgba(244,202,161,.14) 180deg 187deg,transparent 187deg),
+    repeating-radial-gradient(circle,rgba(243,205,168,.14) 0 1px,transparent 1px 8px),
     radial-gradient(circle at 42% 42%,#9a7256,#574f4d 62%,#303f49);
-  box-shadow:0 0 25px rgba(231,169,111,.16);
+  box-shadow:0 0 27px rgba(231,169,111,.17);
 }
-.r14-static-fix .cluster-project[data-project="dashboard"]:after{
-  width:116%;height:116%;
-  border-style:dotted;
-  opacity:.27;
+.r14-static-fix .cluster-project[data-project="dashboard"] .art-orbit-a{
+  width:116%;height:116%;border-style:dotted;opacity:.28
 }
+.r14-static-fix .cluster-project[data-project="dashboard"] .art-orbit-b,
+.r14-static-fix .cluster-project[data-project="dashboard"] .art-satellite{display:none}
 
-/* Training: warm faceted document crystal */
-.r14-static-fix .cluster-project[data-project="training"]:before{
+/* Training Material Generator — document crystal */
+.r14-static-fix .cluster-project[data-project="training"] .project-art{
   border-radius:18%;
   clip-path:polygon(14% 0,86% 0,100% 20%,92% 86%,50% 100%,8% 86%,0 20%);
   background:
-    repeating-linear-gradient(0deg,rgba(255,236,218,.15) 0 2px,transparent 2px 10px),
+    repeating-linear-gradient(0deg,rgba(255,236,218,.17) 0 2px,transparent 2px 10px),
     conic-gradient(from 15deg,#d8a77f,#806251,#ba8f70,#6e594e,#d8a77f);
-  box-shadow:0 0 25px rgba(231,172,119,.15);
+  box-shadow:0 0 27px rgba(231,172,119,.16);
 }
-.r14-static-fix .cluster-project[data-project="training"]:after{display:none}
+.r14-static-fix .cluster-project[data-project="training"] .art-orbit,
+.r14-static-fix .cluster-project[data-project="training"] .art-satellite{display:none}
 
-/* Airbnb: topographic city world */
-.r14-static-fix .cluster-project[data-project="airbnb"]:before{
+/* Airbnb — green city / spatial world */
+.r14-static-fix .cluster-project[data-project="airbnb"] .project-art{
   background:
-    linear-gradient(90deg,transparent 0 18%,rgba(170,237,211,.12) 18% 20%,transparent 20% 35%,rgba(170,237,211,.15) 35% 38%,transparent 38% 51%,rgba(170,237,211,.10) 51% 53%,transparent 53%),
-    radial-gradient(circle at 25% 31%,rgba(213,255,237,.62) 0 2%,transparent 3%),
-    radial-gradient(circle at 68% 28%,rgba(213,255,237,.35) 0 2%,transparent 3%),
-    radial-gradient(circle at 59% 71%,rgba(213,255,237,.28) 0 2%,transparent 3%),
-    radial-gradient(circle at 35% 65%,rgba(213,255,237,.25) 0 1.8%,transparent 2.8%),
+    linear-gradient(90deg,transparent 0 18%,rgba(170,237,211,.13) 18% 20%,transparent 20% 35%,rgba(170,237,211,.17) 35% 38%,transparent 38% 51%,rgba(170,237,211,.11) 51% 53%,transparent 53%),
+    radial-gradient(circle at 25% 31%,rgba(213,255,237,.66) 0 2%,transparent 3%),
+    radial-gradient(circle at 68% 28%,rgba(213,255,237,.39) 0 2%,transparent 3%),
+    radial-gradient(circle at 59% 71%,rgba(213,255,237,.30) 0 2%,transparent 3%),
+    radial-gradient(circle at 35% 65%,rgba(213,255,237,.27) 0 1.8%,transparent 2.8%),
     radial-gradient(circle at 40% 40%,#67b493,#39705f 50%,#1f4a43 76%,#173437);
-  border-color:rgba(146,226,193,.72);
-  box-shadow:0 0 42px rgba(72,178,139,.18);
+  border-color:rgba(146,226,193,.74);
+  box-shadow:0 0 46px rgba(72,178,139,.19);
 }
-.r14-static-fix .cluster-project[data-project="airbnb"]:after{
-  width:136%;height:25%;
-  left:-18%;
-  opacity:.44;
-  transform:translateY(-50%) rotate(-18deg);
+.r14-static-fix .cluster-project[data-project="airbnb"] .art-orbit-a{
+  width:139%;height:26%;transform:translate(-50%,-50%) rotate(-18deg);opacity:.48
 }
 
-/* S&P 500: finance chart sphere */
-.r14-static-fix .cluster-project[data-project="sp500"]:before{
+/* S&P 500 — market-data world */
+.r14-static-fix .cluster-project[data-project="sp500"] .project-art{
   background:
-    repeating-linear-gradient(18deg,transparent 0 8px,rgba(178,239,211,.15) 8px 9px),
-    linear-gradient(90deg,transparent 0 20%,rgba(164,225,200,.16) 20% 23%,transparent 23% 40%,rgba(164,225,200,.13) 40% 43%,transparent 43% 62%,rgba(164,225,200,.18) 62% 66%,transparent 66%),
+    repeating-linear-gradient(18deg,transparent 0 8px,rgba(178,239,211,.17) 8px 9px),
+    linear-gradient(90deg,transparent 0 20%,rgba(164,225,200,.18) 20% 23%,transparent 23% 40%,rgba(164,225,200,.15) 40% 43%,transparent 43% 62%,rgba(164,225,200,.20) 62% 66%,transparent 66%),
     radial-gradient(circle at 42% 42%,#66a98c,#3d705f 58%,#214840);
 }
-.r14-static-fix .cluster-project[data-project="sp500"]:after{
-  border-style:dashed;
-  transform:translateY(-50%) rotate(18deg);
+.r14-static-fix .cluster-project[data-project="sp500"] .art-orbit-a{
+  border-style:dashed;transform:translate(-50%,-50%) rotate(18deg);opacity:.42
 }
 
-/* Player Retention: network world */
-.r14-static-fix .cluster-project[data-project="minecraft"]:before{
+/* Player Retention — network world */
+.r14-static-fix .cluster-project[data-project="minecraft"] .project-art{
   background:
-    radial-gradient(circle at 28% 29%,rgba(209,255,232,.65) 0 3%,transparent 4%),
-    radial-gradient(circle at 72% 31%,rgba(209,255,232,.44) 0 3%,transparent 4%),
-    radial-gradient(circle at 49% 72%,rgba(209,255,232,.46) 0 3%,transparent 4%),
-    linear-gradient(34deg,transparent 48%,rgba(184,238,210,.18) 49% 50%,transparent 51%),
-    linear-gradient(-42deg,transparent 48%,rgba(184,238,210,.15) 49% 50%,transparent 51%),
+    radial-gradient(circle at 28% 29%,rgba(209,255,232,.68) 0 3%,transparent 4%),
+    radial-gradient(circle at 72% 31%,rgba(209,255,232,.46) 0 3%,transparent 4%),
+    radial-gradient(circle at 49% 72%,rgba(209,255,232,.48) 0 3%,transparent 4%),
+    linear-gradient(34deg,transparent 48%,rgba(184,238,210,.20) 49% 50%,transparent 51%),
+    linear-gradient(-42deg,transparent 48%,rgba(184,238,210,.17) 49% 50%,transparent 51%),
     radial-gradient(circle at 42% 42%,#62a184,#3b695a 60%,#22443d);
 }
-.r14-static-fix .cluster-project[data-project="minecraft"]:after{display:none}
+.r14-static-fix .cluster-project[data-project="minecraft"] .art-orbit,
+.r14-static-fix .cluster-project[data-project="minecraft"] .art-satellite{display:none}
 
-/* Deloitte: translucent strategy polyhedron */
-.r14-static-fix .cluster-project[data-project="deloitte"]:before{
+/* Deloitte — translucent strategy polyhedron */
+.r14-static-fix .cluster-project[data-project="deloitte"] .project-art{
   border-radius:16%;
   clip-path:polygon(50% 0,92% 24%,88% 80%,50% 100%,12% 80%,8% 24%);
   background:
-    linear-gradient(35deg,rgba(200,244,221,.40),rgba(78,130,112,.42)),
-    conic-gradient(from 0deg,rgba(196,241,219,.40),rgba(82,137,117,.26),rgba(196,241,219,.40));
-  box-shadow:0 0 22px rgba(93,189,153,.15);
+    linear-gradient(35deg,rgba(200,244,221,.44),rgba(78,130,112,.44)),
+    conic-gradient(from 0deg,rgba(196,241,219,.44),rgba(82,137,117,.28),rgba(196,241,219,.44));
+  box-shadow:0 0 24px rgba(93,189,153,.16);
 }
-.r14-static-fix .cluster-project[data-project="deloitte"]:after{display:none}
+.r14-static-fix .cluster-project[data-project="deloitte"] .art-orbit,
+.r14-static-fix .cluster-project[data-project="deloitte"] .art-satellite{display:none}
 
-/* Character Genesis: faceted crystal world */
-.r14-static-fix .cluster-project[data-project="character"]:before{
+/* Character Genesis — purple faceted crystal world */
+.r14-static-fix .cluster-project[data-project="character"] .project-art{
   border-radius:31%;
   clip-path:polygon(50% 0,75% 16%,100% 45%,86% 77%,58% 100%,25% 89%,0 61%,10% 25%);
   background:
-    conic-gradient(from 18deg,rgba(247,223,255,.68),rgba(156,94,203,.34) 15%,rgba(219,178,246,.56) 31%,rgba(91,72,156,.32) 49%,rgba(234,188,251,.55) 65%,rgba(125,89,188,.34) 81%,rgba(247,223,255,.68));
-  border-color:rgba(220,175,252,.76);
+    conic-gradient(from 18deg,rgba(247,223,255,.72),rgba(156,94,203,.36) 15%,rgba(219,178,246,.59) 31%,rgba(91,72,156,.34) 49%,rgba(234,188,251,.58) 65%,rgba(125,89,188,.36) 81%,rgba(247,223,255,.72));
+  border-color:rgba(220,175,252,.78);
   box-shadow:
-    0 16px 38px rgba(5,8,18,.28),
-    0 0 46px rgba(172,91,229,.22),
-    0 0 90px rgba(94,94,220,.08);
+    0 16px 40px rgba(5,8,18,.29),
+    0 0 50px rgba(172,91,229,.23),
+    0 0 96px rgba(94,94,220,.08);
 }
-.r14-static-fix .cluster-project[data-project="character"]:after{
-  width:132%;height:29%;
-  right:-17%;left:auto;
-  opacity:.40;
-  transform:translateY(-50%) rotate(31deg);
-  border-style:dotted;
+.r14-static-fix .cluster-project[data-project="character"] .art-orbit-a{
+  width:134%;height:30%;transform:translate(-50%,-50%) rotate(31deg);opacity:.43;border-style:dotted
+}
+.r14-static-fix .cluster-project[data-project="character"] .art-orbit-b{
+  width:110%;height:56%;transform:translate(-50%,-50%) rotate(-18deg);opacity:.12
 }
 
-/* Life RPG: portal / quest ring */
-.r14-static-fix .cluster-project[data-project="liferpg"]:before{
+/* Life RPG — portal / quest ring */
+.r14-static-fix .cluster-project[data-project="liferpg"] .project-art{
   background:
-    repeating-radial-gradient(circle at 50% 50%,rgba(221,187,249,.24) 0 1px,transparent 1px 10px),
-    radial-gradient(circle at 50% 50%,rgba(246,206,255,.28),transparent 25%),
+    repeating-radial-gradient(circle at 50% 50%,rgba(221,187,249,.26) 0 1px,transparent 1px 10px),
+    radial-gradient(circle at 50% 50%,rgba(246,206,255,.30),transparent 25%),
     radial-gradient(circle at 42% 42%,#8f68aa,#54406f 60%,#2e2d50);
-  box-shadow:0 0 29px rgba(178,108,227,.17);
+  box-shadow:0 0 31px rgba(178,108,227,.18);
 }
-.r14-static-fix .cluster-project[data-project="liferpg"]:after{
-  width:136%;height:38%;
-  transform:translateY(-50%) rotate(-34deg);
-  border-style:dashed;
-  opacity:.38;
+.r14-static-fix .cluster-project[data-project="liferpg"] .art-orbit-a{
+  width:139%;height:39%;transform:translate(-50%,-50%) rotate(-34deg);border-style:dashed;opacity:.40
 }
 
-/* ---------- composition: denser like the approved reference ---------- */
-.r14-static-fix .cluster-ai .cluster-project:nth-child(1){left:5%;top:30%}
-.r14-static-fix .cluster-ai .cluster-project:nth-child(2){left:51%;top:14%}
-.r14-static-fix .cluster-ai .cluster-project:nth-child(3){left:59%;top:64%}
+/* =========================================================
+   07 — 2×2 COMPOSITION
+   Main world + satellites around it.
+   ========================================================= */
 
-.r14-static-fix .cluster-enterprise .cluster-project:nth-child(1){right:2%;top:27%}
-.r14-static-fix .cluster-enterprise .cluster-project:nth-child(2){right:50%;top:13%}
-.r14-static-fix .cluster-enterprise .cluster-project:nth-child(3){right:49%;top:61%}
-.r14-static-fix .cluster-enterprise .cluster-project:nth-child(4){right:8%;top:70%}
+.r14-static-fix .cluster-ai .cluster-project:nth-child(1){left:4%;top:29%}
+.r14-static-fix .cluster-ai .cluster-project:nth-child(2){left:57%;top:10%}
+.r14-static-fix .cluster-ai .cluster-project:nth-child(3){left:61%;top:65%}
 
-.r14-static-fix .cluster-data .cluster-project:nth-child(1){left:4%;top:24%}
-.r14-static-fix .cluster-data .cluster-project:nth-child(2){left:48%;top:11%}
-.r14-static-fix .cluster-data .cluster-project:nth-child(3){left:58%;top:57%}
-.r14-static-fix .cluster-data .cluster-project:nth-child(4){left:18%;top:70%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(1){right:1%;top:27%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(2){right:55%;top:10%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(3){right:57%;top:62%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(4){right:7%;top:70%}
 
-.r14-static-fix .cluster-creative .cluster-project:nth-child(1){right:5%;top:23%}
-.r14-static-fix .cluster-creative .cluster-project:nth-child(2){right:48%;top:61%}
+.r14-static-fix .cluster-data .cluster-project:nth-child(1){left:4%;top:22%}
+.r14-static-fix .cluster-data .cluster-project:nth-child(2){left:55%;top:9%}
+.r14-static-fix .cluster-data .cluster-project:nth-child(3){left:62%;top:57%}
+.r14-static-fix .cluster-data .cluster-project:nth-child(4){left:20%;top:70%}
 
-/* focus interaction: reinforce selection without changing behavior */
+.r14-static-fix .cluster-creative .cluster-project:nth-child(1){right:4%;top:22%}
+.r14-static-fix .cluster-creative .cluster-project:nth-child(2){right:55%;top:59%}
+
+/* =========================================================
+   08 — FOCUS INTERACTION
+   ========================================================= */
+
 @media(hover:hover){
   .r14-static-fix .cluster-branch:has(.cluster-project:hover) .cluster-project:not(:hover),
   .r14-static-fix .cluster-branch:has(.cluster-project:focus-visible) .cluster-project:not(:focus-visible){
-    opacity:.30;
+    opacity:.28;
     filter:saturate(.48);
   }
 }
-.r14-static-fix .cluster-project:hover:before,
-.r14-static-fix .cluster-project:focus-visible:before{
-  transform:translateY(-50%) scale(1.06);
-  border-color:color-mix(in srgb,var(--cluster-color),white 32%);
+.r14-static-fix .cluster-project:hover .project-art,
+.r14-static-fix .cluster-project:focus-visible .project-art{
+  transform:translateY(-50%) scale(1.055);
   filter:brightness(1.08);
 }
-.r14-static-fix .cluster-project:hover:after,
-.r14-static-fix .cluster-project:focus-visible:after{
-  opacity:.66;
-}
-.r14-static-fix .cluster-project:hover strong,
-.r14-static-fix .cluster-project:focus-visible strong{color:#fff}
+.r14-static-fix .cluster-project:hover .project-label strong,
+.r14-static-fix .cluster-project:focus-visible .project-label strong{color:#fff}
+.r14-static-fix .cluster-project:hover .art-orbit-a,
+.r14-static-fix .cluster-project:focus-visible .art-orbit-a{opacity:.75}
 
-/* ---------- responsive ---------- */
+/* =========================================================
+   09 — RESPONSIVE
+   ========================================================= */
+
+@media(min-width:1280px){
+  .r14-static-fix .work-title-row h2{white-space:nowrap}
+}
 @media(max-width:1180px){
+  .r14-static-fix .work-title-row{
+    flex-wrap:wrap;
+  }
+  .r14-static-fix .work-title-row h2{
+    font-size:clamp(44px,5.2vw,60px);
+  }
   .r14-static-fix .constellation-map{
     height:auto;
-    min-height:1200px;
+    min-height:1260px;
     overflow:visible;
+  }
+  .r14-static-fix .constellation-map:before{
+    width:76%;
+    left:12%;
+    top:44%;
   }
   .r14-static-fix .cluster-branch{
     position:relative;
@@ -690,82 +795,90 @@
     bottom:auto!important;
     left:auto!important;
     width:100%;
-    height:270px;
-    margin:26px 0 0;
+    height:280px;
+    margin:22px 0 0;
   }
   .r14-static-fix .cluster-heading,
   .r14-static-fix .cluster-enterprise .cluster-heading,
   .r14-static-fix .cluster-creative .cluster-heading{
-    left:2%;right:auto;
+    left:2%;
+    right:auto;
     text-align:left;
     flex-direction:row;
   }
   .r14-static-fix .cluster-enterprise .cluster-heading small,
   .r14-static-fix .cluster-creative .cluster-heading small{margin-left:0}
-  .r14-static-fix .cluster-enterprise .cluster-project:before,
-  .r14-static-fix .cluster-creative .cluster-project:before{left:0;right:auto}
-  .r14-static-fix .cluster-enterprise .cluster-project:after,
-  .r14-static-fix .cluster-creative .cluster-project:after{
-    left:calc(var(--planet-size) * -.14);
+
+  .r14-static-fix .cluster-enterprise .project-art,
+  .r14-static-fix .cluster-creative .project-art{
+    left:0;
     right:auto;
   }
-  .r14-static-fix .cluster-enterprise .cluster-project strong,
-  .r14-static-fix .cluster-creative .cluster-project strong{
-    left:calc(var(--planet-size) + 14px);
-    width:calc(var(--anchor-width) - var(--planet-size) - 14px);
+  .r14-static-fix .cluster-enterprise .project-label,
+  .r14-static-fix .cluster-creative .project-label{
+    left:calc(var(--art-size) + 17px);
+    width:calc(var(--node-width) - var(--art-size) - 17px);
     text-align:left;
   }
 }
 @media(max-width:720px){
-  .r14-static-fix .work-section{padding-top:68px}
-  .r14-static-fix .work-header{padding-inline:18px}
-  .r14-static-fix .work-title-row{display:block}
+  .r14-static-fix .work-section{
+    padding:60px 18px 92px;
+  }
+  .r14-static-fix .work-title-row{
+    display:block;
+  }
   .r14-static-fix .work-title-row h2{
-    font-size:clamp(42px,13vw,58px);
+    font-size:clamp(40px,12.4vw,56px);
     line-height:1.08;
   }
   .r14-static-fix .work-count{
-    margin-top:13px;
+    margin-top:12px;
     padding-left:0;
     border-left:0;
   }
+  .r14-static-fix .work-header p:not(.eyebrow){font-size:14px}
   .r14-static-fix .work-categories{
     justify-content:flex-start;
     overflow-x:auto;
     flex-wrap:nowrap;
-    padding:0 18px 9px;
+    padding-bottom:8px;
   }
-  .r14-static-fix .constellation-map{min-height:1120px;padding-inline:5px}
-  .r14-static-fix .cluster-branch{height:245px}
+  .r14-static-fix .constellation-map{min-height:1150px}
+  .r14-static-fix .constellation-map:before{opacity:.28}
+  .r14-static-fix .cluster-branch{height:248px}
   .r14-static-fix .cluster-heading>span:first-child{font-size:12px}
-  .r14-static-fix .cluster-project{--planet-size:36px;--anchor-width:178px}
-  .r14-static-fix .cluster-project strong{font-size:10px}
+
+  .r14-static-fix .cluster-project{
+    --art-size:42px;
+    --node-width:188px;
+  }
+  .r14-static-fix .project-label strong{font-size:11px}
   .r14-static-fix .cluster-project[data-project="agentlab"],
   .r14-static-fix .cluster-project[data-project="requirement"],
   .r14-static-fix .cluster-project[data-project="airbnb"],
   .r14-static-fix .cluster-project[data-project="character"]{
-    --planet-size:82px;
-    --anchor-width:220px;
-    height:92px;
+    --art-size:86px;
+    --node-width:230px;
+    height:96px;
   }
-  .r14-static-fix .cluster-project[data-project="agentlab"] strong,
-  .r14-static-fix .cluster-project[data-project="requirement"] strong,
-  .r14-static-fix .cluster-project[data-project="airbnb"] strong,
-  .r14-static-fix .cluster-project[data-project="character"] strong{
-    font-size:13px;
+  .r14-static-fix .cluster-project[data-project="agentlab"] .project-label strong,
+  .r14-static-fix .cluster-project[data-project="requirement"] .project-label strong,
+  .r14-static-fix .cluster-project[data-project="airbnb"] .project-label strong,
+  .r14-static-fix .cluster-project[data-project="character"] .project-label strong{
+    font-size:14px;
   }
   .r14-static-fix .cluster-project[data-project="benchmark"],
   .r14-static-fix .cluster-project[data-project="task-summary"],
   .r14-static-fix .cluster-project[data-project="sp500"],
   .r14-static-fix .cluster-project[data-project="liferpg"]{
-    --planet-size:54px;
-    --anchor-width:205px;
+    --art-size:58px;
+    --node-width:205px;
   }
 }
 @media(prefers-reduced-motion:reduce){
   .r14-static-fix .cluster-project,
-  .r14-static-fix .cluster-project:before,
-  .r14-static-fix .cluster-project:after,
-  .r14-static-fix .cluster-project strong,
+  .r14-static-fix .project-art,
+  .r14-static-fix .project-label strong,
   .r14-static-fix .work-categories button{transition:none!important}
 }
