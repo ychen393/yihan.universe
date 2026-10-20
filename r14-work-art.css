@@ -1,0 +1,290 @@
+/* R14.1 Work Universe — art-driven 2.5D composition.
+   VISUAL ONLY. Project IDs, order, groups, hrefs, filters, case studies and approved pages stay unchanged. */
+
+.r14-static-fix .constellation-map{
+  --art-x:0px;
+  --art-y:0px;
+  height:760px;
+  max-width:1500px;
+  margin:0 auto;
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  background:#10263a;
+}
+
+/* Generated visual system: galaxy + four nebula regions + 13 celestial objects.
+   All interaction remains in the original DOM above it. */
+.r14-static-fix .constellation-map::before{
+  content:"";
+  position:absolute;
+  inset:-1.5%;
+  z-index:0;
+  pointer-events:none;
+  background-image:url('/assets/work-universe-art.jpg');
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:100% 100%;
+  opacity:.96;
+  transform:translate3d(var(--art-x),var(--art-y),0) scale(1.018);
+  transform-origin:center;
+  transition:transform .28s cubic-bezier(.2,.7,.2,1),opacity .25s ease;
+  filter:saturate(1.08) contrast(1.04) brightness(.96);
+}
+.r14-static-fix .constellation-map::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse 42% 36% at 50% 51%,transparent 35%,rgba(8,20,32,.06) 78%,rgba(7,18,30,.18) 100%),
+    linear-gradient(to bottom,rgba(7,19,31,.05),transparent 16%,transparent 84%,rgba(7,19,31,.12));
+  transition:background .28s ease;
+}
+
+/* Existing procedural / SVG art is now only fallback data and is hidden visually. */
+.r14-static-fix .constellation-core,
+.r14-static-fix .constellation-links,
+.r14-static-fix .constellation-inspector,
+.r14-static-fix .cluster-project .project-art{
+  display:none!important;
+}
+
+/* Flatten old cluster boxes into one shared galaxy plane. */
+.r14-static-fix .cluster-branch,
+.r14-static-fix .cluster-branch:hover,
+.r14-static-fix .cluster-branch:focus-within,
+.r14-static-fix .cluster-branch[data-selected="true"],
+.r14-static-fix .cluster-branch[data-selected="false"]{
+  position:static!important;
+  width:auto!important;
+  height:auto!important;
+  min-height:0!important;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:none!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  transform:none!important;
+  filter:none!important;
+  opacity:1;
+}
+.r14-static-fix .cluster-branch::before,
+.r14-static-fix .cluster-branch::after{display:none!important}
+.r14-static-fix .cluster-projects{position:static!important}
+
+/* Region coordinates sit over their real nebulae. */
+.r14-static-fix .cluster-heading{
+  position:absolute!important;
+  z-index:8;
+  max-width:220px!important;
+  opacity:.92;
+  pointer-events:auto;
+}
+.r14-static-fix .cluster-ai .cluster-heading{left:2.2%!important;top:3%!important}
+.r14-static-fix .cluster-enterprise .cluster-heading{
+  right:2.2%!important;left:auto!important;top:3%!important;
+  text-align:right!important;flex-direction:row-reverse!important
+}
+.r14-static-fix .cluster-data .cluster-heading{left:2.2%!important;top:53%!important}
+.r14-static-fix .cluster-creative .cluster-heading{
+  right:2.2%!important;left:auto!important;top:53%!important;
+  text-align:right!important;flex-direction:row-reverse!important
+}
+.r14-static-fix .cluster-heading>span:first-child{font-size:15px!important}
+.r14-static-fix .cluster-heading small{font-size:9px!important;line-height:1.4!important}
+
+/* Project anchors remain the exact existing links; only their hit-area / label placement changes. */
+.r14-static-fix .cluster-project{
+  position:absolute!important;
+  z-index:7;
+  height:110px!important;
+  width:260px!important;
+  padding:0!important;
+  border:0!important;
+  background:none!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+  opacity:1;
+  filter:none;
+  transform:none!important;
+}
+.r14-static-fix .cluster-project::before,
+.r14-static-fix .cluster-project::after{display:none!important}
+.r14-static-fix .cluster-project .project-label{
+  position:absolute!important;
+  top:50%!important;
+  transform:translateY(-50%)!important;
+  width:auto!important;
+  max-width:230px;
+  left:auto!important;
+  right:auto!important;
+  z-index:9;
+}
+.r14-static-fix .cluster-project .project-label strong{
+  display:block;
+  color:#fff7ef!important;
+  font-size:15px!important;
+  line-height:1.18!important;
+  font-weight:710!important;
+  text-shadow:0 2px 12px rgba(2,8,14,.72);
+  transition:transform .24s ease,text-shadow .24s ease,color .24s ease;
+}
+.r14-static-fix .cluster-project:hover .project-label strong,
+.r14-static-fix .cluster-project:focus-visible .project-label strong{
+  transform:translateY(-2px) scale(1.035);
+  color:#fff!important;
+  text-shadow:0 0 14px rgba(255,235,215,.25),0 3px 14px rgba(2,8,14,.78);
+}
+
+/* Main worlds — larger labels. */
+.r14-static-fix .cluster-project[data-project="agentlab"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="requirement"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="airbnb"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="character"] .project-label strong{
+  font-size:20px!important;
+}
+
+/* Exact label / hit-area coordinates corresponding to the baked art asset. */
+.r14-static-fix .cluster-project[data-project="agentlab"]{left:3.2%!important;top:17%!important;width:390px!important;height:230px!important}
+.r14-static-fix .cluster-project[data-project="agentlab"] .project-label{left:68%!important}
+
+.r14-static-fix .cluster-project[data-project="benchmark"]{left:28%!important;top:9%!important;width:300px!important;height:145px!important}
+.r14-static-fix .cluster-project[data-project="benchmark"] .project-label{left:47%!important}
+
+.r14-static-fix .cluster-project[data-project="content-qa"]{left:31%!important;top:31%!important;width:330px!important;height:125px!important}
+.r14-static-fix .cluster-project[data-project="content-qa"] .project-label{left:39%!important}
+
+.r14-static-fix .cluster-project[data-project="task-summary"]{left:60.5%!important;top:9%!important;width:315px!important;height:140px!important}
+.r14-static-fix .cluster-project[data-project="task-summary"] .project-label{left:39%!important}
+
+.r14-static-fix .cluster-project[data-project="requirement"]{right:2.5%!important;left:auto!important;top:16%!important;width:420px!important;height:235px!important}
+.r14-static-fix .cluster-project[data-project="requirement"] .project-label{
+  left:0!important;right:auto!important;width:220px!important;text-align:right!important
+}
+.r14-static-fix .cluster-project[data-project="requirement"] .project-label strong{text-align:right!important}
+
+.r14-static-fix .cluster-project[data-project="dashboard"]{left:61.5%!important;top:31%!important;width:315px!important;height:120px!important}
+.r14-static-fix .cluster-project[data-project="dashboard"] .project-label{left:39%!important}
+
+.r14-static-fix .cluster-project[data-project="training"]{left:75.5%!important;top:35%!important;width:300px!important;height:115px!important}
+.r14-static-fix .cluster-project[data-project="training"] .project-label{left:38%!important}
+
+.r14-static-fix .cluster-project[data-project="airbnb"]{left:3.2%!important;top:58%!important;width:400px!important;height:210px!important}
+.r14-static-fix .cluster-project[data-project="airbnb"] .project-label{left:68%!important}
+
+.r14-static-fix .cluster-project[data-project="sp500"]{left:28.5%!important;top:55%!important;width:300px!important;height:130px!important}
+.r14-static-fix .cluster-project[data-project="sp500"] .project-label{left:44%!important}
+
+.r14-static-fix .cluster-project[data-project="minecraft"]{left:34%!important;top:72%!important;width:310px!important;height:115px!important}
+.r14-static-fix .cluster-project[data-project="minecraft"] .project-label{left:37%!important}
+
+.r14-static-fix .cluster-project[data-project="deloitte"]{left:14.5%!important;top:76%!important;width:290px!important;height:105px!important}
+.r14-static-fix .cluster-project[data-project="deloitte"] .project-label{left:39%!important}
+
+.r14-static-fix .cluster-project[data-project="character"]{right:3%!important;left:auto!important;top:58%!important;width:410px!important;height:210px!important}
+.r14-static-fix .cluster-project[data-project="character"] .project-label{
+  left:0!important;right:auto!important;width:220px!important;text-align:right!important
+}
+.r14-static-fix .cluster-project[data-project="character"] .project-label strong{text-align:right!important}
+
+.r14-static-fix .cluster-project[data-project="liferpg"]{left:64%!important;top:73%!important;width:300px!important;height:110px!important}
+.r14-static-fix .cluster-project[data-project="liferpg"] .project-label{left:39%!important}
+
+/* Existing filters still drive cluster data-selected. Dim the baked quadrants instead of changing the logic. */
+.r14-static-fix .constellation-map:has(.cluster-ai[data-selected="true"]):has(.cluster-enterprise[data-selected="false"])::after{
+  background:
+    linear-gradient(to right,transparent 0 50%,rgba(7,18,30,.70) 50% 100%),
+    linear-gradient(to bottom,transparent 0 50%,rgba(7,18,30,.70) 50% 100%);
+}
+.r14-static-fix .constellation-map:has(.cluster-enterprise[data-selected="true"]):has(.cluster-ai[data-selected="false"])::after{
+  background:
+    linear-gradient(to left,transparent 0 50%,rgba(7,18,30,.70) 50% 100%),
+    linear-gradient(to bottom,transparent 0 50%,rgba(7,18,30,.70) 50% 100%);
+}
+.r14-static-fix .constellation-map:has(.cluster-data[data-selected="true"]):has(.cluster-ai[data-selected="false"])::after{
+  background:
+    linear-gradient(to right,transparent 0 50%,rgba(7,18,30,.70) 50% 100%),
+    linear-gradient(to top,transparent 0 50%,rgba(7,18,30,.70) 50% 100%);
+}
+.r14-static-fix .constellation-map:has(.cluster-creative[data-selected="true"]):has(.cluster-data[data-selected="false"])::after{
+  background:
+    linear-gradient(to left,transparent 0 50%,rgba(7,18,30,.70) 50% 100%),
+    linear-gradient(to top,transparent 0 50%,rgba(7,18,30,.70) 50% 100%);
+}
+
+/* Non-selected labels follow the same existing data state. */
+.r14-static-fix .cluster-branch[data-selected="false"] .cluster-heading,
+.r14-static-fix .cluster-branch[data-selected="false"] .cluster-project{
+  opacity:.22!important;
+  transition:opacity .25s ease;
+}
+
+/* Small parallax = 2.5D, not real-time procedural 3D. */
+@media(hover:hover){
+  .r14-static-fix .constellation-map:hover::before{filter:saturate(1.1) contrast(1.045) brightness(.98)}
+}
+
+@media(max-width:1180px){
+  .r14-static-fix .constellation-map{
+    height:auto;
+    min-height:1120px;
+    background:#10263a;
+  }
+  .r14-static-fix .constellation-map::before{
+    inset:0;
+    background-size:cover;
+    opacity:.60;
+    filter:saturate(.95) brightness(.72);
+  }
+  /* Preserve accessible mobile project list rather than forcing desktop coordinates. */
+  .r14-static-fix .cluster-branch{
+    position:relative!important;
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    padding:18px 0 24px!important;
+  }
+  .r14-static-fix .cluster-heading,
+  .r14-static-fix .cluster-project{
+    position:relative!important;
+    inset:auto!important;
+    left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
+  }
+  .r14-static-fix .cluster-heading{margin:0 0 14px 18px}
+  .r14-static-fix .cluster-projects{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+    padding:0 18px;
+  }
+  .r14-static-fix .cluster-project{
+    width:auto!important;
+    height:64px!important;
+    border:1px solid rgba(236,220,205,.15)!important;
+    border-radius:18px!important;
+    background:rgba(17,37,54,.64)!important;
+    backdrop-filter:blur(8px)!important;
+  }
+  .r14-static-fix .cluster-project .project-label{
+    position:static!important;
+    transform:none!important;
+    width:auto!important;
+    max-width:none!important;
+    height:100%;
+    display:flex;
+    align-items:center;
+    padding:0 16px;
+    text-align:left!important;
+  }
+  .r14-static-fix .cluster-project .project-label strong{
+    text-align:left!important;
+    font-size:13px!important;
+  }
+}
+@media(max-width:680px){
+  .r14-static-fix .cluster-projects{grid-template-columns:1fr}
+}
