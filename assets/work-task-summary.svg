@@ -1,7 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe2bd"/><stop offset=".5" stop-color="#b88359"/><stop offset="1" stop-color="#5a514b"/></linearGradient></defs>
-<polygon points="170,18 302,170 170,322 38,170" fill="url(#g)" stroke="#f0c89d" stroke-opacity=".68" stroke-width="2"/>
-<polygon points="170,18 170,170 302,170" fill="#fff0d8" opacity=".17"/><polygon points="170,170 170,322 38,170" fill="#6c4f3a" opacity=".18"/>
-<circle cx="52" cy="112" r="8" fill="#eac394"/><circle cx="288" cy="90" r="7" fill="#d49a69"/><circle cx="278" cy="260" r="9" fill="#efc89b"/>
-<path d="M52 112 C90 130 116 145 170 170 C220 143 254 118 288 90 M170 170 C210 206 246 233 278 260" fill="none" stroke="#f7d7b3" stroke-opacity=".42" stroke-width="2"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 380">
+<defs>
+ <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe7c7"/><stop offset=".5" stop-color="#c58f63"/><stop offset="1" stop-color="#685348"/></linearGradient>
+ <linearGradient id="g2" x1="1" y1="0" x2="0" y2="1"><stop stop-color="#fff3df" stop-opacity=".7"/><stop offset="1" stop-color="#a36f4b" stop-opacity=".18"/></linearGradient>
+ <filter id="h"><feGaussianBlur stdDeviation="13"/></filter>
+</defs>
+<ellipse cx="190" cy="190" rx="118" ry="118" fill="#d59c69" opacity=".13" filter="url(#h)"/>
+<polygon points="190,54 309,126 297,260 188,326 79,260 69,128" fill="url(#g1)" stroke="#f0c89d" stroke-opacity=".52" stroke-width="2"/>
+<polygon points="190,54 190,190 309,126" fill="url(#g2)" opacity=".6"/>
+<polygon points="69,128 190,190 79,260" fill="#f6d4aa" opacity=".13"/>
+<polygon points="190,190 297,260 188,326" fill="#684735" opacity=".18"/>
+<g stroke="#ffe2bd" stroke-opacity=".34" stroke-width="1.4" fill="none">
+ <path d="M95 128 L190 190 L286 128"/><path d="M95 252 L190 190 L284 253"/><path d="M190 67 L190 190 L188 313"/>
+</g>
+<g fill="#ffe3bd"><circle cx="96" cy="128" r="4"/><circle cx="286" cy="128" r="4"/><circle cx="284" cy="253" r="4"/></g>
 </svg>
