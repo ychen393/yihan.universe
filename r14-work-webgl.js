@@ -34,208 +34,173 @@ function makeGlowTexture(){
   return t;
 }
 
-function makePlanetTexture(kind){
-  const w=768,h=384,c=document.createElement('canvas');
-  c.width=w;
-  c.height=h;
-  const x=c.getContext('2d');
-  const rand=seeded(kind==='agentlab'?731941:884201);
-  const base=kind==='agentlab'
-    ? ['#0a263c','#16445f','#2a7293','#70c5ef']
-    : ['#2b3034','#5a493f','#9a6848','#e0a66f'];
-  const g=x.createLinearGradient(0,0,w,h);
-  g.addColorStop(0,base[3]);
-  g.addColorStop(.2,base[2]);
-  g.addColorStop(.58,base[1]);
-  g.addColorStop(1,base[0]);
-  x.fillStyle=g;
-  x.fillRect(0,0,w,h);
-
-  x.globalCompositeOperation='screen';
-  for(let i=0;i<140;i++){
-    const yy=rand()*h;
-    const alpha=.015+rand()*.06;
-    x.strokeStyle='rgba(255,255,255,'+alpha+')';
-    x.lineWidth=.5+rand()*1.8;
-    x.beginPath();
-    const amp=5+rand()*24;
-    const freq=.006+rand()*.018;
-    for(let xx=0;xx<=w;xx+=12){
-      const py=yy+Math.sin(xx*freq+rand()*2)*amp;
-      if(xx===0)x.moveTo(xx,py);
-      else x.lineTo(xx,py);
-    }
-    x.stroke();
-  }
-
-  x.globalCompositeOperation='overlay';
-  for(let i=0;i<210;i++){
-    const px=rand()*w,py=rand()*h,r=1+rand()*6;
-    const a=.02+rand()*.08;
-    x.fillStyle=kind==='agentlab'
-      ? 'rgba(126,205,247,'+a+')'
-      : 'rgba(246,194,140,'+a+')';
-    x.beginPath();
-    x.arc(px,py,r,0,Math.PI*2);
-    x.fill();
-  }
-  x.globalCompositeOperation='source-over';
-
-  if(kind==='agentlab'){
-    x.strokeStyle='rgba(196,235,255,.22)';
-    x.lineWidth=1;
-    for(let y=30;y<h;y+=31){
-      x.beginPath();
-      x.moveTo(0,y);
-      x.lineTo(w,y+8*Math.sin(y*.07));
-      x.stroke();
-    }
-  }else{
-    const seam=x.createLinearGradient(w*.46,0,w*.54,0);
-    seam.addColorStop(0,'rgba(255,235,207,0)');
-    seam.addColorStop(.48,'rgba(255,230,197,.24)');
-    seam.addColorStop(.5,'rgba(255,240,218,.7)');
-    seam.addColorStop(.52,'rgba(255,230,197,.24)');
-    seam.addColorStop(1,'rgba(255,235,207,0)');
-    x.fillStyle=seam;
-    x.fillRect(w*.43,0,w*.14,h);
-  }
-
-  const t=new THREE.CanvasTexture(c);
-  t.wrapS=THREE.RepeatWrapping;
-  t.colorSpace=THREE.SRGBColorSpace;
-  t.anisotropy=4;
-  return t;
-}
-
-function addGlow(group,color,size=3){
+function addGlow(group,color,size=3,opacity=.28){
   const sprite=new THREE.Sprite(new THREE.SpriteMaterial({
-    map:makeGlowTexture(),
-    color,
-    transparent:true,
-    opacity:.42,
-    blending:THREE.AdditiveBlending,
-    depthWrite:false
+    map:makeGlowTexture(),color,transparent:true,opacity,
+    blending:THREE.AdditiveBlending,depthWrite:false
   }));
   sprite.scale.set(size,size,size);
-  sprite.position.z=-.25;
+  sprite.position.z=-.35;
   group.add(sprite);
   return sprite;
 }
 
-function makeGreatCircleLine(color){
-  const pts=[];
-  for(let i=0;i<=70;i++){
-    const y=-.94+(1.88*i/70);
-    const z=Math.sqrt(Math.max(0,1-y*y))*1.006;
-    pts.push(new THREE.Vector3(.018,y,z));
-  }
+function makeStylizedPlanetMaterial(kind){
+  const agent=kind==='agentlab';
+  const uniforms={
+    uDark:{value:new THREE.Color(agent?0x13283a:0x2d3135)},
+    uMid:{value:new THREE.Color(agent?0x365d76:0x756d66)},
+    uLight:{value:new THREE.Color(agent?0xaedcf2:0xe8cfb5)},
+    uRim:{value:new THREE.Color(agent?0x7bc8ed:0xf0d5b7)},
+    uAccent:{value:new THREE.Color(agent?0x8f7fe8:0xc7ad94)},
+    uTime:{value:0}
+  };
+  const vertexShader=[
+    'varying vec3 vNormalV;',
+    'varying vec3 vViewPos;',
+    'varying vec3 vLocalPos;',
+    'void main(){',
+    '  vLocalPos=position;',
+    '  vec4 mv=modelViewMatrix*vec4(position,1.0);',
+    '  vViewPos=mv.xyz;',
+    '  vNormalV=normalize(normalMatrix*normal);',
+    '  gl_Position=projectionMatrix*mv;',
+    '}'
+  ].join('\n');
+  const fragmentShader=(agent?[
+    'uniform vec3 uDark;',
+    'uniform vec3 uMid;',
+    'uniform vec3 uLight;',
+    'uniform vec3 uRim;',
+    'uniform vec3 uAccent;',
+    'uniform float uTime;',
+    'varying vec3 vNormalV;',
+    'varying vec3 vViewPos;',
+    'varying vec3 vLocalPos;',
+    'void main(){',
+    '  vec3 n=normalize(vNormalV);',
+    '  vec3 v=normalize(-vViewPos);',
+    '  vec3 l=normalize(vec3(-0.45,0.58,0.85));',
+    '  float diff=max(dot(n,l),0.0);',
+    '  float fres=pow(1.0-max(dot(n,v),0.0),2.35);',
+    '  float soft=0.45+0.55*diff;',
+    '  vec3 col=mix(uDark,uMid,soft);',
+    '  col=mix(col,uLight,pow(diff,3.2)*0.34);',
+    '  float band=0.5+0.5*sin(vLocalPos.y*16.0+vLocalPos.x*4.5+uTime*0.12);',
+    '  float band2=0.5+0.5*sin(vLocalPos.y*34.0-vLocalPos.z*5.0-uTime*0.08);',
+    '  col+=uRim*fres*0.46;',
+    '  col+=uAccent*(band*.035+band2*.018)*(0.35+fres);',
+    '  float core=pow(max(dot(n,normalize(vec3(-0.2,0.18,1.0))),0.0),8.0);',
+    '  col+=uLight*core*.18;',
+    '  gl_FragColor=vec4(col,1.0);',
+    '}'
+  ]:[
+    'uniform vec3 uDark;',
+    'uniform vec3 uMid;',
+    'uniform vec3 uLight;',
+    'uniform vec3 uRim;',
+    'uniform vec3 uAccent;',
+    'uniform float uTime;',
+    'varying vec3 vNormalV;',
+    'varying vec3 vViewPos;',
+    'varying vec3 vLocalPos;',
+    'void main(){',
+    '  vec3 n=normalize(vNormalV);',
+    '  vec3 v=normalize(-vViewPos);',
+    '  vec3 l=normalize(vec3(-0.34,0.54,0.9));',
+    '  float diff=max(dot(n,l),0.0);',
+    '  float fres=pow(1.0-max(dot(n,v),0.0),2.65);',
+    '  vec3 col=mix(uDark,uMid,0.42+0.48*diff);',
+    '  col=mix(col,uLight,pow(diff,3.0)*0.31);',
+    '  float subtle=0.5+0.5*sin(vLocalPos.y*12.0+vLocalPos.z*3.2);',
+    '  col+=uAccent*subtle*.022;',
+    '  float seam=1.0-smoothstep(0.018,0.055,abs(vLocalPos.x));',
+    '  col=mix(col,uLight,seam*.58);',
+    '  col+=uRim*fres*.34;',
+    '  gl_FragColor=vec4(col,1.0);',
+    '}'
+  ]).join('\n');
+  return new THREE.ShaderMaterial({uniforms,vertexShader,fragmentShader,transparent:true,depthWrite:true});
+}
+
+function makeAtmosphere(kind){
+  const agent=kind==='agentlab';
+  return new THREE.Mesh(
+    new THREE.SphereGeometry(1.055,72,72),
+    new THREE.ShaderMaterial({
+      uniforms:{uColor:{value:new THREE.Color(agent?0x77c7eb:0xe7c6a4)}},
+      vertexShader:[
+        'varying vec3 vNormalV;',
+        'varying vec3 vViewPos;',
+        'void main(){',
+        '  vec4 mv=modelViewMatrix*vec4(position,1.0);',
+        '  vViewPos=mv.xyz;',
+        '  vNormalV=normalize(normalMatrix*normal);',
+        '  gl_Position=projectionMatrix*mv;',
+        '}'
+      ].join('\n'),
+      fragmentShader:[
+        'uniform vec3 uColor;',
+        'varying vec3 vNormalV;',
+        'varying vec3 vViewPos;',
+        'void main(){',
+        '  vec3 n=normalize(vNormalV);',
+        '  vec3 v=normalize(-vViewPos);',
+        '  float f=pow(1.0-max(dot(n,v),0.0),2.1);',
+        '  gl_FragColor=vec4(uColor,f*.23);',
+        '}'
+      ].join('\n'),
+      side:THREE.BackSide,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending
+    })
+  );
+}
+
+function makeOrbitArc(color,opts={}){
+  const rx=opts.rx??1.3, ry=opts.ry??.34, start=opts.start??.22, end=opts.end??5.35;
+  const rotation=opts.rotation??[1.15,0,0], opacity=opts.opacity??.3, dashed=opts.dashed??false;
+  const curve=new THREE.EllipseCurve(0,0,rx,ry,start,end,false,0);
+  const pts=curve.getPoints(140).map(p=>new THREE.Vector3(p.x,p.y,0));
   const geo=new THREE.BufferGeometry().setFromPoints(pts);
-  return new THREE.Line(geo,new THREE.LineBasicMaterial({
-    color,
-    transparent:true,
-    opacity:.72,
-    blending:THREE.AdditiveBlending,
-    depthWrite:false
-  }));
+  const mat=dashed
+    ? new THREE.LineDashedMaterial({color,transparent:true,opacity,dashSize:.08,gapSize:.055,depthWrite:false})
+    : new THREE.LineBasicMaterial({color,transparent:true,opacity,depthWrite:false,blending:THREE.AdditiveBlending});
+  const line=new THREE.Line(geo,mat);
+  if(dashed)line.computeLineDistances();
+  line.rotation.set(rotation[0],rotation[1],rotation[2]);
+  return line;
 }
 
 function makePlanet(kind){
   const group=new THREE.Group();
-  const geo=new THREE.SphereGeometry(1,96,96);
-  const map=makePlanetTexture(kind);
-  const mat=new THREE.MeshPhysicalMaterial({
-    color:kind==='agentlab'?0x66b9e8:0xd59a68,
-    map,
-    roughness:kind==='agentlab'?.52:.62,
-    metalness:.04,
-    clearcoat:.26,
-    clearcoatRoughness:.42,
-    emissive:kind==='agentlab'?0x08263c:0x2e1608,
-    emissiveIntensity:.35,
-    transparent:true,
-    opacity:1
-  });
-  const sphere=new THREE.Mesh(geo,mat);
-  sphere.rotation.x=.08;
+  const mat=makeStylizedPlanetMaterial(kind);
+  const sphere=new THREE.Mesh(new THREE.SphereGeometry(1,96,96),mat);
+  sphere.rotation.x=.06;
   group.add(sphere);
+  group.add(makeAtmosphere(kind));
 
   if(kind==='agentlab'){
-    const ringMat=new THREE.MeshBasicMaterial({
-      color:0x9edcff,
-      transparent:true,
-      opacity:.5,
-      blending:THREE.AdditiveBlending,
-      depthWrite:false
-    });
-    const ring=new THREE.Mesh(new THREE.TorusGeometry(1.37,.012,8,220),ringMat);
-    ring.rotation.x=1.13;
-    ring.rotation.y=.18;
-    ring.rotation.z=-.14;
-    group.add(ring);
-
-    const ring2=new THREE.Mesh(new THREE.TorusGeometry(1.13,.005,6,180),ringMat.clone());
-    ring2.material.opacity=.16;
-    ring2.rotation.x=.75;
-    ring2.rotation.y=-.52;
-    ring2.rotation.z=.38;
-    group.add(ring2);
-
-    const sat=new THREE.Mesh(
-      new THREE.SphereGeometry(.045,18,18),
-      new THREE.MeshBasicMaterial({color:0xcdf0ff})
-    );
-    sat.position.set(-1.19,.25,.28);
-    group.add(sat);
-
+    group.add(makeOrbitArc(0x91d5f4,{rx:1.46,ry:.31,start:.35,end:5.25,rotation:[1.12,.18,-.12],opacity:.34}));
+    group.add(makeOrbitArc(0x9a8be5,{rx:1.12,ry:.47,start:1.1,end:4.35,rotation:[.74,-.48,.34],opacity:.13,dashed:true}));
+    const sat=new THREE.Mesh(new THREE.SphereGeometry(.042,16,16),new THREE.MeshBasicMaterial({color:0xcdf1ff}));
+    sat.position.set(-1.17,.28,.22);group.add(sat);
     const sat2=sat.clone();
     sat2.material=sat.material.clone();
-    sat2.material.color.set(0xb8a9ff);
-    sat2.scale.setScalar(.7);
-    sat2.position.set(1.04,.54,.12);
-    group.add(sat2);
-
-    addGlow(group,0x5ebcf3,3.2);
+    sat2.material.color.set(0xae9bea);
+    sat2.scale.setScalar(.72);
+    sat2.position.set(1.03,.51,.1);group.add(sat2);
+    addGlow(group,0x6bbce7,2.85,.20);
   }else{
-    const ringMat=new THREE.MeshBasicMaterial({
-      color:0xefbc86,
-      transparent:true,
-      opacity:.48,
-      blending:THREE.AdditiveBlending,
-      depthWrite:false
-    });
-    const ring=new THREE.Mesh(new THREE.TorusGeometry(1.4,.012,8,220),ringMat);
-    ring.rotation.x=1.17;
-    ring.rotation.y=-.18;
-    ring.rotation.z=.13;
-    group.add(ring);
-
-    const ring2=new THREE.Mesh(new THREE.TorusGeometry(1.12,.005,6,180),ringMat.clone());
-    ring2.material.opacity=.13;
-    ring2.rotation.x=.78;
-    ring2.rotation.y=.45;
-    ring2.rotation.z=-.25;
-    group.add(ring2);
-
-    group.add(makeGreatCircleLine(0xffe2bc));
-
-    for(const p of [[-1.13,.33,.15],[1.12,.18,.2],[.82,-.88,.15]]){
-      const cube=new THREE.Mesh(
-        new THREE.BoxGeometry(.09,.09,.09),
-        new THREE.MeshBasicMaterial({color:0xf1c28f})
-      );
-      cube.position.set(p[0],p[1],p[2]);
-      cube.rotation.z=.4;
-      group.add(cube);
+    group.add(makeOrbitArc(0xe9c6a3,{rx:1.43,ry:.30,start:.45,end:5.05,rotation:[1.16,-.18,.13],opacity:.28}));
+    group.add(makeOrbitArc(0xbaa189,{rx:1.12,ry:.49,start:1.35,end:4.45,rotation:[.76,.42,-.23],opacity:.10,dashed:true}));
+    for(const p of [[-1.12,.34,.12],[1.08,.16,.16],[.79,-.84,.12]]){
+      const cube=new THREE.Mesh(new THREE.BoxGeometry(.075,.075,.075),new THREE.MeshBasicMaterial({color:0xd7b28e}));
+      cube.position.set(p[0],p[1],p[2]);cube.rotation.z=.35;group.add(cube);
     }
-
-    addGlow(group,0xe5a866,3.25);
+    addGlow(group,0xc9a17d,2.9,.18);
   }
-
   group.userData={kind,sphere,hover:false,targetScale:1,baseScale:1};
   return group;
 }
-
 function createDustLayer({seed,count,spanX,spanY,zMin,zMax,size,opacity,warmMix=0.5}){
   const rand=seeded(seed);
   const positions=new Float32Array(count*3);
@@ -376,11 +341,11 @@ function initMap(map){
 
   scene.add(new THREE.HemisphereLight(0x9fc9e5,0x15212a,1.45));
 
-  const key=new THREE.DirectionalLight(0xfff2e5,3.2);
+  const key=new THREE.DirectionalLight(0xf4ede6,2.35);
   key.position.set(-240,260,520);
   scene.add(key);
 
-  const rim=new THREE.DirectionalLight(0x76bde8,1.7);
+  const rim=new THREE.DirectionalLight(0x8bb8d0,1.15);
   rim.position.set(300,-130,420);
   scene.add(rim);
 
@@ -388,8 +353,8 @@ function initMap(map){
   const requirement=makePlanet('requirement');
   scene.add(agent,requirement);
 
-  const agentLight=new THREE.PointLight(0x66c5ff,3.8,420,2);
-  const reqLight=new THREE.PointLight(0xefad69,3.8,440,2);
+  const agentLight=new THREE.PointLight(0x7fc7ea,2.1,390,2);
+  const reqLight=new THREE.PointLight(0xd3b18f,2.0,400,2);
   scene.add(agentLight,reqLight);
 
   let galaxy=null;
@@ -502,9 +467,11 @@ function initMap(map){
     requirement.scale.setScalar(rs);
 
     if(!REDUCED){
-      agent.userData.sphere.rotation.y+=.0018;
-      agent.userData.sphere.rotation.x=.08+Math.sin(performance.now()*.00025)*.018;
-      requirement.userData.sphere.rotation.y-=.00125;
+      agent.userData.sphere.rotation.y+=.00115;
+      agent.userData.sphere.material.uniforms.uTime.value=performance.now()*.001;
+      agent.userData.sphere.rotation.x=.06+Math.sin(performance.now()*.00022)*.012;
+      requirement.userData.sphere.rotation.y-=.0008;
+      requirement.userData.sphere.material.uniforms.uTime.value=performance.now()*.001;
       const tm=performance.now();
       galaxy.userData.far.position.x=THREE.MathUtils.lerp(galaxy.userData.far.position.x,-pointerX*3,.025);
       galaxy.userData.far.position.y=THREE.MathUtils.lerp(galaxy.userData.far.position.y,pointerY*2,.025);
