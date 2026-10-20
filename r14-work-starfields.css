@@ -492,3 +492,99 @@
 .r14-static-fix .cluster-enterprise .cluster-project[data-project="dashboard"] .project-label strong{
   line-height:1.18;
 }
+
+
+/* R14.1 pass 8 — celestial material refinement.
+   Keep layout/grouping/navigation untouched; only unify atmosphere, light and asset presence. */
+.r14-static-fix .cluster-branch:before{
+  filter:blur(16px);
+  opacity:.82;
+}
+.r14-static-fix .cluster-branch:after{opacity:.14}
+
+.r14-static-fix .project-art{
+  filter:
+    drop-shadow(0 10px 18px rgba(2,8,14,.28))
+    drop-shadow(0 0 14px color-mix(in srgb,var(--cluster-color),transparent 72%));
+  transform:translateY(-50%) translateZ(0);
+}
+.r14-static-fix .cluster-project:hover .project-art,
+.r14-static-fix .cluster-project:focus-visible .project-art{
+  transform:translateY(-50%) scale(1.035);
+  filter:
+    drop-shadow(0 13px 23px rgba(2,8,14,.34))
+    drop-shadow(0 0 22px color-mix(in srgb,var(--cluster-color),transparent 58%));
+}
+.r14-static-fix .cluster-project[data-project="agentlab"],
+.r14-static-fix .cluster-project[data-project="requirement"],
+.r14-static-fix .cluster-project[data-project="airbnb"],
+.r14-static-fix .cluster-project[data-project="character"]{
+  isolation:isolate;
+}
+.r14-static-fix .cluster-project[data-project="agentlab"]:before,
+.r14-static-fix .cluster-project[data-project="requirement"]:before,
+.r14-static-fix .cluster-project[data-project="airbnb"]:before,
+.r14-static-fix .cluster-project[data-project="character"]:before{
+  content:"";
+  display:block;
+  position:absolute;
+  z-index:-1;
+  left:-26px;
+  top:50%;
+  width:calc(var(--art-size) + 52px);
+  height:calc(var(--art-size) + 52px);
+  transform:translateY(-50%);
+  border-radius:50%;
+  pointer-events:none;
+  opacity:.42;
+  background:
+    radial-gradient(circle at 48% 50%,
+      color-mix(in srgb,var(--cluster-color),transparent 74%) 0%,
+      color-mix(in srgb,var(--cluster-color),transparent 91%) 48%,
+      transparent 72%);
+  filter:blur(11px);
+}
+.r14-static-fix .cluster-enterprise .cluster-project[data-project="requirement"]:before,
+.r14-static-fix .cluster-creative .cluster-project[data-project="character"]:before{
+  left:auto;
+  right:-26px;
+}
+.r14-static-fix .cluster-project[data-project="benchmark"] .project-art,
+.r14-static-fix .cluster-project[data-project="task-summary"] .project-art,
+.r14-static-fix .cluster-project[data-project="sp500"] .project-art,
+.r14-static-fix .cluster-project[data-project="liferpg"] .project-art{
+  opacity:.94;
+  filter:
+    drop-shadow(0 8px 14px rgba(2,8,14,.24))
+    drop-shadow(0 0 11px color-mix(in srgb,var(--cluster-color),transparent 78%));
+}
+.r14-static-fix .cluster-project[data-project="content-qa"] .project-art,
+.r14-static-fix .cluster-project[data-project="dashboard"] .project-art,
+.r14-static-fix .cluster-project[data-project="training"] .project-art,
+.r14-static-fix .cluster-project[data-project="minecraft"] .project-art,
+.r14-static-fix .cluster-project[data-project="deloitte"] .project-art{
+  opacity:.88;
+  filter:
+    saturate(.86)
+    drop-shadow(0 6px 11px rgba(2,8,14,.22))
+    drop-shadow(0 0 8px color-mix(in srgb,var(--cluster-color),transparent 82%));
+}
+.r14-static-fix .project-label strong{
+  text-shadow:0 3px 16px rgba(2,7,12,.68);
+}
+@media(max-width:780px){
+  .r14-static-fix .cluster-project[data-project="agentlab"]:before,
+  .r14-static-fix .cluster-project[data-project="requirement"]:before,
+  .r14-static-fix .cluster-project[data-project="airbnb"]:before,
+  .r14-static-fix .cluster-project[data-project="character"]:before{
+    width:calc(var(--art-size) + 28px);
+    height:calc(var(--art-size) + 28px);
+    left:-14px;
+    filter:blur(8px);
+    opacity:.34;
+  }
+  .r14-static-fix .cluster-enterprise .cluster-project[data-project="requirement"]:before,
+  .r14-static-fix .cluster-creative .cluster-project[data-project="character"]:before{
+    left:auto;right:-14px;
+  }
+}
