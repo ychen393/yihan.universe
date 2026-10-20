@@ -377,10 +377,10 @@
 .r14-static-fix .cluster-ai .cluster-project:nth-child(2){left:59%;top:8%}
 .r14-static-fix .cluster-ai .cluster-project:nth-child(3){left:63%;top:65%}
 
-.r14-static-fix .cluster-enterprise .cluster-project:nth-child(1){right:0%;top:24%}
-.r14-static-fix .cluster-enterprise .cluster-project:nth-child(2){right:58%;top:8%}
-.r14-static-fix .cluster-enterprise .cluster-project:nth-child(3){right:59%;top:61%}
-.r14-static-fix .cluster-enterprise .cluster-project:nth-child(4){right:7%;top:69%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(1){right:0%;top:13%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(2){right:65%;top:3%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(3){right:67%;top:61%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(4){right:31%;top:76%}
 
 .r14-static-fix .cluster-data .cluster-project:nth-child(1){left:3%;top:20%}
 .r14-static-fix .cluster-data .cluster-project:nth-child(2){left:57%;top:7%}
@@ -473,4 +473,22 @@
   .r14-static-fix .project-art,
   .r14-static-fix .project-label strong,
   .r14-static-fix .work-categories button{transition:none!important}
+}
+/* Enterprise collision repair: preserve project identity, only re-space UI. */
+.r14-static-fix .cluster-enterprise .cluster-project[data-project="requirement"]{
+  --art-size:176px;
+  --node-width:430px;
+}
+.r14-static-fix .cluster-enterprise .cluster-project[data-project="task-summary"]{
+  --node-width:300px;
+}
+.r14-static-fix .cluster-enterprise .cluster-project[data-project="dashboard"]{
+  --node-width:255px;
+}
+.r14-static-fix .cluster-enterprise .cluster-project[data-project="training"]{
+  --node-width:270px;
+}
+.r14-static-fix .cluster-enterprise .cluster-project[data-project="training"] .project-label strong,
+.r14-static-fix .cluster-enterprise .cluster-project[data-project="dashboard"] .project-label strong{
+  line-height:1.18;
 }
