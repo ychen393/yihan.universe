@@ -476,3 +476,299 @@
   .r14-static-fix .cluster-project:after,
   .r14-static-fix .cluster-project strong{transition:none!important}
 }
+
+/* R14.1c — header cohesion + compact field + project-specific celestial materials */
+
+/* Treat title + count as one editorial unit, not two distant blocks. */
+.r14-static-fix .work-header{
+  display:block;
+  max-width:1400px;
+  margin:0 auto;
+}
+.r14-static-fix .work-header>div{max-width:1180px}
+.r14-static-fix .work-title-row{
+  display:flex;
+  align-items:flex-end;
+  gap:22px;
+  flex-wrap:wrap;
+  width:100%;
+}
+.r14-static-fix .work-title-row h2{
+  flex:0 1 auto;
+  max-width:980px;
+  margin:17px 0 0;
+  line-height:1.13;
+}
+.r14-static-fix .work-count{
+  flex:none;
+  display:inline-flex;
+  flex-direction:row;
+  align-items:baseline;
+  gap:7px;
+  margin:0 0 8px;
+  padding:2px 0 2px 18px;
+  border-left:1px solid rgba(239,209,181,.28);
+  text-align:left;
+}
+.r14-static-fix .work-count strong{
+  font:400 42px/1 var(--serif);
+  color:#f0ceb0;
+}
+.r14-static-fix .work-count span{
+  white-space:nowrap;
+  font-size:11px;
+  color:#cbd2d6;
+  letter-spacing:.04em;
+}
+.r14-static-fix .work-header p:not(.eyebrow){
+  max-width:920px;
+  margin:18px 0 0;
+  line-height:1.75;
+}
+.r14-static-fix .work-categories{margin:26px auto 12px}
+
+/* Keep all four regions inside one compact universe instead of two separated maps. */
+.r14-static-fix .constellation-map{height:760px}
+.r14-static-fix .cluster-branch{height:322px}
+.r14-static-fix .cluster-ai{top:0}
+.r14-static-fix .cluster-enterprise{top:0}
+.r14-static-fix .cluster-data{bottom:0}
+.r14-static-fix .cluster-creative{bottom:0}
+
+/* Field names should read like coordinates, never wrap into awkward vertical labels. */
+.r14-static-fix .cluster-heading,
+.r14-static-fix .cluster-heading>span:first-child{
+  max-width:none;
+  white-space:nowrap;
+}
+.r14-static-fix .cluster-heading small{
+  white-space:normal;
+  max-width:210px;
+}
+.r14-static-fix .cluster-enterprise .cluster-heading small,
+.r14-static-fix .cluster-creative .cluster-heading small{margin-left:auto}
+
+/* The old hover inspector logic still runs, but no detached pill is rendered. */
+.r14-static-fix .constellation-inspector{display:none}
+
+/* Tighter local orbits; each belongs to its region rather than spanning half the universe. */
+.r14-static-fix .cluster-branch:after{
+  left:16%;
+  top:29%;
+  width:58%;
+  height:42%;
+  opacity:.38;
+}
+.r14-static-fix .cluster-enterprise:after{left:25%;top:28%}
+.r14-static-fix .cluster-data:after{left:14%;top:25%}
+.r14-static-fix .cluster-creative:after{left:25%;top:24%}
+
+/* ---------- project-specific planet identities ---------- */
+
+/* AgentLab — forensic scan / controlled debugging */
+.r14-static-fix .cluster-project[data-project="agentlab"]:before{
+  background:
+    radial-gradient(circle at 31% 26%,rgba(255,255,255,.48),transparent 13%),
+    radial-gradient(circle at 66% 62%,transparent 0 18%,rgba(175,214,235,.18) 19% 20%,transparent 21%),
+    repeating-radial-gradient(circle at 48% 51%,rgba(182,216,235,.08) 0 1px,transparent 1px 12px),
+    radial-gradient(circle at 40% 38%,#8cb8d2 0%,#506f86 43%,#273d50 75%,#1b2b39 100%);
+  border-color:rgba(180,218,238,.72);
+}
+.r14-static-fix .cluster-project[data-project="agentlab"]:after{
+  height:29%;
+  width:142%;
+  transform:translateY(-50%) rotate(-11deg);
+  border-color:rgba(184,218,238,.5);
+  box-shadow:0 0 0 7px rgba(174,210,231,.035);
+}
+
+/* Benchmark — matrix / grid world */
+.r14-static-fix .cluster-project[data-project="benchmark"]:before{
+  background:
+    linear-gradient(rgba(190,223,233,.12) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(190,223,233,.11) 1px,transparent 1px),
+    radial-gradient(circle at 30% 24%,rgba(255,255,255,.34),transparent 16%),
+    radial-gradient(circle at 40% 38%,#88adbf,#526d80 47%,#2a4152 76%,#1f303e);
+  background-size:9px 9px,9px 9px,100% 100%,100% 100%;
+}
+.r14-static-fix .cluster-project[data-project="benchmark"]:after{
+  border-style:dashed;
+  transform:translateY(-50%) rotate(9deg);
+  opacity:.5;
+}
+
+/* Content Review — review lens / split signal */
+.r14-static-fix .cluster-project[data-project="content-qa"]:before{
+  background:
+    linear-gradient(90deg,rgba(175,214,235,.15) 0 48%,rgba(239,202,170,.10) 52% 100%),
+    radial-gradient(circle at 31% 25%,rgba(255,255,255,.36),transparent 17%),
+    radial-gradient(circle at 45% 42%,#6c8ea3,#405b6e 60%,#263a4a);
+}
+.r14-static-fix .cluster-project[data-project="content-qa"]:after{
+  width:115%;
+  height:42%;
+  transform:translateY(-50%) rotate(-28deg);
+}
+
+/* Requirement Alignment — two halves meeting at a confirmation seam */
+.r14-static-fix .cluster-project[data-project="requirement"]:before{
+  background:
+    linear-gradient(90deg,rgba(236,197,163,.14) 0 48.6%,rgba(250,225,202,.55) 49.4% 50.6%,rgba(148,174,193,.12) 51.4% 100%),
+    radial-gradient(circle at 30% 25%,rgba(255,255,255,.34),transparent 16%),
+    radial-gradient(circle at 38% 36%,#927e77,#5a5960 47%,#37434e 76%,#243440);
+  border-color:rgba(231,194,160,.76);
+}
+.r14-static-fix .cluster-project[data-project="requirement"]:after{
+  width:136%;
+  height:26%;
+  transform:translateY(-50%) rotate(13deg);
+  border-color:rgba(231,194,160,.47);
+}
+
+/* Task Summary — converging communication channels */
+.r14-static-fix .cluster-project[data-project="task-summary"]:before{
+  background:
+    radial-gradient(circle at 27% 28%,rgba(255,255,255,.38),transparent 14%),
+    radial-gradient(circle at 68% 31%,rgba(241,204,172,.26) 0 3%,transparent 4%),
+    radial-gradient(circle at 63% 68%,rgba(241,204,172,.18) 0 3%,transparent 4%),
+    radial-gradient(circle at 33% 70%,rgba(241,204,172,.15) 0 2%,transparent 3%),
+    radial-gradient(circle at 42% 42%,#927f77,#5b5c62 52%,#354551 78%,#243440);
+}
+.r14-static-fix .cluster-project[data-project="task-summary"]:after{
+  width:118%;
+  height:48%;
+  transform:translateY(-50%) rotate(-32deg);
+}
+
+/* SIT / Defect Dashboard — radar / status quadrants */
+.r14-static-fix .cluster-project[data-project="dashboard"]:before{
+  background:
+    conic-gradient(from -25deg,rgba(236,199,166,.24) 0 5deg,transparent 5deg 90deg,rgba(236,199,166,.14) 90deg 96deg,transparent 96deg 180deg,rgba(236,199,166,.11) 180deg 187deg,transparent 187deg 360deg),
+    repeating-radial-gradient(circle,rgba(233,204,178,.08) 0 1px,transparent 1px 9px),
+    radial-gradient(circle at 40% 38%,#806f6c,#53565c 58%,#30404c);
+}
+.r14-static-fix .cluster-project[data-project="dashboard"]:after{
+  width:105%;
+  height:105%;
+  border-style:dotted;
+  opacity:.28;
+}
+
+/* Training Material Generator — document bands */
+.r14-static-fix .cluster-project[data-project="training"]:before{
+  background:
+    repeating-linear-gradient(0deg,transparent 0 8px,rgba(239,204,175,.11) 8px 9px),
+    radial-gradient(circle at 30% 25%,rgba(255,255,255,.32),transparent 15%),
+    radial-gradient(circle at 42% 40%,#806f69,#51565d 57%,#30404c);
+}
+.r14-static-fix .cluster-project[data-project="training"]:after{
+  width:116%;
+  height:24%;
+  transform:translateY(-50%) rotate(23deg);
+}
+
+/* Airbnb — city lights / spatial signal */
+.r14-static-fix .cluster-project[data-project="airbnb"]:before{
+  background:
+    radial-gradient(circle at 28% 32%,rgba(220,250,235,.48) 0 2%,transparent 3%),
+    radial-gradient(circle at 68% 29%,rgba(220,250,235,.28) 0 2%,transparent 3%),
+    radial-gradient(circle at 59% 70%,rgba(220,250,235,.24) 0 2%,transparent 3%),
+    radial-gradient(circle at 36% 62%,rgba(220,250,235,.22) 0 1.7%,transparent 2.7%),
+    radial-gradient(circle at 30% 24%,rgba(255,255,255,.3),transparent 15%),
+    radial-gradient(circle at 40% 40%,#72998a,#4b7168 54%,#2f4b48 79%,#243a3d);
+}
+
+/* S&P 500 — market bands / signal noise */
+.r14-static-fix .cluster-project[data-project="sp500"]:before{
+  background:
+    repeating-linear-gradient(18deg,transparent 0 10px,rgba(182,224,205,.10) 10px 11px),
+    radial-gradient(circle at 30% 25%,rgba(255,255,255,.3),transparent 15%),
+    radial-gradient(circle at 40% 40%,#6e9588,#496e66 55%,#304a47 80%,#23393c);
+}
+.r14-static-fix .cluster-project[data-project="sp500"]:after{
+  transform:translateY(-50%) rotate(17deg);
+  border-style:dashed;
+}
+
+/* Player Retention — node network */
+.r14-static-fix .cluster-project[data-project="minecraft"]:before{
+  background:
+    radial-gradient(circle at 31% 31%,rgba(210,246,225,.30) 0 2%,transparent 3%),
+    radial-gradient(circle at 69% 34%,rgba(210,246,225,.22) 0 2%,transparent 3%),
+    radial-gradient(circle at 48% 68%,rgba(210,246,225,.24) 0 2%,transparent 3%),
+    linear-gradient(35deg,transparent 47%,rgba(185,225,207,.11) 48% 49%,transparent 50%),
+    radial-gradient(circle at 40% 40%,#709888,#4a7065 56%,#304a46);
+}
+
+/* Deloitte — pricing rings */
+.r14-static-fix .cluster-project[data-project="deloitte"]:before{
+  background:
+    conic-gradient(from 220deg,rgba(183,224,203,.05),rgba(183,224,203,.28),rgba(183,224,203,.06) 44%,transparent 45%),
+    radial-gradient(circle at 30% 25%,rgba(255,255,255,.3),transparent 15%),
+    radial-gradient(circle at 40% 40%,#709486,#496d63 55%,#304944);
+}
+.r14-static-fix .cluster-project[data-project="deloitte"]:after{
+  width:125%;
+  height:30%;
+  transform:translateY(-50%) rotate(31deg);
+}
+
+/* Character Genesis — faceted archetype world */
+.r14-static-fix .cluster-project[data-project="character"]:before{
+  background:
+    conic-gradient(from 18deg,rgba(233,215,249,.34),rgba(159,129,190,.13) 15%,rgba(218,197,239,.28) 31%,rgba(116,102,151,.12) 47%,rgba(229,208,247,.26) 63%,rgba(137,115,174,.14) 79%,rgba(233,215,249,.34)),
+    radial-gradient(circle at 33% 27%,rgba(255,255,255,.31),transparent 17%),
+    radial-gradient(circle at 42% 42%,#816d9c,#554c72 58%,#332f4f);
+  border-color:rgba(211,182,236,.72);
+}
+.r14-static-fix .cluster-project[data-project="character"]:after{
+  border-style:dotted;
+  transform:translateY(-50%) rotate(34deg);
+}
+
+/* Life RPG — quest rings */
+.r14-static-fix .cluster-project[data-project="liferpg"]:before{
+  background:
+    repeating-radial-gradient(circle at 48% 50%,rgba(207,180,233,.11) 0 1px,transparent 1px 10px),
+    radial-gradient(circle at 31% 25%,rgba(255,255,255,.3),transparent 15%),
+    radial-gradient(circle at 40% 40%,#78658e,#514767 58%,#322e49);
+}
+.r14-static-fix .cluster-project[data-project="liferpg"]:after{
+  width:132%;
+  height:39%;
+  transform:translateY(-50%) rotate(-35deg);
+  border-style:dashed;
+}
+
+/* Desktop composition: reduce the empty gap between upper/lower fields. */
+.r14-static-fix .cluster-ai .cluster-project:nth-child(1){left:5%;top:31%}
+.r14-static-fix .cluster-ai .cluster-project:nth-child(2){left:43%;top:12%}
+.r14-static-fix .cluster-ai .cluster-project:nth-child(3){left:54%;top:61%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(1){right:1%;top:30%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(2){right:34%;top:10%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(3){right:48%;top:57%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(4){right:7%;top:67%}
+.r14-static-fix .cluster-data .cluster-project:nth-child(1){left:5%;top:25%}
+.r14-static-fix .cluster-data .cluster-project:nth-child(2){left:39%;top:11%}
+.r14-static-fix .cluster-data .cluster-project:nth-child(3){left:55%;top:55%}
+.r14-static-fix .cluster-data .cluster-project:nth-child(4){left:17%;top:66%}
+.r14-static-fix .cluster-creative .cluster-project:nth-child(1){right:5%;top:25%}
+.r14-static-fix .cluster-creative .cluster-project:nth-child(2){right:42%;top:55%}
+
+@media(max-width:1100px){
+  .r14-static-fix .work-title-row{display:block}
+  .r14-static-fix .work-count{
+    margin-top:12px;
+    padding-left:0;
+    border-left:0;
+  }
+  .r14-static-fix .constellation-map{height:auto;min-height:1120px}
+  .r14-static-fix .cluster-branch{height:238px}
+}
+@media(max-width:680px){
+  .r14-static-fix .work-title-row h2{max-width:100%;line-height:1.16}
+  .r14-static-fix .work-count strong{font-size:34px}
+  .r14-static-fix .work-header p:not(.eyebrow){font-size:15px}
+  .r14-static-fix .cluster-heading,
+  .r14-static-fix .cluster-heading>span:first-child{white-space:normal}
+}
