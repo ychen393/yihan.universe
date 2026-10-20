@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360">
+<defs><radialGradient id="p"><stop stop-color="#dcb0ef" stop-opacity=".5"/><stop offset=".45" stop-color="#7a5a9a"/><stop offset="1" stop-color="#352f55"/></radialGradient></defs>
+<circle cx="180" cy="180" r="112" fill="url(#p)" stroke="#c798e3" stroke-opacity=".6" stroke-width="2"/>
+<g fill="none" stroke="#e6c2fa" stroke-opacity=".4" stroke-width="2"><circle cx="180" cy="180" r="82"/><circle cx="180" cy="180" r="58"/><circle cx="180" cy="180" r="34"/></g>
+<circle cx="180" cy="180" r="16" fill="#e6b8fb" opacity=".55"/>
+<ellipse cx="180" cy="180" rx="145" ry="46" fill="none" stroke="#b896dd" stroke-opacity=".34" stroke-width="3" transform="rotate(-34 180 180)"/>
+</svg>
