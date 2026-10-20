@@ -1,33 +1,130 @@
-/* R14.1 Work Universe — cinematic starfields.
-   VISUAL ONLY. No project data, grouping, ordering, hrefs, filters, routing or case-study logic are changed. */
+/* R14.1 Work Universe — reference-driven cinematic constellation UI.
+   UI ONLY. Existing project data, ordering, grouping, hrefs, filters, routing,
+   case-study content and all non-Work approved sections remain untouched. */
 
 .r14-static-fix .work-section{
+  scroll-margin-top:80px;
+  position:relative;
+  overflow:hidden;
+  padding-top:86px;
   background:
-    radial-gradient(ellipse 34% 23% at 18% 17%,rgba(121,154,181,.14),transparent 74%),
-    radial-gradient(ellipse 36% 24% at 82% 20%,rgba(224,189,157,.11),transparent 76%),
-    radial-gradient(ellipse 31% 22% at 20% 78%,rgba(149,205,181,.09),transparent 75%),
-    radial-gradient(ellipse 31% 22% at 82% 79%,rgba(196,169,219,.09),transparent 76%),
-    linear-gradient(160deg,#263a4d 0%,#213344 55%,#263748 100%);
+    radial-gradient(ellipse 34% 28% at 15% 42%,rgba(54,112,174,.12),transparent 72%),
+    radial-gradient(ellipse 34% 28% at 84% 41%,rgba(185,124,69,.10),transparent 72%),
+    radial-gradient(ellipse 35% 28% at 17% 82%,rgba(62,136,116,.09),transparent 73%),
+    radial-gradient(ellipse 34% 29% at 83% 82%,rgba(127,80,169,.10),transparent 73%),
+    linear-gradient(160deg,#102235 0%,#152a3d 48%,#122538 100%);
 }
-.r14-static-fix .work-header{position:relative;z-index:8}
-.r14-static-fix .work-categories{position:relative;z-index:9;margin-bottom:8px}
-.r14-static-fix .constellation-map{
-  height:980px;
-  max-width:1500px;
+.r14-static-fix .work-section>.starfield{opacity:.82}
+.r14-static-fix .work-backdrop{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.r14-static-fix .work-glow{
+  position:absolute;
+  width:860px;height:860px;
+  left:50%;top:310px;
+  transform:translateX(-50%);
+  background:radial-gradient(circle,rgba(230,190,152,.045),transparent 68%);
+}
+.r14-static-fix .work-ring{display:none}
+
+/* ---------- editorial header ---------- */
+.r14-static-fix .work-header{
+  display:block;
+  max-width:1480px;
   margin:0 auto;
   position:relative;
+  z-index:10;
+}
+.r14-static-fix .work-header>div{max-width:1280px}
+.r14-static-fix .work-title-row{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  flex-wrap:wrap;
+}
+.r14-static-fix .work-title-row h2{
+  margin:14px 0 0;
+  max-width:1000px;
+  font-size:clamp(48px,4.6vw,76px);
+  line-height:1.1;
+  letter-spacing:-.045em;
+}
+.r14-static-fix .work-count{
+  flex:none;
+  display:inline-flex;
+  flex-direction:row;
+  align-items:baseline;
+  gap:7px;
+  margin:16px 0 0;
+  padding:2px 0 2px 20px;
+  border-left:1px solid rgba(239,210,183,.38);
+  background:transparent;
+  border-radius:0;
+}
+.r14-static-fix .work-count strong{
+  font:400 38px/1 var(--serif);
+  color:#f0cba9;
+}
+.r14-static-fix .work-count span{
+  font-size:12px;
+  color:#d3d8dc;
+  white-space:nowrap;
+}
+.r14-static-fix .work-header p:not(.eyebrow){
+  max-width:920px;
+  margin:18px 0 0;
+  font-size:17px;
+  line-height:1.7;
+  color:#d7dde1;
+}
+.r14-static-fix .work-categories{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  max-width:1480px;
+  margin:26px auto 16px;
+  position:relative;
+  z-index:12;
+}
+.r14-static-fix .work-categories button{
+  padding:9px 16px;
+  border-radius:999px;
+  border:1px solid rgba(226,214,204,.22);
+  background:rgba(12,29,44,.32);
+  color:#e4e5e5;
+  font-size:11px;
+  cursor:pointer;
+  transition:background .22s,border-color .22s,transform .22s,color .22s;
+}
+.r14-static-fix .work-categories button:hover,
+.r14-static-fix .work-categories button:focus-visible{
+  transform:translateY(-1px);
+  border-color:rgba(246,211,179,.58);
+}
+.r14-static-fix .work-categories button[aria-pressed="true"]{
+  background:#e9c7a6;
+  border-color:#e9c7a6;
+  color:#172a3a;
+}
+
+/* ---------- one coherent constellation map ---------- */
+.r14-static-fix .constellation-map{
+  position:relative;
   isolation:isolate;
+  width:100%;
+  max-width:1500px;
+  height:720px;
+  margin:0 auto;
   overflow:hidden;
 }
 .r14-static-fix .constellation-map:before{
   content:"";
   position:absolute;
   inset:0;
-  border-radius:0;
+  z-index:0;
   pointer-events:none;
   background:
-    radial-gradient(circle at 50% 45%,rgba(232,199,164,.055),transparent 17%),
-    radial-gradient(ellipse 62% 42% at 50% 45%,rgba(185,210,225,.035),transparent 71%);
+    radial-gradient(circle at 51% 50%,rgba(255,255,255,.022),transparent 15%),
+    radial-gradient(ellipse 58% 42% at 50% 49%,rgba(148,177,198,.028),transparent 72%);
 }
 .r14-static-fix .constellation-map:after{
   content:"";
@@ -35,28 +132,27 @@
   inset:0;
   z-index:0;
   pointer-events:none;
-  opacity:.53;
+  opacity:.74;
   background-image:
-    radial-gradient(circle at 7% 16%,rgba(255,255,255,.78) 0 1px,transparent 1.5px),
-    radial-gradient(circle at 18% 43%,rgba(233,208,182,.72) 0 1.1px,transparent 1.65px),
-    radial-gradient(circle at 29% 71%,rgba(196,221,232,.74) 0 1px,transparent 1.5px),
-    radial-gradient(circle at 39% 23%,rgba(255,255,255,.66) 0 1px,transparent 1.45px),
-    radial-gradient(circle at 53% 62%,rgba(239,211,184,.76) 0 1.15px,transparent 1.7px),
-    radial-gradient(circle at 67% 17%,rgba(210,229,237,.72) 0 1px,transparent 1.5px),
-    radial-gradient(circle at 78% 52%,rgba(255,255,255,.72) 0 1px,transparent 1.5px),
-    radial-gradient(circle at 91% 29%,rgba(235,207,181,.76) 0 1px,transparent 1.6px);
+    radial-gradient(circle at 7% 13%,rgba(255,255,255,.86) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 17% 42%,rgba(242,213,185,.85) 0 1.1px,transparent 1.8px),
+    radial-gradient(circle at 28% 74%,rgba(189,219,234,.78) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 38% 23%,rgba(255,255,255,.78) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 53% 63%,rgba(242,210,178,.84) 0 1.1px,transparent 1.8px),
+    radial-gradient(circle at 65% 16%,rgba(207,228,238,.76) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 78% 53%,rgba(255,255,255,.78) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 91% 28%,rgba(241,207,178,.82) 0 1px,transparent 1.7px);
   background-size:390px 390px;
 }
-
-/* The page is already Yihan's Universe: remove the redundant diagram center and shared solar-system lines. */
 .r14-static-fix .constellation-core,
-.r14-static-fix .constellation-links{display:none}
+.r14-static-fix .constellation-links,
+.r14-static-fix .constellation-inspector{display:none}
 
-/* Four starfields: no boxes, no cards. */
+/* ---------- four nebula fields ---------- */
 .r14-static-fix .cluster-branch{
   position:absolute;
-  width:44%;
-  height:400px;
+  width:47%;
+  height:315px;
   min-height:0;
   padding:0;
   border:0;
@@ -65,136 +161,155 @@
   box-shadow:none;
   backdrop-filter:none;
   overflow:visible;
-  z-index:4;
-  transition:opacity .28s ease,filter .28s ease;
+  z-index:3;
+  transition:opacity .26s ease,filter .26s ease;
 }
-.r14-static-fix .cluster-ai{top:1%;left:2%;--cluster-color:#acd0e8}
-.r14-static-fix .cluster-enterprise{top:1%;right:2%;--cluster-color:#e1bba6}
-.r14-static-fix .cluster-data{bottom:1%;left:2%;--cluster-color:#a6d5c1}
-.r14-static-fix .cluster-creative{bottom:1%;right:2%;--cluster-color:#cdb2e9}
-
-/* Local nebula: each region has its own atmosphere and orbit, not a shared global ellipse. */
+.r14-static-fix .cluster-ai{
+  top:0;left:1%;
+  --cluster-color:#9bd9ff;
+  --nebula-a:rgba(44,108,190,.24);
+  --nebula-b:rgba(114,77,195,.14);
+}
+.r14-static-fix .cluster-enterprise{
+  top:0;right:1%;
+  --cluster-color:#f1c28f;
+  --nebula-a:rgba(201,130,73,.22);
+  --nebula-b:rgba(226,180,104,.12);
+}
+.r14-static-fix .cluster-data{
+  bottom:0;left:1%;
+  --cluster-color:#90e2c0;
+  --nebula-a:rgba(46,137,117,.20);
+  --nebula-b:rgba(127,166,70,.10);
+}
+.r14-static-fix .cluster-creative{
+  bottom:0;right:1%;
+  --cluster-color:#d5a4ff;
+  --nebula-a:rgba(121,69,177,.23);
+  --nebula-b:rgba(73,96,202,.11);
+}
 .r14-static-fix .cluster-branch:before{
   content:"";
   position:absolute;
-  inset:5% 2% 3%;
+  inset:3% 0 0;
   z-index:0;
   pointer-events:none;
-  opacity:.72;
+  opacity:.96;
+  filter:blur(9px);
   background:
-    radial-gradient(ellipse 44% 31% at 46% 46%,color-mix(in srgb,var(--cluster-color),transparent 88%),transparent 74%),
-    radial-gradient(ellipse 24% 18% at 68% 31%,rgba(255,255,255,.028),transparent 76%);
-  filter:blur(4px);
+    radial-gradient(ellipse 54% 42% at 35% 47%,var(--nebula-a),transparent 72%),
+    radial-gradient(ellipse 44% 34% at 68% 50%,var(--nebula-b),transparent 76%),
+    radial-gradient(ellipse 24% 20% at 53% 30%,rgba(255,255,255,.035),transparent 75%);
 }
 .r14-static-fix .cluster-branch:after{
   content:"";
   position:absolute;
-  left:10%;
-  top:24%;
-  width:70%;
-  height:50%;
-  border:1px solid color-mix(in srgb,var(--cluster-color),transparent 82%);
-  border-radius:50%;
-  transform:rotate(-13deg);
+  left:7%;top:24%;
+  width:77%;height:48%;
+  z-index:1;
   pointer-events:none;
-  opacity:.55;
+  border:1px solid color-mix(in srgb,var(--cluster-color),transparent 83%);
+  border-radius:50%;
+  transform:rotate(-10deg);
+  opacity:.32;
 }
-.r14-static-fix .cluster-enterprise:after{left:19%;transform:rotate(12deg)}
-.r14-static-fix .cluster-data:after{top:20%;transform:rotate(9deg)}
-.r14-static-fix .cluster-creative:after{left:18%;top:19%;transform:rotate(-9deg)}
+.r14-static-fix .cluster-enterprise:after{left:15%;transform:rotate(9deg)}
+.r14-static-fix .cluster-data:after{left:5%;top:21%;transform:rotate(8deg)}
+.r14-static-fix .cluster-creative:after{left:16%;top:22%;transform:rotate(-8deg)}
 
-.r14-static-fix .cluster-branch[data-selected="true"],
-.r14-static-fix .cluster-branch[data-selected="false"],
-.r14-static-fix .cluster-branch:hover,
-.r14-static-fix .cluster-branch:focus-within{
-  border:0;
-  box-shadow:none;
-  transform:none;
+.r14-static-fix .cluster-branch[data-selected="false"]{
+  opacity:.17;
+  filter:saturate(.45);
 }
-.r14-static-fix .cluster-branch[data-selected="false"]{opacity:.18;filter:saturate(.58)}
 .r14-static-fix .cluster-branch[data-selected="true"]{opacity:1;filter:none}
+.r14-static-fix .cluster-branch:hover,
+.r14-static-fix .cluster-branch:focus-within{transform:none;box-shadow:none}
 
-/* Starfield coordinate label. */
+/* ---------- region labels ---------- */
 .r14-static-fix .cluster-heading{
   position:absolute;
-  left:3%;
-  top:3%;
+  left:2%;
+  top:1%;
   width:auto;
-  max-width:260px;
+  max-width:none;
   padding:0;
   display:flex;
-  gap:8px;
+  gap:9px;
   align-items:flex-start;
-  color:#f9eee4;
-  background:none;
   border:0;
+  background:transparent;
+  color:#f8efe7;
   text-align:left;
   cursor:pointer;
-  z-index:12;
+  z-index:20;
 }
 .r14-static-fix .cluster-enterprise .cluster-heading,
 .r14-static-fix .cluster-creative .cluster-heading{
-  left:auto;
-  right:3%;
+  left:auto;right:2%;
   text-align:right;
   flex-direction:row-reverse;
 }
 .r14-static-fix .cluster-heading:before{
-  font-size:13px;
-  margin-top:2px;
+  content:"✦";
   color:var(--cluster-color);
-  filter:drop-shadow(0 0 7px color-mix(in srgb,var(--cluster-color),transparent 34%));
+  font-size:18px;
+  line-height:1;
+  margin-top:2px;
+  filter:drop-shadow(0 0 8px color-mix(in srgb,var(--cluster-color),transparent 32%));
 }
 .r14-static-fix .cluster-heading>span:first-child{
-  font-size:12px;
+  font-size:14px;
   line-height:1.25;
-  letter-spacing:.055em;
-  font-weight:720;
+  letter-spacing:.035em;
+  font-weight:760;
+  white-space:nowrap;
 }
 .r14-static-fix .cluster-heading small{
   display:block;
-  margin-top:4px;
+  margin-top:5px;
+  max-width:210px;
   color:color-mix(in srgb,var(--cluster-color),white 8%);
-  font-size:8px;
+  font-size:9px;
   line-height:1.45;
-  letter-spacing:.08em;
-  font-weight:520;
+  letter-spacing:.035em;
+  white-space:normal;
 }
+.r14-static-fix .cluster-enterprise .cluster-heading small,
+.r14-static-fix .cluster-creative .cluster-heading small{margin-left:auto}
 .r14-static-fix .cluster-count{
   padding:0;
   border:0;
   background:none;
-  color:color-mix(in srgb,var(--cluster-color),white 5%);
-  font-size:8px;
+  color:var(--cluster-color);
+  font-size:9px;
   line-height:1.4;
-  opacity:.72;
+  opacity:.78;
 }
 
-/* Keep the existing project anchor intact; visually split it into planet + external label. */
+/* ---------- clickable celestial nodes ----------
+   Anchors/hrefs remain exactly the existing project links. */
 .r14-static-fix .cluster-projects{
   position:absolute;
   inset:0;
-  display:block;
-  z-index:2;
+  z-index:4;
 }
 .r14-static-fix .cluster-project{
-  --planet-size:62px;
-  --anchor-width:225px;
+  --planet-size:44px;
+  --anchor-width:235px;
   position:absolute;
+  display:block;
   width:var(--anchor-width);
-  height:max(var(--planet-size),78px);
+  height:max(var(--planet-size),64px);
   min-width:0;
   padding:0;
   border:0;
   border-radius:0;
   background:transparent;
   box-shadow:none;
-  color:#f6ede5;
   overflow:visible;
-  transform:none;
-  z-index:4;
-  display:block;
+  color:#f7efe8;
   text-align:left;
+  z-index:5;
   transition:opacity .25s ease,filter .25s ease;
 }
 .r14-static-fix .cluster-project:before{
@@ -206,870 +321,451 @@
   height:var(--planet-size);
   border-radius:50%;
   transform:translateY(-50%);
-  background:
-    radial-gradient(circle at 29% 25%,rgba(255,255,255,.34),transparent 16%),
-    radial-gradient(circle at 38% 35%,color-mix(in srgb,var(--cluster-color),#778b9b 42%),#42576b 55%,#243849 100%);
   border:1px solid color-mix(in srgb,var(--cluster-color),transparent 26%);
+  background:
+    radial-gradient(circle at 30% 25%,rgba(255,255,255,.42),transparent 16%),
+    radial-gradient(circle at 42% 42%,color-mix(in srgb,var(--cluster-color),#8293a1 35%),#405568 55%,#1e3141 100%);
   box-shadow:
-    inset -11px -13px 21px rgba(8,18,28,.18),
-    0 12px 28px rgba(4,11,18,.23),
-    0 0 26px color-mix(in srgb,var(--cluster-color),transparent 85%);
+    inset -10px -13px 20px rgba(7,17,26,.2),
+    0 10px 24px rgba(3,9,15,.26),
+    0 0 24px color-mix(in srgb,var(--cluster-color),transparent 78%);
   transition:transform .32s cubic-bezier(.2,.72,.2,1),box-shadow .32s ease,border-color .32s ease,filter .32s ease;
 }
 .r14-static-fix .cluster-project:after{
   content:"";
   position:absolute;
-  left:calc(var(--planet-size) * -.13);
+  left:calc(var(--planet-size) * -.14);
   top:50%;
   width:calc(var(--planet-size) * 1.28);
-  height:calc(var(--planet-size) * .34);
-  border:1px solid color-mix(in srgb,var(--cluster-color),transparent 58%);
+  height:calc(var(--planet-size) * .31);
+  border:1px solid color-mix(in srgb,var(--cluster-color),transparent 55%);
   border-radius:50%;
   transform:translateY(-50%) rotate(-17deg);
-  opacity:.38;
+  opacity:.34;
   pointer-events:none;
   transition:transform .32s ease,opacity .32s ease,border-color .32s ease;
 }
 .r14-static-fix .cluster-project strong{
   position:absolute;
-  left:calc(var(--planet-size) + 13px);
+  left:calc(var(--planet-size) + 14px);
   top:50%;
   transform:translateY(-50%);
-  width:calc(var(--anchor-width) - var(--planet-size) - 13px);
-  max-width:none;
-  color:#f6ede5;
-  font-size:11px;
-  line-height:1.25;
-  font-weight:680;
-  letter-spacing:.005em;
+  width:calc(var(--anchor-width) - var(--planet-size) - 14px);
+  color:#f8f1ea;
+  font-size:13px;
+  line-height:1.24;
+  font-weight:710;
+  letter-spacing:-.005em;
   text-align:left;
-  text-shadow:0 2px 10px rgba(3,8,14,.38);
+  text-shadow:0 2px 12px rgba(2,7,12,.5);
   text-wrap:pretty;
-  transition:color .25s ease,transform .25s ease;
+  transition:color .25s ease;
 }
 .r14-static-fix .cluster-project em{display:none}
 
-/* Right-side fields mirror the label orientation while preserving the same anchor/href. */
+/* mirror label geometry on right-side constellations */
 .r14-static-fix .cluster-enterprise .cluster-project:before,
 .r14-static-fix .cluster-creative .cluster-project:before{left:auto;right:0}
 .r14-static-fix .cluster-enterprise .cluster-project:after,
 .r14-static-fix .cluster-creative .cluster-project:after{
   left:auto;
-  right:calc(var(--planet-size) * -.13);
+  right:calc(var(--planet-size) * -.14);
 }
 .r14-static-fix .cluster-enterprise .cluster-project strong,
 .r14-static-fix .cluster-creative .cluster-project strong{
   left:0;
-  right:auto;
-  width:calc(var(--anchor-width) - var(--planet-size) - 13px);
+  width:calc(var(--anchor-width) - var(--planet-size) - 14px);
   text-align:right;
 }
 
-/* Hierarchy: primary worlds, supporting satellites. No project ordering/data is changed. */
-.r14-static-fix .cluster-project[data-project="agentlab"]{--planet-size:104px;--anchor-width:260px}
-.r14-static-fix .cluster-project[data-project="benchmark"]{--planet-size:80px;--anchor-width:238px}
-.r14-static-fix .cluster-project[data-project="content-qa"]{--planet-size:55px;--anchor-width:210px}
-.r14-static-fix .cluster-project[data-project="requirement"]{--planet-size:100px;--anchor-width:282px}
-.r14-static-fix .cluster-project[data-project="task-summary"]{--planet-size:76px;--anchor-width:248px}
-.r14-static-fix .cluster-project[data-project="dashboard"]{--planet-size:58px;--anchor-width:225px}
-.r14-static-fix .cluster-project[data-project="training"]{--planet-size:54px;--anchor-width:226px}
-.r14-static-fix .cluster-project[data-project="airbnb"]{--planet-size:78px;--anchor-width:242px}
-.r14-static-fix .cluster-project[data-project="sp500"]{--planet-size:64px;--anchor-width:228px}
-.r14-static-fix .cluster-project[data-project="minecraft"]{--planet-size:56px;--anchor-width:218px}
-.r14-static-fix .cluster-project[data-project="deloitte"]{--planet-size:58px;--anchor-width:226px}
-.r14-static-fix .cluster-project[data-project="character"]{--planet-size:78px;--anchor-width:240px}
-.r14-static-fix .cluster-project[data-project="liferpg"]{--planet-size:62px;--anchor-width:216px}
-
-/* Irregular regional composition — no symmetric four-card grid. */
-.r14-static-fix .cluster-ai .cluster-project:nth-child(1){left:6%;top:31%}
-.r14-static-fix .cluster-ai .cluster-project:nth-child(2){left:42%;top:14%}
-.r14-static-fix .cluster-ai .cluster-project:nth-child(3){left:53%;top:60%}
-
-.r14-static-fix .cluster-enterprise .cluster-project:nth-child(1){right:2%;top:31%}
-.r14-static-fix .cluster-enterprise .cluster-project:nth-child(2){right:35%;top:12%}
-.r14-static-fix .cluster-enterprise .cluster-project:nth-child(3){right:49%;top:58%}
-.r14-static-fix .cluster-enterprise .cluster-project:nth-child(4){right:8%;top:70%}
-
-.r14-static-fix .cluster-data .cluster-project:nth-child(1){left:5%;top:27%}
-.r14-static-fix .cluster-data .cluster-project:nth-child(2){left:38%;top:13%}
-.r14-static-fix .cluster-data .cluster-project:nth-child(3){left:54%;top:58%}
-.r14-static-fix .cluster-data .cluster-project:nth-child(4){left:18%;top:70%}
-
-.r14-static-fix .cluster-creative .cluster-project:nth-child(1){right:6%;top:27%}
-.r14-static-fix .cluster-creative .cluster-project:nth-child(2){right:43%;top:58%}
-
-/* Priority worlds feel heavier without turning every project into the same planet. */
-.r14-static-fix .cluster-project[data-project="agentlab"]:before,
-.r14-static-fix .cluster-project[data-project="requirement"]:before{
-  box-shadow:
-    inset -14px -16px 25px rgba(8,18,28,.2),
-    0 16px 34px rgba(4,11,18,.24),
-    0 0 40px color-mix(in srgb,var(--cluster-color),transparent 74%);
+/* ---------- hierarchy ---------- */
+.r14-static-fix .cluster-project[data-project="agentlab"]{
+  --planet-size:132px;
+  --anchor-width:330px;
+  height:142px;
+}
+.r14-static-fix .cluster-project[data-project="requirement"]{
+  --planet-size:138px;
+  --anchor-width:370px;
+  height:148px;
+}
+.r14-static-fix .cluster-project[data-project="airbnb"]{
+  --planet-size:116px;
+  --anchor-width:330px;
+  height:126px;
 }
-.r14-static-fix .cluster-project[data-project="benchmark"]:before,
-.r14-static-fix .cluster-project[data-project="task-summary"]:before,
-.r14-static-fix .cluster-project[data-project="airbnb"]:before,
-.r14-static-fix .cluster-project[data-project="character"]:before{
-  box-shadow:
-    inset -11px -13px 22px rgba(8,18,28,.18),
-    0 13px 30px rgba(4,11,18,.23),
-    0 0 30px color-mix(in srgb,var(--cluster-color),transparent 81%);
-}
-
-/* Focus one world; no navigation behavior changes. */
-@media(hover:hover){
-  .r14-static-fix .cluster-branch:has(.cluster-project:hover) .cluster-project:not(:hover),
-  .r14-static-fix .cluster-branch:has(.cluster-project:focus-visible) .cluster-project:not(:focus-visible){
-    opacity:.28;
-    filter:saturate(.55);
-  }
-}
-.r14-static-fix .cluster-project:hover:before,
-.r14-static-fix .cluster-project:focus-visible:before{
-  transform:translateY(-50%) scale(1.08);
-  border-color:color-mix(in srgb,var(--cluster-color),white 34%);
-  box-shadow:
-    inset -12px -14px 22px rgba(8,18,28,.16),
-    0 15px 32px rgba(4,11,18,.24),
-    0 0 48px color-mix(in srgb,var(--cluster-color),transparent 56%);
-}
-.r14-static-fix .cluster-project:hover:after,
-.r14-static-fix .cluster-project:focus-visible:after{
-  transform:translateY(-50%) rotate(-17deg) scale(1.1);
-  opacity:.68;
-  border-color:color-mix(in srgb,var(--cluster-color),transparent 38%);
-}
-.r14-static-fix .cluster-project:hover strong,
-.r14-static-fix .cluster-project:focus-visible strong{
-  color:#fff7ef;
-  transform:translateY(-50%) translateX(4px);
-}
-.r14-static-fix .cluster-enterprise .cluster-project:hover strong,
-.r14-static-fix .cluster-enterprise .cluster-project:focus-visible strong,
-.r14-static-fix .cluster-creative .cluster-project:hover strong,
-.r14-static-fix .cluster-creative .cluster-project:focus-visible strong{
-  transform:translateY(-50%) translateX(-4px);
-}
-
-/* Existing hover inspector stays functional, but reads like a telescope note rather than another card. */
-.r14-static-fix .constellation-inspector{
-  left:50%;
-  bottom:47%;
-  transform:translate(-50%,50%);
-  width:min(520px,42%);
-  min-height:0;
-  padding:8px 14px 9px;
-  border-radius:999px;
-  border:1px solid rgba(232,210,188,.14);
-  background:rgba(25,39,52,.38);
-  backdrop-filter:blur(10px);
-  box-shadow:none;
-  z-index:3;
-  pointer-events:none;
-}
-.r14-static-fix .constellation-inspector .inspector-overline{display:none}
-.r14-static-fix .constellation-inspector strong{
-  display:inline;
-  color:#eadfd5;
-  font-size:10px;
-  font-weight:650;
-}
-.r14-static-fix .constellation-inspector p{
-  display:inline;
-  margin:0 0 0 7px;
-  color:#9eafb9;
-  font-size:8px;
-  line-height:1.4;
-}
-.r14-static-fix .constellation-inspector a{display:none}
-
-/* Existing filter logic remains visible and usable, but visually secondary. */
-.r14-static-fix .work-categories button{
-  padding:7px 11px;
-  border-color:rgba(235,213,192,.16);
-  background:rgba(255,255,255,.015);
-  font-size:9px;
-}
-.r14-static-fix .work-categories button[aria-pressed="true"]{
-  background:rgba(232,202,174,.09);
-  border-color:rgba(236,205,177,.32);
-}
-
-/* Tablet: preserve all project anchors and labels in four readable fields. */
-@media(max-width:1100px){
-  .r14-static-fix .constellation-map{
-    height:auto;
-    min-height:1210px;
-    overflow:visible;
-  }
-  .r14-static-fix .cluster-branch{
-    position:relative;
-    top:auto!important;
-    left:auto!important;
-    right:auto!important;
-    bottom:auto!important;
-    width:100%;
-    height:245px;
-    margin:48px 0 0;
-  }
-  .r14-static-fix .cluster-heading,
-  .r14-static-fix .cluster-enterprise .cluster-heading,
-  .r14-static-fix .cluster-creative .cluster-heading{
-    left:3%;
-    right:auto;
-    text-align:left;
-    flex-direction:row;
-  }
-  .r14-static-fix .cluster-enterprise .cluster-project:before,
-  .r14-static-fix .cluster-creative .cluster-project:before{left:0;right:auto}
-  .r14-static-fix .cluster-enterprise .cluster-project:after,
-  .r14-static-fix .cluster-creative .cluster-project:after{left:calc(var(--planet-size) * -.13);right:auto}
-  .r14-static-fix .cluster-enterprise .cluster-project strong,
-  .r14-static-fix .cluster-creative .cluster-project strong{
-    left:calc(var(--planet-size) + 13px);
-    right:auto;
-    text-align:left;
-  }
-  .r14-static-fix .constellation-inspector{
-    position:relative;
-    left:auto;
-    bottom:auto;
-    transform:none;
-    width:min(90%,520px);
-    margin:28px auto 0;
-  }
-}
-
-/* Mobile: same links, same information, simplified cosmic composition. */
-@media(max-width:680px){
-  .r14-static-fix .work-header{padding-inline:18px}
-  .r14-static-fix .work-categories{justify-content:flex-start;overflow-x:auto;padding:0 18px 8px}
-  .r14-static-fix .constellation-map{min-height:1120px;padding-inline:6px}
-  .r14-static-fix .cluster-branch{height:225px;margin-top:34px}
-  .r14-static-fix .cluster-heading{max-width:220px}
-  .r14-static-fix .cluster-project{--planet-size:48px;--anchor-width:165px;height:62px}
-  .r14-static-fix .cluster-project[data-project="agentlab"],
-  .r14-static-fix .cluster-project[data-project="requirement"]{--planet-size:70px;--anchor-width:190px}
-  .r14-static-fix .cluster-project[data-project="benchmark"],
-  .r14-static-fix .cluster-project[data-project="task-summary"],
-  .r14-static-fix .cluster-project[data-project="airbnb"],
-  .r14-static-fix .cluster-project[data-project="character"]{--planet-size:60px;--anchor-width:182px}
-  .r14-static-fix .cluster-project strong{font-size:8px}
-  .r14-static-fix .cluster-ai .cluster-project:nth-child(1),
-  .r14-static-fix .cluster-data .cluster-project:nth-child(1){left:3%;top:34%}
-  .r14-static-fix .cluster-ai .cluster-project:nth-child(2),
-  .r14-static-fix .cluster-data .cluster-project:nth-child(2){left:37%;top:18%}
-  .r14-static-fix .cluster-ai .cluster-project:nth-child(3),
-  .r14-static-fix .cluster-data .cluster-project:nth-child(3){left:57%;top:59%}
-  .r14-static-fix .cluster-data .cluster-project:nth-child(4){left:15%;top:72%}
-  .r14-static-fix .cluster-enterprise .cluster-project:nth-child(1),
-  .r14-static-fix .cluster-creative .cluster-project:nth-child(1){left:3%;right:auto;top:34%}
-  .r14-static-fix .cluster-enterprise .cluster-project:nth-child(2),
-  .r14-static-fix .cluster-creative .cluster-project:nth-child(2){left:37%;right:auto;top:18%}
-  .r14-static-fix .cluster-enterprise .cluster-project:nth-child(3){left:57%;right:auto;top:59%}
-  .r14-static-fix .cluster-enterprise .cluster-project:nth-child(4){left:14%;right:auto;top:72%}
-  .r14-static-fix .constellation-inspector{display:none}
-}
-@media(prefers-reduced-motion:reduce){
-  .r14-static-fix .cluster-project,
-  .r14-static-fix .cluster-project:before,
-  .r14-static-fix .cluster-project:after,
-  .r14-static-fix .cluster-project strong{transition:none!important}
-}
-
-/* R14.1c — header cohesion + compact field + project-specific celestial materials */
-
-/* Treat title + count as one editorial unit, not two distant blocks. */
-.r14-static-fix .work-header{
-  display:block;
-  max-width:1400px;
-  margin:0 auto;
-}
-.r14-static-fix .work-header>div{max-width:1180px}
-.r14-static-fix .work-title-row{
-  display:flex;
-  align-items:flex-end;
-  gap:22px;
-  flex-wrap:wrap;
-  width:100%;
-}
-.r14-static-fix .work-title-row h2{
-  flex:0 1 auto;
-  max-width:980px;
-  margin:17px 0 0;
-  line-height:1.13;
-}
-.r14-static-fix .work-count{
-  flex:none;
-  display:inline-flex;
-  flex-direction:row;
-  align-items:baseline;
-  gap:7px;
-  margin:0 0 8px;
-  padding:2px 0 2px 18px;
-  border-left:1px solid rgba(239,209,181,.28);
-  text-align:left;
-}
-.r14-static-fix .work-count strong{
-  font:400 42px/1 var(--serif);
-  color:#f0ceb0;
-}
-.r14-static-fix .work-count span{
-  white-space:nowrap;
-  font-size:11px;
-  color:#cbd2d6;
-  letter-spacing:.04em;
-}
-.r14-static-fix .work-header p:not(.eyebrow){
-  max-width:920px;
-  margin:18px 0 0;
-  line-height:1.75;
-}
-.r14-static-fix .work-categories{margin:26px auto 12px}
-
-/* Keep all four regions inside one compact universe instead of two separated maps. */
-.r14-static-fix .constellation-map{height:760px}
-.r14-static-fix .cluster-branch{height:322px}
-.r14-static-fix .cluster-ai{top:0}
-.r14-static-fix .cluster-enterprise{top:0}
-.r14-static-fix .cluster-data{bottom:0}
-.r14-static-fix .cluster-creative{bottom:0}
-
-/* Field names should read like coordinates, never wrap into awkward vertical labels. */
-.r14-static-fix .cluster-heading,
-.r14-static-fix .cluster-heading>span:first-child{
-  max-width:none;
-  white-space:nowrap;
-}
-.r14-static-fix .cluster-heading small{
-  white-space:normal;
-  max-width:210px;
-}
-.r14-static-fix .cluster-enterprise .cluster-heading small,
-.r14-static-fix .cluster-creative .cluster-heading small{margin-left:auto}
-
-/* The old hover inspector logic still runs, but no detached pill is rendered. */
-.r14-static-fix .constellation-inspector{display:none}
-
-/* Tighter local orbits; each belongs to its region rather than spanning half the universe. */
-.r14-static-fix .cluster-branch:after{
-  left:16%;
-  top:29%;
-  width:58%;
-  height:42%;
-  opacity:.38;
-}
-.r14-static-fix .cluster-enterprise:after{left:25%;top:28%}
-.r14-static-fix .cluster-data:after{left:14%;top:25%}
-.r14-static-fix .cluster-creative:after{left:25%;top:24%}
-
-/* ---------- project-specific planet identities ---------- */
-
-/* AgentLab — forensic scan / controlled debugging */
-.r14-static-fix .cluster-project[data-project="agentlab"]:before{
-  background:
-    radial-gradient(circle at 31% 26%,rgba(255,255,255,.48),transparent 13%),
-    radial-gradient(circle at 66% 62%,transparent 0 18%,rgba(175,214,235,.18) 19% 20%,transparent 21%),
-    repeating-radial-gradient(circle at 48% 51%,rgba(182,216,235,.08) 0 1px,transparent 1px 12px),
-    radial-gradient(circle at 40% 38%,#8cb8d2 0%,#506f86 43%,#273d50 75%,#1b2b39 100%);
-  border-color:rgba(180,218,238,.72);
-}
-.r14-static-fix .cluster-project[data-project="agentlab"]:after{
-  height:29%;
-  width:142%;
-  transform:translateY(-50%) rotate(-11deg);
-  border-color:rgba(184,218,238,.5);
-  box-shadow:0 0 0 7px rgba(174,210,231,.035);
-}
-
-/* Benchmark — matrix / grid world */
-.r14-static-fix .cluster-project[data-project="benchmark"]:before{
-  background:
-    linear-gradient(rgba(190,223,233,.12) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(190,223,233,.11) 1px,transparent 1px),
-    radial-gradient(circle at 30% 24%,rgba(255,255,255,.34),transparent 16%),
-    radial-gradient(circle at 40% 38%,#88adbf,#526d80 47%,#2a4152 76%,#1f303e);
-  background-size:9px 9px,9px 9px,100% 100%,100% 100%;
-}
-.r14-static-fix .cluster-project[data-project="benchmark"]:after{
-  border-style:dashed;
-  transform:translateY(-50%) rotate(9deg);
-  opacity:.5;
-}
-
-/* Content Review — review lens / split signal */
-.r14-static-fix .cluster-project[data-project="content-qa"]:before{
-  background:
-    linear-gradient(90deg,rgba(175,214,235,.15) 0 48%,rgba(239,202,170,.10) 52% 100%),
-    radial-gradient(circle at 31% 25%,rgba(255,255,255,.36),transparent 17%),
-    radial-gradient(circle at 45% 42%,#6c8ea3,#405b6e 60%,#263a4a);
-}
-.r14-static-fix .cluster-project[data-project="content-qa"]:after{
-  width:115%;
-  height:42%;
-  transform:translateY(-50%) rotate(-28deg);
-}
-
-/* Requirement Alignment — two halves meeting at a confirmation seam */
-.r14-static-fix .cluster-project[data-project="requirement"]:before{
-  background:
-    linear-gradient(90deg,rgba(236,197,163,.14) 0 48.6%,rgba(250,225,202,.55) 49.4% 50.6%,rgba(148,174,193,.12) 51.4% 100%),
-    radial-gradient(circle at 30% 25%,rgba(255,255,255,.34),transparent 16%),
-    radial-gradient(circle at 38% 36%,#927e77,#5a5960 47%,#37434e 76%,#243440);
-  border-color:rgba(231,194,160,.76);
-}
-.r14-static-fix .cluster-project[data-project="requirement"]:after{
-  width:136%;
-  height:26%;
-  transform:translateY(-50%) rotate(13deg);
-  border-color:rgba(231,194,160,.47);
-}
-
-/* Task Summary — converging communication channels */
-.r14-static-fix .cluster-project[data-project="task-summary"]:before{
-  background:
-    radial-gradient(circle at 27% 28%,rgba(255,255,255,.38),transparent 14%),
-    radial-gradient(circle at 68% 31%,rgba(241,204,172,.26) 0 3%,transparent 4%),
-    radial-gradient(circle at 63% 68%,rgba(241,204,172,.18) 0 3%,transparent 4%),
-    radial-gradient(circle at 33% 70%,rgba(241,204,172,.15) 0 2%,transparent 3%),
-    radial-gradient(circle at 42% 42%,#927f77,#5b5c62 52%,#354551 78%,#243440);
-}
-.r14-static-fix .cluster-project[data-project="task-summary"]:after{
-  width:118%;
-  height:48%;
-  transform:translateY(-50%) rotate(-32deg);
-}
-
-/* SIT / Defect Dashboard — radar / status quadrants */
-.r14-static-fix .cluster-project[data-project="dashboard"]:before{
-  background:
-    conic-gradient(from -25deg,rgba(236,199,166,.24) 0 5deg,transparent 5deg 90deg,rgba(236,199,166,.14) 90deg 96deg,transparent 96deg 180deg,rgba(236,199,166,.11) 180deg 187deg,transparent 187deg 360deg),
-    repeating-radial-gradient(circle,rgba(233,204,178,.08) 0 1px,transparent 1px 9px),
-    radial-gradient(circle at 40% 38%,#806f6c,#53565c 58%,#30404c);
-}
-.r14-static-fix .cluster-project[data-project="dashboard"]:after{
-  width:105%;
-  height:105%;
-  border-style:dotted;
-  opacity:.28;
-}
-
-/* Training Material Generator — document bands */
-.r14-static-fix .cluster-project[data-project="training"]:before{
-  background:
-    repeating-linear-gradient(0deg,transparent 0 8px,rgba(239,204,175,.11) 8px 9px),
-    radial-gradient(circle at 30% 25%,rgba(255,255,255,.32),transparent 15%),
-    radial-gradient(circle at 42% 40%,#806f69,#51565d 57%,#30404c);
-}
-.r14-static-fix .cluster-project[data-project="training"]:after{
-  width:116%;
-  height:24%;
-  transform:translateY(-50%) rotate(23deg);
-}
-
-/* Airbnb — city lights / spatial signal */
-.r14-static-fix .cluster-project[data-project="airbnb"]:before{
-  background:
-    radial-gradient(circle at 28% 32%,rgba(220,250,235,.48) 0 2%,transparent 3%),
-    radial-gradient(circle at 68% 29%,rgba(220,250,235,.28) 0 2%,transparent 3%),
-    radial-gradient(circle at 59% 70%,rgba(220,250,235,.24) 0 2%,transparent 3%),
-    radial-gradient(circle at 36% 62%,rgba(220,250,235,.22) 0 1.7%,transparent 2.7%),
-    radial-gradient(circle at 30% 24%,rgba(255,255,255,.3),transparent 15%),
-    radial-gradient(circle at 40% 40%,#72998a,#4b7168 54%,#2f4b48 79%,#243a3d);
-}
-
-/* S&P 500 — market bands / signal noise */
-.r14-static-fix .cluster-project[data-project="sp500"]:before{
-  background:
-    repeating-linear-gradient(18deg,transparent 0 10px,rgba(182,224,205,.10) 10px 11px),
-    radial-gradient(circle at 30% 25%,rgba(255,255,255,.3),transparent 15%),
-    radial-gradient(circle at 40% 40%,#6e9588,#496e66 55%,#304a47 80%,#23393c);
-}
-.r14-static-fix .cluster-project[data-project="sp500"]:after{
-  transform:translateY(-50%) rotate(17deg);
-  border-style:dashed;
-}
-
-/* Player Retention — node network */
-.r14-static-fix .cluster-project[data-project="minecraft"]:before{
-  background:
-    radial-gradient(circle at 31% 31%,rgba(210,246,225,.30) 0 2%,transparent 3%),
-    radial-gradient(circle at 69% 34%,rgba(210,246,225,.22) 0 2%,transparent 3%),
-    radial-gradient(circle at 48% 68%,rgba(210,246,225,.24) 0 2%,transparent 3%),
-    linear-gradient(35deg,transparent 47%,rgba(185,225,207,.11) 48% 49%,transparent 50%),
-    radial-gradient(circle at 40% 40%,#709888,#4a7065 56%,#304a46);
-}
-
-/* Deloitte — pricing rings */
-.r14-static-fix .cluster-project[data-project="deloitte"]:before{
-  background:
-    conic-gradient(from 220deg,rgba(183,224,203,.05),rgba(183,224,203,.28),rgba(183,224,203,.06) 44%,transparent 45%),
-    radial-gradient(circle at 30% 25%,rgba(255,255,255,.3),transparent 15%),
-    radial-gradient(circle at 40% 40%,#709486,#496d63 55%,#304944);
-}
-.r14-static-fix .cluster-project[data-project="deloitte"]:after{
-  width:125%;
-  height:30%;
-  transform:translateY(-50%) rotate(31deg);
-}
-
-/* Character Genesis — faceted archetype world */
-.r14-static-fix .cluster-project[data-project="character"]:before{
-  background:
-    conic-gradient(from 18deg,rgba(233,215,249,.34),rgba(159,129,190,.13) 15%,rgba(218,197,239,.28) 31%,rgba(116,102,151,.12) 47%,rgba(229,208,247,.26) 63%,rgba(137,115,174,.14) 79%,rgba(233,215,249,.34)),
-    radial-gradient(circle at 33% 27%,rgba(255,255,255,.31),transparent 17%),
-    radial-gradient(circle at 42% 42%,#816d9c,#554c72 58%,#332f4f);
-  border-color:rgba(211,182,236,.72);
-}
-.r14-static-fix .cluster-project[data-project="character"]:after{
-  border-style:dotted;
-  transform:translateY(-50%) rotate(34deg);
-}
-
-/* Life RPG — quest rings */
-.r14-static-fix .cluster-project[data-project="liferpg"]:before{
-  background:
-    repeating-radial-gradient(circle at 48% 50%,rgba(207,180,233,.11) 0 1px,transparent 1px 10px),
-    radial-gradient(circle at 31% 25%,rgba(255,255,255,.3),transparent 15%),
-    radial-gradient(circle at 40% 40%,#78658e,#514767 58%,#322e49);
-}
-.r14-static-fix .cluster-project[data-project="liferpg"]:after{
-  width:132%;
-  height:39%;
-  transform:translateY(-50%) rotate(-35deg);
-  border-style:dashed;
-}
-
-/* Desktop composition: reduce the empty gap between upper/lower fields. */
-.r14-static-fix .cluster-ai .cluster-project:nth-child(1){left:5%;top:31%}
-.r14-static-fix .cluster-ai .cluster-project:nth-child(2){left:43%;top:12%}
-.r14-static-fix .cluster-ai .cluster-project:nth-child(3){left:54%;top:61%}
-.r14-static-fix .cluster-enterprise .cluster-project:nth-child(1){right:1%;top:30%}
-.r14-static-fix .cluster-enterprise .cluster-project:nth-child(2){right:34%;top:10%}
-.r14-static-fix .cluster-enterprise .cluster-project:nth-child(3){right:48%;top:57%}
-.r14-static-fix .cluster-enterprise .cluster-project:nth-child(4){right:7%;top:67%}
-.r14-static-fix .cluster-data .cluster-project:nth-child(1){left:5%;top:25%}
-.r14-static-fix .cluster-data .cluster-project:nth-child(2){left:39%;top:11%}
-.r14-static-fix .cluster-data .cluster-project:nth-child(3){left:55%;top:55%}
-.r14-static-fix .cluster-data .cluster-project:nth-child(4){left:17%;top:66%}
-.r14-static-fix .cluster-creative .cluster-project:nth-child(1){right:5%;top:25%}
-.r14-static-fix .cluster-creative .cluster-project:nth-child(2){right:42%;top:55%}
-
-@media(max-width:1100px){
-  .r14-static-fix .work-title-row{display:block}
-  .r14-static-fix .work-count{
-    margin-top:12px;
-    padding-left:0;
-    border-left:0;
-  }
-  .r14-static-fix .constellation-map{height:auto;min-height:1120px}
-  .r14-static-fix .cluster-branch{height:238px}
-}
-@media(max-width:680px){
-  .r14-static-fix .work-title-row h2{max-width:100%;line-height:1.16}
-  .r14-static-fix .work-count strong{font-size:34px}
-  .r14-static-fix .work-header p:not(.eyebrow){font-size:15px}
-  .r14-static-fix .cluster-heading,
-  .r14-static-fix .cluster-heading>span:first-child{white-space:normal}
-}
-
-
-/* R14.1d — editorial constellation refinement
-   VISUAL ONLY: no project data, links, filtering or case-study logic changes. */
-
-/* Header: make project count true metadata instead of a second headline. */
-.r14-static-fix .work-title-row{
-  gap:14px;
-  align-items:center;
-}
-.r14-static-fix .work-count{
-  margin:10px 0 0;
-  padding:5px 10px 5px 11px;
-  border:1px solid rgba(236,209,184,.2);
-  border-radius:999px;
-  background:rgba(255,255,255,.025);
-  gap:4px;
-  align-self:flex-start;
-}
-.r14-static-fix .work-count strong{
-  font:700 12px/1 var(--type-ui,Inter,sans-serif);
-  color:#f0d1b4;
-}
-.r14-static-fix .work-count span{
-  font-size:11px;
-  line-height:1;
-  color:#c8d0d5;
-  letter-spacing:0;
-}
-
-/* Calm the universe down: fewer lines, more atmosphere. */
-.r14-static-fix .constellation-map{height:720px}
-.r14-static-fix .cluster-branch{
-  height:300px;
-  width:45%;
-}
-.r14-static-fix .cluster-ai{left:1.5%}
-.r14-static-fix .cluster-enterprise{right:1.5%}
-.r14-static-fix .cluster-data{left:1.5%}
-.r14-static-fix .cluster-creative{right:1.5%}
-
-.r14-static-fix .cluster-branch:before{
-  inset:12% 8% 9%;
-  opacity:.52;
-  filter:blur(10px);
-  background:
-    radial-gradient(ellipse 46% 36% at 48% 48%,color-mix(in srgb,var(--cluster-color),transparent 90%),transparent 73%);
-}
-.r14-static-fix .cluster-branch:after{
-  left:17%;
-  top:31%;
-  width:52%;
-  height:37%;
-  opacity:.18;
-  border-color:color-mix(in srgb,var(--cluster-color),transparent 88%);
-}
-.r14-static-fix .cluster-enterprise:after{left:29%}
-.r14-static-fix .cluster-data:after{left:14%}
-.r14-static-fix .cluster-creative:after{left:30%}
-
-/* Region labels feel like map coordinates, not UI cards. */
-.r14-static-fix .cluster-heading{
-  top:2%;
-  opacity:.86;
-}
-.r14-static-fix .cluster-heading>span:first-child{
-  font-size:11px;
-  letter-spacing:.07em;
-}
-.r14-static-fix .cluster-heading small{
-  font-size:7.5px;
-  opacity:.72;
-}
-.r14-static-fix .cluster-count{
-  font-size:7px;
-  opacity:.55;
-}
-
-/* Base project anchor becomes a lightweight satellite marker. */
-.r14-static-fix .cluster-project{
-  --planet-size:20px;
-  --anchor-width:190px;
-  height:44px;
-}
-.r14-static-fix .cluster-project:before{
-  width:var(--planet-size);
-  height:var(--planet-size);
-  background:
-    radial-gradient(circle at 34% 30%,rgba(255,255,255,.72),rgba(255,255,255,.12) 18%,transparent 20%),
-    radial-gradient(circle at 46% 48%,color-mix(in srgb,var(--cluster-color),white 4%),color-mix(in srgb,var(--cluster-color),#26394a 48%) 48%,#243645 100%);
-  border-color:color-mix(in srgb,var(--cluster-color),transparent 30%);
-  box-shadow:
-    0 0 14px color-mix(in srgb,var(--cluster-color),transparent 66%),
-    0 6px 16px rgba(3,9,15,.18);
-}
-.r14-static-fix .cluster-project:after{
-  width:calc(var(--planet-size) * 2.2);
-  height:calc(var(--planet-size) * .5);
-  left:calc(var(--planet-size) * -.6);
-  opacity:.16;
-  border-color:color-mix(in srgb,var(--cluster-color),transparent 72%);
-}
-.r14-static-fix .cluster-project strong{
-  left:calc(var(--planet-size) + 10px);
-  width:calc(var(--anchor-width) - var(--planet-size) - 10px);
-  font-size:10px;
-  font-weight:650;
-  color:rgba(247,240,233,.9);
-}
-.r14-static-fix .cluster-enterprise .cluster-project strong,
-.r14-static-fix .cluster-creative .cluster-project strong{
-  width:calc(var(--anchor-width) - var(--planet-size) - 10px);
-}
-
-/* One primary planet per region. */
-.r14-static-fix .cluster-project[data-project="agentlab"],
-.r14-static-fix .cluster-project[data-project="requirement"],
-.r14-static-fix .cluster-project[data-project="airbnb"],
 .r14-static-fix .cluster-project[data-project="character"]{
-  --planet-size:86px;
-  --anchor-width:235px;
-  height:92px;
+  --planet-size:116px;
+  --anchor-width:330px;
+  height:126px;
 }
-.r14-static-fix .cluster-project[data-project="agentlab"]:before,
-.r14-static-fix .cluster-project[data-project="requirement"]:before,
-.r14-static-fix .cluster-project[data-project="airbnb"]:before,
-.r14-static-fix .cluster-project[data-project="character"]:before{
-  box-shadow:
-    inset -13px -15px 22px rgba(8,18,28,.2),
-    0 14px 30px rgba(4,11,18,.24),
-    0 0 34px color-mix(in srgb,var(--cluster-color),transparent 72%);
+.r14-static-fix .cluster-project[data-project="benchmark"],
+.r14-static-fix .cluster-project[data-project="task-summary"],
+.r14-static-fix .cluster-project[data-project="sp500"],
+.r14-static-fix .cluster-project[data-project="liferpg"]{
+  --planet-size:70px;
+  --anchor-width:265px;
+  height:82px;
+}
+.r14-static-fix .cluster-project[data-project="content-qa"],
+.r14-static-fix .cluster-project[data-project="dashboard"],
+.r14-static-fix .cluster-project[data-project="training"],
+.r14-static-fix .cluster-project[data-project="minecraft"],
+.r14-static-fix .cluster-project[data-project="deloitte"]{
+  --planet-size:50px;
+  --anchor-width:245px;
+  height:66px;
 }
 .r14-static-fix .cluster-project[data-project="agentlab"] strong,
 .r14-static-fix .cluster-project[data-project="requirement"] strong,
 .r14-static-fix .cluster-project[data-project="airbnb"] strong,
 .r14-static-fix .cluster-project[data-project="character"] strong{
-  font-size:11px;
-  font-weight:720;
+  font-size:17px;
+  line-height:1.2;
+  font-weight:760;
+}
+.r14-static-fix .cluster-project[data-project="benchmark"] strong,
+.r14-static-fix .cluster-project[data-project="task-summary"] strong,
+.r14-static-fix .cluster-project[data-project="sp500"] strong,
+.r14-static-fix .cluster-project[data-project="liferpg"] strong{
+  font-size:14px;
 }
 
-/* Medium satellites — still visible, but clearly not equal to the primary world. */
-.r14-static-fix .cluster-project[data-project="benchmark"],
-.r14-static-fix .cluster-project[data-project="task-summary"],
-.r14-static-fix .cluster-project[data-project="sp500"],
-.r14-static-fix .cluster-project[data-project="liferpg"]{
-  --planet-size:38px;
-  --anchor-width:205px;
-  height:54px;
-}
+/* ---------- project-specific celestial identities ---------- */
 
-/* Preserve project-specific identity, but soften the visual treatment. */
-.r14-static-fix .cluster-project[data-project="benchmark"]:before{
-  background:
-    linear-gradient(rgba(190,223,233,.1) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(190,223,233,.09) 1px,transparent 1px),
-    radial-gradient(circle at 40% 38%,#7ea7bb,#4b687a 50%,#283e4f);
-  background-size:7px 7px,7px 7px,100% 100%;
-}
-.r14-static-fix .cluster-project[data-project="task-summary"]:before{
-  background:
-    radial-gradient(circle at 30% 31%,rgba(255,255,255,.48),transparent 14%),
-    radial-gradient(circle at 68% 32%,rgba(241,204,172,.28) 0 3%,transparent 4%),
-    radial-gradient(circle at 63% 68%,rgba(241,204,172,.18) 0 3%,transparent 4%),
-    radial-gradient(circle at 42% 42%,#8e7b73,#555960 55%,#344550);
-}
-.r14-static-fix .cluster-project[data-project="sp500"]:before{
-  background:
-    repeating-linear-gradient(18deg,transparent 0 8px,rgba(184,226,207,.11) 8px 9px),
-    radial-gradient(circle at 40% 40%,#6f9689,#496d64 56%,#304944);
-}
-.r14-static-fix .cluster-project[data-project="liferpg"]:before{
-  background:
-    repeating-radial-gradient(circle at 48% 50%,rgba(207,180,233,.11) 0 1px,transparent 1px 8px),
-    radial-gradient(circle at 40% 40%,#75628b,#4f4564 58%,#312d48);
-}
-
-/* Secondary satellites: remove decorative rings entirely. */
-.r14-static-fix .cluster-project[data-project="content-qa"]:after,
-.r14-static-fix .cluster-project[data-project="dashboard"]:after,
-.r14-static-fix .cluster-project[data-project="training"]:after,
-.r14-static-fix .cluster-project[data-project="minecraft"]:after,
-.r14-static-fix .cluster-project[data-project="deloitte"]:after{display:none}
-
-/* Primary planet identities: elegant, low-noise, distinct. */
+/* AgentLab: luminous forensic world + scan rings */
 .r14-static-fix .cluster-project[data-project="agentlab"]:before{
   background:
-    radial-gradient(circle at 31% 26%,rgba(255,255,255,.48),transparent 13%),
-    repeating-radial-gradient(circle at 50% 50%,rgba(184,218,236,.07) 0 1px,transparent 1px 13px),
-    radial-gradient(circle at 41% 39%,#87b4ce 0%,#4c6c83 44%,#293f52 75%,#1c2d3b 100%);
+    radial-gradient(circle at 31% 25%,rgba(255,255,255,.60),transparent 12%),
+    radial-gradient(circle at 67% 57%,rgba(105,183,238,.28) 0 6%,transparent 7%),
+    repeating-radial-gradient(circle at 48% 51%,rgba(147,210,255,.08) 0 1px,transparent 1px 15px),
+    conic-gradient(from 18deg,rgba(78,167,225,.15),transparent 18%,rgba(128,91,220,.16) 38%,transparent 57%,rgba(55,151,221,.15) 76%,transparent),
+    radial-gradient(circle at 42% 40%,#6bb9e9 0%,#366985 44%,#183f59 73%,#10293c 100%);
+  border-color:rgba(139,213,255,.76);
+  box-shadow:
+    inset -18px -20px 30px rgba(3,15,27,.27),
+    0 18px 40px rgba(1,10,19,.34),
+    0 0 50px rgba(74,174,236,.24),
+    0 0 90px rgba(112,78,214,.10);
 }
 .r14-static-fix .cluster-project[data-project="agentlab"]:after{
-  display:block;
-  width:135%;
-  height:26%;
-  left:-17%;
-  opacity:.33;
-  transform:translateY(-50%) rotate(-9deg);
-  box-shadow:none;
+  width:145%;
+  height:29%;
+  left:-22%;
+  opacity:.55;
+  transform:translateY(-50%) rotate(-11deg);
+  border-color:rgba(158,217,249,.64);
+  box-shadow:0 0 12px rgba(111,192,242,.18);
 }
 
+/* Benchmark: translucent data crystal */
+.r14-static-fix .cluster-project[data-project="benchmark"]:before{
+  border-radius:22%;
+  clip-path:polygon(50% 0,88% 20%,100% 60%,72% 100%,27% 94%,0 58%,14% 18%);
+  background:
+    linear-gradient(rgba(184,229,246,.16) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(184,229,246,.14) 1px,transparent 1px),
+    conic-gradient(from 15deg,rgba(157,225,255,.48),rgba(56,116,155,.42),rgba(129,209,239,.30),rgba(46,87,126,.56),rgba(157,225,255,.48));
+  background-size:9px 9px,9px 9px,100% 100%;
+  box-shadow:0 0 34px rgba(111,197,236,.2);
+}
+.r14-static-fix .cluster-project[data-project="benchmark"]:after{
+  border-style:dashed;
+  transform:translateY(-50%) rotate(12deg);
+  opacity:.42;
+}
+
+/* Content Review: review crystal / lens */
+.r14-static-fix .cluster-project[data-project="content-qa"]:before{
+  border-radius:28%;
+  clip-path:polygon(50% 0,85% 18%,100% 53%,77% 91%,40% 100%,7% 74%,0 34%,26% 8%);
+  background:
+    conic-gradient(from 25deg,rgba(139,222,250,.52),rgba(107,96,221,.40),rgba(187,115,229,.38),rgba(78,174,224,.48),rgba(139,222,250,.52));
+  box-shadow:0 0 24px rgba(113,191,239,.19),0 0 36px rgba(156,93,226,.10);
+}
+.r14-static-fix .cluster-project[data-project="content-qa"]:after{display:none}
+
+/* Requirement: monumental warm alignment planet with confirmation seam */
 .r14-static-fix .cluster-project[data-project="requirement"]:before{
   background:
-    linear-gradient(90deg,rgba(236,197,163,.08) 0 49%,rgba(250,225,202,.62) 49.4% 50.6%,rgba(148,174,193,.07) 51% 100%),
-    radial-gradient(circle at 31% 25%,rgba(255,255,255,.33),transparent 16%),
-    radial-gradient(circle at 40% 38%,#8d7a74,#57595e 50%,#35444f 77%,#243541);
+    linear-gradient(90deg,transparent 0 49%,rgba(255,225,191,.85) 49.5% 50.5%,transparent 51% 100%),
+    radial-gradient(circle at 30% 24%,rgba(255,255,255,.45),transparent 14%),
+    repeating-radial-gradient(circle at 47% 49%,rgba(238,189,140,.05) 0 1px,transparent 1px 18px),
+    radial-gradient(circle at 42% 40%,#d39b68 0%,#846149 43%,#4d4c4d 71%,#263845 100%);
+  border-color:rgba(247,199,151,.84);
+  box-shadow:
+    inset -20px -23px 34px rgba(21,16,15,.25),
+    0 20px 44px rgba(7,8,10,.32),
+    0 0 55px rgba(226,151,83,.25),
+    0 0 100px rgba(226,151,83,.08);
 }
 .r14-static-fix .cluster-project[data-project="requirement"]:after{
-  display:block;
-  width:126%;
-  height:22%;
-  right:-13%;
+  width:151%;
+  height:31%;
+  right:-25%;
   left:auto;
-  opacity:.27;
+  opacity:.58;
   transform:translateY(-50%) rotate(13deg);
+  border-color:rgba(246,198,151,.66);
+  box-shadow:0 0 13px rgba(235,177,119,.13);
 }
 
+/* Task Summary: diamond signal node */
+.r14-static-fix .cluster-project[data-project="task-summary"]:before{
+  border-radius:14%;
+  clip-path:polygon(50% 0,92% 50%,50% 100%,8% 50%);
+  background:
+    conic-gradient(from 45deg,rgba(251,222,190,.74),rgba(154,113,83,.48),rgba(236,191,149,.66),rgba(111,90,79,.48),rgba(251,222,190,.74));
+  box-shadow:0 0 28px rgba(236,177,120,.18);
+}
+.r14-static-fix .cluster-project[data-project="task-summary"]:after{
+  width:126%;height:42%;
+  transform:translateY(-50%) rotate(28deg);
+}
+
+/* SIT / Defect: radar disc */
+.r14-static-fix .cluster-project[data-project="dashboard"]:before{
+  background:
+    conic-gradient(from -20deg,rgba(244,202,161,.30) 0 8deg,transparent 8deg 90deg,rgba(244,202,161,.20) 90deg 98deg,transparent 98deg 180deg,rgba(244,202,161,.13) 180deg 187deg,transparent 187deg),
+    repeating-radial-gradient(circle,rgba(243,205,168,.13) 0 1px,transparent 1px 8px),
+    radial-gradient(circle at 42% 42%,#9a7256,#574f4d 62%,#303f49);
+  box-shadow:0 0 25px rgba(231,169,111,.16);
+}
+.r14-static-fix .cluster-project[data-project="dashboard"]:after{
+  width:116%;height:116%;
+  border-style:dotted;
+  opacity:.27;
+}
+
+/* Training: warm faceted document crystal */
+.r14-static-fix .cluster-project[data-project="training"]:before{
+  border-radius:18%;
+  clip-path:polygon(14% 0,86% 0,100% 20%,92% 86%,50% 100%,8% 86%,0 20%);
+  background:
+    repeating-linear-gradient(0deg,rgba(255,236,218,.15) 0 2px,transparent 2px 10px),
+    conic-gradient(from 15deg,#d8a77f,#806251,#ba8f70,#6e594e,#d8a77f);
+  box-shadow:0 0 25px rgba(231,172,119,.15);
+}
+.r14-static-fix .cluster-project[data-project="training"]:after{display:none}
+
+/* Airbnb: topographic city world */
 .r14-static-fix .cluster-project[data-project="airbnb"]:before{
   background:
-    radial-gradient(circle at 28% 32%,rgba(220,250,235,.42) 0 2%,transparent 3%),
-    radial-gradient(circle at 69% 29%,rgba(220,250,235,.25) 0 2%,transparent 3%),
-    radial-gradient(circle at 60% 70%,rgba(220,250,235,.22) 0 2%,transparent 3%),
-    radial-gradient(circle at 38% 62%,rgba(220,250,235,.19) 0 1.7%,transparent 2.7%),
-    radial-gradient(circle at 40% 40%,#72998a,#496f66 54%,#2f4a47 78%,#243a3d);
+    linear-gradient(90deg,transparent 0 18%,rgba(170,237,211,.12) 18% 20%,transparent 20% 35%,rgba(170,237,211,.15) 35% 38%,transparent 38% 51%,rgba(170,237,211,.10) 51% 53%,transparent 53%),
+    radial-gradient(circle at 25% 31%,rgba(213,255,237,.62) 0 2%,transparent 3%),
+    radial-gradient(circle at 68% 28%,rgba(213,255,237,.35) 0 2%,transparent 3%),
+    radial-gradient(circle at 59% 71%,rgba(213,255,237,.28) 0 2%,transparent 3%),
+    radial-gradient(circle at 35% 65%,rgba(213,255,237,.25) 0 1.8%,transparent 2.8%),
+    radial-gradient(circle at 40% 40%,#67b493,#39705f 50%,#1f4a43 76%,#173437);
+  border-color:rgba(146,226,193,.72);
+  box-shadow:0 0 42px rgba(72,178,139,.18);
 }
 .r14-static-fix .cluster-project[data-project="airbnb"]:after{
-  display:block;
-  width:122%;
-  height:24%;
-  left:-11%;
-  opacity:.22;
-  transform:translateY(-50%) rotate(-20deg);
+  width:136%;height:25%;
+  left:-18%;
+  opacity:.44;
+  transform:translateY(-50%) rotate(-18deg);
 }
 
-.r14-static-fix .cluster-project[data-project="character"]:before{
+/* S&P 500: finance chart sphere */
+.r14-static-fix .cluster-project[data-project="sp500"]:before{
   background:
-    conic-gradient(from 18deg,rgba(233,215,249,.28),rgba(159,129,190,.11) 16%,rgba(218,197,239,.22) 32%,rgba(116,102,151,.1) 48%,rgba(229,208,247,.2) 65%,rgba(137,115,174,.11) 80%,rgba(233,215,249,.28)),
-    radial-gradient(circle at 42% 42%,#816d9c,#554c72 58%,#332f4f);
+    repeating-linear-gradient(18deg,transparent 0 8px,rgba(178,239,211,.15) 8px 9px),
+    linear-gradient(90deg,transparent 0 20%,rgba(164,225,200,.16) 20% 23%,transparent 23% 40%,rgba(164,225,200,.13) 40% 43%,transparent 43% 62%,rgba(164,225,200,.18) 62% 66%,transparent 66%),
+    radial-gradient(circle at 42% 42%,#66a98c,#3d705f 58%,#214840);
+}
+.r14-static-fix .cluster-project[data-project="sp500"]:after{
+  border-style:dashed;
+  transform:translateY(-50%) rotate(18deg);
+}
+
+/* Player Retention: network world */
+.r14-static-fix .cluster-project[data-project="minecraft"]:before{
+  background:
+    radial-gradient(circle at 28% 29%,rgba(209,255,232,.65) 0 3%,transparent 4%),
+    radial-gradient(circle at 72% 31%,rgba(209,255,232,.44) 0 3%,transparent 4%),
+    radial-gradient(circle at 49% 72%,rgba(209,255,232,.46) 0 3%,transparent 4%),
+    linear-gradient(34deg,transparent 48%,rgba(184,238,210,.18) 49% 50%,transparent 51%),
+    linear-gradient(-42deg,transparent 48%,rgba(184,238,210,.15) 49% 50%,transparent 51%),
+    radial-gradient(circle at 42% 42%,#62a184,#3b695a 60%,#22443d);
+}
+.r14-static-fix .cluster-project[data-project="minecraft"]:after{display:none}
+
+/* Deloitte: translucent strategy polyhedron */
+.r14-static-fix .cluster-project[data-project="deloitte"]:before{
+  border-radius:16%;
+  clip-path:polygon(50% 0,92% 24%,88% 80%,50% 100%,12% 80%,8% 24%);
+  background:
+    linear-gradient(35deg,rgba(200,244,221,.40),rgba(78,130,112,.42)),
+    conic-gradient(from 0deg,rgba(196,241,219,.40),rgba(82,137,117,.26),rgba(196,241,219,.40));
+  box-shadow:0 0 22px rgba(93,189,153,.15);
+}
+.r14-static-fix .cluster-project[data-project="deloitte"]:after{display:none}
+
+/* Character Genesis: faceted crystal world */
+.r14-static-fix .cluster-project[data-project="character"]:before{
+  border-radius:31%;
+  clip-path:polygon(50% 0,75% 16%,100% 45%,86% 77%,58% 100%,25% 89%,0 61%,10% 25%);
+  background:
+    conic-gradient(from 18deg,rgba(247,223,255,.68),rgba(156,94,203,.34) 15%,rgba(219,178,246,.56) 31%,rgba(91,72,156,.32) 49%,rgba(234,188,251,.55) 65%,rgba(125,89,188,.34) 81%,rgba(247,223,255,.68));
+  border-color:rgba(220,175,252,.76);
+  box-shadow:
+    0 16px 38px rgba(5,8,18,.28),
+    0 0 46px rgba(172,91,229,.22),
+    0 0 90px rgba(94,94,220,.08);
 }
 .r14-static-fix .cluster-project[data-project="character"]:after{
-  display:block;
-  width:118%;
-  height:34%;
-  right:-9%;
-  left:auto;
-  opacity:.22;
+  width:132%;height:29%;
+  right:-17%;left:auto;
+  opacity:.40;
   transform:translateY(-50%) rotate(31deg);
   border-style:dotted;
 }
 
-/* Composition: one primary world + satellites around it, with more breathing room. */
-.r14-static-fix .cluster-ai .cluster-project:nth-child(1){left:8%;top:31%}
-.r14-static-fix .cluster-ai .cluster-project:nth-child(2){left:48%;top:21%}
-.r14-static-fix .cluster-ai .cluster-project:nth-child(3){left:55%;top:62%}
+/* Life RPG: portal / quest ring */
+.r14-static-fix .cluster-project[data-project="liferpg"]:before{
+  background:
+    repeating-radial-gradient(circle at 50% 50%,rgba(221,187,249,.24) 0 1px,transparent 1px 10px),
+    radial-gradient(circle at 50% 50%,rgba(246,206,255,.28),transparent 25%),
+    radial-gradient(circle at 42% 42%,#8f68aa,#54406f 60%,#2e2d50);
+  box-shadow:0 0 29px rgba(178,108,227,.17);
+}
+.r14-static-fix .cluster-project[data-project="liferpg"]:after{
+  width:136%;height:38%;
+  transform:translateY(-50%) rotate(-34deg);
+  border-style:dashed;
+  opacity:.38;
+}
 
-.r14-static-fix .cluster-enterprise .cluster-project:nth-child(1){right:4%;top:31%}
-.r14-static-fix .cluster-enterprise .cluster-project:nth-child(2){right:48%;top:20%}
-.r14-static-fix .cluster-enterprise .cluster-project:nth-child(3){right:51%;top:61%}
-.r14-static-fix .cluster-enterprise .cluster-project:nth-child(4){right:12%;top:69%}
+/* ---------- composition: denser like the approved reference ---------- */
+.r14-static-fix .cluster-ai .cluster-project:nth-child(1){left:5%;top:30%}
+.r14-static-fix .cluster-ai .cluster-project:nth-child(2){left:51%;top:14%}
+.r14-static-fix .cluster-ai .cluster-project:nth-child(3){left:59%;top:64%}
 
-.r14-static-fix .cluster-data .cluster-project:nth-child(1){left:8%;top:26%}
-.r14-static-fix .cluster-data .cluster-project:nth-child(2){left:47%;top:17%}
-.r14-static-fix .cluster-data .cluster-project:nth-child(3){left:55%;top:57%}
-.r14-static-fix .cluster-data .cluster-project:nth-child(4){left:20%;top:70%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(1){right:2%;top:27%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(2){right:50%;top:13%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(3){right:49%;top:61%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(4){right:8%;top:70%}
 
-.r14-static-fix .cluster-creative .cluster-project:nth-child(1){right:6%;top:27%}
-.r14-static-fix .cluster-creative .cluster-project:nth-child(2){right:50%;top:58%}
+.r14-static-fix .cluster-data .cluster-project:nth-child(1){left:4%;top:24%}
+.r14-static-fix .cluster-data .cluster-project:nth-child(2){left:48%;top:11%}
+.r14-static-fix .cluster-data .cluster-project:nth-child(3){left:58%;top:57%}
+.r14-static-fix .cluster-data .cluster-project:nth-child(4){left:18%;top:70%}
 
-/* Hover = focus, not spectacle. */
+.r14-static-fix .cluster-creative .cluster-project:nth-child(1){right:5%;top:23%}
+.r14-static-fix .cluster-creative .cluster-project:nth-child(2){right:48%;top:61%}
+
+/* focus interaction: reinforce selection without changing behavior */
+@media(hover:hover){
+  .r14-static-fix .cluster-branch:has(.cluster-project:hover) .cluster-project:not(:hover),
+  .r14-static-fix .cluster-branch:has(.cluster-project:focus-visible) .cluster-project:not(:focus-visible){
+    opacity:.30;
+    filter:saturate(.48);
+  }
+}
 .r14-static-fix .cluster-project:hover:before,
 .r14-static-fix .cluster-project:focus-visible:before{
-  transform:translateY(-50%) scale(1.05);
+  transform:translateY(-50%) scale(1.06);
+  border-color:color-mix(in srgb,var(--cluster-color),white 32%);
+  filter:brightness(1.08);
+}
+.r14-static-fix .cluster-project:hover:after,
+.r14-static-fix .cluster-project:focus-visible:after{
+  opacity:.66;
 }
 .r14-static-fix .cluster-project:hover strong,
-.r14-static-fix .cluster-project:focus-visible strong{
-  transform:translateY(-50%);
-  color:#fff8f1;
-}
-.r14-static-fix .cluster-enterprise .cluster-project:hover strong,
-.r14-static-fix .cluster-enterprise .cluster-project:focus-visible strong,
-.r14-static-fix .cluster-creative .cluster-project:hover strong,
-.r14-static-fix .cluster-creative .cluster-project:focus-visible strong{
-  transform:translateY(-50%);
-}
+.r14-static-fix .cluster-project:focus-visible strong{color:#fff}
 
-@media(max-width:1100px){
-  .r14-static-fix .constellation-map{min-height:1090px}
-  .r14-static-fix .cluster-branch{height:230px}
-  .r14-static-fix .work-count{display:inline-flex}
+/* ---------- responsive ---------- */
+@media(max-width:1180px){
+  .r14-static-fix .constellation-map{
+    height:auto;
+    min-height:1200px;
+    overflow:visible;
+  }
+  .r14-static-fix .cluster-branch{
+    position:relative;
+    top:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    left:auto!important;
+    width:100%;
+    height:270px;
+    margin:26px 0 0;
+  }
+  .r14-static-fix .cluster-heading,
+  .r14-static-fix .cluster-enterprise .cluster-heading,
+  .r14-static-fix .cluster-creative .cluster-heading{
+    left:2%;right:auto;
+    text-align:left;
+    flex-direction:row;
+  }
+  .r14-static-fix .cluster-enterprise .cluster-heading small,
+  .r14-static-fix .cluster-creative .cluster-heading small{margin-left:0}
+  .r14-static-fix .cluster-enterprise .cluster-project:before,
+  .r14-static-fix .cluster-creative .cluster-project:before{left:0;right:auto}
+  .r14-static-fix .cluster-enterprise .cluster-project:after,
+  .r14-static-fix .cluster-creative .cluster-project:after{
+    left:calc(var(--planet-size) * -.14);
+    right:auto;
+  }
+  .r14-static-fix .cluster-enterprise .cluster-project strong,
+  .r14-static-fix .cluster-creative .cluster-project strong{
+    left:calc(var(--planet-size) + 14px);
+    width:calc(var(--anchor-width) - var(--planet-size) - 14px);
+    text-align:left;
+  }
 }
-@media(max-width:680px){
-  .r14-static-fix .work-title-row{gap:10px}
-  .r14-static-fix .work-count{margin-top:4px}
-  .r14-static-fix .cluster-project{--anchor-width:150px}
+@media(max-width:720px){
+  .r14-static-fix .work-section{padding-top:68px}
+  .r14-static-fix .work-header{padding-inline:18px}
+  .r14-static-fix .work-title-row{display:block}
+  .r14-static-fix .work-title-row h2{
+    font-size:clamp(42px,13vw,58px);
+    line-height:1.08;
+  }
+  .r14-static-fix .work-count{
+    margin-top:13px;
+    padding-left:0;
+    border-left:0;
+  }
+  .r14-static-fix .work-categories{
+    justify-content:flex-start;
+    overflow-x:auto;
+    flex-wrap:nowrap;
+    padding:0 18px 9px;
+  }
+  .r14-static-fix .constellation-map{min-height:1120px;padding-inline:5px}
+  .r14-static-fix .cluster-branch{height:245px}
+  .r14-static-fix .cluster-heading>span:first-child{font-size:12px}
+  .r14-static-fix .cluster-project{--planet-size:36px;--anchor-width:178px}
+  .r14-static-fix .cluster-project strong{font-size:10px}
   .r14-static-fix .cluster-project[data-project="agentlab"],
   .r14-static-fix .cluster-project[data-project="requirement"],
   .r14-static-fix .cluster-project[data-project="airbnb"],
   .r14-static-fix .cluster-project[data-project="character"]{
-    --planet-size:62px;
-    --anchor-width:178px;
+    --planet-size:82px;
+    --anchor-width:220px;
+    height:92px;
   }
+  .r14-static-fix .cluster-project[data-project="agentlab"] strong,
+  .r14-static-fix .cluster-project[data-project="requirement"] strong,
+  .r14-static-fix .cluster-project[data-project="airbnb"] strong,
+  .r14-static-fix .cluster-project[data-project="character"] strong{
+    font-size:13px;
+  }
+  .r14-static-fix .cluster-project[data-project="benchmark"],
+  .r14-static-fix .cluster-project[data-project="task-summary"],
+  .r14-static-fix .cluster-project[data-project="sp500"],
+  .r14-static-fix .cluster-project[data-project="liferpg"]{
+    --planet-size:54px;
+    --anchor-width:205px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .r14-static-fix .cluster-project,
+  .r14-static-fix .cluster-project:before,
+  .r14-static-fix .cluster-project:after,
+  .r14-static-fix .cluster-project strong,
+  .r14-static-fix .work-categories button{transition:none!important}
 }
