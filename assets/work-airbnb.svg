@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 520">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="45 45 430 430">
 <defs>
  <radialGradient id="planet" cx="28%" cy="22%" r="82%"><stop stop-color="#eafff4"/><stop offset=".12" stop-color="#9bdec0"/><stop offset=".4" stop-color="#4e9a7d"/><stop offset=".73" stop-color="#2d6557"/><stop offset="1" stop-color="#153a38"/></radialGradient>
  <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#78cba6" stop-opacity=".04"/><stop offset=".52" stop-color="#e0fff0" stop-opacity=".82"/><stop offset="1" stop-color="#61b894" stop-opacity=".06"/></linearGradient>
