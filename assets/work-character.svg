@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="42 42 436 436">
+<defs>
+ <linearGradient id="f1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8eaff"/><stop offset=".36" stop-color="#b48bd7"/><stop offset="1" stop-color="#574071"/></linearGradient>
+ <linearGradient id="f2" x1="1" y1="0" x2="0" y2="1"><stop stop-color="#e6d0fa"/><stop offset=".5" stop-color="#8664ad"/><stop offset="1" stop-color="#3a3156"/></linearGradient>
+ <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b98de2" stop-opacity=".05"/><stop offset=".5" stop-color="#eedcff" stop-opacity=".8"/><stop offset="1" stop-color="#9a78ce" stop-opacity=".08"/></linearGradient>
+ <filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="18"/></filter>
+</defs>
+<circle cx="260" cy="260" r="165" fill="#a96fd2" opacity=".13" filter="url(#glow)"/>
+<ellipse cx="260" cy="260" rx="218" ry="65" fill="none" stroke="url(#ring)" stroke-width="4" transform="rotate(28 260 260)"/>
+<ellipse cx="260" cy="260" rx="176" ry="105" fill="none" stroke="#c6a7e7" stroke-opacity=".24" stroke-width="1.4" transform="rotate(-16 260 260)"/>
+<g stroke="#ead8fb" stroke-opacity=".62" stroke-width="1.6">
+ <polygon points="260,103 345,143 406,229 377,326 292,405 192,395 117,318 111,220 171,137" fill="url(#f1)"/>
+ <polygon points="260,103 260,260 345,143" fill="#fff5ff" opacity=".26"/>
+ <polygon points="345,143 260,260 406,229" fill="#d9b8f0" opacity=".20"/>
+ <polygon points="406,229 260,260 377,326" fill="#5e447d" opacity=".25"/>
+ <polygon points="377,326 260,260 292,405" fill="#3b3154" opacity=".32"/>
+ <polygon points="292,405 260,260 192,395" fill="#8060a2" opacity=".20"/>
+ <polygon points="192,395 260,260 117,318" fill="#bb91d9" opacity=".23"/>
+ <polygon points="117,318 260,260 111,220" fill="#e5c9f6" opacity=".18"/>
+ <polygon points="111,220 260,260 171,137" fill="url(#f2)" opacity=".68"/>
+ <polygon points="171,137 260,260 260,103" fill="#f7eaff" opacity=".20"/>
+</g>
+<g fill="none" stroke="#f0ddff" stroke-opacity=".44" stroke-width="1.5"><path d="M171 137 L345 143 L377 326 L192 395 L111 220Z"/><path d="M260 103 L292 405"/><path d="M117 318 L345 143"/></g>
+<g fill="#f3e4ff"><circle cx="108" cy="305" r="4.5"/><circle cx="400" cy="175" r="4"/><circle cx="430" cy="278" r="2.5" opacity=".75"/><circle cx="151" cy="123" r="2.5"/></g>
+<circle cx="260" cy="260" r="11" fill="#f4e4ff" fill-opacity=".6"/>
+</svg>

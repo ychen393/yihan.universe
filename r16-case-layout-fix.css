@@ -1,0 +1,38 @@
+/* R16.1 — hard override for case-study content alignment.
+   Loaded after every existing stylesheet to avoid stale/cascade overrides. */
+body.r14-linked-case .r14-linked-layout{
+  width:min(1480px,calc(100% - 48px));
+}
+body.r14-linked-case .r14-linked-copy .r5-section{
+  grid-template-columns:110px minmax(0,1fr) !important;
+  column-gap:16px !important;
+}
+body.r14-linked-case .r14-linked-copy .r5-section-body{
+  min-width:0;
+  margin-left:0 !important;
+  padding-left:0 !important;
+}
+body.r14-linked-case .r14-linked-copy .r5-section-body>h2,
+body.r14-linked-case .r14-linked-copy .r5-section-body>p,
+body.r14-linked-case .r14-linked-copy .r5-context-grid,
+body.r14-linked-case .r14-linked-copy .r5-process,
+body.r14-linked-case .r14-linked-copy .r5-results-lead,
+body.r14-linked-case .r14-linked-copy .r5-fact-grid,
+body.r14-linked-case .r14-linked-copy .r5-evidence-interactive,
+body.r14-linked-case .r14-linked-copy .r5-reflection{
+  margin-left:0;
+}
+@media(max-width:1050px){
+  body.r14-linked-case .r14-linked-layout{
+    width:min(100% - 48px,1480px);
+  }
+}
+@media(max-width:680px){
+  body.r14-linked-case .r14-linked-layout{
+    width:calc(100% - 34px);
+  }
+  body.r14-linked-case .r14-linked-copy .r5-section{
+    grid-template-columns:minmax(0,1fr) !important;
+    column-gap:0 !important;
+  }
+}

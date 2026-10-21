@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="42 42 436 436">
+<defs>
+ <radialGradient id="planet" cx="29%" cy="23%" r="80%"><stop stop-color="#e8fbff"/><stop offset=".12" stop-color="#8bd5f2"/><stop offset=".4" stop-color="#427fa7"/><stop offset=".75" stop-color="#21445e"/><stop offset="1" stop-color="#0c2236"/></radialGradient>
+ <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9edfff" stop-opacity=".1"/><stop offset=".48" stop-color="#d6f5ff" stop-opacity=".9"/><stop offset="1" stop-color="#8aabf0" stop-opacity=".12"/></linearGradient>
+ <filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="16"/></filter>
+ <clipPath id="sphere"><circle cx="260" cy="260" r="137"/></clipPath>
+</defs>
+<circle cx="260" cy="260" r="162" fill="#4db8e7" opacity=".13" filter="url(#glow)"/>
+<ellipse cx="260" cy="260" rx="218" ry="67" fill="none" stroke="url(#rim)" stroke-width="4" transform="rotate(-14 260 260)"/>
+<ellipse cx="260" cy="260" rx="184" ry="108" fill="none" stroke="#9bc9e8" stroke-opacity=".22" stroke-width="1.4" transform="rotate(28 260 260)"/>
+<circle cx="260" cy="260" r="139" fill="url(#planet)" stroke="#b8eaff" stroke-opacity=".72" stroke-width="2"/>
+<g clip-path="url(#sphere)" fill="none" stroke-linecap="round">
+ <path d="M119 229 C164 201 202 216 245 193 S326 185 400 146" stroke="#d6f6ff" stroke-opacity=".16" stroke-width="9"/>
+ <path d="M117 286 C166 255 205 273 254 248 S330 242 405 207" stroke="#8bd7f6" stroke-opacity=".16" stroke-width="13"/>
+ <path d="M142 340 C195 312 232 325 280 303 S344 290 382 271" stroke="#a5dfff" stroke-opacity=".12" stroke-width="7"/>
+ <g stroke="#c6eafa" stroke-opacity=".13" stroke-width="1.2"><ellipse cx="260" cy="260" rx="106" ry="36"/><ellipse cx="260" cy="260" rx="80" ry="27"/><path d="M178 180 Q258 233 340 176"/><path d="M166 323 Q260 278 355 326"/></g>
+ <path d="M183 275 L220 230 L262 257 L310 208 L345 246" stroke="#e1f8ff" stroke-opacity=".72" stroke-width="2.5"/>
+ <path d="M220 230 L235 191 M262 257 L282 303 M310 208 L343 184" stroke="#c1eaff" stroke-opacity=".5" stroke-width="1.7"/>
+</g>
+<g fill="#d9f6ff" stroke="#3e87ad" stroke-width="2"><circle cx="183" cy="275" r="7"/><circle cx="220" cy="230" r="8"/><circle cx="262" cy="257" r="10"/><circle cx="310" cy="208" r="8"/><circle cx="345" cy="246" r="6"/></g>
+<path d="M242 239 L260 229 L278 240 L278 261 L260 272 L242 261Z" fill="#d8f8ff" fill-opacity=".18" stroke="#e1f8ff" stroke-opacity=".82" stroke-width="1.7"/>
+<circle cx="260" cy="260" r="139" fill="none" stroke="url(#rim)" stroke-width="2"/>
+<path d="M190 157 C213 140 241 131 271 131" fill="none" stroke="#fff" stroke-opacity=".48" stroke-width="4" stroke-linecap="round"/>
+<g fill="#d8f5ff"><circle cx="119" cy="304" r="4.5"/><circle cx="398" cy="197" r="4"/><circle cx="427" cy="290" r="2.5" opacity=".75"/></g>
+</svg>

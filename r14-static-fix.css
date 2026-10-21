@@ -1,0 +1,1163 @@
+/* R14.1 — static Journey visual differentiation only.
+   Keeps the approved R5/R13 layout, typography and section hierarchy intact. */
+
+.r14-stage-art{position:absolute;inset:0;z-index:7;pointer-events:none}
+.r14-stage-art>[data-r14-stage]{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .28s ease}
+.journey-visual[data-stage="1"] .r14-stage-art>[data-r14-stage="1"],
+.journey-visual[data-stage="2"] .r14-stage-art>[data-r14-stage="2"],
+.journey-visual[data-stage="3"] .r14-stage-art>[data-r14-stage="3"]{opacity:1;visibility:visible}
+.r14-brand-lockup{position:absolute;display:flex;align-items:center;gap:10px;min-height:42px;padding:9px 14px;border:1px solid rgba(245,224,205,.34);border-radius:999px;background:rgba(27,39,52,.82);box-shadow:0 14px 32px rgba(5,12,20,.2);backdrop-filter:blur(16px);color:#f7e8d8}
+.r14-brand-lockup small{font-size:9px;letter-spacing:.14em;color:#b9c5cc}
+.r14-brand-lockup strong{font:600 15px/1 var(--sans);letter-spacing:.02em}
+
+/* Lengsuanling — short-form content / ecommerce rhythm */
+.journey-visual[data-stage="1"] .journey-orbit{width:71%;height:68%;transform:rotate(8deg) rotateX(69deg);border-color:rgba(252,219,191,.48)}
+.journey-visual[data-stage="1"] .journey-photo{width:48%;height:61%;min-height:325px;max-height:440px;border-radius:34px;transform:rotate(3deg) translate(18px,-6px);box-shadow:0 30px 80px rgba(7,17,29,.46),0 0 0 8px rgba(22,33,45,.32),0 0 34px rgba(239,198,163,.24)}
+.journey-visual[data-stage="1"] .journey-photo:before{content:'';position:absolute;inset:9px;border:1px solid rgba(255,240,225,.2);border-radius:26px;z-index:2}
+.r14-leng .r14-brand-lockup{left:10%;top:11%}
+.r14-leng .r14-brand-lockup strong{font-size:19px;letter-spacing:.06em}
+.r14-leng-edit{position:absolute;left:7%;top:35%;width:34%;padding:15px 16px 14px;border:1px solid rgba(235,215,198,.26);border-radius:16px;background:rgba(29,42,55,.82);backdrop-filter:blur(14px);box-shadow:0 15px 38px rgba(4,9,15,.24)}
+.r14-leng-edit>small{display:block;margin-bottom:10px;color:#e9c7a8;font-size:9px;letter-spacing:.14em}
+.r14-leng-track{display:grid;gap:8px}
+.r14-leng-track i{height:7px;border-radius:999px;background:linear-gradient(90deg,rgba(239,207,178,.86),rgba(128,160,181,.42))}
+.r14-leng-track i:nth-child(2){width:72%}.r14-leng-track i:nth-child(3){width:88%}.r14-leng-track i:nth-child(4){width:58%}
+.r14-leng-metrics{position:absolute;left:6%;bottom:13%;display:grid;grid-template-columns:repeat(3,1fr);overflow:hidden;border:1px solid rgba(235,215,198,.28);border-radius:17px;background:rgba(25,38,50,.88);box-shadow:0 16px 38px rgba(4,10,16,.24)}
+.r14-leng-metrics span{min-width:84px;padding:12px 14px;border-right:1px solid rgba(235,215,198,.14)}.r14-leng-metrics span:last-child{border-right:0}
+.r14-leng-metrics b{display:block;color:#f0cba8;font:500 16px/1.1 var(--serif)}
+.r14-leng-metrics small{display:block;margin-top:5px;color:#aeb9c0;font-size:8px;letter-spacing:.11em}
+.r14-leng-phone-ui{position:absolute;right:18%;top:21%;width:21%;height:41%;border:1px solid rgba(255,237,220,.44);border-radius:24px;background:linear-gradient(180deg,rgba(253,239,226,.2),rgba(26,39,51,.72));box-shadow:0 18px 48px rgba(7,14,22,.3)}
+.r14-leng-phone-ui:before{content:'';position:absolute;top:9px;left:38%;width:24%;height:4px;border-radius:999px;background:rgba(244,225,208,.5)}
+.r14-leng-phone-ui:after{content:'CONTENT\\A REVIEW';white-space:pre;position:absolute;left:14%;bottom:13%;color:#f3ddca;font:600 9px/1.5 var(--sans);letter-spacing:.13em}
+
+/* Accenture — enterprise workflow / defect coordination */
+.journey-visual[data-stage="2"] .journey-orbit{width:76%;height:48%;transform:rotate(-5deg) rotateX(73deg);border-color:rgba(210,197,232,.34);box-shadow:0 0 30px rgba(170,153,209,.15)}
+.journey-visual[data-stage="2"] .journey-photo{width:70%;height:46%;min-height:275px;border-radius:20px;transform:rotate(-2deg) translate(18px,9px);border-color:rgba(225,214,235,.38);box-shadow:0 30px 85px rgba(6,15,25,.5),0 0 30px rgba(171,149,209,.18)}
+.r14-acc .r14-brand-lockup{right:9%;top:10%;border-radius:15px}
+.r14-acc .r14-brand-lockup strong{font-weight:650;letter-spacing:-.01em}
+.r14-acc .r14-brand-lockup strong:before{content:'>';display:inline-block;margin-right:7px;color:#d8c2ef;font-size:20px;transform:translateY(1px)}
+.r14-acc-flow{position:absolute;left:5%;right:6%;top:25%;bottom:20%}
+.r14-acc-node{position:absolute;min-width:112px;padding:12px 14px;border:1px solid rgba(222,213,232,.28);border-radius:11px;background:rgba(29,42,55,.9);box-shadow:0 13px 32px rgba(4,10,16,.22)}
+.r14-acc-node small{display:block;color:#aab6bf;font-size:8px;letter-spacing:.12em}.r14-acc-node b{display:block;margin-top:5px;color:#f0e5dc;font:500 14px/1.25 var(--sans)}
+.r14-acc-node.n1{left:0;top:36%}.r14-acc-node.n2{left:25%;top:4%}.r14-acc-node.n3{right:23%;top:21%}.r14-acc-node.n4{right:0;bottom:6%}
+.r14-acc-line{position:absolute;height:1px;background:linear-gradient(90deg,rgba(216,194,235,.72),rgba(218,205,232,.14));transform-origin:left center}
+.r14-acc-line.l1{left:18%;top:49%;width:24%;transform:rotate(-25deg)}.r14-acc-line.l2{left:41%;top:26%;width:26%;transform:rotate(11deg)}.r14-acc-line.l3{left:66%;top:41%;width:25%;transform:rotate(30deg)}
+.r14-acc-status{position:absolute;left:9%;bottom:8%;display:flex;gap:8px}
+.r14-acc-status span{padding:8px 10px;border:1px solid rgba(225,214,235,.23);border-radius:999px;background:rgba(27,40,52,.82);color:#c8d0d6;font-size:8px;letter-spacing:.11em}
+.r14-acc-status span:nth-child(2){color:#efc7b3}.r14-acc-status span:nth-child(3){color:#c9d9c9}
+
+/* Bayestone — benchmark + agent application */
+.journey-visual[data-stage="3"] .journey-orbit{width:82%;height:61%;transform:rotate(24deg) rotateX(67deg);border-color:rgba(173,214,224,.33);box-shadow:0 0 34px rgba(154,206,216,.16)}
+.journey-visual[data-stage="3"] .journey-photo{width:61%;height:43%;min-height:260px;border-radius:24px;transform:rotate(2deg) translate(6px,-35px);border-color:rgba(186,220,225,.38);box-shadow:0 30px 85px rgba(6,15,25,.5),0 0 32px rgba(140,202,213,.18)}
+.r14-bayes .r14-brand-lockup{left:9%;top:9%}.r14-bayes .r14-brand-lockup strong{font-family:var(--serif);font-size:17px}
+.r14-bayes-grid{position:absolute;right:7%;top:17%;width:38%;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.r14-bayes-grid span{aspect-ratio:1;display:grid;place-items:center;border:1px solid rgba(194,221,225,.18);border-radius:9px;background:rgba(26,42,53,.83);color:#cbd5d9;font-size:8px;box-shadow:0 8px 24px rgba(3,9,14,.17)}
+.r14-bayes-grid span:nth-child(1),.r14-bayes-grid span:nth-child(6),.r14-bayes-grid span:nth-child(11){background:rgba(72,97,107,.72);color:#f0dcc8}
+.r14-bayes-dual{position:absolute;left:5%;right:5%;bottom:7%;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.r14-bayes-rail{min-height:108px;padding:14px 16px;border:1px solid rgba(194,221,225,.2);border-radius:15px;background:rgba(27,43,54,.88);box-shadow:0 15px 36px rgba(4,10,16,.22)}
+.r14-bayes-rail.agent{background:linear-gradient(145deg,rgba(63,54,70,.82),rgba(27,43,54,.9));border-color:rgba(225,198,222,.22)}
+.r14-bayes-rail small{display:block;color:#a8bac2;font-size:8px;letter-spacing:.14em}
+.r14-bayes-rail b{display:block;margin:6px 0 8px;color:#f1e1d2;font:500 16px/1.2 var(--serif)}
+.r14-bayes-rail p{margin:0;color:#b9c4ca;font-size:9px;line-height:1.55}
+.r14-bayes-count{position:absolute;left:6%;top:28%;padding:11px 13px;border:1px solid rgba(194,221,225,.22);border-radius:12px;background:rgba(27,42,54,.85);box-shadow:0 13px 30px rgba(4,10,16,.2)}
+.r14-bayes-count small{display:block;color:#9fb1ba;font-size:7px;letter-spacing:.13em}.r14-bayes-count strong{display:block;margin-top:4px;color:#f0cfaf;font:500 20px/1 var(--serif)}
+
+/* UBC remains the approved academic-origin visual. */
+.journey-visual[data-stage="0"] .r14-stage-art{display:none}
+
+@media(max-width:1200px){
+  .r14-leng-edit{left:3%;width:38%}.r14-leng-metrics{left:3%}
+  .r14-acc-node{min-width:98px;padding:10px}
+  .r14-bayes-grid{right:3%;width:40%}
+}
+@media(max-width:780px){
+  .r14-stage-art{inset:0 5%}
+  .journey-visual[data-stage="1"] .journey-photo,.journey-visual[data-stage="2"] .journey-photo,.journey-visual[data-stage="3"] .journey-photo{min-height:0}
+  .journey-visual[data-stage="1"] .journey-photo{width:40%;height:70%;border-radius:22px;transform:rotate(2deg) translate(18px,0)}
+  .r14-leng .r14-brand-lockup{left:4%;top:7%;padding:6px 9px}.r14-leng .r14-brand-lockup strong{font-size:13px}
+  .r14-leng-edit{left:3%;top:39%;width:35%;padding:9px}.r14-leng-edit>small{font-size:7px;margin-bottom:6px}.r14-leng-track{gap:5px}.r14-leng-track i{height:4px}
+  .r14-leng-metrics{left:2%;bottom:7%}.r14-leng-metrics span{min-width:57px;padding:7px}.r14-leng-metrics b{font-size:11px}.r14-leng-metrics small{font-size:6px}
+  .r14-leng-phone-ui{right:20%;top:19%;width:18%;height:47%;border-radius:15px}
+  .journey-visual[data-stage="2"] .journey-photo{width:58%;height:53%;transform:rotate(-1deg) translate(20px,2px)}
+  .r14-acc .r14-brand-lockup{right:4%;top:6%;padding:6px 9px}.r14-acc .r14-brand-lockup strong{font-size:12px}
+  .r14-acc-flow{left:1%;right:1%;top:21%;bottom:20%}.r14-acc-node{min-width:76px;padding:7px 8px;border-radius:8px}.r14-acc-node small{font-size:6px}.r14-acc-node b{font-size:9px}
+  .r14-acc-status{left:3%;bottom:4%;gap:4px}.r14-acc-status span{font-size:6px;padding:5px 7px}
+  .journey-visual[data-stage="3"] .journey-photo{width:50%;height:47%;transform:rotate(1deg) translate(4px,-17px)}
+  .r14-bayes .r14-brand-lockup{left:4%;top:5%;padding:6px 9px}.r14-bayes .r14-brand-lockup strong{font-size:12px}
+  .r14-bayes-grid{right:2%;top:13%;width:35%;gap:4px}.r14-bayes-grid span{font-size:6px;border-radius:6px}
+  .r14-bayes-count{left:3%;top:28%;padding:7px}.r14-bayes-count strong{font-size:14px}
+  .r14-bayes-dual{left:1%;right:1%;bottom:3%;gap:5px}.r14-bayes-rail{min-height:65px;padding:8px 9px;border-radius:9px}.r14-bayes-rail small{font-size:6px}.r14-bayes-rail b{font-size:10px;margin:3px 0}.r14-bayes-rail p{font-size:6px;line-height:1.35}
+}
+@media(max-width:420px){
+  .r14-stage-art{inset:0}.r14-leng-edit{display:none}.r14-leng-phone-ui{right:18%;width:21%}.r14-acc-line{opacity:.55}.r14-bayes-grid{width:38%}.r14-bayes-rail p{display:none}
+}
+@media(prefers-reduced-motion:reduce){.r14-stage-art>[data-r14-stage]{transition:none}}
+
+
+/* R14.1 pass 2 — visual reduction + smooth image handoff */
+.r14-static-fix .journey-photo{
+  background:linear-gradient(145deg,#34495d,#263646 62%,#22313f);
+}
+.r14-static-fix .journey-photo img{
+  position:relative;
+  z-index:1;
+}
+.r14-static-fix .journey-photo .journey-img-next{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:2;
+  opacity:0;
+  transition:opacity .34s ease;
+}
+.r14-static-fix .journey-photo .journey-img-next.is-visible{opacity:1}
+.r14-static-fix .journey-photo .visual-shine{z-index:3}
+
+/* Cold-and-sour spirit: one dominant short-video metaphor, fewer floating panels. */
+.r14-leng-edit{display:none}
+.r14-leng-phone-ui{
+  right:16%;
+  top:18%;
+  width:23%;
+  height:47%;
+  border-radius:28px;
+  background:
+    linear-gradient(180deg,rgba(253,239,226,.08),rgba(26,39,51,.3)),
+    rgba(27,40,52,.2);
+}
+.r14-leng-phone-ui:after{
+  content:'SHORT VIDEO\\A CONTENT';
+  bottom:11%;
+}
+.r14-leng-metrics{
+  left:9%;
+  bottom:12%;
+  grid-template-columns:repeat(3,auto);
+  border-radius:999px;
+  overflow:hidden;
+  background:rgba(26,39,51,.76);
+}
+.r14-leng-metrics span{min-width:76px;padding:9px 13px}
+.r14-leng-metrics b{font:500 14px/1 var(--serif)}
+.r14-leng-metrics small{font-size:7px}
+.journey-visual[data-stage="1"] .journey-photo img{filter:saturate(.78) brightness(.82) contrast(1.02)}
+
+/* Accenture: let the workflow carry the meaning; make the concept image secondary. */
+.journey-visual[data-stage="2"] .journey-photo img{
+  filter:saturate(.56) brightness(.56) contrast(1.04);
+}
+.r14-acc-flow{
+  left:7%;
+  right:7%;
+  top:30%;
+  bottom:26%;
+}
+.r14-acc-node{background:rgba(26,39,52,.94)}
+.r14-acc-status{left:10%;bottom:12%}
+
+/* Bayestone: replace dashboard density with a cleaner dual-track story. */
+.r14-bayes-grid{
+  right:8%;
+  top:18%;
+  width:auto;
+  display:flex;
+  gap:6px;
+}
+.r14-bayes-grid span{
+  aspect-ratio:auto;
+  min-width:auto;
+  padding:7px 9px;
+  border-radius:999px;
+  font-size:7px;
+}
+.r14-bayes-grid span:nth-child(n+5){display:none}
+.r14-bayes-count{
+  left:8%;
+  top:25%;
+}
+.r14-bayes-dual{
+  left:7%;
+  right:7%;
+  bottom:16%;
+  gap:12px;
+}
+.r14-bayes-rail{
+  min-height:96px;
+  padding:14px 16px;
+}
+.journey-visual[data-stage="3"] .journey-photo img{
+  filter:saturate(.62) brightness(.62) contrast(1.02);
+}
+
+/* Keep the fixed Journey progress rail visually separate from R14 overlays. */
+.r14-static-fix .journey-track{z-index:12}
+.r14-static-fix .journey-compass{z-index:12}
+
+@media(max-width:780px){
+  .r14-leng-phone-ui{right:18%;top:17%;width:20%;height:50%}
+  .r14-leng-metrics{left:5%;bottom:8%}
+  .r14-acc-flow{left:3%;right:3%;top:26%;bottom:24%}
+  .r14-acc-status{left:4%;bottom:5%}
+  .r14-bayes-grid{right:4%;top:14%;gap:3px}
+  .r14-bayes-grid span{padding:4px 6px;font-size:5.5px}
+  .r14-bayes-dual{left:2%;right:2%;bottom:10%;gap:5px}
+}
+@media(max-width:420px){
+  .r14-leng-phone-ui{right:17%;width:23%}
+  .r14-leng-metrics span:nth-child(3){display:none}
+  .r14-bayes-grid span:nth-child(n+4){display:none}
+}
+
+
+/* R14.1 pass 3 — synchronized stage stack + narrative focus */
+.r14-static-fix .journey-photo{position:relative}
+.r14-static-fix .journey-photo .journey-stage-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  z-index:1;
+  transition:opacity .26s ease,transform .8s ease,filter .35s ease;
+}
+.r14-static-fix .journey-photo .journey-stage-image.active{
+  opacity:1;
+  z-index:2;
+}
+.r14-static-fix .journey-photo .journey-img-next{display:none!important}
+.r14-static-fix .journey-photo .visual-shine{z-index:3}
+.journey-visual[data-stage="0"] .r14-stage-art{display:block}
+
+/* A stage should explain one progression, not present a pile of cards. */
+.r14-focus-steps{
+  position:absolute;
+  z-index:11;
+  min-height:58px;
+  pointer-events:none;
+}
+.r14-focus-steps span{
+  position:absolute;
+  inset:0 auto auto 0;
+  min-width:250px;
+  max-width:390px;
+  opacity:0;
+  transform:translateY(10px);
+  transition:opacity .28s ease,transform .28s ease;
+}
+.r14-focus-steps em{
+  display:block;
+  margin-bottom:6px;
+  color:#e5c39f;
+  font-style:normal;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.18em;
+}
+.r14-focus-steps b{
+  display:block;
+  padding-left:14px;
+  border-left:1px solid rgba(241,211,182,.55);
+  color:#f4e8dc;
+  font:500 18px/1.45 var(--cserif);
+  letter-spacing:-.015em;
+  text-shadow:0 7px 20px rgba(4,10,17,.3);
+}
+.journey-visual[data-focus="0"] [data-focus-step="0"],
+.journey-visual[data-focus="1"] [data-focus-step="1"],
+.journey-visual[data-focus="2"] [data-focus-step="2"]{
+  opacity:1;
+  transform:none;
+}
+
+/* UBC: the story is a direction change, not a generic campus card. */
+.r14-ubc .r14-brand-lockup{left:9%;top:9%}
+.r14-ubc-path{
+  position:absolute;
+  left:11%;
+  top:31%;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  color:#d7dfe3;
+  font:500 15px/1 var(--serif);
+  letter-spacing:.02em;
+}
+.r14-ubc-path i{
+  color:#efc9a6;
+  font-style:normal;
+  transition:transform .3s ease;
+}
+.journey-visual[data-stage="0"][data-focus="1"] .r14-ubc-path i,
+.journey-visual[data-stage="0"][data-focus="2"] .r14-ubc-path i{transform:translateX(7px)}
+.journey-visual[data-stage="0"] .r14-focus-steps{left:9%;bottom:22%}
+.journey-visual[data-stage="0"] .journey-photo img.active{filter:saturate(.72) brightness(.8) contrast(1.02)}
+
+/* Lengsuanling: Make → read signals → recommend. */
+.journey-visual[data-stage="1"] .r14-focus-steps{right:5%;bottom:22%;width:40%}
+.journey-visual[data-stage="1"][data-focus="0"] .r14-leng-phone-ui{opacity:1;transform:translateY(0)}
+.journey-visual[data-stage="1"][data-focus="0"] .r14-leng-metrics{opacity:.35}
+.journey-visual[data-stage="1"][data-focus="1"] .r14-leng-phone-ui{opacity:.48;transform:translateY(-4px)}
+.journey-visual[data-stage="1"][data-focus="1"] .r14-leng-metrics{opacity:1;transform:translateY(-3px)}
+.journey-visual[data-stage="1"][data-focus="2"] .r14-leng-phone-ui{opacity:.72}
+.journey-visual[data-stage="1"][data-focus="2"] .r14-leng-metrics{opacity:.72}
+.r14-leng-phone-ui,.r14-leng-metrics{transition:opacity .3s ease,transform .3s ease}
+
+/* Accenture: the flow itself becomes the visual emphasis as you scroll. */
+.journey-visual[data-stage="2"] .r14-focus-steps{left:8%;top:15%;width:46%}
+.r14-acc-node{opacity:.28;transform:scale(.96);transition:opacity .28s ease,transform .28s ease,border-color .28s ease,box-shadow .28s ease}
+.journey-visual[data-stage="2"][data-focus="0"] .r14-acc-node[data-flow-step="0"],
+.journey-visual[data-stage="2"][data-focus="1"] .r14-acc-node[data-flow-step="1"],
+.journey-visual[data-stage="2"][data-focus="2"] .r14-acc-node[data-flow-step="2"]{
+  opacity:1;
+  transform:scale(1);
+  border-color:rgba(239,205,177,.62);
+  box-shadow:0 14px 36px rgba(4,10,16,.28),0 0 20px rgba(232,198,173,.12);
+}
+.journey-visual[data-stage="2"][data-focus="0"] .r14-acc-line.l1,
+.journey-visual[data-stage="2"][data-focus="1"] .r14-acc-line.l2,
+.journey-visual[data-stage="2"][data-focus="2"] .r14-acc-line.l3{background:#efc9a7;box-shadow:0 0 8px rgba(239,201,167,.45)}
+.r14-acc-line{transition:background .28s ease,box-shadow .28s ease}
+
+/* Bayestone: capability → comparison → application. */
+.journey-visual[data-stage="3"] .r14-focus-steps{left:7%;bottom:36%;width:50%}
+.r14-bayes-count,.r14-bayes-grid,.r14-bayes-rail{transition:opacity .28s ease,transform .28s ease,border-color .28s ease}
+.journey-visual[data-stage="3"][data-focus="0"] .r14-bayes-count{opacity:1;transform:scale(1.04)}
+.journey-visual[data-stage="3"][data-focus="0"] .r14-bayes-grid{opacity:.3}
+.journey-visual[data-stage="3"][data-focus="0"] .r14-bayes-rail.benchmark{opacity:.86}
+.journey-visual[data-stage="3"][data-focus="0"] .r14-bayes-rail.agent{opacity:.28}
+.journey-visual[data-stage="3"][data-focus="1"] .r14-bayes-count{opacity:.62}
+.journey-visual[data-stage="3"][data-focus="1"] .r14-bayes-grid{opacity:1;transform:translateY(-3px)}
+.journey-visual[data-stage="3"][data-focus="1"] .r14-bayes-rail.benchmark{opacity:1;border-color:rgba(239,205,177,.45)}
+.journey-visual[data-stage="3"][data-focus="1"] .r14-bayes-rail.agent{opacity:.34}
+.journey-visual[data-stage="3"][data-focus="2"] .r14-bayes-count{opacity:.35}
+.journey-visual[data-stage="3"][data-focus="2"] .r14-bayes-grid{opacity:.45}
+.journey-visual[data-stage="3"][data-focus="2"] .r14-bayes-rail.benchmark{opacity:.35}
+.journey-visual[data-stage="3"][data-focus="2"] .r14-bayes-rail.agent{
+  opacity:1;
+  transform:translateY(-4px);
+  border-color:rgba(228,199,221,.48);
+}
+
+/* Keep stage change and node change on the same visual beat. */
+.r14-static-fix .node{transition:transform .26s ease,box-shadow .26s ease,background .26s ease,color .26s ease}
+.r14-stage-art>[data-r14-stage]{transition:opacity .26s ease}
+
+@media(max-width:780px){
+  .r14-focus-steps span{min-width:180px;max-width:260px}
+  .r14-focus-steps b{font-size:12px;line-height:1.4}
+  .journey-visual[data-stage="0"] .r14-focus-steps{left:5%;bottom:20%}
+  .journey-visual[data-stage="1"] .r14-focus-steps{right:2%;bottom:18%;width:45%}
+  .journey-visual[data-stage="2"] .r14-focus-steps{left:4%;top:12%;width:48%}
+  .journey-visual[data-stage="3"] .r14-focus-steps{left:3%;bottom:32%;width:56%}
+  .r14-ubc .r14-brand-lockup{left:4%;top:5%;padding:6px 9px}
+  .r14-ubc .r14-brand-lockup strong{font-size:11px}
+  .r14-ubc-path{left:6%;top:29%;font-size:10px;gap:7px}
+}
+@media(max-width:420px){
+  .r14-focus-steps b{font-size:10px}
+  .r14-focus-steps em{font-size:6px}
+}
+
+
+/* R14.1 pass 4 — replace the three AI-city concept backgrounds with distinct visual scenes. */
+.journey-visual[data-stage="1"] .journey-photo,
+.journey-visual[data-stage="2"] .journey-photo,
+.journey-visual[data-stage="3"] .journey-photo{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+.journey-visual[data-stage="1"] .journey-orbit,
+.journey-visual[data-stage="2"] .journey-orbit,
+.journey-visual[data-stage="3"] .journey-orbit{
+  opacity:.46;
+}
+
+/* Lengsuanling: editorial content desk / short-form video, not sci-fi city. */
+.r14-leng-scene{
+  position:absolute;
+  left:16%;
+  top:16%;
+  width:64%;
+  height:57%;
+  border:1px solid rgba(236,213,194,.27);
+  border-radius:30px;
+  background:
+    linear-gradient(135deg,rgba(245,230,215,.08),transparent 42%),
+    linear-gradient(160deg,#354451 0%,#263746 58%,#21313f 100%);
+  box-shadow:0 30px 80px rgba(6,14,22,.38);
+  overflow:hidden;
+}
+.r14-leng-scene:before{
+  content:'CONTENT DESK';
+  position:absolute;
+  left:24px;
+  top:18px;
+  color:#d7c1ac;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.18em;
+}
+.r14-leng-scene:after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(235,221,207,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(235,221,207,.045) 1px,transparent 1px);
+  background-size:32px 32px;
+  mask-image:linear-gradient(135deg,#000,transparent 76%);
+}
+.r14-reel-card{
+  position:absolute;
+  z-index:2;
+  width:25%;
+  height:58%;
+  top:19%;
+  border:1px solid rgba(244,226,210,.28);
+  border-radius:22px;
+  background:
+    radial-gradient(circle at 50% 31%,rgba(235,196,166,.35),transparent 20%),
+    linear-gradient(180deg,rgba(239,222,204,.13),rgba(31,44,56,.72));
+  box-shadow:0 18px 45px rgba(4,10,17,.24);
+  overflow:hidden;
+}
+.r14-reel-card.primary{left:14%;transform:rotate(-5deg)}
+.r14-reel-card.secondary{left:38%;top:13%;transform:rotate(2deg)}
+.r14-reel-card.tertiary{left:62%;top:22%;transform:rotate(6deg)}
+.r14-reel-card span{
+  position:absolute;left:13px;top:12px;color:#e8c6a5;font-size:8px;letter-spacing:.14em
+}
+.r14-reel-card b{
+  position:absolute;left:13px;right:10px;bottom:26px;color:#f4e9df;font:500 13px/1.35 var(--cserif)
+}
+.r14-reel-card i{
+  position:absolute;left:13px;right:13px;bottom:14px;height:3px;border-radius:999px;background:linear-gradient(90deg,#e8c6a5 0 62%,rgba(255,255,255,.15) 62%)
+}
+.r14-edit-timeline{
+  position:absolute;
+  z-index:3;
+  left:9%;
+  right:9%;
+  bottom:7%;
+  height:42px;
+  display:grid;
+  grid-template-columns:1.3fr .8fr 1fr;
+  gap:5px;
+  align-items:center;
+  padding:0 12px;
+  border:1px solid rgba(236,214,194,.2);
+  border-radius:10px;
+  background:rgba(27,39,51,.86);
+}
+.r14-edit-timeline em{height:6px;border-radius:999px;background:#7891a1}
+.r14-edit-timeline em:first-child{background:#d8b797}
+.r14-edit-timeline strong{
+  position:absolute;right:12px;top:-17px;color:#b8c3ca;font-size:7px;letter-spacing:.13em
+}
+.r14-leng-phone-ui{display:none}
+.r14-leng-metrics{
+  left:18%;
+  bottom:10%;
+  background:rgba(28,40,51,.88);
+}
+
+/* Accenture: enterprise system canvas / testing workflow. */
+.r14-acc-surface{
+  position:absolute;
+  left:13%;
+  top:20%;
+  width:72%;
+  height:51%;
+  border:1px solid rgba(218,205,231,.27);
+  border-radius:20px;
+  background:
+    linear-gradient(rgba(213,205,226,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(213,205,226,.045) 1px,transparent 1px),
+    linear-gradient(160deg,#273744,#202f3c);
+  background-size:30px 30px,30px 30px,auto;
+  box-shadow:0 30px 85px rgba(5,12,20,.4);
+  overflow:hidden;
+}
+.r14-system-head{
+  position:absolute;left:22px;right:22px;top:18px;display:flex;justify-content:space-between;align-items:center
+}
+.r14-system-head span{color:#c7b2db;font-size:8px;letter-spacing:.15em;font-weight:700}
+.r14-system-head b{color:#e7e2e6;font-size:10px;font-weight:550}
+.r14-system-columns{
+  position:absolute;left:20px;right:20px;top:56px;bottom:18px;display:grid;grid-template-columns:1.3fr 1fr .72fr;gap:12px
+}
+.r14-system-columns>div{
+  padding:13px;border:1px solid rgba(221,211,232,.14);border-radius:12px;background:rgba(35,48,59,.56)
+}
+.r14-system-columns small{display:block;color:#9eabb5;font-size:7px;letter-spacing:.14em;margin-bottom:12px}
+.r14-system-columns i{
+  display:block;height:7px;border-radius:999px;margin:8px 0;background:linear-gradient(90deg,#8194a2 0 58%,rgba(255,255,255,.08) 58%)
+}
+.r14-system-columns div:nth-child(2) i:nth-of-type(2){background:linear-gradient(90deg,#d0a98f 0 76%,rgba(255,255,255,.08) 76%)}
+.r14-system-columns div:last-child span{
+  display:block;margin:7px 0;padding:7px;border-radius:7px;background:rgba(83,100,111,.35);color:#cbd3d8;font-size:7px;text-align:center;letter-spacing:.08em
+}
+.r14-system-columns div:last-child span:nth-of-type(2){color:#e5b9a9}
+.r14-acc-flow{z-index:5}
+.r14-acc-status{z-index:7}
+
+/* Bayestone: evaluation field + agent route, not a dashboard city backdrop. */
+.r14-bayes-surface{
+  position:absolute;
+  left:13%;
+  top:17%;
+  width:73%;
+  height:50%;
+  border:1px solid rgba(182,216,221,.23);
+  border-radius:26px;
+  background:
+    radial-gradient(circle at 24% 31%,rgba(111,157,164,.15),transparent 26%),
+    radial-gradient(circle at 78% 70%,rgba(176,151,181,.13),transparent 28%),
+    linear-gradient(150deg,#243743,#1e303d 68%,#202c39);
+  box-shadow:0 30px 85px rgba(5,12,20,.4);
+  overflow:hidden;
+}
+.r14-model-band{
+  position:absolute;left:20px;right:20px;top:18px;display:flex;gap:7px
+}
+.r14-model-band span{
+  padding:7px 10px;border:1px solid rgba(192,219,222,.16);border-radius:999px;background:rgba(35,54,65,.68);color:#cad6da;font-size:7px
+}
+.r14-eval-map{
+  position:absolute;left:5%;top:24%;width:55%;height:48%;border:1px solid rgba(191,217,221,.1);border-radius:14px
+}
+.r14-eval-map svg{position:absolute;inset:0;width:100%;height:100%}
+.r14-eval-map path{fill:none;stroke:rgba(173,209,213,.34);stroke-width:.7}
+.r14-eval-map i{
+  position:absolute;left:var(--x);top:var(--y);width:6px;height:6px;border-radius:50%;background:#d7c1a7;box-shadow:0 0 10px rgba(215,193,167,.45)
+}
+.r14-agent-route{
+  position:absolute;right:4%;top:30%;width:32%;display:flex;flex-direction:column;align-items:center;gap:6px
+}
+.r14-agent-route span{
+  width:100%;padding:7px 8px;border:1px solid rgba(219,196,217,.17);border-radius:8px;background:rgba(66,57,73,.42);color:#d7cbd7;font-size:7px;text-align:center
+}
+.r14-agent-route i{width:1px;height:10px;background:rgba(224,200,218,.4)}
+.r14-bayes-count{left:16%;top:27%;z-index:8}
+.r14-bayes-grid{display:none}
+.r14-bayes-dual{left:15%;right:10%;bottom:8%}
+
+/* The distinct stage artwork becomes the background itself. */
+.journey-visual[data-stage="1"] .r14-leng-scene,
+.journey-visual[data-stage="2"] .r14-acc-surface,
+.journey-visual[data-stage="3"] .r14-bayes-surface{
+  transition:transform .45s ease,opacity .32s ease;
+}
+.journey-visual[data-stage="1"][data-focus="0"] .r14-leng-scene{transform:translateY(0)}
+.journey-visual[data-stage="1"][data-focus="1"] .r14-leng-scene{transform:translateY(-4px)}
+.journey-visual[data-stage="1"][data-focus="2"] .r14-leng-scene{transform:translateY(-7px)}
+.journey-visual[data-stage="2"][data-focus="0"] .r14-acc-surface{transform:translateX(0)}
+.journey-visual[data-stage="2"][data-focus="1"] .r14-acc-surface{transform:translateX(-4px)}
+.journey-visual[data-stage="2"][data-focus="2"] .r14-acc-surface{transform:translateX(-7px)}
+.journey-visual[data-stage="3"][data-focus="0"] .r14-bayes-surface{transform:scale(1)}
+.journey-visual[data-stage="3"][data-focus="1"] .r14-bayes-surface{transform:scale(1.01)}
+.journey-visual[data-stage="3"][data-focus="2"] .r14-bayes-surface{transform:scale(1.015)}
+
+@media(max-width:780px){
+  .r14-leng-scene{left:12%;top:12%;width:70%;height:62%;border-radius:20px}
+  .r14-reel-card{height:55%;border-radius:14px}
+  .r14-reel-card b{font-size:8px;bottom:18px}.r14-reel-card span{font-size:6px}
+  .r14-edit-timeline{height:30px}.r14-edit-timeline strong{display:none}
+  .r14-leng-metrics{left:12%;bottom:5%}
+  .r14-acc-surface{left:9%;top:15%;width:78%;height:58%}
+  .r14-system-columns{grid-template-columns:1.3fr 1fr .8fr;gap:6px;left:10px;right:10px;top:45px}.r14-system-columns>div{padding:8px}
+  .r14-bayes-surface{left:9%;top:13%;width:79%;height:57%}
+  .r14-model-band{left:10px;right:10px;top:10px;gap:3px}.r14-model-band span{padding:4px 6px;font-size:5.5px}
+  .r14-bayes-count{left:11%;top:25%}
+  .r14-bayes-dual{left:9%;right:6%;bottom:4%}
+}
+
+
+/* R14.1 pass 5 — richer UBC/Lengsuanling detail + enterprise automation emphasis. */
+
+/* UBC: keep the campus image, but make the academic transition legible. */
+.journey-visual[data-stage="0"] .r14-stage-art>[data-r14-stage="0"]{
+  opacity:1;
+  visibility:visible;
+}
+.r14-ubc-notebook{
+  position:absolute;
+  right:8%;
+  top:18%;
+  width:38%;
+  min-height:150px;
+  padding:18px 20px;
+  border:1px solid rgba(235,224,211,.34);
+  border-radius:16px;
+  background:
+    repeating-linear-gradient(180deg,transparent 0 25px,rgba(70,88,100,.1) 25px 26px),
+    rgba(239,233,224,.92);
+  color:#293946;
+  box-shadow:0 18px 48px rgba(4,10,17,.25);
+  transform:rotate(3deg);
+}
+.r14-ubc-notebook small{
+  display:block;
+  color:#7d6858;
+  font-size:7px;
+  font-weight:750;
+  letter-spacing:.15em;
+}
+.r14-ubc-notebook b{
+  display:block;
+  margin-top:15px;
+  color:#344957;
+  font:500 16px/1.45 var(--cserif);
+}
+.r14-ubc-notebook>div{
+  display:flex;
+  gap:8px;
+  margin-top:20px;
+}
+.r14-ubc-notebook>div span{
+  flex:1;
+  padding:7px 8px;
+  border:1px solid rgba(79,99,111,.18);
+  border-radius:8px;
+  background:rgba(255,255,255,.42);
+  text-align:center;
+  font:500 13px/1 var(--serif);
+}
+.r14-ubc-methods{
+  position:absolute;
+  left:11%;
+  top:39%;
+  display:flex;
+  gap:7px;
+}
+.r14-ubc-methods span{
+  padding:7px 10px;
+  border:1px solid rgba(231,211,191,.2);
+  border-radius:999px;
+  background:rgba(29,42,54,.76);
+  color:#c9d3d8;
+  font-size:7px;
+  letter-spacing:.08em;
+}
+.journey-visual[data-stage="0"][data-focus="0"] .r14-ubc-notebook{opacity:.62}
+.journey-visual[data-stage="0"][data-focus="1"] .r14-ubc-notebook{
+  opacity:1;
+  transform:rotate(1deg) translateY(-4px);
+  box-shadow:0 20px 52px rgba(4,10,17,.3),0 0 22px rgba(229,196,162,.12);
+}
+.journey-visual[data-stage="0"][data-focus="2"] .r14-ubc-notebook{opacity:.78}
+.r14-ubc-notebook{transition:opacity .3s ease,transform .3s ease,box-shadow .3s ease}
+
+/* Lengsuanling: make each vertical card feel like an actual content-ops artifact. */
+.r14-reel-card>small{
+  position:absolute;
+  left:13px;
+  right:11px;
+  bottom:43px;
+  color:#9eacb5;
+  font-size:5.5px;
+  letter-spacing:.09em;
+  line-height:1.35;
+}
+.r14-card-ui{
+  position:absolute;
+  left:13px;
+  right:13px;
+  top:34px;
+  height:38%;
+  border:1px solid rgba(244,226,210,.12);
+  border-radius:10px;
+  background:
+    radial-gradient(circle at 60% 36%,rgba(237,198,167,.22),transparent 24%),
+    linear-gradient(160deg,rgba(227,217,206,.12),rgba(72,91,104,.08));
+  overflow:hidden;
+}
+.r14-card-ui i{
+  position:absolute!important;
+  left:9px!important;
+  right:auto!important;
+  bottom:auto!important;
+  height:3px!important;
+  border-radius:999px!important;
+  background:rgba(225,232,235,.38)!important;
+}
+.r14-card-ui i:nth-child(1){top:10px;width:45%}
+.r14-card-ui i:nth-child(2){top:18px;width:68%}
+.r14-card-ui i:nth-child(3){top:26px;width:35%;background:rgba(227,190,158,.58)!important}
+.r14-edit-timeline{padding-bottom:8px}
+.r14-edit-stages{
+  position:absolute;
+  left:12px;
+  right:12px;
+  bottom:4px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:5px;
+  color:#8fa0aa;
+  font-size:5px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.r14-edit-stages span{text-align:center}
+.r14-leng-metrics span:after{
+  content:'';
+  display:block;
+  width:100%;
+  height:3px;
+  margin-top:7px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#d8b797 0 56%,rgba(255,255,255,.09) 56%);
+}
+.r14-leng-metrics span:nth-child(2):after{
+  background:linear-gradient(90deg,#9eb5c1 0 72%,rgba(255,255,255,.09) 72%);
+}
+.r14-leng-metrics span:nth-child(3):after{
+  background:linear-gradient(90deg,#c9d0ba 0 43%,rgba(255,255,255,.09) 43%);
+}
+.journey-visual[data-stage="1"][data-focus="0"] .r14-reel-card.primary,
+.journey-visual[data-stage="1"][data-focus="1"] .r14-reel-card.tertiary,
+.journey-visual[data-stage="1"][data-focus="2"] .r14-reel-card.secondary{
+  border-color:rgba(239,204,171,.55);
+  box-shadow:0 18px 48px rgba(4,10,17,.3),0 0 22px rgba(229,193,159,.11);
+}
+
+/* Accenture: three beats — testing, visibility, then workflow automation. */
+.r14-acc-automation{
+  position:absolute;
+  left:15%;
+  right:10%;
+  bottom:7%;
+  min-height:128px;
+  display:grid;
+  grid-template-columns:1.2fr .85fr 22px .9fr 22px 1fr;
+  gap:8px;
+  align-items:center;
+  padding:15px 16px 24px;
+  border:1px solid rgba(220,208,231,.24);
+  border-radius:17px;
+  background:linear-gradient(145deg,rgba(39,51,61,.94),rgba(29,41,52,.96));
+  box-shadow:0 18px 48px rgba(4,10,17,.28);
+  opacity:.24;
+  transform:translateY(8px);
+  transition:opacity .3s ease,transform .3s ease,border-color .3s ease;
+  z-index:8;
+}
+.r14-auto-title small{
+  display:block;
+  color:#c7b2da;
+  font-size:6px;
+  font-weight:750;
+  letter-spacing:.15em;
+}
+.r14-auto-title b{
+  display:block;
+  margin-top:7px;
+  color:#eee4de;
+  font:500 11px/1.35 var(--cserif);
+}
+.r14-auto-inputs,.r14-auto-outputs{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5px;
+}
+.r14-auto-inputs span,.r14-auto-outputs span{
+  padding:6px 5px;
+  border:1px solid rgba(221,211,231,.13);
+  border-radius:7px;
+  background:rgba(72,84,94,.22);
+  color:#bfcad0;
+  font-size:5.5px;
+  text-align:center;
+}
+.r14-auto-arrow{
+  color:#d7b99c;
+  text-align:center;
+  font:500 15px/1 var(--serif);
+}
+.r14-auto-core{
+  padding:9px 8px;
+  border:1px solid rgba(231,201,178,.2);
+  border-radius:9px;
+  background:rgba(85,68,78,.34);
+  text-align:center;
+}
+.r14-auto-core strong{
+  display:block;
+  color:#f0d8c2;
+  font-size:8px;
+  letter-spacing:.06em;
+}
+.r14-auto-core small{
+  display:block;
+  margin-top:5px;
+  color:#aebbc3;
+  font-size:5.5px;
+}
+.r14-auto-ai{
+  position:absolute;
+  right:14px;
+  bottom:7px;
+  color:#ae9abb;
+  font-size:5.5px;
+  font-weight:700;
+  letter-spacing:.11em;
+}
+.journey-visual[data-stage="2"][data-focus="0"] .r14-acc-automation{opacity:.12}
+.journey-visual[data-stage="2"][data-focus="1"] .r14-acc-automation{opacity:.42}
+.journey-visual[data-stage="2"][data-focus="2"] .r14-acc-automation{
+  opacity:1;
+  transform:none;
+  border-color:rgba(230,202,180,.42);
+}
+.journey-visual[data-stage="2"][data-focus="2"] .r14-acc-surface{opacity:.35}
+.journey-visual[data-stage="2"][data-focus="2"] .r14-acc-flow{opacity:.3}
+.journey-visual[data-stage="2"][data-focus="2"] .r14-acc-status{opacity:.45}
+.r14-acc-surface,.r14-acc-flow,.r14-acc-status{transition:opacity .3s ease,transform .3s ease}
+.r14-acc-status{bottom:4%}
+
+/* At the visibility beat, privilege status communication over the raw test flow. */
+.journey-visual[data-stage="2"][data-focus="1"] .r14-acc-status{
+  opacity:1;
+  transform:translateY(-4px);
+}
+.journey-visual[data-stage="2"][data-focus="1"] .r14-acc-surface{
+  box-shadow:0 30px 85px rgba(5,12,20,.4),0 0 24px rgba(184,164,207,.11);
+}
+
+/* Small screens keep the same information order without turning into a dashboard wall. */
+@media(max-width:780px){
+  .r14-ubc-notebook{right:4%;top:16%;width:43%;min-height:100px;padding:11px}
+  .r14-ubc-notebook b{font-size:10px;margin-top:8px}.r14-ubc-notebook>div{margin-top:10px;gap:4px}.r14-ubc-notebook>div span{padding:4px;font-size:8px}
+  .r14-ubc-methods{left:6%;top:39%;gap:4px}.r14-ubc-methods span{padding:4px 6px;font-size:5.5px}
+  .r14-reel-card>small{font-size:4px;bottom:31px}.r14-card-ui{height:34%;top:27px}.r14-edit-stages{font-size:4px}
+  .r14-acc-automation{left:8%;right:5%;bottom:3%;min-height:78px;padding:8px 8px 15px;gap:3px;border-radius:11px}
+  .r14-auto-title b{font-size:7px}.r14-auto-title small,.r14-auto-inputs span,.r14-auto-outputs span,.r14-auto-core small,.r14-auto-ai{font-size:4px}
+  .r14-auto-core strong{font-size:5.5px}.r14-auto-arrow{font-size:10px}.r14-acc-status{display:none}
+}
+@media(max-width:420px){
+  .r14-ubc-notebook{width:46%;right:2%}.r14-ubc-methods span:nth-child(3){display:none}
+  .r14-reel-card>small{display:none}.r14-edit-stages{display:none}
+  .r14-acc-automation{grid-template-columns:1fr 1fr 16px 1fr 16px 1fr}
+  .r14-auto-title{display:none}.r14-auto-ai{right:8px}
+}
+
+
+/* R14.1 pass 6 — spacing cleanup, glass notebook, protected progress lane. */
+
+/* Treat the bottom progress rail as its own lane. */
+.r14-static-fix .journey-track{
+  bottom:3.5%;
+  left:14%;
+  right:11%;
+}
+.r14-static-fix .journey-compass{
+  top:6%;
+  right:7%;
+}
+
+/* UBC: replace the bright paper card with warm mist glass.
+   Keep the academic notation crisp without competing with the campus image. */
+.r14-ubc-notebook{
+  right:6%;
+  top:15%;
+  width:35%;
+  min-height:138px;
+  padding:17px 18px;
+  border-color:rgba(239,218,197,.24);
+  background:
+    repeating-linear-gradient(180deg,transparent 0 27px,rgba(226,236,240,.055) 27px 28px),
+    linear-gradient(145deg,rgba(230,224,216,.15),rgba(41,55,67,.68));
+  color:#f1e8df;
+  box-shadow:0 20px 52px rgba(4,10,17,.24);
+  backdrop-filter:blur(18px) saturate(.85);
+  transform:rotate(1.4deg);
+}
+.r14-ubc-notebook small{
+  color:#d6b99c;
+  font-size:7.5px;
+}
+.r14-ubc-notebook b{
+  color:#f4e9df;
+  font-size:15px;
+  line-height:1.5;
+  text-shadow:0 4px 14px rgba(4,10,17,.26);
+}
+.r14-ubc-notebook>div{gap:6px;margin-top:17px}
+.r14-ubc-notebook>div span{
+  padding:7px 6px;
+  border-color:rgba(231,215,199,.16);
+  background:rgba(238,232,225,.08);
+  color:#e5d9ce;
+  font-size:12px;
+}
+.r14-ubc-path{
+  left:9%;
+  top:29%;
+  font-size:14px;
+}
+.r14-ubc-methods{
+  left:9%;
+  top:42%;
+}
+.journey-visual[data-stage="0"] .r14-focus-steps{
+  left:9%;
+  bottom:20%;
+  width:42%;
+}
+.journey-visual[data-stage="0"] .r14-focus-steps span{
+  min-width:0;
+  max-width:330px;
+}
+.journey-visual[data-stage="0"][data-focus="0"] .r14-ubc-notebook{opacity:.48}
+.journey-visual[data-stage="0"][data-focus="1"] .r14-ubc-notebook{
+  opacity:.93;
+  transform:rotate(.5deg) translateY(-3px);
+}
+.journey-visual[data-stage="0"][data-focus="2"] .r14-ubc-notebook{opacity:.62}
+
+/* Lengsuanling: keep the content artifacts central and move explanatory copy out of their way. */
+.journey-visual[data-stage="1"] .r14-focus-steps{
+  right:5%;
+  top:12%;
+  bottom:auto;
+  width:38%;
+}
+.journey-visual[data-stage="1"] .r14-focus-steps span{
+  min-width:0;
+  max-width:300px;
+}
+.r14-leng-scene{
+  left:14%;
+  top:20%;
+  width:66%;
+  height:52%;
+}
+.r14-leng-metrics{
+  left:15%;
+  bottom:16%;
+}
+.r14-leng .r14-brand-lockup{left:8%;top:7%}
+
+/* Accenture: reserve a clean caption strip above the system canvas,
+   then keep automation above the progress lane. */
+.journey-visual[data-stage="2"] .r14-focus-steps{
+  left:7%;
+  top:8%;
+  bottom:auto;
+  width:47%;
+}
+.journey-visual[data-stage="2"] .r14-focus-steps span{
+  min-width:0;
+  max-width:350px;
+}
+.r14-acc .r14-brand-lockup{
+  right:7%;
+  top:7%;
+}
+.r14-acc-surface{
+  left:12%;
+  top:25%;
+  width:73%;
+  height:43%;
+}
+.r14-acc-flow{
+  left:8%;
+  right:8%;
+  top:33%;
+  bottom:31%;
+}
+.r14-acc-status{
+  left:12%;
+  bottom:18%;
+}
+.r14-acc-automation{
+  left:14%;
+  right:9%;
+  bottom:15%;
+  min-height:112px;
+  padding-top:13px;
+  padding-bottom:21px;
+}
+.journey-visual[data-stage="2"][data-focus="2"] .r14-acc-automation{
+  transform:translateY(-3px);
+}
+
+/* Bayestone: separate title/focus copy, evaluation field and dual-track cards.
+   The dual cards now sit clearly above the progress rail. */
+.r14-bayes .r14-brand-lockup{
+  left:auto;
+  right:7%;
+  top:7%;
+}
+.journey-visual[data-stage="3"] .r14-focus-steps{
+  left:7%;
+  top:10%;
+  bottom:auto;
+  width:45%;
+}
+.journey-visual[data-stage="3"] .r14-focus-steps span{
+  min-width:0;
+  max-width:340px;
+}
+.r14-bayes-surface{
+  left:12%;
+  top:24%;
+  width:74%;
+  height:40%;
+}
+.r14-bayes-count{
+  left:14%;
+  top:31%;
+}
+.r14-bayes-dual{
+  left:13%;
+  right:9%;
+  bottom:16%;
+  gap:12px;
+}
+.r14-bayes-rail{
+  min-height:86px;
+  padding:12px 15px;
+}
+.r14-bayes-rail b{
+  margin:5px 0 6px;
+  font-size:15px;
+}
+.r14-bayes-rail p{
+  font-size:8.5px;
+  line-height:1.45;
+}
+.r14-model-band{
+  top:14px;
+}
+.r14-agent-route{
+  top:27%;
+}
+
+/* Medium desktop: reduce density before elements start colliding. */
+@media(max-width:1200px) and (min-width:781px){
+  .r14-ubc-notebook{width:34%;right:4%}
+  .journey-visual[data-stage="1"] .r14-focus-steps{right:3%;width:36%}
+  .r14-leng-scene{left:12%;width:68%}
+  .journey-visual[data-stage="2"] .r14-focus-steps{width:43%}
+  .r14-acc-automation{left:11%;right:6%}
+  .journey-visual[data-stage="3"] .r14-focus-steps{width:42%}
+  .r14-bayes-dual{left:11%;right:6%}
+}
+
+/* Mobile: keep a strict top/middle/bottom reading order. */
+@media(max-width:780px){
+  .r14-static-fix .journey-track{
+    bottom:2%;
+    left:14%;
+    right:14%;
+  }
+  .r14-static-fix .journey-compass{top:3%;right:8%}
+
+  .r14-ubc-notebook{
+    right:4%;
+    top:17%;
+    width:40%;
+    min-height:92px;
+    padding:10px 11px;
+    transform:rotate(.6deg);
+  }
+  .r14-ubc-notebook small{font-size:6px}
+  .r14-ubc-notebook b{font-size:9px;margin-top:7px;line-height:1.4}
+  .r14-ubc-notebook>div{margin-top:8px}
+  .r14-ubc-notebook>div span{padding:4px 3px;font-size:7px}
+  .r14-ubc-path{left:5%;top:28%;font-size:9px}
+  .r14-ubc-methods{left:5%;top:41%}
+  .journey-visual[data-stage="0"] .r14-focus-steps{left:4%;bottom:15%;width:47%}
+
+  .journey-visual[data-stage="1"] .r14-focus-steps{
+    right:3%;top:8%;width:42%;
+  }
+  .r14-leng-scene{left:9%;top:18%;width:74%;height:55%}
+  .r14-leng-metrics{left:9%;bottom:12%}
+
+  .journey-visual[data-stage="2"] .r14-focus-steps{
+    left:4%;top:7%;width:48%;
+  }
+  .r14-acc .r14-brand-lockup{right:3%;top:4%}
+  .r14-acc-surface{left:7%;top:23%;width:82%;height:44%}
+  .r14-acc-flow{left:3%;right:3%;top:31%;bottom:33%}
+  .r14-acc-automation{
+    left:6%;right:4%;bottom:11%;
+    min-height:72px;
+  }
+
+  .r14-bayes .r14-brand-lockup{right:3%;top:4%}
+  .journey-visual[data-stage="3"] .r14-focus-steps{
+    left:4%;top:7%;width:48%;
+  }
+  .r14-bayes-surface{left:7%;top:23%;width:82%;height:43%}
+  .r14-bayes-count{left:9%;top:30%}
+  .r14-bayes-dual{left:7%;right:4%;bottom:11%;gap:6px}
+  .r14-bayes-rail{min-height:58px;padding:7px 8px}
+  .r14-bayes-rail b{font-size:9px;margin:3px 0}
+  .r14-bayes-rail p{font-size:5.5px;line-height:1.3}
+}
+
+@media(max-width:420px){
+  .r14-ubc-notebook{width:42%;right:2%}
+  .r14-ubc-methods{top:43%}
+  .r14-acc-automation{bottom:10%}
+  .r14-bayes-dual{bottom:10%}
+}
+
+
+/* R14.1 pass 7 — keep Journey compass/star out of title and focus safe zones. */
+.r14-static-fix .journey-compass{
+  top:2.5%;
+  right:3.5%;
+  z-index:14;
+  flex-direction:row;
+  align-items:center;
+  gap:6px;
+  padding:5px 8px;
+  border:1px solid rgba(239,218,197,.14);
+  border-radius:999px;
+  background:rgba(29,42,54,.42);
+  backdrop-filter:blur(10px);
+  font-size:9px;
+  line-height:1;
+  letter-spacing:.08em;
+  white-space:nowrap;
+}
+.r14-static-fix .journey-compass span:first-child{
+  font-size:17px;
+  line-height:1;
+}
+.r14-brand-lockup{
+  max-width:calc(100% - 110px);
+  white-space:nowrap;
+}
+.r14-brand-lockup strong,
+.r14-brand-lockup small{
+  white-space:nowrap;
+}
+.journey-visual[data-stage="1"] .r14-focus-steps span,
+.journey-visual[data-stage="2"] .r14-focus-steps span,
+.journey-visual[data-stage="3"] .r14-focus-steps span{
+  max-width:calc(100% - 18px);
+}
+.r14-focus-steps b{
+  padding-right:14px;
+}
+
+@media(max-width:780px){
+  .r14-static-fix .journey-compass{
+    top:1.8%;
+    right:2.5%;
+    gap:4px;
+    padding:4px 6px;
+    font-size:7px;
+  }
+  .r14-static-fix .journey-compass span:first-child{font-size:13px}
+  .r14-brand-lockup{max-width:calc(100% - 78px)}
+  .r14-focus-steps b{padding-right:8px}
+}

@@ -1,0 +1,47 @@
+/* R7 · Journey experience detail pages
+   Reuses approved R6 type scale and editorial density, with a calmer experience-specific hero. */
+.r7-experience-page{background:#f5f2ed}
+.r7-hero{position:relative;overflow:hidden;background:linear-gradient(112deg,#314252 0%,#405365 56%,#65707a 100%);color:#fff4e8}
+.r7-hero:before{content:"";position:absolute;inset:auto -110px -260px auto;width:610px;height:610px;border-radius:50%;border:1px solid rgba(241,215,190,.18);box-shadow:0 0 0 85px rgba(245,224,202,.028),0 0 0 180px rgba(229,212,196,.023)}
+.r7-hero:after{content:"";position:absolute;left:42%;top:-90px;width:1px;height:520px;background:linear-gradient(180deg,transparent,rgba(240,215,190,.24),transparent);transform:rotate(31deg);transform-origin:center}
+.r7-hero-inner{width:min(1230px,calc(100% - 100px));margin:auto;padding:24px 0 39px;position:relative;z-index:1}
+.r7-hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(340px,.72fr);gap:45px;align-items:center}
+.r7-hero h1{font:400 clamp(38px,3.8vw,54px)/1.1 var(--type-display,Georgia,serif);letter-spacing:-.045em;margin:10px 0 10px}
+.r7-hero h2{font:650 clamp(17px,1.55vw,22px)/1.45 var(--type-ui,Arial,sans-serif);color:#f0ceb3;letter-spacing:-.018em;margin:0 0 11px}
+.r7-hero-grid>div:first-child>p{max-width:680px;margin:0;color:#e9e7e5;font-size:15px;line-height:1.72}
+.r7-hero-signal{position:relative;min-height:230px;border:1px solid rgba(247,230,211,.25);border-radius:18px;display:grid;place-items:center;background:radial-gradient(circle at 70% 40%,rgba(246,214,180,.11),transparent 58%),rgba(18,33,47,.16);overflow:hidden}
+.r7-hero-signal>div{position:relative;z-index:2;width:72%;padding:23px 24px;background:rgba(40,58,73,.72);border:1px solid rgba(238,210,184,.45);border-radius:14px;backdrop-filter:blur(8px)}
+.r7-hero-signal small{display:block;color:#e7c8ad;font-size:10px;font-weight:700;letter-spacing:.1em;margin-bottom:8px}
+.r7-hero-signal strong{display:block;font-size:20px;line-height:1.35;color:#fff0df;margin-bottom:9px}
+.r7-hero-signal p{font-size:13px;line-height:1.62;color:#e4e6e7;margin:0}
+.r7-orbit{position:absolute;width:116%;height:62%;border:1.5px solid rgba(239,205,175,.44);border-radius:50%;transform:rotate(-15deg)}
+.r7-orbit:after{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:#f4d1b1;right:12%;top:2%;box-shadow:0 0 16px rgba(244,209,177,.8)}
+.r7-snapshot .r5-snapshot-result strong{font-size:13px;line-height:1.48;color:#684f3e}
+.r7-related-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin-top:15px}
+.r7-related-card{display:block;border:1px solid #dfd4c8;background:#fbf8f3;border-radius:11px;padding:17px 18px;transition:transform .2s,border-color .2s,box-shadow .2s}
+.r7-related-card:hover{transform:translateY(-2px);border-color:#c4a78f;box-shadow:0 9px 24px rgba(61,50,42,.06)}
+.r7-related-card span{display:block;color:#95725a;font-size:10px;letter-spacing:.07em;font-weight:750;margin-bottom:8px}
+.r7-related-card strong{display:block;color:#2f4353;font-size:16px;line-height:1.4;margin-bottom:7px}
+.r7-related-card p{color:#596673;font-size:12.5px;line-height:1.62;margin:0 0 12px}
+.r7-related-card em{font-style:normal;color:#745d4c;font-size:11.5px;font-weight:700}
+.r7-related-empty{margin-top:14px;border:1px dashed #ccb9a8;border-radius:10px;padding:18px;color:#69717a;background:#f9f6f1;font-size:13px}
+.journey-detail-link{display:inline-flex;align-items:center;gap:8px;margin:4px 0 18px;color:#f1cfb0;border-bottom:1px solid rgba(239,205,175,.55);font-size:12px;font-weight:700;letter-spacing:.025em;padding-bottom:3px}
+.journey-detail-link:hover{color:#fff0df}
+@media(max-width:1024px){
+.r7-hero-inner{width:calc(100% - 60px)}
+.r7-hero-grid{grid-template-columns:minmax(0,1fr) minmax(285px,.68fr);gap:25px}
+.r7-related-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.r7-related-card:last-child:nth-child(odd){grid-column:1/-1}
+}
+@media(max-width:700px){
+.r7-hero-inner{width:calc(100% - 36px);padding:20px 0 27px}
+.r7-hero-grid{grid-template-columns:1fr;gap:18px}
+.r7-hero h1{font-size:clamp(32px,9vw,44px)}
+.r7-hero h2{font-size:18px}
+.r7-hero-grid>div:first-child>p{font-size:14px}
+.r7-hero-signal{min-height:175px}
+.r7-hero-signal>div{width:82%;padding:17px 18px}
+.r7-hero-signal strong{font-size:17px}
+.r7-related-grid{grid-template-columns:1fr}
+.r7-related-card:last-child:nth-child(odd){grid-column:auto}
+}

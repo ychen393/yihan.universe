@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 380">
+<defs><linearGradient id="amber" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0d9"/><stop offset=".45" stop-color="#d5a06f"/><stop offset="1" stop-color="#725341"/></linearGradient><filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="12"/></filter></defs>
+<circle cx="190" cy="190" r="112" fill="#d8a06d" opacity=".12" filter="url(#glow)"/>
+<polygon points="190,38 310,151 190,337 70,151" fill="url(#amber)" stroke="#ffe4c0" stroke-opacity=".72" stroke-width="2"/>
+<polygon points="190,38 190,190 310,151" fill="#fff4df" opacity=".22"/><polygon points="310,151 190,190 190,337" fill="#79553d" opacity=".19"/><polygon points="70,151 190,190 190,337" fill="#f5c99a" opacity=".13"/>
+<g fill="none" stroke="#ffebd0" stroke-opacity=".78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M112 145 H166 L190 190 L232 126 H270"/>
+ <path d="M190 190 L148 246 H106"/>
+ <path d="M190 190 L234 246 H273"/>
+ <path d="M259 116 L270 126 L259 136"/>
+ <path d="M116 235 L106 246 L116 257"/>
+ <path d="M262 235 L273 246 L262 257"/>
+</g>
+<g fill="#fff0d8" stroke="#986a48" stroke-width="2"><circle cx="112" cy="145" r="7"/><circle cx="270" cy="126" r="8"/><circle cx="106" cy="246" r="7"/><circle cx="273" cy="246" r="7"/><circle cx="190" cy="190" r="12"/></g>
+<ellipse cx="190" cy="190" rx="147" ry="42" fill="none" stroke="#f1c79d" stroke-opacity=".34" stroke-width="2" transform="rotate(-20 190 190)"/>
+</svg>

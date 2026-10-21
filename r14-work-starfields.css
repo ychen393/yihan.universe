@@ -1,0 +1,590 @@
+/* R14.1 Work Universe — asset-based cinematic galaxy
+   WORK UI ONLY.
+   Project data / IDs / grouping / order / hrefs / filters / case studies remain untouched. */
+
+/* ===== Header ===== */
+.r14-static-fix .work-section{
+  scroll-margin-top:80px;
+  position:relative;
+  overflow:hidden;
+  padding:72px clamp(28px,5vw,96px) 112px;
+  background:
+    radial-gradient(ellipse 30% 24% at 15% 39%,rgba(52,110,180,.10),transparent 72%),
+    radial-gradient(ellipse 30% 24% at 85% 39%,rgba(188,128,70,.09),transparent 72%),
+    radial-gradient(ellipse 30% 24% at 16% 81%,rgba(49,139,117,.08),transparent 72%),
+    radial-gradient(ellipse 30% 24% at 84% 81%,rgba(129,76,178,.09),transparent 72%),
+    linear-gradient(160deg,#0f2235 0%,#142a3e 48%,#112538 100%);
+}
+.r14-static-fix .work-section>.starfield{opacity:.72}
+.r14-static-fix .work-backdrop,
+.r14-static-fix .work-glow,
+.r14-static-fix .work-ring{pointer-events:none}
+.r14-static-fix .work-glow,.r14-static-fix .work-ring{display:none}
+
+.r14-static-fix .work-header{
+  max-width:1500px;
+  margin:0 auto;
+  display:block;
+  position:relative;
+  z-index:20;
+}
+.r14-static-fix .work-header>div{max-width:none}
+.r14-static-fix .work-title-row{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  flex-wrap:nowrap;
+}
+.r14-static-fix .work-title-row h2{
+  margin:12px 0 0;
+  max-width:none;
+  min-width:0;
+  font-size:clamp(45px,3.7vw,62px);
+  line-height:1.06;
+  letter-spacing:-.048em;
+}
+.r14-static-fix .work-count{
+  flex:none;
+  display:inline-flex;
+  flex-direction:row;
+  align-items:baseline;
+  gap:6px;
+  margin:13px 0 0;
+  padding:2px 0 2px 19px;
+  border-left:1px solid rgba(238,208,181,.34);
+  background:none;
+  border-radius:0;
+}
+.r14-static-fix .work-count strong{font:400 35px/1 var(--serif);color:#efc8a6}
+.r14-static-fix .work-count span{font-size:11px;color:#d2d8dc;white-space:nowrap}
+.r14-static-fix .work-header p:not(.eyebrow){
+  max-width:940px;
+  margin:15px 0 0;
+  color:#d4dbe0;
+  font-size:16px;
+  line-height:1.7;
+}
+.r14-static-fix .work-categories{
+  position:relative;
+  z-index:21;
+  display:flex;
+  justify-content:center;
+  gap:9px;
+  flex-wrap:wrap;
+  max-width:1500px;
+  margin:22px auto 14px;
+}
+.r14-static-fix .work-categories button{
+  padding:8px 15px;
+  border-radius:999px;
+  border:1px solid rgba(232,216,201,.22);
+  background:rgba(10,27,42,.34);
+  color:#e2e6e8;
+  font-size:10px;
+  cursor:pointer;
+  transition:transform .22s ease,border-color .22s ease,background .22s ease,color .22s ease;
+}
+.r14-static-fix .work-categories button:hover,
+.r14-static-fix .work-categories button:focus-visible{
+  transform:translateY(-1px);
+  border-color:rgba(244,207,174,.56);
+}
+.r14-static-fix .work-categories button[aria-pressed="true"]{
+  background:#e7c29f;border-color:#e7c29f;color:#172a3a;
+}
+
+/* ===== One coherent galaxy ===== */
+.r14-static-fix .constellation-map{
+  position:relative;
+  isolation:isolate;
+  width:100%;
+  max-width:1500px;
+  height:760px;
+  margin:0 auto;
+  overflow:hidden;
+}
+.r14-static-fix .constellation-map:before{
+  content:"";
+  position:absolute;
+  z-index:1;
+  pointer-events:none;
+  left:12%;
+  right:12%;
+  top:31%;
+  height:260px;
+  background:
+    url('/assets/work-galaxy-core.svg') center/100% 100% no-repeat,
+    radial-gradient(ellipse 40% 34% at 50% 50%,rgba(232,208,184,.07),transparent 72%);
+  opacity:.78;
+  filter:drop-shadow(0 0 24px rgba(186,205,220,.08));
+}
+.r14-static-fix .constellation-map:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  opacity:.76;
+  background-image:
+    radial-gradient(circle at 6% 16%,rgba(255,255,255,.85) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 16% 43%,rgba(243,215,187,.82) 0 1.2px,transparent 1.8px),
+    radial-gradient(circle at 28% 73%,rgba(188,218,233,.77) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 39% 23%,rgba(255,255,255,.79) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 52% 62%,rgba(242,211,181,.84) 0 1.2px,transparent 1.8px),
+    radial-gradient(circle at 64% 16%,rgba(204,227,238,.77) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 77% 52%,rgba(255,255,255,.77) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 91% 28%,rgba(240,206,177,.82) 0 1px,transparent 1.7px);
+  background-size:390px 390px;
+}
+.r14-static-fix .constellation-core,
+.r14-static-fix .constellation-links,
+.r14-static-fix .constellation-inspector{display:none}
+
+/* ===== Four nebula fields ===== */
+.r14-static-fix .cluster-branch{
+  position:absolute;
+  z-index:3;
+  width:47%;
+  height:322px;
+  min-height:0;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  backdrop-filter:none;
+  overflow:visible;
+  transition:opacity .26s ease,filter .26s ease;
+}
+.r14-static-fix .cluster-ai{
+  left:1%;top:0;
+  --cluster-color:#9bd9ff;
+  --nebula-a:rgba(43,111,195,.25);
+  --nebula-b:rgba(103,76,197,.15);
+}
+.r14-static-fix .cluster-enterprise{
+  right:1%;top:0;
+  --cluster-color:#f0c28f;
+  --nebula-a:rgba(201,132,70,.24);
+  --nebula-b:rgba(229,181,100,.13);
+}
+.r14-static-fix .cluster-data{
+  left:1%;bottom:0;
+  --cluster-color:#8ee2bf;
+  --nebula-a:rgba(45,140,116,.22);
+  --nebula-b:rgba(118,167,74,.11);
+}
+.r14-static-fix .cluster-creative{
+  right:1%;bottom:0;
+  --cluster-color:#d5a4ff;
+  --nebula-a:rgba(122,69,183,.25);
+  --nebula-b:rgba(74,93,203,.12);
+}
+.r14-static-fix .cluster-branch:before{
+  content:"";
+  position:absolute;
+  inset:2% -2% -1%;
+  z-index:0;
+  pointer-events:none;
+  opacity:1;
+  filter:blur(11px);
+  background:
+    radial-gradient(ellipse 58% 46% at 36% 48%,var(--nebula-a),transparent 72%),
+    radial-gradient(ellipse 48% 38% at 69% 51%,var(--nebula-b),transparent 76%),
+    radial-gradient(ellipse 20% 18% at 51% 34%,rgba(255,255,255,.035),transparent 74%);
+}
+.r14-static-fix .cluster-branch:after{
+  content:"";
+  position:absolute;
+  z-index:1;
+  pointer-events:none;
+  left:12%;
+  top:30%;
+  width:61%;
+  height:36%;
+  border:1px solid color-mix(in srgb,var(--cluster-color),transparent 86%);
+  border-radius:50%;
+  transform:rotate(-10deg);
+  opacity:.21;
+}
+.r14-static-fix .cluster-enterprise:after{left:23%;transform:rotate(10deg)}
+.r14-static-fix .cluster-data:after{left:10%;top:27%;transform:rotate(8deg)}
+.r14-static-fix .cluster-creative:after{left:24%;top:27%;transform:rotate(-9deg)}
+.r14-static-fix .cluster-branch[data-selected="false"]{opacity:.15;filter:saturate(.45)}
+.r14-static-fix .cluster-branch[data-selected="true"]{opacity:1;filter:none}
+.r14-static-fix .cluster-branch:hover,
+.r14-static-fix .cluster-branch:focus-within{transform:none;box-shadow:none}
+
+/* field labels */
+.r14-static-fix .cluster-heading{
+  position:absolute;
+  z-index:20;
+  left:2%;top:1%;
+  width:auto;max-width:none;padding:0;
+  display:flex;align-items:flex-start;gap:9px;
+  border:0;background:transparent;color:#f8efe7;text-align:left;cursor:pointer;
+}
+.r14-static-fix .cluster-enterprise .cluster-heading,
+.r14-static-fix .cluster-creative .cluster-heading{
+  left:auto;right:2%;text-align:right;flex-direction:row-reverse;
+}
+.r14-static-fix .cluster-heading:before{
+  content:"✦";
+  color:var(--cluster-color);
+  font-size:17px;line-height:1;margin-top:2px;
+  filter:drop-shadow(0 0 8px color-mix(in srgb,var(--cluster-color),transparent 33%));
+}
+.r14-static-fix .cluster-heading>span:first-child{
+  font-size:14px;line-height:1.2;letter-spacing:.035em;font-weight:760;white-space:nowrap;
+}
+.r14-static-fix .cluster-heading small{
+  display:block;margin-top:5px;max-width:210px;
+  color:color-mix(in srgb,var(--cluster-color),white 8%);
+  font-size:9px;line-height:1.42;font-weight:520;letter-spacing:.03em;white-space:normal;
+}
+.r14-static-fix .cluster-enterprise .cluster-heading small,
+.r14-static-fix .cluster-creative .cluster-heading small{margin-left:auto}
+.r14-static-fix .cluster-count{
+  padding:0;border:0;background:none;color:var(--cluster-color);
+  font-size:9px;line-height:1.4;opacity:.72;
+}
+
+/* ===== Existing clickable project anchors, new art layer ===== */
+.r14-static-fix .cluster-projects{position:absolute;inset:0;z-index:4}
+.r14-static-fix .cluster-project{
+  --art-size:62px;
+  --node-width:280px;
+  position:absolute;
+  z-index:5;
+  display:block;
+  width:var(--node-width);
+  height:max(var(--art-size),76px);
+  min-width:0;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:#f7efe8;
+  text-decoration:none;
+  overflow:visible;
+  transition:opacity .25s ease,filter .25s ease;
+}
+.r14-static-fix .cluster-project:before,
+.r14-static-fix .cluster-project:after{display:none}
+.r14-static-fix .project-art{
+  position:absolute;
+  left:0;
+  top:50%;
+  width:var(--art-size);
+  height:var(--art-size);
+  transform:translateY(-50%);
+  display:block;
+  border:0;
+  border-radius:0;
+  background-color:transparent;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:contain;
+  box-shadow:none;
+  transition:transform .34s cubic-bezier(.2,.72,.2,1),filter .3s ease;
+}
+.r14-static-fix .project-art:before,
+.r14-static-fix .project-art:after{display:none}
+.r14-static-fix .art-orbit,
+.r14-static-fix .art-satellite{display:none}
+.r14-static-fix .project-label{
+  position:absolute;
+  left:calc(var(--art-size) + 18px);
+  top:50%;
+  transform:translateY(-50%);
+  width:calc(var(--node-width) - var(--art-size) - 18px);
+}
+.r14-static-fix .project-label strong{
+  display:block;
+  color:#f9f2eb;
+  font-size:15px;
+  line-height:1.22;
+  font-weight:700;
+  letter-spacing:-.012em;
+  text-align:left;
+  text-shadow:0 2px 13px rgba(2,7,12,.58);
+  text-wrap:pretty;
+}
+.r14-static-fix .cluster-project em{display:none}
+
+/* right-side label geometry */
+.r14-static-fix .cluster-enterprise .project-art,
+.r14-static-fix .cluster-creative .project-art{left:auto;right:0}
+.r14-static-fix .cluster-enterprise .project-label,
+.r14-static-fix .cluster-creative .project-label{
+  left:0;
+  width:calc(var(--node-width) - var(--art-size) - 18px);
+}
+.r14-static-fix .cluster-enterprise .project-label strong,
+.r14-static-fix .cluster-creative .project-label strong{text-align:right}
+
+/* hierarchy */
+.r14-static-fix .cluster-project[data-project="agentlab"]{--art-size:178px;--node-width:405px;height:188px}
+.r14-static-fix .cluster-project[data-project="requirement"]{--art-size:188px;--node-width:455px;height:198px}
+.r14-static-fix .cluster-project[data-project="airbnb"]{--art-size:164px;--node-width:390px;height:174px}
+.r14-static-fix .cluster-project[data-project="character"]{--art-size:164px;--node-width:390px;height:174px}
+
+.r14-static-fix .cluster-project[data-project="benchmark"],
+.r14-static-fix .cluster-project[data-project="task-summary"],
+.r14-static-fix .cluster-project[data-project="sp500"],
+.r14-static-fix .cluster-project[data-project="liferpg"]{
+  --art-size:92px;--node-width:305px;height:102px;
+}
+.r14-static-fix .cluster-project[data-project="content-qa"],
+.r14-static-fix .cluster-project[data-project="dashboard"],
+.r14-static-fix .cluster-project[data-project="training"],
+.r14-static-fix .cluster-project[data-project="minecraft"],
+.r14-static-fix .cluster-project[data-project="deloitte"]{
+  --art-size:70px;--node-width:285px;height:82px;
+}
+.r14-static-fix .cluster-project[data-project="agentlab"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="requirement"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="airbnb"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="character"] .project-label strong{
+  font-size:21px;line-height:1.14;font-weight:760;
+}
+.r14-static-fix .cluster-project[data-project="benchmark"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="task-summary"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="sp500"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="liferpg"] .project-label strong{font-size:17px}
+.r14-static-fix .cluster-project[data-project="content-qa"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="dashboard"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="training"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="minecraft"] .project-label strong,
+.r14-static-fix .cluster-project[data-project="deloitte"] .project-label strong{font-size:15px}
+
+/* actual celestial assets */
+.r14-static-fix .cluster-project[data-project="agentlab"] .project-art{background-image:url('/assets/work-agentlab.svg')}
+.r14-static-fix .cluster-project[data-project="benchmark"] .project-art{background-image:url('/assets/work-benchmark.svg')}
+.r14-static-fix .cluster-project[data-project="content-qa"] .project-art{background-image:url('/assets/work-content-review.svg')}
+.r14-static-fix .cluster-project[data-project="requirement"] .project-art{background-image:url('/assets/work-requirement.svg')}
+.r14-static-fix .cluster-project[data-project="task-summary"] .project-art{background-image:url('/assets/work-task-summary.svg')}
+.r14-static-fix .cluster-project[data-project="dashboard"] .project-art{background-image:url('/assets/work-dashboard.svg')}
+.r14-static-fix .cluster-project[data-project="training"] .project-art{background-image:url('/assets/work-training.svg')}
+.r14-static-fix .cluster-project[data-project="airbnb"] .project-art{background-image:url('/assets/work-airbnb.svg')}
+.r14-static-fix .cluster-project[data-project="sp500"] .project-art{background-image:url('/assets/work-sp500.svg')}
+.r14-static-fix .cluster-project[data-project="minecraft"] .project-art{background-image:url('/assets/work-player-retention.svg')}
+.r14-static-fix .cluster-project[data-project="deloitte"] .project-art{background-image:url('/assets/work-deloitte.svg')}
+.r14-static-fix .cluster-project[data-project="character"] .project-art{background-image:url('/assets/work-character.svg')}
+.r14-static-fix .cluster-project[data-project="liferpg"] .project-art{background-image:url('/assets/work-life-rpg.svg')}
+
+/* 2×2 placement */
+.r14-static-fix .cluster-ai .cluster-project:nth-child(1){left:3%;top:26%}
+.r14-static-fix .cluster-ai .cluster-project:nth-child(2){left:59%;top:8%}
+.r14-static-fix .cluster-ai .cluster-project:nth-child(3){left:63%;top:65%}
+
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(1){right:0%;top:13%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(2){right:65%;top:3%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(3){right:67%;top:61%}
+.r14-static-fix .cluster-enterprise .cluster-project:nth-child(4){right:31%;top:76%}
+
+.r14-static-fix .cluster-data .cluster-project:nth-child(1){left:3%;top:20%}
+.r14-static-fix .cluster-data .cluster-project:nth-child(2){left:57%;top:7%}
+.r14-static-fix .cluster-data .cluster-project:nth-child(3){left:63%;top:57%}
+.r14-static-fix .cluster-data .cluster-project:nth-child(4){left:19%;top:70%}
+
+.r14-static-fix .cluster-creative .cluster-project:nth-child(1){right:3%;top:20%}
+.r14-static-fix .cluster-creative .cluster-project:nth-child(2){right:57%;top:58%}
+
+/* hover focus */
+@media(hover:hover){
+  .r14-static-fix .cluster-branch:has(.cluster-project:hover) .cluster-project:not(:hover),
+  .r14-static-fix .cluster-branch:has(.cluster-project:focus-visible) .cluster-project:not(:focus-visible){
+    opacity:.28;
+    filter:saturate(.5);
+  }
+}
+.r14-static-fix .cluster-project:hover .project-art,
+.r14-static-fix .cluster-project:focus-visible .project-art{
+  transform:translateY(-50%) scale(1.055);
+  filter:brightness(1.09) drop-shadow(0 0 14px color-mix(in srgb,var(--cluster-color),transparent 60%));
+}
+.r14-static-fix .cluster-project:hover .project-label strong,
+.r14-static-fix .cluster-project:focus-visible .project-label strong{color:#fff}
+
+/* responsive */
+@media(min-width:1280px){
+  .r14-static-fix .work-title-row h2{white-space:nowrap}
+}
+@media(max-width:1180px){
+  .r14-static-fix .work-title-row{flex-wrap:wrap}
+  .r14-static-fix .work-title-row h2{font-size:clamp(44px,5.2vw,60px)}
+  .r14-static-fix .constellation-map{height:auto;min-height:1260px;overflow:visible}
+  .r14-static-fix .constellation-map:before{left:8%;right:8%;top:43%;height:220px;opacity:.52}
+  .r14-static-fix .cluster-branch{
+    position:relative;top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;
+    width:100%;height:280px;margin:22px 0 0;
+  }
+  .r14-static-fix .cluster-heading,
+  .r14-static-fix .cluster-enterprise .cluster-heading,
+  .r14-static-fix .cluster-creative .cluster-heading{
+    left:2%;right:auto;text-align:left;flex-direction:row;
+  }
+  .r14-static-fix .cluster-enterprise .cluster-heading small,
+  .r14-static-fix .cluster-creative .cluster-heading small{margin-left:0}
+  .r14-static-fix .cluster-enterprise .project-art,
+  .r14-static-fix .cluster-creative .project-art{left:0;right:auto}
+  .r14-static-fix .cluster-enterprise .project-label,
+  .r14-static-fix .cluster-creative .project-label{
+    left:calc(var(--art-size) + 18px);
+    width:calc(var(--node-width) - var(--art-size) - 18px);
+  }
+  .r14-static-fix .cluster-enterprise .project-label strong,
+  .r14-static-fix .cluster-creative .project-label strong{text-align:left}
+}
+@media(max-width:720px){
+  .r14-static-fix .work-section{padding:60px 18px 92px}
+  .r14-static-fix .work-title-row{display:block}
+  .r14-static-fix .work-title-row h2{font-size:clamp(40px,12.4vw,56px);line-height:1.08}
+  .r14-static-fix .work-count{margin-top:12px;padding-left:0;border-left:0}
+  .r14-static-fix .work-header p:not(.eyebrow){font-size:14px}
+  .r14-static-fix .work-categories{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding-bottom:8px}
+  .r14-static-fix .constellation-map{min-height:1150px}
+  .r14-static-fix .constellation-map:before{opacity:.34}
+  .r14-static-fix .cluster-branch{height:248px}
+  .r14-static-fix .cluster-heading>span:first-child{font-size:12px}
+
+  .r14-static-fix .cluster-project{--art-size:46px;--node-width:190px}
+  .r14-static-fix .project-label{left:calc(var(--art-size) + 11px);width:calc(var(--node-width) - var(--art-size) - 11px)}
+  .r14-static-fix .project-label strong{font-size:11px}
+  .r14-static-fix .cluster-project[data-project="agentlab"],
+  .r14-static-fix .cluster-project[data-project="requirement"],
+  .r14-static-fix .cluster-project[data-project="airbnb"],
+  .r14-static-fix .cluster-project[data-project="character"]{
+    --art-size:94px;--node-width:235px;height:104px;
+  }
+  .r14-static-fix .cluster-project[data-project="agentlab"] .project-label strong,
+  .r14-static-fix .cluster-project[data-project="requirement"] .project-label strong,
+  .r14-static-fix .cluster-project[data-project="airbnb"] .project-label strong,
+  .r14-static-fix .cluster-project[data-project="character"] .project-label strong{font-size:14px}
+  .r14-static-fix .cluster-project[data-project="benchmark"],
+  .r14-static-fix .cluster-project[data-project="task-summary"],
+  .r14-static-fix .cluster-project[data-project="sp500"],
+  .r14-static-fix .cluster-project[data-project="liferpg"]{
+    --art-size:62px;--node-width:205px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .r14-static-fix .cluster-project,
+  .r14-static-fix .project-art,
+  .r14-static-fix .project-label strong,
+  .r14-static-fix .work-categories button{transition:none!important}
+}
+/* Enterprise collision repair: preserve project identity, only re-space UI. */
+.r14-static-fix .cluster-enterprise .cluster-project[data-project="requirement"]{
+  --art-size:176px;
+  --node-width:430px;
+}
+.r14-static-fix .cluster-enterprise .cluster-project[data-project="task-summary"]{
+  --node-width:300px;
+}
+.r14-static-fix .cluster-enterprise .cluster-project[data-project="dashboard"]{
+  --node-width:255px;
+}
+.r14-static-fix .cluster-enterprise .cluster-project[data-project="training"]{
+  --node-width:270px;
+}
+.r14-static-fix .cluster-enterprise .cluster-project[data-project="training"] .project-label strong,
+.r14-static-fix .cluster-enterprise .cluster-project[data-project="dashboard"] .project-label strong{
+  line-height:1.18;
+}
+
+
+/* R14.1 pass 8 — celestial material refinement.
+   Keep layout/grouping/navigation untouched; only unify atmosphere, light and asset presence. */
+.r14-static-fix .cluster-branch:before{
+  filter:blur(16px);
+  opacity:.82;
+}
+.r14-static-fix .cluster-branch:after{opacity:.14}
+
+.r14-static-fix .project-art{
+  filter:
+    drop-shadow(0 10px 18px rgba(2,8,14,.28))
+    drop-shadow(0 0 14px color-mix(in srgb,var(--cluster-color),transparent 72%));
+  transform:translateY(-50%) translateZ(0);
+}
+.r14-static-fix .cluster-project:hover .project-art,
+.r14-static-fix .cluster-project:focus-visible .project-art{
+  transform:translateY(-50%) scale(1.035);
+  filter:
+    drop-shadow(0 13px 23px rgba(2,8,14,.34))
+    drop-shadow(0 0 22px color-mix(in srgb,var(--cluster-color),transparent 58%));
+}
+.r14-static-fix .cluster-project[data-project="agentlab"],
+.r14-static-fix .cluster-project[data-project="requirement"],
+.r14-static-fix .cluster-project[data-project="airbnb"],
+.r14-static-fix .cluster-project[data-project="character"]{
+  isolation:isolate;
+}
+.r14-static-fix .cluster-project[data-project="agentlab"]:before,
+.r14-static-fix .cluster-project[data-project="requirement"]:before,
+.r14-static-fix .cluster-project[data-project="airbnb"]:before,
+.r14-static-fix .cluster-project[data-project="character"]:before{
+  content:"";
+  display:block;
+  position:absolute;
+  z-index:-1;
+  left:-26px;
+  top:50%;
+  width:calc(var(--art-size) + 52px);
+  height:calc(var(--art-size) + 52px);
+  transform:translateY(-50%);
+  border-radius:50%;
+  pointer-events:none;
+  opacity:.42;
+  background:
+    radial-gradient(circle at 48% 50%,
+      color-mix(in srgb,var(--cluster-color),transparent 74%) 0%,
+      color-mix(in srgb,var(--cluster-color),transparent 91%) 48%,
+      transparent 72%);
+  filter:blur(11px);
+}
+.r14-static-fix .cluster-enterprise .cluster-project[data-project="requirement"]:before,
+.r14-static-fix .cluster-creative .cluster-project[data-project="character"]:before{
+  left:auto;
+  right:-26px;
+}
+.r14-static-fix .cluster-project[data-project="benchmark"] .project-art,
+.r14-static-fix .cluster-project[data-project="task-summary"] .project-art,
+.r14-static-fix .cluster-project[data-project="sp500"] .project-art,
+.r14-static-fix .cluster-project[data-project="liferpg"] .project-art{
+  opacity:.94;
+  filter:
+    drop-shadow(0 8px 14px rgba(2,8,14,.24))
+    drop-shadow(0 0 11px color-mix(in srgb,var(--cluster-color),transparent 78%));
+}
+.r14-static-fix .cluster-project[data-project="content-qa"] .project-art,
+.r14-static-fix .cluster-project[data-project="dashboard"] .project-art,
+.r14-static-fix .cluster-project[data-project="training"] .project-art,
+.r14-static-fix .cluster-project[data-project="minecraft"] .project-art,
+.r14-static-fix .cluster-project[data-project="deloitte"] .project-art{
+  opacity:.88;
+  filter:
+    saturate(.86)
+    drop-shadow(0 6px 11px rgba(2,8,14,.22))
+    drop-shadow(0 0 8px color-mix(in srgb,var(--cluster-color),transparent 82%));
+}
+.r14-static-fix .project-label strong{
+  text-shadow:0 3px 16px rgba(2,7,12,.68);
+}
+@media(max-width:780px){
+  .r14-static-fix .cluster-project[data-project="agentlab"]:before,
+  .r14-static-fix .cluster-project[data-project="requirement"]:before,
+  .r14-static-fix .cluster-project[data-project="airbnb"]:before,
+  .r14-static-fix .cluster-project[data-project="character"]:before{
+    width:calc(var(--art-size) + 28px);
+    height:calc(var(--art-size) + 28px);
+    left:-14px;
+    filter:blur(8px);
+    opacity:.34;
+  }
+  .r14-static-fix .cluster-enterprise .cluster-project[data-project="requirement"]:before,
+  .r14-static-fix .cluster-creative .cluster-project[data-project="character"]:before{
+    left:auto;right:-14px;
+  }
+}

@@ -1,0 +1,69 @@
+/* R10 · Recruiter-ready Resume */
+.r10-resume-page{background:#f4f0e9;color:#283a49;min-height:100vh}
+.r10-shell{width:min(1180px,calc(100% - 80px));margin:0 auto}
+.r10-hero{background:linear-gradient(115deg,#304151,#425665 62%,#5b6874);color:#f8efe5}
+.r10-hero .r10-shell{padding:28px 0 42px}
+.r10-back{display:inline-block;color:#ead2bb;font-size:12px;border-bottom:1px solid rgba(235,210,185,.55);margin-bottom:28px}
+.r10-hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(260px,.55fr);gap:54px;align-items:end}
+.r10-kicker{display:block;font-size:10px;letter-spacing:.12em;color:#e4c6ad;font-weight:750;margin-bottom:12px}
+.r10-hero h1{font:400 clamp(40px,4vw,58px)/1.06 var(--type-display,Georgia,serif);letter-spacing:-.045em;margin:0 0 10px;color:#fff2e4}
+.r10-hero h2{font:650 clamp(17px,1.7vw,22px)/1.4 var(--type-ui,Arial,sans-serif);color:#efceb2;margin:0 0 12px}
+.r10-hero p{max-width:720px;font-size:15px;line-height:1.72;color:#e5e4e2;margin:0}
+.r10-contact-card{border:1px solid rgba(240,218,196,.35);border-radius:14px;padding:19px 20px;background:rgba(22,38,52,.18)}
+.r10-contact-card small{display:block;color:#d8b99e;font-size:10px;letter-spacing:.09em;font-weight:750;margin-bottom:12px}
+.r10-contact-card a{display:block;color:#f7eee5;font-size:13px;line-height:1.5;padding:8px 0;border-top:1px solid rgba(237,222,207,.16)}
+.r10-content{padding:10px 0 55px}
+.r10-section{display:grid;grid-template-columns:160px minmax(0,1fr);gap:30px;padding:34px 0;border-bottom:1px solid #ddd5cb}
+.r10-side{display:flex;gap:12px;align-items:flex-start;padding-top:4px;color:#8d6e58}
+.r10-side span{font-size:10px;font-weight:800;letter-spacing:.08em}
+.r10-side strong{font-size:12px;line-height:1.45;letter-spacing:.03em}
+.r10-main{min-width:0}
+.r10-education,.r10-exp-head{display:flex;justify-content:space-between;gap:24px;align-items:flex-start}
+.r10-education h3,.r10-experience h3,.r10-project h3{margin:0;color:#2a3f50;font-size:18px;line-height:1.4}
+.r10-education p,.r10-experience p{margin:5px 0 0;color:#586571;font-size:14px}
+.r10-muted{font-size:12px!important;color:#7a7d80!important}
+.r10-education time,.r10-exp-head time{white-space:nowrap;color:#7c6b5c;font-size:12px;font-weight:650}
+.r10-experience-list{display:grid;gap:22px}
+.r10-experience{padding-bottom:22px;border-bottom:1px solid #e3dbd2}
+.r10-experience:last-child{border-bottom:0;padding-bottom:0}
+.r10-experience ul{margin:13px 0 12px;padding-left:20px;display:grid;gap:6px}
+.r10-experience li{color:#465664;font-size:13.5px;line-height:1.65}
+.r10-experience>a{font-size:12px;color:#7c5f4b;font-weight:700}
+.r10-project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.r10-project{display:block;border:1px solid #dfd4c8;background:#fbf8f3;border-radius:11px;padding:18px 19px;transition:transform .2s,border-color .2s,box-shadow .2s}
+.r10-project:hover{transform:translateY(-2px);border-color:#bfa48d;box-shadow:0 8px 22px rgba(61,50,42,.055)}
+.r10-project small{display:block;font-size:9.5px;color:#99765f;letter-spacing:.08em;font-weight:750;margin-bottom:8px}
+.r10-project p{color:#596673;font-size:13px;line-height:1.62;margin:8px 0 14px}
+.r10-project span{color:#725a48;font-size:11.5px;font-weight:700}
+.r10-skills{display:flex;flex-wrap:wrap;gap:8px}
+.r10-skills span{border:1px solid #d5c8bb;background:#faf7f2;border-radius:999px;padding:8px 12px;font-size:12px;color:#40515f}
+.r10-final{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;padding:38px 0 10px}
+.r10-final small{display:block;font-size:10px;color:#91715a;font-weight:750;letter-spacing:.08em;margin-bottom:8px}
+.r10-final h2{max-width:720px;font-size:26px;line-height:1.4;letter-spacing:-.025em;margin:0;color:#2a3f50}
+.r10-final>div:last-child{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.r10-primary,.r10-secondary{display:inline-block;border-radius:999px;padding:10px 15px;font-size:12px;font-weight:700}
+.r10-primary{background:#31495d;color:#fff5ea}
+.r10-secondary{border:1px solid #bfae9e;color:#435666}
+.resume-link{cursor:pointer;text-decoration:none}
+.resume-link:hover{color:#f1c99f}
+.r10-contact-inline{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.r10-contact-inline a{font-size:12px;color:#eed7c1;border-bottom:1px solid rgba(235,207,181,.45)}
+@media(max-width:850px){
+.r10-shell{width:calc(100% - 52px)}
+.r10-hero-grid{grid-template-columns:1fr;gap:24px}
+.r10-contact-card{max-width:420px}
+.r10-section{grid-template-columns:120px minmax(0,1fr);gap:18px}
+.r10-project-grid{grid-template-columns:1fr}
+.r10-final{display:block}
+.r10-final>div:last-child{justify-content:flex-start;margin-top:18px}
+}
+@media(max-width:620px){
+.r10-shell{width:calc(100% - 34px)}
+.r10-hero .r10-shell{padding:22px 0 30px}
+.r10-section{display:block;padding:25px 0}
+.r10-side{padding:0 0 13px}
+.r10-education,.r10-exp-head{display:block}
+.r10-education time,.r10-exp-head time{display:block;margin-top:6px}
+.r10-experience ul{padding-left:18px}
+.r10-final h2{font-size:22px}
+}

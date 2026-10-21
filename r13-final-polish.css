@@ -1,0 +1,358 @@
+/* R13 · Final UI Polish
+   Interaction consistency, recruiter scanability, motion, and mobile ergonomics.
+   Loaded last; does not rewrite approved content or typography. */
+
+:root{
+  --r13-ease:cubic-bezier(.2,.72,.22,1);
+  --r13-hair:rgba(230,211,194,.28);
+}
+
+/* Header orientation */
+.header{
+  transition:background-color .28s var(--r13-ease),border-color .28s var(--r13-ease),box-shadow .28s var(--r13-ease);
+}
+.header.r13-scrolled{
+  background:rgba(27,39,52,.985);
+  border-bottom-color:rgba(236,215,198,.32);
+  box-shadow:0 12px 32px rgba(7,16,26,.18);
+}
+.site-nav a{
+  position:relative;
+  transition:color .2s var(--r13-ease),opacity .2s var(--r13-ease);
+}
+.site-nav a:not(.active):not(.r13-current):after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:100%;
+  bottom:-10px;
+  height:1px;
+  background:#ecc8a6;
+  transition:right .24s var(--r13-ease);
+}
+.site-nav a:hover:after,
+.site-nav a:focus-visible:after{
+  right:0;
+}
+.site-nav a.r13-current{
+  color:#f3ccaa;
+}
+.site-nav a.r13-current:after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-10px;
+  height:1px;
+  background:#e9c39f;
+}
+.nav-resume-mobile{display:none}
+
+/* Buttons and controls */
+.button,
+.work-categories button,
+.evidence-tabs button,
+.confirmation button,
+.languages button,
+.node{
+  transition:
+    transform .2s var(--r13-ease),
+    background-color .2s var(--r13-ease),
+    border-color .2s var(--r13-ease),
+    color .2s var(--r13-ease),
+    box-shadow .2s var(--r13-ease);
+}
+.button:active,
+.work-categories button:active,
+.evidence-tabs button:active,
+.confirmation button:active,
+.node:active{
+  transform:translateY(1px) scale(.985);
+}
+.work-categories button:hover,
+.work-categories button:focus-visible{
+  border-color:rgba(244,207,173,.9);
+  background:rgba(237,205,176,.12);
+}
+.work-categories button[aria-pressed=true]{
+  box-shadow:0 8px 24px rgba(8,18,29,.12);
+}
+.languages button:hover:not(.selected){
+  color:#fff2e6;
+  background:rgba(255,255,255,.05);
+}
+
+/* Work cards: stronger scan hierarchy, still restrained. */
+.planet-card{
+  transform-origin:50% 70%;
+  will-change:transform;
+}
+.planet-card .planet-text strong,
+.planet-card .planet-text em{
+  transition:color .22s var(--r13-ease),transform .22s var(--r13-ease);
+}
+.planet-card .planet-text em{
+  display:inline-flex;
+  align-items:center;
+  width:max-content;
+}
+.planet-card:hover .planet-text strong,
+.planet-card:focus-visible .planet-text strong{
+  color:#fff2e5;
+}
+.planet-card:hover .planet-text em,
+.planet-card:focus-visible .planet-text em{
+  color:#ffe0c2;
+  transform:translateX(4px);
+}
+.planet-card:focus-visible{
+  border-color:var(--tone);
+  box-shadow:0 0 0 3px rgba(248,216,172,.18),0 24px 50px rgba(6,16,30,.24);
+}
+
+/* Journey CTA should read as an action, not a footnote. */
+.journey-detail-link{
+  min-height:38px;
+  padding:7px 11px;
+  border:1px solid rgba(239,205,175,.38);
+  border-radius:999px;
+  background:rgba(24,39,53,.2);
+  text-decoration:none;
+  transition:transform .2s var(--r13-ease),background .2s var(--r13-ease),border-color .2s var(--r13-ease),color .2s var(--r13-ease);
+}
+.journey-detail-link:hover,
+.journey-detail-link:focus-visible{
+  transform:translateY(-1px);
+  background:rgba(238,205,174,.09);
+  border-color:rgba(245,214,186,.7);
+}
+
+/* Detail-page orientation */
+.r5-local-nav{
+  scrollbar-width:none;
+}
+.r5-local-nav::-webkit-scrollbar{display:none}
+.r5-local-nav a{
+  position:relative;
+  transition:color .2s var(--r13-ease),background .2s var(--r13-ease);
+}
+.r5-local-nav a.r13-current{
+  color:#815b40!important;
+  font-weight:750;
+}
+.r5-local-nav a.r13-current:after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-12px;
+  height:2px;
+  border-radius:2px;
+  background:#b68a68;
+}
+.r5-process li,
+.r5-fact-grid article,
+.r7-related-card,
+.r10-project,
+.r9-next-link{
+  transition:
+    transform .22s var(--r13-ease),
+    border-color .22s var(--r13-ease),
+    box-shadow .22s var(--r13-ease),
+    background-color .22s var(--r13-ease);
+}
+@media(hover:hover){
+  .r5-process li:hover,
+  .r5-fact-grid article:hover{
+    transform:translateY(-2px);
+    border-color:#d1b9a5;
+    box-shadow:0 10px 24px rgba(70,54,42,.05);
+  }
+  .r7-related-card:hover,
+  .r10-project:hover,
+  .r9-next-link:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 30px rgba(61,50,42,.075);
+  }
+}
+
+/* Page entry + scroll reveal */
+#app.r13-mounted>main{
+  animation:r13PageIn .38s var(--r13-ease) both;
+}
+@keyframes r13PageIn{
+  from{opacity:.72;transform:translateY(5px)}
+  to{opacity:1;transform:none}
+}
+.r13-reveal{
+  opacity:0;
+  transform:translateY(18px);
+  transition:
+    opacity .56s var(--r13-ease) var(--r13-delay,0ms),
+    transform .56s var(--r13-ease) var(--r13-delay,0ms);
+}
+.r13-reveal.r13-visible{
+  opacity:1;
+  transform:none;
+}
+
+/* Resume/contact: make actions unmistakably interactive. */
+.r10-contact-card a,
+.r10-primary,
+.r10-secondary,
+.resume-link{
+  transition:color .2s var(--r13-ease),background .2s var(--r13-ease),border-color .2s var(--r13-ease),transform .2s var(--r13-ease);
+}
+.r10-contact-card a:hover,
+.r10-contact-card a:focus-visible{
+  color:#ffd9b8;
+  transform:translateX(3px);
+}
+.r10-primary:hover,
+.r10-primary:focus-visible{
+  transform:translateY(-2px);
+  background:#263f53;
+}
+.r10-secondary:hover,
+.r10-secondary:focus-visible{
+  transform:translateY(-2px);
+  border-color:#95735b;
+  background:#faf6f0;
+}
+
+/* Footer links stay visibly actionable. */
+.footer a{
+  transition:color .2s var(--r13-ease),transform .2s var(--r13-ease);
+}
+.footer a:hover,
+.footer a:focus-visible{
+  color:#ffe0c0;
+  transform:translateX(3px);
+}
+
+/* Tablet/mobile ergonomics */
+@media(max-width:780px){
+  body.r13-menu-open{overflow:hidden}
+  .site-nav{
+    z-index:120;
+    padding:15px 20px 20px;
+    gap:4px;
+    align-items:stretch;
+    background:rgba(31,45,59,.985);
+    backdrop-filter:blur(22px);
+    box-shadow:0 20px 40px rgba(7,15,25,.28);
+  }
+  .site-nav.open{display:flex}
+  .site-nav a{
+    width:100%;
+    min-height:46px;
+    display:flex;
+    align-items:center;
+    padding:10px 12px;
+    border-radius:10px;
+    letter-spacing:.06em;
+  }
+  .site-nav a:hover,
+  .site-nav a:focus-visible,
+  .site-nav a.r13-current{
+    background:rgba(239,207,177,.08);
+  }
+  .site-nav a:after{display:none!important}
+  .nav-resume-mobile{
+    display:flex!important;
+    color:#f0caa8!important;
+    margin-top:5px;
+    border-top:1px solid rgba(235,214,195,.16);
+    border-radius:0!important;
+    padding-top:14px!important;
+  }
+  .menu-toggle{
+    position:relative;
+    z-index:125;
+    font-size:20px;
+    line-height:1;
+    transition:background .2s,border-color .2s,transform .2s;
+  }
+  .menu-toggle[aria-expanded=true]{
+    background:rgba(239,205,175,.12);
+    border-color:rgba(246,218,190,.62);
+    transform:rotate(90deg);
+  }
+
+  .work-categories{
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    overscroll-behavior-x:contain;
+    scroll-snap-type:x proximity;
+    scrollbar-width:none;
+    padding:3px 1px 8px;
+    margin-right:-23px;
+  }
+  .work-categories::-webkit-scrollbar{display:none}
+  .work-categories button{
+    flex:0 0 auto;
+    scroll-snap-align:start;
+    min-height:42px;
+  }
+  .planet-card:hover{transform:none}
+  .planet-card:active{
+    transform:scale(.992);
+    border-color:var(--tone);
+  }
+  .journey-detail-link{
+    min-height:42px;
+    padding:9px 13px;
+    margin-top:2px;
+  }
+  .r5-local-nav{
+    gap:17px;
+    scroll-snap-type:x proximity;
+    padding-left:20px!important;
+    padding-right:20px!important;
+  }
+  .r5-local-nav a{
+    flex:0 0 auto;
+    scroll-snap-align:start;
+    min-height:35px;
+    display:flex;
+    align-items:center;
+  }
+  .r5-local-nav a.r13-current:after{bottom:-8px}
+  .r10-contact-card a{min-height:44px;display:flex;align-items:center}
+}
+
+@media(max-width:520px){
+  .hero-ctas{
+    width:100%;
+    gap:9px;
+  }
+  .hero-ctas .button{
+    flex:1 1 150px;
+    min-height:48px;
+    padding-left:14px;
+    padding-right:14px;
+  }
+  .planet-card{
+    align-items:flex-start;
+    padding:22px 19px;
+  }
+  .planet-illustration{
+    width:68px;
+    height:68px;
+  }
+  .planet-text{gap:7px}
+  .planet-text strong{font-size:21px}
+  .planet-text>span:not(.planet-category){font-size:13px;line-height:1.6}
+  .work-categories{margin-left:-1px}
+  .r9-footer-actions{width:100%}
+  .r9-back-link{width:max-content}
+}
+
+/* Keep motion accessible. */
+@media(prefers-reduced-motion:reduce){
+  #app.r13-mounted>main{animation:none!important}
+  .r13-reveal{opacity:1!important;transform:none!important;transition:none!important}
+  .planet-card,.planet-illustration,.button,.r5-process li,.r5-fact-grid article,.r7-related-card,.r10-project,.r9-next-link{
+    transition:none!important;
+  }
+}
