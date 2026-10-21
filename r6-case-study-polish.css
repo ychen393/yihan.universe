@@ -152,3 +152,57 @@ body:has(.r5-case-page) .footer a{color:#36516a}
 @media(prefers-reduced-motion:reduce){
 .r5-case-page *{scroll-behavior:auto!important;animation:none!important;transition:none!important}
 }
+
+
+/* R15.2 — shared CTA alignment audit across all 13 case studies.
+   Keep the primary action, optional demo action, and source action on one top edge.
+   Normalize button geometry so font/line-height differences cannot create visual drift. */
+.r5-hero-actions{
+  display:flex;
+  align-items:flex-start;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.r5-hero-actions > .r5-pill,
+.r5-hero-actions > .r5-link,
+.r5-hero-actions > .r5-source-unavailable,
+.r5-hero-actions .r5-demo-link{
+  box-sizing:border-box;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:40px;
+  margin:0;
+  padding:9px 15px;
+  line-height:1.2;
+  vertical-align:top;
+}
+.r5-hero-actions .r5-demo-action{
+  align-self:flex-start;
+  flex:0 1 245px;
+  min-width:0;
+  max-width:245px;
+  margin:0;
+}
+.r5-hero-actions .r5-demo-link{
+  max-width:100%;
+  white-space:nowrap;
+  text-align:center;
+}
+.r5-hero-actions .r5-demo-action small{
+  display:block;
+  width:100%;
+  max-width:245px;
+  margin:5px 0 0;
+  line-height:1.45;
+}
+@media(max-width:760px){
+  .r5-hero-actions .r5-demo-action{
+    flex:0 0 100%;
+    width:100%;
+    max-width:310px;
+  }
+  .r5-hero-actions .r5-demo-action small{
+    max-width:310px;
+  }
+}
