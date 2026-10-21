@@ -18,8 +18,9 @@ body.r14-linked-case{background:var(--r5-paper,#f4efe8)}
   min-height:64vh;
   margin:0;
   padding:68px 0 72px;
-  grid-template-columns:145px minmax(0,1fr);
-  gap:25px;
+  /* Bring the narrative closer to the section marker; keep a clear gutter. */
+  grid-template-columns:112px minmax(0,1fr);
+  gap:18px;
   transition:opacity .35s ease,filter .35s ease;
 }
 .r14-linked-copy .r5-section:not(.r14-active-section){
