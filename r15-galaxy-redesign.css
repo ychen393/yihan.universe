@@ -212,3 +212,24 @@ html[lang="en"] .r14-static-fix .cluster-project[data-project="liferpg"] .projec
   .r14-static-fix .project-art,
   .r14-static-fix .project-label strong{transition:none!important}
 }
+
+/* R15.1 — keep all constellation subtitles on one line. */
+.r14-static-fix .cluster-heading small{
+  display:block;
+  max-width:none;
+  width:max-content;
+  white-space:nowrap;
+  line-height:1.25;
+}
+.r14-static-fix .cluster-enterprise .cluster-heading small,
+.r14-static-fix .cluster-creative .cluster-heading small{
+  margin-left:auto;
+}
+@media(max-width:720px){
+  .r14-static-fix .cluster-heading small{
+    max-width:none;
+    width:max-content;
+    white-space:nowrap;
+    font-size:7.5px;
+  }
+}
