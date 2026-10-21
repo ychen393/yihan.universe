@@ -6,8 +6,8 @@ const COPY={"zh":{"section":["背景","我的工作","方法","结果与证据",
 const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const section=(id,eyebrow,title,content)=>'<section class="r5-section" id="'+id+'"><div class="r5-section-marker"><span>'+eyebrow+'</span><span class="r5-marker-line"></span></div><div class="r5-section-body"><h2>'+title+'</h2>'+content+'</div></section>';
 const DEMO_LINKS={
- agentlab:{url:"https://agentlab-harness-optimizer.vercel.app",zh:"打开 AgentLab 交互沙盒 ↗",en:"Try the AgentLab sandbox ↗",noteZh:"确定性 Commerce Agent；不调用外部 LLM。",noteEn:"Deterministic Commerce Agent; no external LLM calls."},
- "content-qa":{url:"https://content-review-copilot-preview.vercel.app",zh:"体验内容审核原型 ↗",en:"Try the content-review prototype ↗",noteZh:"当前生产版本使用演示模型；请使用合成内容。",noteEn:"Current production version uses a mock provider; use synthetic content."},
+ agentlab:{url:"https://agentlab-harness-optimizer.vercel.app",zh:"打开 AgentLab 交互沙盒 ↗",en:"Try the AgentLab sandbox ↗",noteZh:"建议按 Run → Diagnose → Patch → Regression 体验；结果来自确定性模拟。",noteEn:"Try Run → Diagnose → Patch → Regression; results use a deterministic simulation."},
+ "content-qa":{url:"https://content-review-copilot-preview.vercel.app",zh:"体验内容审核原型 ↗",en:"Try the content-review prototype ↗",noteZh:"用合成文案体验首次审核、人工决策、改写与二审；当前为演示模型。",noteEn:"Try first review, human decisions, rewrite and second review with synthetic copy; demo model."},
  liferpg:{url:"https://life-rpg-yihan4.vercel.app",zh:"打开 Life RPG ↗",en:"Try Life RPG ↗",noteZh:"进度保存在当前浏览器，不跨设备同步。",noteEn:"Progress is stored in this browser only; no cross-device sync."}
 };
 function render(args){
