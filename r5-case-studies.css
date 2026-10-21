@@ -124,3 +124,48 @@ body:has(.r5-case-page){background:var(--r5-paper);color:var(--r5-ink)}
 .r5-case-footer>a{margin-top:18px}
 }
 @media(prefers-reduced-motion:reduce){.r5-case-page *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+
+/* R15 — direct hands-on demo entry points in selected case studies. */
+.r5-demo-action{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:5px;
+  max-width:245px;
+}
+.r5-demo-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  padding:10px 16px;
+  border:1px solid rgba(246,227,205,.55);
+  border-radius:999px;
+  color:#fff0df;
+  background:rgba(244,235,221,.055);
+  font-size:12px;
+  line-height:1.25;
+  font-weight:750;
+  transition:background .2s ease,border-color .2s ease,transform .2s ease;
+}
+.r5-demo-link:hover,
+.r5-demo-link:focus-visible{
+  background:rgba(244,235,221,.13);
+  border-color:rgba(246,227,205,.82);
+  transform:translateY(-1px);
+}
+.r5-demo-action small{
+  display:block;
+  max-width:245px;
+  color:rgba(247,228,210,.72);
+  font-size:10px;
+  line-height:1.45;
+}
+@media(max-width:760px){
+  .r5-demo-action{max-width:100%;flex-basis:100%}
+  .r5-demo-action small{max-width:310px;font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .r5-demo-link{transition:none}
+}
