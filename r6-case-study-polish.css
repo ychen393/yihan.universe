@@ -193,7 +193,7 @@ body:has(.r5-case-page) .footer a{color:#36516a}
   display:block;
   width:100%;
   max-width:245px;
-  margin:5px 0 0;
+  margin:0;
   line-height:1.45;
 }
 @media(max-width:760px){
