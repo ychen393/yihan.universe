@@ -83,3 +83,66 @@
   .hero .motion-core{display:none}
   .r19-motion-enabled .hero .hero-art{will-change:auto}
 }
+
+/* R19.1 — never leave the pinned scene visually empty. */
+.r14-static-fix .hero{
+  background:
+    radial-gradient(ellipse 48% 52% at 76% 44%,rgba(107,130,148,.25),transparent 82%),
+    radial-gradient(ellipse 62% 49% at 16% 69%,rgba(68,95,119,.21),transparent 88%),
+    linear-gradient(165deg,#26384b 0%,#202d3c 64%,#202d3c 100%);
+}
+.r14-static-fix .hero .motion-core{
+  z-index:3;
+  filter:drop-shadow(0 0 38px rgba(230,191,150,.26));
+}
+.r14-static-fix .hero .motion-bridge{
+  position:absolute;
+  z-index:5;
+  left:clamp(26px,5.5vw,102px);
+  top:36%;
+  width:min(640px,49vw);
+  display:flex;
+  align-items:flex-start;
+  flex-direction:column;
+  gap:12px;
+  color:#f3e8dd;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  will-change:transform,opacity;
+}
+.motion-bridge__line{
+  width:94px;
+  height:1px;
+  background:linear-gradient(90deg,#ebccae,rgba(235,204,174,0));
+  margin:0 0 11px;
+}
+.motion-bridge__chapter{
+  font-size:13px;
+  font-weight:650;
+  letter-spacing:.22em;
+  color:#e8c5a3;
+}
+.motion-bridge__title{
+  font:500 clamp(44px,5vw,76px)/1.17 var(--cserif);
+  letter-spacing:-.045em;
+  color:#f5ede4;
+}
+.motion-bridge__meta{
+  font-size:clamp(13px,1.15vw,17px);
+  line-height:1.7;
+  color:#e5d7c8;
+  max-width:640px;
+}
+.motion-bridge__hint{
+  margin-top:18px;
+  font-size:12px;
+  color:rgba(231,214,194,.78);
+  letter-spacing:.07em;
+}
+@media(max-width:959px){
+  .r14-static-fix .hero .motion-bridge{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .r14-static-fix .hero .motion-bridge{display:none}
+}
