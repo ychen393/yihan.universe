@@ -37,6 +37,21 @@
     ].join("");
     hero.insertBefore(core,hero.querySelector(".hero-shell"));
 
+    // Give the last phase of the pinned Hero an actual next scene.
+    // This bridge stays visible as the Hero naturally scrolls away.
+    const isZh=document.documentElement.lang!=="en";
+    const bridge=document.createElement("div");
+    bridge.className="motion-bridge";
+    bridge.setAttribute("aria-hidden","true");
+    bridge.innerHTML=[
+      '<span class="motion-bridge__line"></span>',
+      '<span class="motion-bridge__chapter">01 / JOURNEY</span>',
+      '<strong class="motion-bridge__title">'+(isZh?"我的经历":"The Journey")+'</strong>',
+      '<span class="motion-bridge__meta">UBC&nbsp; → &nbsp;'+(isZh?"冷酸灵":"Lengshuan")+'&nbsp; → &nbsp;Accenture&nbsp; → &nbsp;BAYESTONE</span>',
+      '<span class="motion-bridge__hint">'+(isZh?"继续滚动，进入第一站 ↓":"Keep scrolling to the first chapter ↓")+'</span>'
+    ].join("");
+    hero.insertBefore(bridge,hero.querySelector(".hero-shell"));
+
     mm=gsap.matchMedia();
     mm.add("(min-width: 960px) and (prefers-reduced-motion: no-preference)",function(){
       document.documentElement.classList.add("r19-motion-enabled");
@@ -50,14 +65,18 @@
       const cue=hero.querySelector(".scroll-cue");
       const signal=hero.querySelector(".hero-signal");
       const halo=core.querySelector(".motion-core__halo");
+      const bridge=hero.querySelector(".motion-bridge");
 
-      // start and end are relative to the sticky desktop navigation (82px).
+      // The intro fades away only as the Journey preview enters.
+      // Do not fade the background AND the Universe Core: that caused
+      // an entirely empty pinned viewport at the end of R19.
+      gsap.set(bridge,{autoAlpha:0,y:46});
       const tl=gsap.timeline({
         defaults:{ease:"none"},
         scrollTrigger:{
           trigger:hero,
           start:"top top+=82",
-          end:()=>"+="+Math.round(Math.max(750,window.innerHeight*1.2)),
+          end:()=>"+="+Math.round(Math.max(700,window.innerHeight*.96)),
           pin:true,
           pinSpacing:true,
           scrub:0.8,
@@ -66,12 +85,12 @@
         }
       });
       tl
-        .to(titleEls,{autoAlpha:0,y:-42,stagger:.08,duration:.42},.07)
-        .to(core,{x:()=>-Math.min(240,window.innerWidth*.14),y:50,scale:1.22,opacity:.72,duration:.73},.03)
-        .to(halo,{scale:1.28,opacity:.32,duration:.55},.2)
-        .to(art,{x:-95,scale:1.15,opacity:.48,duration:.78},0)
-        .to([cue,signal].filter(Boolean),{autoAlpha:0,y:16,duration:.28},.1)
-        .to(core,{scale:.9,opacity:0,duration:.23},.79);
+        .to(titleEls,{autoAlpha:0,y:-32,stagger:.04,duration:.48},.22)
+        .to(core,{x:()=>-Math.min(115,window.innerWidth*.07),y:-25,scale:1.12,opacity:.98,duration:.76},.06)
+        .to(halo,{scale:1.26,opacity:.65,duration:.68},.2)
+        .to(art,{x:-28,scale:1.095,opacity:.94,duration:.8},0)
+        .to(bridge,{autoAlpha:1,y:0,duration:.34},.56)
+        .to([cue,signal].filter(Boolean),{autoAlpha:0,y:12,duration:.25},.33);
       window.ScrollTrigger.refresh();
       return function(){
         document.documentElement.classList.remove("r19-motion-enabled");
