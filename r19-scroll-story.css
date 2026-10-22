@@ -1,0 +1,85 @@
+/* R19 / learning preview — Scroll-driven Hero, isolated from Journey's existing logic. */
+.hero .motion-core{
+  position:absolute;
+  width:clamp(240px,29vw,470px);
+  aspect-ratio:1;
+  right:clamp(38px,10vw,210px);
+  top:47%;
+  transform:translateY(-50%);
+  z-index:2;
+  pointer-events:none;
+  opacity:.94;
+  filter:drop-shadow(0 0 45px rgba(229,190,150,.16));
+  will-change:transform,opacity;
+}
+.motion-core__halo{
+  position:absolute;
+  inset:15%;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(246,210,171,.12),rgba(114,148,179,.06) 36%,transparent 73%);
+  box-shadow:0 0 85px 35px rgba(203,160,128,.08);
+  will-change:transform,opacity;
+}
+.motion-core__orbit{
+  position:absolute;
+  border:1px solid rgba(236,203,173,.48);
+  border-radius:50%;
+  inset:17% -8%;
+  transform:rotate(-24deg) rotateX(64deg);
+  box-shadow:0 0 18px rgba(255,210,170,.09);
+}
+.motion-core__orbit.orbit-b{
+  inset:-5% 20%;
+  transform:rotate(34deg) rotateY(55deg);
+  border-color:rgba(189,210,226,.27);
+}
+.motion-core__orbit.orbit-c{
+  inset:5%;
+  transform:rotate(-12deg) rotateX(77deg);
+  border-color:rgba(245,216,187,.22);
+}
+.motion-core__sphere{
+  position:absolute;
+  inset:35%;
+  border-radius:50%;
+  border:1px solid rgba(255,223,191,.34);
+  background:
+    radial-gradient(circle at 27% 24%,rgba(255,244,224,.9),rgba(230,198,165,.7) 13%,rgba(113,134,152,.57) 38%,rgba(36,59,78,.95) 74%,#182b3e 100%);
+  box-shadow:0 0 20px rgba(249,210,171,.17),0 0 60px rgba(207,171,136,.11),inset -18px -20px 36px rgba(10,21,34,.68);
+}
+.motion-core__dot{
+  width:7px;height:7px;border-radius:50%;position:absolute;
+  background:#f7d5b1;
+  box-shadow:0 0 18px 6px rgba(250,212,164,.32);
+}
+.motion-core__dot.a{top:24%;left:17%}
+.motion-core__dot.b{bottom:20%;right:12%;width:4px;height:4px;background:#c8e1ed}
+.motion-core__label{
+  position:absolute;
+  right:1%;
+  bottom:3%;
+  font:600 10px/1.4 var(--sans);
+  letter-spacing:.28em;
+  color:rgba(232,207,184,.67);
+}
+.r19-motion-enabled .hero .hero-art{
+  animation:none !important;
+  will-change:transform,opacity;
+}
+.r19-motion-enabled .hero .hero-copy{
+  will-change:transform,opacity;
+}
+@media(max-width:959px){
+  .hero .motion-core{
+    width:210px;
+    right:-52px;
+    top:64%;
+    opacity:.4;
+    transform:translateY(-50%);
+  }
+  .motion-core__label{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero .motion-core{display:none}
+  .r19-motion-enabled .hero .hero-art{will-change:auto}
+}
