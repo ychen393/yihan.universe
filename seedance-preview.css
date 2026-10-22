@@ -1,0 +1,27 @@
+/* Seedance preview only — experimental branch. */
+.r14-static-fix .hero{isolation:isolate}
+.r14-static-fix .seedance-preview-video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:0;
+  opacity:.72;
+  filter:saturate(.76) brightness(.64) contrast(1.04);
+  pointer-events:none;
+}
+.r14-static-fix .hero-art{opacity:.16!important;z-index:1}
+.r14-static-fix .hero .hero-stars{opacity:.38;z-index:2}
+.r14-static-fix .hero::after{z-index:3;background:
+  linear-gradient(90deg,rgba(24,37,50,.97) 0%,rgba(26,39,53,.88) 29%,rgba(25,38,52,.56) 49%,rgba(20,31,44,.30) 75%,rgba(14,24,36,.38) 100%),
+  linear-gradient(0deg,rgba(15,28,41,.70),transparent 42%)!important;
+}
+.r14-static-fix .hero::before{z-index:4}
+.r14-static-fix .hero-shell,.r14-static-fix .scroll-cue,.r14-static-fix .hero-signal{z-index:5}
+@media(max-width:780px){
+  .r14-static-fix .seedance-preview-video{opacity:.58;object-position:62% center}
+}
+@media(prefers-reduced-motion:reduce){
+  .r14-static-fix .seedance-preview-video{display:none}
+}
