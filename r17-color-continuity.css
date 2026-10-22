@@ -1,0 +1,139 @@
+/* R17 — Home color continuity.
+   Smooth Hero → Journey → Work → About into one cinematic midnight spectrum. */
+
+:root{
+  --r17-night-deep:#102638;
+  --r17-night-mid:#23384c;
+  --r17-night-soft:#2b3f53;
+}
+
+/* Hero already lands near #202d3c. Keep its lower edge in that family. */
+.r14-static-fix .hero::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:190px;
+  z-index:2;
+  pointer-events:none;
+  background:linear-gradient(
+    180deg,
+    rgba(32,45,60,0) 0%,
+    rgba(32,45,60,.28) 48%,
+    #202d3c 100%
+  );
+}
+
+/* Journey keeps the softer slate-blue identity, but no longer starts/ends abruptly. */
+.r14-static-fix .journey-section{
+  background:
+    radial-gradient(circle at 17% 27%,rgba(79,103,128,.38) 0%,transparent 36%),
+    radial-gradient(circle at 78% 58%,rgba(82,105,126,.11) 0%,transparent 38%),
+    linear-gradient(165deg,#293b4e 0%,#2b3f53 44%,#263b4f 78%,#20364a 100%);
+}
+
+.r14-static-fix .journey-section::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:330px;
+  z-index:1;
+  pointer-events:none;
+  background:linear-gradient(
+    180deg,
+    #202d3c 0%,
+    rgba(35,52,70,.92) 28%,
+    rgba(43,63,83,.44) 68%,
+    rgba(43,63,83,0) 100%
+  );
+}
+
+.r14-static-fix .journey-section::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:460px;
+  z-index:1;
+  pointer-events:none;
+  background:linear-gradient(
+    180deg,
+    rgba(38,59,79,0) 0%,
+    rgba(31,52,72,.34) 35%,
+    rgba(22,43,61,.76) 72%,
+    var(--r17-night-deep) 100%
+  );
+}
+
+/* Work starts exactly where Journey lands, then deepens gradually. */
+.r14-static-fix .work-section{
+  background:
+    radial-gradient(ellipse 72% 36% at 47% 45%,rgba(57,103,145,.12),transparent 74%),
+    radial-gradient(ellipse 58% 40% at 24% 38%,rgba(45,103,174,.08),transparent 76%),
+    radial-gradient(ellipse 54% 38% at 78% 43%,rgba(191,137,79,.065),transparent 78%),
+    radial-gradient(ellipse 58% 38% at 25% 82%,rgba(51,132,113,.065),transparent 78%),
+    radial-gradient(ellipse 56% 40% at 79% 81%,rgba(125,81,163,.07),transparent 78%),
+    linear-gradient(
+      180deg,
+      var(--r17-night-deep) 0%,
+      #0f2538 10%,
+      #0e2235 23%,
+      #0c1f31 55%,
+      #10283a 100%
+    );
+}
+
+.r14-static-fix .work-section::before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto;
+  height:300px;
+  z-index:1;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse 64% 80% at 50% 0%,rgba(66,95,120,.14),transparent 76%),
+    linear-gradient(180deg,rgba(16,38,56,.92),rgba(16,38,56,0));
+}
+
+/* About lifts back toward slate-blue over distance instead of switching in one frame. */
+.r14-static-fix .about-section{
+  background:
+    radial-gradient(circle at 82% 32%,rgba(92,116,139,.14),transparent 38%),
+    linear-gradient(
+      180deg,
+      #10283a 0%,
+      #193044 15%,
+      #22394d 34%,
+      #2a4054 64%,
+      #253b4d 100%
+    );
+}
+
+.r14-static-fix .about-section::before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto;
+  height:260px;
+  z-index:1;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(16,40,58,.74),rgba(16,40,58,0));
+}
+
+/* Keep stars/content above the transition haze. */
+.r14-static-fix .journey-section .starfield,
+.r14-static-fix .work-section>.starfield,
+.r14-static-fix .about-section>.starfield{
+  z-index:0;
+}
+
+@media(max-width:780px){
+  .r14-static-fix .hero::before{height:145px}
+  .r14-static-fix .journey-section::before{height:240px}
+  .r14-static-fix .journey-section::after{height:340px}
+  .r14-static-fix .work-section::before{height:220px}
+  .r14-static-fix .about-section::before{height:190px}
+}
