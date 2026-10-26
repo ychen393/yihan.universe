@@ -240,3 +240,82 @@
   .r18-work-cinematic .r18-nebula-haze{animation:none}
   .r18-work-cinematic video{display:none}
 }
+
+
+/* R18.1 — Desktop first-viewport fit: name, four lines and both CTAs remain visible.
+   The earlier 760px min-height pushed buttons below shorter desktop windows,
+   especially when browser zoom reduced the effective CSS viewport height. */
+@media(min-width:781px){
+  .r14-static-fix .r18-hero{
+    height:auto;
+    min-height:calc(100svh - 82px);
+  }
+  .r14-static-fix .r18-hero .hero-shell{
+    height:auto;
+    min-height:calc(100svh - 82px);
+    padding-top:20px;
+    padding-bottom:42px;
+  }
+  .r14-static-fix .r18-hero-copy{
+    width:min(810px,68vw);
+    padding:8px 0 10px;
+  }
+  .r14-static-fix .r18-identity{
+    margin-bottom:12px;
+    font-size:10px;
+    line-height:1.5;
+  }
+  .r14-static-fix .r18-heading{
+    margin:0 0 17px;
+    font-size:clamp(50px,5.6vw,88px);
+    line-height:1.055;
+  }
+  .r14-static-fix .r18-heading span:last-child{
+    margin-top:8px;
+    font-size:clamp(19px,1.75vw,28px);
+    line-height:1.25;
+  }
+  .r14-static-fix .r18-intro-list{gap:8px}
+  .r14-static-fix .r18-intro-item{
+    padding:9px 15px;
+    gap:12px;
+    font-size:clamp(13px,1.08vw,16px);
+    line-height:1.42;
+  }
+  .r14-static-fix .r18-actions{margin-top:17px;gap:13px}
+  .r14-static-fix .r18-actions .button{
+    min-height:44px;
+    padding:10px 20px;
+  }
+  .r14-static-fix .r18-hero .scroll-cue{bottom:13px}
+}
+/* More compact vertical rhythm for a shorter window or increased browser zoom. */
+@media(min-width:781px) and (max-height:760px){
+  .r14-static-fix .r18-hero .hero-shell{
+    padding-top:9px;
+    padding-bottom:26px;
+  }
+  .r14-static-fix .r18-hero-copy{padding:0}
+  .r14-static-fix .r18-identity{margin-bottom:9px}
+  .r14-static-fix .r18-heading{
+    font-size:clamp(45px,5.15vw,76px);
+    margin-bottom:11px;
+  }
+  .r14-static-fix .r18-heading span:last-child{
+    margin-top:5px;
+    font-size:clamp(18px,1.65vw,25px);
+  }
+  .r14-static-fix .r18-intro-list{gap:6px}
+  .r14-static-fix .r18-intro-item{
+    padding:7px 13px;
+    line-height:1.35;
+    font-size:clamp(12px,1.02vw,15px);
+  }
+  .r14-static-fix .r18-actions{margin-top:12px}
+  .r14-static-fix .r18-actions .button{min-height:42px;padding:9px 18px}
+  .r14-static-fix .r18-hero .hero-signal{display:none}
+  .r14-static-fix .r18-hero .scroll-cue{bottom:8px}
+}
+@media(min-width:781px) and (max-height:650px){
+  .r14-static-fix .r18-hero .scroll-cue{display:none}
+}
